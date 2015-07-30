@@ -119,11 +119,11 @@ Deploy the WAR file that you built in the previous section by using Cloud Foundr
 where *yourUsername* is your Bluemix id, *yourOrg* is your organization name in Bluemix and *yourSpace* is your space name in Bluemix.
 5. Deploy the app to Bluemix by running the following command.
    ```
-   cf push <yourAppName> -p movieapp-dialog.war
+   cf push <yourAppName> -p watson-movieapp-dialog.war
    ```
 where, *yourAppName* is the name of your app.
 6. Navigate to [Bluemix](https://console.ng.bluemix.net/) to make sure the app is started. If not, click START.
-7. To view the home page of the app, open [https://yourAppName.mybluemix.net/movieapp-dialog/dist/index.html#/](https://yourAppName.mybluemix.net/movieapp-dialog/dist/index.html#/), where yourAppName is the specific name of your app.
+7. To view the home page of the app, open [https://yourAppName.mybluemix.net/watson-movieapp-dialog/dist/index.html#/](https://yourAppName.mybluemix.net/watson-movieapp-dialog/dist/index.html#/), where yourAppName is the specific name of your app.
 8. Chat with What's in Theaters!
 
 ## Reference information
