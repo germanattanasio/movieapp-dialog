@@ -63,7 +63,7 @@ import com.ibm.watson.movieapp.dialog.payload.WDSConversationPayload;
  * There are multiple JAX-RS entry points to this class, depending on the task to be performed.
  * eg.: /postConversation to post the user input to the WDS service and get a response.
  * <p>
- * In addition, there are various helper methods to build and parse responses, etc.
+ * In addition, there are various helper methods to parse response text, etc.
  */
 
 @Path("/bluemix")
@@ -162,9 +162,9 @@ public class WDSBlueMixProxyResource {
 	/**
 	 * Makes chat conversation with WDS
 	 * <p>
-	 * This makes chat conversation with WDS for the provided clientid and conversation id, against the user input provided.
+	 * This makes chat conversation with WDS for the provided client id and conversation id, against the user input provided.
 	 * <p>
-	 * When WDS has collected all the required movie preferences, it sends a bunch of movie parameters embedded in the text response and signals to discover movies from TMDB.
+	 * When WDS has collected all the required movie preferences, it sends a bunch of movie parameters embedded in the text response and signals to discover movies from themoviedb.org.
 	 * There may be the following kinds of discover movie calls:
 	 * <ul>
 	 * <li> New search: First time searching for the given set of parameters
@@ -173,11 +173,10 @@ public class WDSBlueMixProxyResource {
 	 * <li> Next search: Display the results on the next page
 	 * </ul>
 	 * Depending on the kind of call, profile variables are set in WDS and personalized prompts are retrieved to be sent back to the UI in the payload.
-	 * @param conversationId  the conversation id for the clientid specified
-	 * @param clientId  the clientid for the session
+	 * @param conversationId  the conversation id for the client id specified
+	 * @param clientId  the client id for the session
 	 * @param input  the user's input
 	 * @return a response containing either of these two entities- {@code WDSConversationPayload} or {@code ServerErrorPayload}
-	 * @throws WatsonTheatersException 
 	 */
 	@GET
 	@Path("/postConversation")
@@ -331,12 +330,11 @@ public class WDSBlueMixProxyResource {
 	/**
 	 * Returns selected movie details
 	 * <p>
-	 * This extracts the details of the movie specified. It uses TMDB API to populate movie details in {@link MoviePayload}.
-	 * @param clientId  the clientid for the session
-	 * @param conversationId  the conversation id for the clientid specified
+	 * This extracts the details of the movie specified. It uses themoviedb.org API to populate movie details in {@link MoviePayload}.
+	 * @param clientId  the client id for the session
+	 * @param conversationId  the conversation id for the client id specified
 	 * @param movieName  the movie name
 	 * @param movieId  the movie id
-	 * @param popularity  the movie popularity(out of 10)
 	 * @return a response containing either of these two entities- {@code WDSConversationPayload} or {@code ServerErrorPayload}
 	 */
 	@GET

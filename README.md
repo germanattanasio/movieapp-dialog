@@ -28,7 +28,7 @@ Ensure that you have the following prerequisites before you start:
 In order to run the What's In Theaters app, you need to have a Dialog service instance bound to an app in your IBM Bluemix account. The following steps will guide you through the process. The instructions use Eclipse, but you can use the IDE of your choice.
 
 ### Get the project from GitHub
-1. Clone the watson-movieapp-dialog repository from GitHub by issuing one of the following commands in your terminal:
+1. Clone the movieapp-dialog repository from GitHub by issuing one of the following commands in your terminal:
    ```
    git clone https://github.com:watson-developer-cloud/movieapp-dialog.git
    ```
@@ -57,16 +57,21 @@ Complete one of the following sets of steps to add an instance of the Dialog ser
      4. Ensure that your app is specified in the **App** dropdown on the right-hand side of the pop-up window under **Add Service**.
      5. Type a unique name for your service in the **Service name** field, such as `dialog-sample-service`.
      6. Click **CREATE**. The **Restage Application** window is displayed.
-     7. Click **RESTAGE** to restart your app.
-
-  5. If the app is not started, click **START**.
-  6. To view the home page of the app, open [https://yourAppName.mybluemix.net](https://yourAppName.mybluemix.net), where yourAppName is the name of your app.
+     7. Click **RESTAGE** to restart your app. If the app is not started, click **START**.
 
 2. Binding to an existing service instance
      1. [Log in to Bluemix](https://console.ng.bluemix.net/) and navigate to the *Dashboard* on the top panel. Locate and click on the app you created in the previous section.
      2. Click **BIND A SERVICE OR API**.
      3. Select the existing Dialog service that you want to bind to your app, and click **ADD**. The **Restage Application** window is displayed.
      4. Click **RESTAGE** to restart your app.
+
+### Upload a Dialog File
+Now that we have a WDS instance bound to the app, we can use the credentials we received in the previous step to author a dialog file which contains chat flows. The dialog file for this application is packaged with the project at */movieapp-dialog/src/main/resources/dialog_files/movieapp-dialog-file.xml*. Use the following command to upload this file to Bluemix:
+```
+curl -X POST -F "file=@*dialogFile*" -F "name=*dialogName*" https://gateway.watsonplatform.net/dialog-experimental/api/v1/dialogs -u "*username*:*password*"
+```
+where, *dialogFile* is the name of the dialog file you are uploading, *dialogName* is a unique name you give to the dialog you are uploading and, the *username* and *password* are the credentials you obtained in the previous step. 
+
 
 ### Build the app
 This project is configured to be built with Maven. To deploy the app, complete the following steps in order:
@@ -79,7 +84,7 @@ This project is configured to be built with Maven. To deploy the app, complete t
     * **TMDB_API_KEY**. Specify the API key you received after you registered for API access on themoviedb.org.
     * **VCAP_SERVICES**. For the **name* attribute, specify the same name that you gave your instance of the Dialog service in the previous section. The following example shows a *VCAP_SERVICES* entry that uses the name `dialog-sample-service`:
   ```
-          VCAP_SERVICES= {"dialog": [{"name": “dialog-sample-service”, "label": "dialog”
+          VCAP_SERVICES= {"watson_dialog_service": [{"name": “dialog-sample-service”, "label": "watson_dialog_service”
   ```
 6. Switch to the navigator view in Eclipse, right-click the `pom.xml`, and select `Run As -> Maven Install`. Installation of Maven begins. During the installation, the following tasks are done:
     * The JS code is compiled. That is, the various Angular JS files are aggregated, uglified, and compressed. Various other pre-processing is performed on the web code, and the output is copied to the `movieapp-dialog/src/main/webapp/dist` folder in the project.
@@ -87,6 +92,7 @@ This project is configured to be built with Maven. To deploy the app, complete t
     * The Maven install instantiates a new Websphere Liberty Profile server, deploys the `.war` file to the server, starts the server, and runs a battery of integration tests against the deployed web application.
 
 This WAR file that resides in */movieapp-dialog/target directory* will be used to deploy the application on Bluemix in the next section.
+
 
 ### Deploy the app
 You can run the application on a local server or on Bluemix. Choose one of the following methods, and complete the steps:
@@ -119,14 +125,27 @@ Deploy the WAR file that you built in the previous section by using Cloud Foundr
 where *yourUsername* is your Bluemix id, *yourOrg* is your organization name in Bluemix and *yourSpace* is your space name in Bluemix.
 5. Deploy the app to Bluemix by running the following command.
    ```
-   cf push <yourAppName> -p watson-movieapp-dialog.war
+   cf push <yourAppName> -p movieapp-dialog.war
    ```
 where, *yourAppName* is the name of your app.
 6. Navigate to [Bluemix](https://console.ng.bluemix.net/) to make sure the app is started. If not, click START.
 7. To view the home page of the app, open [https://yourAppName.mybluemix.net/watson-movieapp-dialog/dist/index.html#/](https://yourAppName.mybluemix.net/watson-movieapp-dialog/dist/index.html#/), where yourAppName is the specific name of your app.
 8. Chat with What's in Theaters!
 
+## Automation
+Automation is designed both to run as a full suite of regression tests and to run a subset of regression tests for continuous integration process.  Updates to dialog will need reciprocating changes to the JSON files <see below>.
+
+### How to setup for full regression
+Use src/it/resources/testConfig.properties to control the server under test, browser type 
+(firefox chrome are supported), selenium grid server to include if you have one in your environment.
+
+### How to execute the full regression suite
+To execute the full regression suite you can execute GUI_TestSuite and Rest_TestSuite Junit Test suites directly in your eclipse environment. 
+
+### How to accommodate changes to the dialog
+The dialog questions and answers from the mct file maps the directly to question answer arrays in our JSON files. These files are located src/it/resources/questions directory.  When you change dialog you will need to do reciprocating changes or potentially receive false positives.
+
 ## Reference information
 * [Dialog service documentation](https://dialog-doc-la.mybluemix.net/doc/dialog/index.html): Get an in-depth knowledge of the Dialog service
 * [Dialog service API documentation](https://dialog-doc-la.mybluemix.net/apis/): Understand API usage
-* [Dialog service tutorial](https://dialog-doc-la.mybluemix.net/doc/dialog/index.html#tutorial_intro): Design your own dialog by using a tutorial, which includes a generic template that you can modify for your own use.
+* [Dialog service tutorial](https://dialog-doc-la.mybluemix.net/doc/dialog/index.html#tutorial_intro): Design your own dialog by using a tutorial, which includes a generic template that you can modify for your own use. The Conversation Analysis Template comes bundled with this project and can be found at */movieapp-dialog/src/main/resources/dialog_files/CA_template.xml*.

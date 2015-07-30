@@ -108,8 +108,8 @@ public final class UtilityFunctions {
 	 * @param url  the url for the request
 	 * @param requestJson  the JSON object containing the parameters for the PUT request
 	 * @return the JSON object response 
-	 * @throws ClientProtocolException if it is unable to execute the call to WDS API
-	 * @throws IOException if it is unable to execute the call to WDS API
+	 * @throws ClientProtocolException if it is unable to execute the call
+	 * @throws IOException if it is unable to execute the call
 	 * @throws IllegalStateException if the input stream could not be parsed correctly
 	 * @throws HttpException if the HTTP call responded with a status code other than 200 or 201
 	 */
@@ -136,8 +136,8 @@ public final class UtilityFunctions {
 	 * @param url the url for the request
 	 * @param nvps the {name, value} pair parameters to be embedded in the request
 	 * @return the JSON object response 
-	 * @throws ClientProtocolException if it is unable to execute the call to WDS API
-	 * @throws IOException if it is unable to execute the call to WDS API
+	 * @throws ClientProtocolException if it is unable to execute the call
+	 * @throws IOException if it is unable to execute the call
 	 * @throws IllegalStateException if the input stream could not be parsed correctly
 	 * @throws HttpException if the HTTP call responded with a status code other than 200 or 201
 	 */
@@ -158,8 +158,8 @@ public final class UtilityFunctions {
 	 * @param httpClient the http client used to make the request
 	 * @param uri the uri for the request
 	 * @return the JSON object response 
-	 * @throws ClientProtocolException if it is unable to execute the call to WDS API
-	 * @throws IOException if it is unable to execute the call to WDS API
+	 * @throws ClientProtocolException if it is unable to execute the call
+	 * @throws IOException if it is unable to execute the call
 	 * @throws IllegalStateException if the input stream could not be parsed correctly
 	 * @throws HttpException if the HTTP call responded with a status code other than 200 or 201
 	 */

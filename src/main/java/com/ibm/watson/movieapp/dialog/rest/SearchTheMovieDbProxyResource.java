@@ -91,11 +91,11 @@ public class SearchTheMovieDbProxyResource {
 	
 	/**
 	 * Loads an internal cache which gets refreshed periodically. We are depending on a third party
-	 * system (themoviedb) so it is possible that their genres may change over time or the url used
+	 * system (themoviedb.org) so it is possible that their genres may change over time or the url used
 	 * to retrieve posters will change. As a result we periodically (for now daily) check to make
 	 * sure we have the correct values for these.
 	 * 
-	 * @return  a cache which looks up certain values in themoviedb
+	 * @return  a cache which looks up certain values in themoviedb.org
 	 */
 	private static LoadingCache<String, String> loadTheMovieDbCache(){ 
 	    return CacheBuilder.newBuilder().initialCapacity(8)
@@ -350,7 +350,7 @@ public class SearchTheMovieDbProxyResource {
 	/**
 	 * Gets the details for the movie selected
 	 * <p>
-	 * This will retrieve the following movie info using TMDB /moviedetails API:
+	 * This will retrieve the following movie info using themoviedb.org's /moviedetails API:
 	 * <ul>
 	 * <li>releaseDate  the movie's release date
 	 * <li>releaseDateStr  the movie's release date in String format
