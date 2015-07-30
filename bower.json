@@ -1,0 +1,30 @@
+{
+  "name": "wea",
+  "main": "app.js",
+  "version": "0.0.0",
+  "authors": [
+    "N N"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lodash": "~2.4.1",
+    "angular": "~1.3.2",
+    "angular-route": "~1.3.2",
+    "angular-sanitize": "~1.3.2",
+    "angular-gettext": "~1.1.4",
+    "angular-animate": "~1.3.2",
+    "bootstrap": "~3.3.4"
+  },
+  "devDependencies": {
+    "angular-loader": "~1.3.2",
+    "angular-mocks": "~1.3.2"
+  }
+}
