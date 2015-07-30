@@ -35,7 +35,7 @@ public class MovieUI extends BaseUI{
 	public static String chatBox = "css=input[id='question']";
 	public static String chatBoxDisabled = "css=input[id='question'][disabled='']";
 	public static String lastResponse = "css=div[class='dialog-entry row ng-scope'] > div[class='dialog-watson-row'] > div[class='dialog-segment-bkg ng-scope']";
-	public static String movieResponse = "css=div[class='dialog-movie ng-scope'] > span[class='dialog-movie-link']";
+	public static String movieResponse = "css=a[class='dialog-movie ng-scope'] > span[class='dialog-movie-link']";
 	public static String conversationsWeb = "css=div[id='conversationParent'] > div[class='dialog-entry row ng-scope']";
 	public static String questionParts = ".dialog-segment-bkg";
 	public static String animationActive = "css=.ng-enter-active";

@@ -58,6 +58,8 @@ public class Trailer_IT  extends SetupMethod{
 		//ask a question that will return a response with movie data
 		BaseConversation conversation = ui.askMovieQuest(Recency.random());
 		
+		logger.info(conversation.getQuestions().size());
+		
 		//Get the last question of the conversation
 		BaseQuestion lastQuest = conversation.getQuestions().get(3);
 		logger.info("INFO: Last question - " + lastQuest.getMovies().size());
