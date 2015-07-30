@@ -1,0 +1,11 @@
+{
+"questions": [
+	{
+		"sequence": "Hello.",
+		"question": ["Hello", "Hi", "Hola", "Howdy", "Hiya", "Hey", "Heya", "yello", "aloha", "hi there", "Hello again"],		
+		"expected": ["How is it going?", "How are you feeling today?", "How are you today?"]
+	}
+	],
+	
+"bounds": ""	
+}

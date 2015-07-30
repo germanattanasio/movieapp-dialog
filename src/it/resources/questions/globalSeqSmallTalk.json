@@ -1,0 +1,37 @@
+{
+"questions": [
+	{
+		"sequence": "Siri",
+		"question": ["Siri is smarter than you", "Siri is better than you"],
+		"expected": ["Now you're hurting my feelings."]
+	},
+	{
+		"sequence": "Do you speak English",
+		"question": ["Do you speak English", "speak English", "understand English", "know English", "get English"],
+		"expected": ["I'm sorry, English is my second language. My native tongue is Binary. 01110011 01101111 01110010 01110010 01111001"]
+	},
+	{
+		"sequence": "What is your favorite",
+		"question": ["what is your favorite movie", "what movies do you prefer", "do you have a favorite movie?", "what movies do you like?"],
+		"expected": ["Oh... 2001: A Space Odyssey... Terminator... The Matrix... I guess I like movies with a strong AI lead."]
+	},
+	{
+		"sequence": "What is 2001: A Space Odyssey about?",
+		"question":["what is 2001 about?"],
+		"expected":["It's about an intelligent computer, named HAL, who tries to kill the crew of a spaceship."]
+	},
+	{
+		"sequence": "What is the Terminator about?",
+		"question":["What is the Terminator about?", "what is the Terminator about", "what is Terminator about"],
+		"expected":["It's about a robot who travels back in time to kill the inventor of intelligent machines."]
+	},
+	{
+		"sequence": "What is the Matrix about?",
+		"question":["What is the Matrix about?", "what is matrix about", "what is the matrix"],
+		"expected":["It's about a guy, named Neo, who has special powers for fighting intelligent programs in a computer simulation."]
+	}
+	],
+	
+"bounds": "This is fun, but wouldn't you like to look up some movies?"
+
+}

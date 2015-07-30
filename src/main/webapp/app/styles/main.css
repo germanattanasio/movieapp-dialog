@@ -1,0 +1,1199 @@
+/* Copyright IBM Corp. 2015
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/*
+@font-face {
+    font-family: "IBMModSans";
+    src: url("../fonts/IBMModSans-Regular.otf");
+}
+
+@font-face {
+    font-family: "IBMModSans-Black";
+    src: url("../fonts/IBMModSans-Black.otf");
+}
+
+@font-face {
+    font-family: "IBMModSans-Bold";
+    src: url("../fonts/IBMModSans-Bold.otf");
+}
+
+@font-face {
+    font-family: "IBMModSans-Light";
+    src: url("../fonts/IBMModSans-Light.otf");
+}
+*/
+
+/*BODY*/
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.dialog-body {
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-color: #323232;
+    transition: background-image 1s ease-in-out;
+}
+
+.dialog-body-running {
+    background: none;
+}
+
+html, body {
+    height: 100%;
+    min-height: 100%;
+    border: 0px;
+    margin: 0px;
+    overflow-y: hidden;
+}
+
+.ng-view {
+    height: 100%;
+    width: 100%;
+}
+
+.container {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+/*HEADER*/
+.dialog-navbar-txt-img {
+    background-image: url("../images/landing_page_text.png");
+    height: 50px;
+    width: 210px;
+    background-size: auto 20px;
+    background-position: left center;
+    background-repeat: no-repeat;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    cursor: pointer;
+    position: relative;
+}
+
+.dialog-header-inner {
+    min-height: 35px;
+}
+
+.dialog-header-intro {
+    display: none;
+}
+.dialog-header-chatting, .dialog-header-preview {
+    padding-right: 0px;
+    padding-left: 0px;
+    background-color: #323232;
+    color: #ECECEC;
+}
+.movie-review{
+     color: #48BFB6;
+}
+
+.star{
+	vertical-align:initial;
+	height:12px;
+}
+.dialog-navbar-img {
+    background-image: url('../images/header_logo_reel.svg');
+    background-repeat: no-repeat;
+    background-size: auto 17px;
+    width: 100%;
+    background-position: right center;
+    height: 50px;
+    right: 0px;
+}
+
+.dialog-header-text {
+    text-align: center;
+}
+
+.navbar {
+    height: 35px;
+    border: 0px;
+}
+
+/*Links on home page*/
+.dialog-link {
+    color: #ECECEC;
+    padding: 10px;
+    font-size: 10pt;
+}
+
+.dialog-links-parent {
+    display: none;
+}
+.dialog-release-label{
+	margin-top:0px;
+	font-size:11px;
+	margin-bottom:25px;
+}
+.dialog-links-parent.dialog-links-parent-intro {
+    position: fixed;
+    color: #FFFFFF;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    height: 40px;
+    text-align: center;
+    display: block;
+}
+
+/*FAVORITES*/
+.dialog-no-favorite, .dialog-favorite, .dialog-no-favorite-left, .dialog-favorite-left {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 26px;
+    height: 25px;
+    cursor: pointer;
+    display: inline-block;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-image: url("../images/Large_Unfavorited_Icon.png");
+}
+
+.dialog-no-favorite-left, .dialog-favorite-left {
+    position: fixed;
+    margin-left: 5%;
+    cursor: default;
+    width: 22px;
+    height: 18px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    height: 50px;
+    background-size: auto 20px;
+    background-position: center center;
+}
+
+.dialog-favorite, .dialog-favorite-left {
+    background-image: url("../images/Large_Favorited_Icon.png");
+}
+
+.dialog-favorite-left-movie-poster {
+    display: table-cell;
+    text-align: left;
+    padding-left: 10px;
+    height: 150px;
+    font-size: 13pt;
+    font-weight: 900;
+    vertical-align: middle;
+    color: white;
+}
+
+.dialog-favorite-lg .dialog-no-favorite, .dialog-favorite-lg .dialog-favorite, .dialog-favorite-lg .dialog-no-favorite-left,
+    .dialog-favorite-lg .dialog-favorite-left {
+    margin-top: 2px;
+}
+
+.dialog-favorite-sm, .dialog-favorite-lg {
+    float: right;
+    display: inline-block;
+}
+
+.dialog-favorite-sm {
+    padding-right: 35px;
+}
+
+.dialog-favorite-lg {
+    margin-top: 20px;
+    display: none;
+}
+
+.dialog-favorites-indicator {
+    float: left;
+    position: fixed;
+    margin: 22px;
+    margin-left: 50px;
+    width: 25px;
+    height: 25px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("../images/Large_Unfavorited_Icon.png");
+}
+
+.dialog-favorites-sidebar {
+    position: fixed;
+    width: 180px;
+    background-color: #EAEAEA;
+    display: none;
+    z-index: 3;
+    padding-bottom: 50px;
+    overflow-y: auto;
+    max-height: 100%;
+    height: 100%;
+    top: 50px;
+    padding-bottom: 50px;
+}
+
+.dialog-favorite-inner-parent {
+    display: none;
+    height: 150px;
+    width: 125px;
+}
+
+.dialog-unfavorite-botton {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    background-image: url("../images/watson_close_details_sm.svg");
+    background-size: 100% 100%;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.dialog-toggle-favorites-view {
+    width: 100%;
+    height: 100%;
+}
+
+.dialog-full-screen-favorites, .dialog-full-screen-favorites.ng-enter-active, .dialog-full-screen-favorites.ng-leave {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 3000;
+    transition: all .5s ease-in-out;
+    visibility: visible;
+    opacity: 1;
+}
+
+.dialog-full-screen-favorites.ng-enter, .dialog-full-screen-favorites.ng-leave-active {
+    visibility: hidden;
+    opacity: 0;
+    width: 0px;
+}
+
+.dialog-fullscreen-header {
+    width: 100%;
+    background-color: #323232;
+}
+
+.dialog-fullscreen-favorite-scroll {
+    background-color: rgba(68, 68, 68, 0.97);
+    height: 100%;
+    overflow-y: auto;
+    padding-bottom: 70px;
+}
+
+.dialog-favorite-close {
+    position: fixed;
+    left: 0px;
+    margin: 15px;
+    margin-left: 25px;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    color: #FFFFFF;
+    background-size: 100% 100%;
+    background-image: url("../images/watson_close_details_sm.svg");
+    height: 30px;
+}
+
+.dialog-favorite-links-parent {
+    background: #444444;
+    opacity: .95;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.dialog-favorite-image:hover .dialog-favorite-inner-parent {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.dialog-favorite-image, .dialog-no-favorites {
+    height: 150px;
+    width: 130px;
+    margin: 25px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    padding-bottom: 15px;
+    visibility: visible;
+    transform: scale(1);
+    transition: 0.3s cubic-bezier(0.7, 0, 0.5, 1.34);
+}
+
+.dialog-no-favorites.ng-enter, .dialog-favorite-image.ng-enter, .dialog-favorite-image.ng-leave-active {
+    transform: scale(0);
+    visibility: hidden;
+}
+
+.dialog-no-favorites {
+    display: table;
+    padding-bottom: 15px;
+    border: dashed 2px #ABABAB;
+    background-color: #F3F3F3;
+    color: #B6B6B6;
+}
+
+.dialog-no-favorites-text {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.dialog-favorite-full-screen-image, .dialog-favorite-full-screen-image.ng-leave {
+    height: 150px;
+    width: 125px;
+    margin: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    padding-bottom: 15px;
+    position: relative;
+    cursor: pointer;
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+    transition: 0.3s cubic-bezier(0.7, 0, 0.5, 1.34);
+}
+
+.dialog-favorite-full-screen-image.ng-leave-active{
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(0);
+}
+
+.dialog-fullscreen-favorite-scroll:FIRST-CHILD {
+    margin-top: 0px;
+}
+
+.dialog-favorite-indicator {
+    display: inline-block;
+    background-size: 100% 100%;
+    background-image: url("../images/Large_Favorited_Icon.png");
+    height: 35px;
+    width: 35px;
+    margin: 15px;
+}
+
+.dialog-fullscreen-favorite-delete {
+    position: absolute;
+    left: -75px;
+    top: 50%;
+    height: 35px;
+    width: 35px;
+    margin-top: -15px;
+    background-size: 100% 100%;
+    background-image: url("../images/watson_remove_fav_sm.svg");
+}
+
+.dialog-fullscreen-favorites-list {
+    text-align: center;
+    height: 100%;
+}
+
+.dialog-fav-link, .dialog-fav-link:hover, .dialog-fav-link:active, .dialog-fav-link:visited {
+    display: inline-block;
+    margin-bottom: 7px;
+    opacity: 1;
+    color: white;
+}
+
+/*
+ * Form controls
+ */
+.dialog-form-input-container {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.footer-intro {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.form-group .dialog-form-input {
+    padding-left: 15px;
+    box-shadow: none;
+    box-sizing: border-box;
+    height: 35px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 0px;
+    border-color: #ABABAB;
+    position: relative;
+}
+
+.footer-intro .form-group .dialog-form-input {
+    border-color: #FFFFFF;
+}
+
+.dialog-resize-col {
+    display: none;
+}
+
+.footer-chatting, .footer-preview {
+    background-color: #FFFFFF;
+    position: absolute;
+    bottom: 0;
+    /* Set the fixed height of the footer here */
+    width: 100%;
+}
+
+.dialog-form-input:after {
+    content: "";
+    display: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.dialog-body-intro .dialog-form-input {
+    background-color: transparent;
+    color: white;
+}
+
+.dialog-small-screen-placeholder-chatting, .dialog-small-screen-placeholder-preview {
+    display: none;
+}
+
+.dialog-body-intro {
+    display: table;
+}
+
+.dialog-intro-text-image, .dialog-intro-image {
+    height: 28px;
+    width: auto;
+    padding-right: 5px;
+}
+
+.dialog-intro-image {
+    padding-right: 0px;
+    height: 21px;
+}
+
+.dialog-intro-text-intro {
+    text-align: center;
+}
+
+.dialog-intro-text-chatting, .dialog-intro-text-preview {
+    display: none;
+}
+
+.dialog-intro-text-chatting, .dialog-intro-text-preview {
+    color: white;
+    padding: 15px;
+    padding-top: 25px;
+}
+
+.dialog-happy-text-chatting, .dialog-happy-text-preview, .dialog-placeholder-chatting, .dialog-placeholder-preview {
+    display: none;
+}
+
+.dialog-placeholder-intro, .dialog-happy-text-intro {
+    color: #FFFFFF;
+    font-size: 12pt;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    text-align: center;
+}
+
+.dialog-placeholder-intro {
+    font-weight: bold;
+}
+
+.dialog-input-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.dialog-button-col {
+    width: 75px;
+    padding-left: 10px;
+    display: none;
+}
+
+.footer-intro .dialog-button-col {
+    display: table-cell;
+}
+
+.dialog-button {
+    height: 35px;
+    width: 100%;
+    padding-bottom: 2px;
+    border: solid 2px #00D6C3;
+    color: #00D6C3;
+    background-color: transparent;
+}
+
+.dialog-button:hover, .dialog-button:focus {
+    color: #000000;
+    background-color: #00D6C3;
+}
+
+/*PLACEHOLDER Color change*/
+.dialog-body-intro ::-webkit-input-placeholder { /* WebKit browsers */
+    color: #858482;
+    opacity: .85;
+}
+
+.dialog-body-intro :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #858482;
+    opacity: .85;
+}
+
+.dialog-body-intro ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #858482;
+    opacity: .85;
+}
+
+.dialog-body-intro :-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #858482;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: #858482;
+}
+
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #858482;
+    opacity: .85;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #858482;
+    opacity: .85;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #858482;
+}
+
+/*
+ * End form controls
+ */
+
+/*
+ * Conversation controls
+ */
+.dialog-container-chatting {
+    height: 100%;
+}
+
+.dialog-center {
+    height: 100%;
+    position: relative;
+}
+
+.dialog-center-chatting {
+    top: 0px !important;
+}
+
+.dialog-response {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+
+.container .dialog-response .dialog-hidden {
+    display: none;
+}
+
+.dialog-segment-bkg, .ng-enter .dialog-segment-bkg {
+    background-color: #EAEAEA;
+    padding: 0px;
+    height: 55px;
+    display: table;
+    width: 100%;
+}
+
+.dialog-watson-row, .dialog-user-row, .dialog-watson-row.ng-enter.ng-enter-active, .dialog-user-row.ng-enter.ng-enter-active {
+    border: 0px solid #FFFFFF;
+    margin-bottom: 10px;
+    transition: bottom .35s;
+    bottom: 0;
+    opacity: 1;
+    visibility: visible;
+    position: relative;
+    background-color: #EAEAEA;
+}
+
+.dialog-user-row, .dialog-user-row.ng-enter.ng-enter-active {
+    padding-right: 55px; /*compensate for avatar*/
+    text-align: right;
+}
+
+.dialog-row-text {
+    display: table-cell;
+    padding-right: 10px;
+    padding-left: 10px;
+    vertical-align: middle;
+}
+
+.dialog-watson-row, .dialog-watson-row.ng-enter.ng-enter-active {
+    text-align: left;
+    padding-left: 55px;
+}
+
+.dialog-user-row.ng-enter, .dialog-watson-row.ng-enter {
+    bottom: -50px;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.dialog-watson-row.ng-enter {
+    bottom: -10px;
+}
+
+.container .dialog-user-row:after {
+    content: " ";
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    height: 100%;
+    width: 55px;
+    display: inline-block;
+    background-color: #FF5050;
+    background-image: url("../images/human_avatar.svg");
+    background-repeat: no-repeat;
+    background-size: 50% 50%;
+    background-position: 45%;
+}
+
+.container .watson-thinking.dialog-watson-row:before {
+    content: none;
+}
+
+.container .dialog-watson-row:before {
+    content: " ";
+    position: absolute;
+    height: 100%;
+    width: 55px;
+    display: inline-block;
+    left: 0px;
+    top: 0px;
+    background-image: url("../images/watson_white.png");
+    background-repeat: no-repeat;
+    background-size: 50% auto;
+    background-position: center center;
+    background-color: #00ABFC;
+}
+
+.watson-thinking {
+    background-image: url("../images/watson_black_animate.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto 100%;
+    height: 55px;
+}
+
+.dialog-watson-row.watson-thinking {
+    border-right-width: 0px;
+}
+
+.dialog-movie-links-parent, .dialog-movie-links-parent.ng-enter.ng-enter-active {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 55px;
+    padding-right: 55px;
+    padding-bottom: 5px;
+}
+
+.dialog-movie {
+    display: block;
+}
+
+.dialog-movie-links-parent .dialog-movie:focus{
+	outline: none;
+}
+
+.dialog-movie, .dialog-movie.ng-enter.ng-enter-active {
+    text-align: center;
+    opacity: 1;
+    -webkit-transition: 0.7s linear all;
+    transition: 0.7s linear all;
+}
+
+.dialog-movie.ng-enter {
+    opacity: 0;
+}
+
+.dialog-movie.ng-enter-stagger, .dialog-movie.ng-leave-stagger, .dialog-movie.ng-move-stagger {
+    /* 200ms will be applied between each sucessive enter operation */
+    /* this will have a 100ms delay between each successive leave animation */
+    -webkit-transition-delay: 0.2s;
+    transition-delay: 0.2s;
+    /* in case the stagger doesn't work then these two values
+     must be set to 0 to avoid an accidental CSS inheritance */
+    -webkit-transition-duration: 0s;
+    transition-duration: 0s;
+}
+
+.dialog-movie.ng-leave, .dialog-movie.ng-move.ng-move-active, .dialog-movie.ng-enter.ng-enter-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.dialog-movie-link {
+    margin: 5px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
+    border-style: solid;
+    border-width: 1px;
+    display: inline-block;
+    cursor: pointer;
+    color: #FFFFFF;
+    background-color: #454545;
+}
+
+.dialog-movie-link:hover {
+    background-color: #323232;
+    color: #ECECEC;
+}
+
+.dialog-entries {
+    margin-bottom: 10px;
+}
+
+.dialog-trailer {
+    width: 100%;
+    height: 250px;
+}
+
+.dialog-trailer-hidden {
+    display: none !important;
+}
+
+.dialog-preview-parent {
+    display: block;
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    width: 100%;
+    padding-left: 35px;
+    background: rgba(68, 68, 68, 0.97);
+    color: #ECECEC;
+    z-index: 3000; /*has to be a huge number to overlay header*/
+    transition: all .5s ease-in-out;
+    visibility: visible;
+}
+
+.dialog-preview-parent.ng-enter, .dialog-preview-parent.ng-leave-active {
+    width: 0px;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.dialog-preview-scroll {
+    padding-right: 35px;
+    overflow-y: auto;
+}
+
+.dialog-trailer-missing {
+    margin: 0px;
+}
+
+.dialog-drawer-toggle {
+    height: 30px;
+    width: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: inline-block;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-image: url("../images/watson_close_details_sm.svg");
+    cursor: pointer;
+}
+
+.dialog-preview-buttons-parent {
+    float: right;
+}
+
+.dialog-scrollable-div {
+    width: 100%;
+    overflow-y: auto;
+    position: absolute;
+    top: 35px;
+    bottom: 60px;
+    padding-top: 15px;
+}
+
+.dialog-conversation-cell {
+    display: table-cell;
+    vertical-align: bottom;
+}
+
+.container.dialog-preview-showing {
+    transition-property: width, display, margin-left, margin-right;
+    -webkit-transition-property: width, display, margin-left, margin-right;
+    transition-duration: .5s;
+    -webkit-transition-duration: .5s;
+    transition-timing-function: linear;
+    -webkit-transition-timing-function: linear;
+}
+
+.dialog-body-intro, .dialog-body-chatting, .dialog-body-preview {
+    height: 100%;
+    width: 100%;
+    min-height: 100%;
+}
+
+.dialog-body-chatting, .dialog-body-preview {
+    margin-top: 35px;
+    margin-bottom: 60px;
+    padding-top: 10px;
+    font-size: 9pt;
+}
+.dialog-body-intro .container {
+    width: 310px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media ( min-width : 300px) {
+	.star-rating{
+	    padding-left: 8px;
+	    display:inline-block;
+    }
+    .review-value{
+	    padding-left: 0px;
+    }
+   .dialog-movie-name {
+    display: inline;
+    margin-right: 10px;
+}
+   .dialog-rating-label {
+    margin-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-weight: lighter;
+    vertical-align: middle;
+    border-style: solid;
+    border-width: 1px;
+    display: inline-block;
+}
+    
+    h3{
+    font-size:20px;
+    }
+}
+@media ( min-width : 374px) {
+    .review-value{
+	    padding-left: 10px;
+    }
+    h3{
+    font-size:24px;
+    }
+}
+@media ( min-width : 425px) {
+    .dialog-body-intro .container {
+        width: 400px;
+    }
+    .dialog-intro-text-image, .dialog-intro-image {
+        height: 32px;
+    }
+    .dialog-intro-image {
+        height: 24px;
+    }
+    .dialog-no-favorite-left, .dialog-favorite-left {
+        margin-left: 8%;
+    }
+    .star-rating{
+	    padding-left: 35px;
+	    display:inline-block;
+    }
+    .review-value{
+	   padding-left: 17px;
+    }
+    .dialog-rating-label {
+    margin-left: 20px;
+    margin-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-weight: lighter;
+    vertical-align: middle;
+    border-style: solid;
+    border-width: 1px;
+    display: inline-block;
+}
+
+.dialog-movie-name {
+    display: inline-block;
+}
+    
+}
+
+@media ( min-width : 600px) {
+    .dialog-body-intro .container {
+        width: 75%;
+    }
+    .dialog-intro-text-image {
+        height: 36px;
+    }
+    .dialog-intro-image {
+        height: 27px;
+    }
+    .container {
+        margin-right: auto;
+        margin-left: auto;
+        width: 550px;
+    }
+}
+
+@media ( min-width : 768px) {
+    .dialog-body {
+        background-image: url("../images/theater_curtains_background.svg");
+    }
+    .dialog-body-running {
+        background: none;
+    }
+    .dialog-body-chatting, .dialog-body-preview {
+        font-size: 14px;
+    }
+    .container {
+        margin-right: auto;
+        margin-left: auto;
+        width: 600px;
+    }
+    .dialog-body-preview .container {
+        margin-left: 15px;
+        width: 385px;
+    }
+    .navbar {
+        height: 50px;
+    }
+    .dialog-scrollable-div {
+        top: 50px;
+    }
+    .dialog-intro-text-image {
+        padding-right: 15px;
+    }
+    .form-group .dialog-form-input {
+        height: 55px;
+    }
+    .dialog-button {
+        height: 55px;
+    }
+    .dialog-small-screen-placeholder-intro {
+        display: none;
+    }
+    .dialog-intro-text-intro {
+        margin-bottom: 40px;
+    }
+    .dialog-favorite-sm {
+        display: none;
+    }
+    .dialog-favorite-lg {
+        display: inline-block;
+    }
+    .dialog-body-intro .container {
+        width: 75%;
+    }
+    .dialog-preview-parent {
+        width: 350px;
+        top: 50px;
+    }
+    .dialog-intro-image {
+        padding-right: 0px;
+    }
+    .dialog-navbar-txt-img {
+        width: 230px;
+        background-size: auto 22px;
+    }
+    .dialog-navbar-img {
+        background-size: auto 18px;
+    }
+    .dialog-movie {
+        display: inline-block;
+        text-align: left;
+    }
+    .dialog-movie-link {
+        width: inherit;
+    }
+    .star-rating{
+	    padding-left: 10px;
+	    display:inline-block;
+    }
+    .review-value{
+	    padding-left: 10px;
+    }
+    .dialog-placeholder-intro {
+        display: none;
+    }
+}
+
+@media ( min-width : 880px) {
+    .dialog-preview-parent {
+        width: 450px;
+    }
+    .star-rating{
+	    padding-left: 35px;
+	    display:inline-block;
+    }
+    .review-value{
+	   padding-left: 17px;
+    }
+}
+/*
+ Change from square avatar background to circular background
+ */
+@media ( min-width : 992px) {
+    .dialog-body-preview .container {
+        width: 455px;
+        margin-left: 185px;
+        margin-right: auto;
+    }
+    .container {
+        width: 525px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .dialog-favorites-sidebar {
+        display: block;
+    }
+    .dialog-full-screen-favorites {
+        display: none;
+    }
+    .dialog-watson-row, .dialog-watson-row.ng-enter.ng-enter-active {
+        padding-left: 65px;
+        border-right-width: 65px;
+        background-color: transparent;
+    }
+    .dialog-user-row, .dialog-user-row.ng-enter.ng-enter-active {
+        padding-right: 65px;
+        border-left-width: 65px;
+        background-color: transparent;
+    }
+    .dialog-user-row .dialog-row-text {
+        padding-right: 30px;
+    }
+    .dialog-watson-row .dialog-row-text {
+        padding-left: 30px;
+    }
+    .dialog-toggle-favorites-view {
+        display: none;
+    }
+    .footer-chatting .dialog-input-table, .footer-preview .dialog-input-table {
+        margin-left: 10px;
+        border-right: solid #FFFFFF 20px;
+    }
+    .dialog-body-intro .container {
+        width: 835px;
+    }
+    .container .dialog-watson-row:before {
+        left: 0px;
+        height: 55px;
+        border-radius: 50%;
+    }
+    .container .dialog-user-row:after {
+        right: 0px;
+        height: 55px;
+        border-radius: 50%;
+    }
+    .dialog-preview-parent {
+        top: 50px;
+        width: 350px;
+    }
+    .container .form-group {
+        padding-right: 55px;
+        padding-left: 55px;
+    }
+    .dialog-intro-text-image, .dialog-intro-image {
+        height: 40px;
+        padding-right: 20px;
+    }
+    .dialog-intro-image {
+        height: 30px;
+        padding-right: 0px;
+    }
+    .dialog-movie-link {
+        color: #000000;
+        background-color: #FFFFFF;
+    }
+    .dialog-movie-links-parent {
+        padding-left: 60px;
+        padding-right: 60px;
+    }
+    .dialog-no-favorite-left, .dialog-favorite-left {
+        margin-left: 80px;
+    }
+    .star-rating{
+	    padding-left: 10px;
+	    display:inline-block;
+    }
+    .review-value{
+	    padding-left: 10px;
+    }
+}
+
+@media ( min-width : 1100px) {
+    .dialog-preview-parent {
+        width: 450px;
+    }
+    .star-rating{
+	    padding-left: 35px;
+	    display:inline-block;
+    }
+    .review-value{
+	   padding-left: 17px;
+    }
+}
+
+@media ( min-width : 1200px) {
+    .dialog-body-intro .container {
+        width: 880px;
+    }
+    .dialog-body-preview .container {
+        width: 550px;
+        margin-left: 200px;
+    }
+    .container {
+        width: 650px;
+    }
+    .dialog-intro-image, .dialog-intro-text-image {
+        height: 44px;
+        padding-right: 25px;
+    }
+    .dialog-intro-image {
+        height: 33px;
+        padding-right: 0px;
+    }
+    .dialog-preview-parent {
+        width: 450px;
+    }
+}
+
+@media ( min-width : 1300px) {
+    .dialog-preview-parent {
+        width: 550px;
+    }
+}
+
+@media ( min-width : 1530px) {
+    .dialog-body-preview .container {
+        width: 640px;
+        margin-left: 300px;
+    }
+    .dialog-preview-parent {
+        width: 600px;
+    }
+    .dialog-trailer {
+        height: 300px;
+    }
+}
+
+@media ( min-width : 1700px) {
+    .dialog-preview-parent {
+        width: 750px;
+    }
+}

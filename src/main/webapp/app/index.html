@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!----------------------------------------------------------------------------
+   Copyright IBM Corp. 2015
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+------------------------------------------------------------------------------>
+<html id="ng-app" ng-app="app">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="mobile-web-app-capable" content="yes">
+
+<!-- build:css styles/vendor.min.css -->
+<link rel="stylesheet" href="bower_components/angular/angular-csp.css">
+<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+<!-- endbuild -->
+
+<!-- build:css styles/main.min.css -->
+<link rel="stylesheet" href="styles/main.css">
+<!-- endbuild -->
+
+<title>What's in Theaters</title>
+
+</head>
+<body id="app-body" class="dialog-body">
+    <div style="height:100%; width:100%" ng-view></div>
+
+    <!-- build:js vendor.min.js -->
+    <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-gettext/dist/angular-gettext.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="vendor/lodash/lodash.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js main.min.js -->
+    <script src="app.js"></script>
+    <script src="templates.js"></script>
+    <!-- 'fake' filename.. This will be generated during the build by gulp! -->
+    <script src="modules/dialog.js"></script>
+    <script src="modules/dialog-service.js"></script>
+    <script src="modules/dialog-preview-directive.js"></script>
+    <script src="modules/dialog-resize-directive.js"></script>
+    <script src="modules/dialog-movie-directive.js"></script>
+    <script src="modules/dialog-rating-directive.js"></script>
+    <script src="modules/dialog-favorite-directive.js"></script>
+    <script src="modules/dialog-controller.js"></script>
+    <!-- endbuild -->
+
+</body>
+</html>

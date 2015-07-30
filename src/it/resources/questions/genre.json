@@ -1,0 +1,10 @@
+{
+"questions": [
+	{
+		"question":["What is playing", "What's playing?", "What movies are playing", "What R-rated movies are playing?"],
+		"expected":["Are you in the mood for a specific genre?"]
+	}
+	],
+	
+"bounds": ""
+}

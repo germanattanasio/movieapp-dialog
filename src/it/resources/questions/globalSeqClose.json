@@ -1,0 +1,21 @@
+{
+"questions": [
+	{
+		"sequence": "I should be going",
+		"question": ["should be going", "should go", "need to go", "got to go", "gotta run", "gotta go", "need to run", "need to leave", "have to leave", "have to go", "gtg"],		
+		"expected": ["Okay. Did you find what you were looking for?"]
+	},
+	{
+		"sequence": "Thanks for your help",
+		"question": ["thank you for your help", "thanks for your help"],
+		"expected": ["You are welcome."]
+	},
+	{
+		"sequence": "Goodbye",
+		"question": ["Goodbye", "bye bye", "bye now", "bye", "later", "laters", "see you later", "see you", "see ya later", "see ya", "cya", "au revoir", "good night", "good day"],
+		"expected": ["Okay. Did you find what you were looking for?"]
+	}
+	],
+	
+"bounds": ""	
+}

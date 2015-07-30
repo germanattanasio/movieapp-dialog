@@ -1,0 +1,103 @@
+<!----------------------------------------------------------------------------
+   Copyright IBM Corp. 2015
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+------------------------------------------------------------------------------>
+
+<section class="dialog-body-{{dialogCtrl.state.class}}">
+    <!-- App header, fixed position, fixed size -->
+    <header id="dialog-header" class="dialog-header-{{dialogCtrl.state.class}} navbar navbar-fixed-top">
+        <div class="dialog-header-inner">
+            <favorite-indicator class="{{favoriteIndicatorClass}}">
+                <div class="dialog-toggle-favorites-view" 
+                     ng-click="dialogCtrl.toggleFavoritesPanel()"
+                     style="{{(dialogCtrl.getFavorites() != null && dialogCtrl.getFavorites().length > 0) ? 'cursor: pointer' : ''}}">
+                </div>
+            </favorite-indicator>
+            <div class="dialog-navbar-txt-img" onclick="location.reload();">
+                <div class="dialog-navbar-img"></div>
+            </div>
+        </div>
+    </header>
+    <!-- The area where the conversation is displayed. This is the scrollable div as opposed to the body-->
+    <div class="dialog-scrollable-div" id="scrollable-div" ng-if="dialogCtrl.state.key !== 'intro'" resize>
+        <div class="container dialog-container-{{dialogCtrl.state.class}}">
+            <!--Include the conversation html. Conversation dom will be updated by additions
+                to the 'conversation' array which is stored in the controller-->
+            <div class="dialog-center dialog-center-{{dialogCtrl.state.class}}" ng-include="'modules/dialog-entries.html'"></div>
+        </div>
+    </div>
+    <!--Preview control-->
+    <div id="preview-parent" class="dialog-preview-parent" 
+            ng-if="dialogCtrl.getCurrentMovie() && dialogCtrl.getCurrentMovie().movieName != null">
+        <preview class="dialog-preview" content="dialogCtrl.selectedMovie"></preview>
+    </div>
+    <!--mobile favorites -->
+    <div class="dialog-full-screen-favorites" 
+            ng-if="dialogCtrl.state.key != 'intro' && dialogCtrl.showFavorites && (dialogCtrl.getFavorites() != null && dialogCtrl.getFavorites().length > 0)" 
+            ng-include="'modules/dialog-full-screen-favorites.html'">
+        
+    </div>
+
+    <!--desktop favorites-->
+    <div class="dialog-favorites-sidebar-parent" 
+            ng-if="dialogCtrl.state.key != 'intro'"
+            ng-include="'modules/dialog-sidebar-favorites.html'"></div>
+
+    <!--footer, user entry field -->
+    <footer class="footer-{{dialogCtrl.state.class}}" id="dialog-footer">
+        <div class="container">
+            <form class="form" role="form" ng-submit="dialogCtrl.submit()">
+                <div class="form-group has-controls dialog-form-group-{{dialogCtrl.state.class}}">
+                    <!-- Display images on intro page -->
+                    <div class="dialog-intro-text-{{dialogCtrl.state.class}}">
+                        <img src="images/landing_page_text.png" class="dialog-intro-text-image"></img> 
+                        <img src="images/landing_page_movie_reel.svg" class="dialog-intro-image"></img>
+                    </div>
+                    <!--At low resolutions we want to show the placeholder text in a label field as the input
+                        control is too narrow to display the full message -->
+                    <div class="dialog-happy-text-{{dialogCtrl.state.class}}">
+                    Chat with Watson to discover new and upcoming movies by genre or rating.
+                    <span class="dialog-placeholder-{{dialogCtrl.state.class}}" ng-bind-html="dialogCtrl.initialChat"></span>
+                    </div>
+                    <table class="dialog-input-table">
+                        <tr>
+                            <td class="dialog-input-col">
+                                <input id="question" class="dialog-form-input form-control" 
+                                        type="text" 
+                                        placeholder="{{dialogCtrl.state.placeholder}}" 
+                                        ng-model="dialogCtrl.question" autocorrect="off"
+                                        autocomplete="off" 
+                                        disabled/> 
+                            </td>
+                            <td class="dialog-button-col">
+                                <!--Only shown at low resolutions-->
+                                <button class="dialog-button" type="submit">Chat</button>  
+                            </td>
+                            <td class="dialog-resize-col" id="resize-footer-col">
+                                  <!--test-->
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </form>
+        </div>
+    </footer>
+    <div class="dialog-links-parent dialog-links-parent-{{dialogCtrl.state.class}}">
+    <a class="dialog-link" href="./legal/WhatsInTheaters_TermsOfUse.html">Terms &amp; Conditions</a>
+    |
+    <a class="dialog-link" href="http://www.ibm.com/privacy/us/en/">Privacy</a>
+    |
+    <a class="dialog-link" href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/">Built with IBM Watson</a>
+    </div>
+</section>

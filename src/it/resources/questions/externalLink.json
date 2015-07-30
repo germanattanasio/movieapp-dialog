@@ -1,0 +1,10 @@
+{
+"questions": [
+	{
+		"question": ["What movies are playing in the 95118 area?"],
+		"expected":"Okay. <mct:link><mct:url>http://www.fandango.com/95118_movietimes?q=95118</mct:url><mct:target>BASE</mct:target><mct:label>Click here</mct:label></mct:link> to get show times for movies in the 95118 area."
+	}
+	],
+	
+"bounds": ""
+}

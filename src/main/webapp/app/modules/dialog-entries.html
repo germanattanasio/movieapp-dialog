@@ -1,0 +1,65 @@
+<!----------------------------------------------------------------------------
+   Copyright IBM Corp. 2015
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+------------------------------------------------------------------------------>
+<section class="dialog-response dialog-response-type-{{dialogCtrl.responseType}}">
+    <div id="dialog-cell" class="dialog-conversation-cell">
+        <div id="conversationParent" class="dialog-entries col-xs-12">
+            <!-- Welcome message, received from initChat call -->
+            <!--
+               Updated UI design called for omitting the intro text from the WDS system 
+            <div class="dialog-entry row">
+                <div class="dialog-watson-row">
+                    <div class="dialog-segment-bkg">
+                        <span class="dialog-row-text" ng-bind-html="dialogCtrl.initialChat"></span>
+                    </div>
+                </div>
+            </div> -->
+            <!-- Actual conversation between user and system -->
+            <div ng-animate-children class="dialog-entry row" ng-repeat="entry in dialogCtrl.conversation">
+                <!--Display user entered text -->
+                <div ng-if="entry.message" class="dialog-user-row">
+                    <div class="dialog-segment-bkg">
+                        <span class="dialog-row-text">{{entry.message}}</span>
+                    </div>
+                </div>
+                <!-- 
+                Display watson response using directive. The directive takes care of adding
+                animation while the server is responding, and removing animation once response
+                is received
+                -->
+                <div ng-class="!entry.responses ? 'watson-thinking' : 'no-class'">
+                    <div class="dialog-watson-row" ng-if="entry != null && entry.responses != null">
+                        <div class="dialog-segment-bkg">
+                            <span class="dialog-row-text" ng-bind-html="entry.responses"></span>
+                        </div>
+                    </div>
+                </div>
+                <!-- if movies are returned, display them after the Watson response -->
+                <div ng-if="entry.movies" class="dialog-movie-links-parent">
+                    <a movie class="dialog-movie" content="movie" ng-repeat="movie in entry.movies" tabindex="1" ng-keypress="keypressed($event)"></a>
+                </div>
+            </div>
+            <!-- If Watson makes a comment on the selected movie, show it here -->
+            <!-- This div must be outside the repeat as we only want to add it to the last conversation segment -->
+            <div ng-if="dialogCtrl.selectedMovie && dialogCtrl.selectedMovie.commentary" class="dialog-entry row">
+                <div class="dialog-watson-row">
+                    <div class="dialog-segment-bkg">
+                        <span class="dialog-row-text" ng-bind-html="dialogCtrl.selectedMovie.commentary"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

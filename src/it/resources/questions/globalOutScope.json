@@ -1,0 +1,27 @@
+{
+"questions": [
+	{
+		"sequence": "Out-of-scope topics --> Dining",
+		"question": ["can you tell me about dining", "can you tell me about restaurant", "can you tell me about restaurants", "can you tell me about place to eat", "can you tell me about places to eat", "can you tell me about diner",
+					"can you tell me about diners", "can you tell me about cafe", "can you tell me about cafes", "can you tell me about cafeteria", "can you tell me about cafeterias", "can you tell me about Bar", "can you tell me about Bars",
+					"can you tell me about Pub",  "can you tell me about Pubs",  "can you tell me about Tavern",  "can you tell me about Taverns",  "can you tell me about Brewery",  "can you tell me about Breweries"],
+		"expected": ["No. I'm afraid I don't know much about restaurants. Just movies."]
+	},
+	{
+		"sequence": "Out-of-scope topics --> Weather",
+		"question": ["can you tell me about weather", "can you tell me about Rain", "can you tell me about Raining", "can you tell me about Snow", "can you tell me about Snowing", "can you tell me about Sunny", "can you tell me about Cloudy", 
+					"can you tell me about Sleet", "can you tell me about Freezing Rain", "can you tell me about Windy", "can you tell me about Tornado", "can you tell me about Hurricane"],
+		"expected": ["No. I'm afraid I don't know much about weather. Just movies."]
+	},
+	{
+		"sequence": "Out-of-scope topics --> Trafic",
+		"question": ["can you tell me about traffic", "can you tell me about Traffic conditions", "can you tell me about Driving conditions", "can you tell me about Road conditions", "can you tell me about Streets", "can you tell me about Roads", "can you tell me about Freeways", "can you tell me about Highways", 
+					"can you tell me about Driving", "can you tell me about Rush hour", "can you tell me about Bus", "can you tell me about Buses", "can you tell me about Train", "can you tell me about Trains", "can you tell me about Car", "can you tell me about Cars",  "can you tell me about Automobile", "can you tell me about Automobiles",
+					"can you tell me about Bicycle", "can you tell me about Bicycles", "can you tell me about Bike", "can you tell me about Bikes", "can you tell me about Motorcycle", "can you tell me about Motorcycles", "can you tell me about Walking", "can you tell me about Driving", "can you tell me about Pedestrian"],
+		"expected": ["No. I'm afraid I don't know much about traffic. Just movies."]
+	}
+	],
+	
+"bounds": "I'm sorry I don't know about that. Can I look up some movies for you?"
+
+}

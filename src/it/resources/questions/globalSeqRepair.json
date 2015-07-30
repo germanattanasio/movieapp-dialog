@@ -1,0 +1,48 @@
+{
+"questions": [
+	{
+		"sequence": "Help",
+		"question": ["help", "how does this work", "what do I do"],		
+		"expected": ["Try saying things like..."]
+	},
+	{
+		"sequence": "Tips",
+		"question": ["tips", "do you have any tips"],		
+		"expected": ["Here's a list of tips in case you get stuck:"]
+	},
+	{
+		"sequence": "Say that again",
+		"question": ["Say that again", "say again", "what did you say", "come again", "say what"],		
+		"expected": ["I said..."]
+	},
+	{
+		"sequence": "Never mind",
+		"question": ["Nevermind", "Never mind", "nvm", "start over"],
+		"expected": ["Okay. Whatever you say, boss!"]
+	},
+	{
+		"sequence": "what does * mean --> trailer",
+		"question": ["what does trailers mean", "do you mean by trailers", "what are examples of trailers", "what is an example of trailers"],
+		"expected": ["<i>Trailers</i> are video previews for movies.", "Trailers are video previews for movies."]
+	},
+	{
+		"sequence": "what does * mean --> genre",
+		"question": ["what does genre mean", "do you mean by genre", "what are examples of genre", "what is an example of genre"],
+		"expected": ["The <i>genre</i> is the category of movie, like Drama, Comedy, Action, etc.", "The genre is the category of movie, like Drama, Comedy, Action, etc."]
+	},
+	{
+		"sequence": "what does * mean --> rating",
+		"question": ["what does rating mean", "do you mean by rating", "what are examples of rating", "what is an example of rating"],
+		"expected": ["The <i>rating</i> is a recommendation by the Motion Picture Association of America about the suitability of a movie's content for particular age groups. For example, G is for general audiences, while R is restricted to people 17 and older.",
+					 "The rating is a recommendation by the Motion Picture Association of America about the suitability of a movie's content for particular age groups. For example, G is for general audiences, while R is restricted to people 17 and older."]
+
+	},
+	{
+		"sequence": "I already told you!",
+		"question": ["already told you", "already said it", "I already told you!"],
+		"expected": ["I'm sorry, please repeat it for me."]
+	}
+	],
+	
+"bounds": ""	
+}
