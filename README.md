@@ -126,11 +126,13 @@ You can run the application on a local server or on Bluemix. Choose one of the f
 #### Deploying the app on your local server in Eclipse
 1. Start Eclipse, and click `Window -> Show View -> Servers`.
 2. In the **Servers** view, right-click and select `New -> Server`. The *Define a New Server* window is displayed.
-3. Select a server, and click **Next**. The *Add and Remove* window is displayed.
-4. In the **Available** list, select the project, and click **Add**. The project is added to the runtime configuration for the server in the **Configured** list.
-5. Click **Finish**.
-6. Start the new server, and open [http://localhost:serverPort/yourAppName/dist/index.html#/](http://localhost:serverPort/yourAppName/dist/index.html#/) in your favorite browser, where yourAppName is the specific name of your app.
-7. Chat with What's in Theaters!
+3. Select the **WebSphere Application Server Liberty Profile**, and click **Next**.  
+4. Configure the server with the default settings.  
+5. In the **Available** list in the **Add and Remove** dialog, select the *movieapp-dialog* project, and click **Add >**. The project is added to the runtime configuration for the server in the **Configured** list.
+6. Click **Finish**.
+7. Copy the *server.env* file which was edited previously from movieapp-dialog/src/it/resources/server.env to the root folder of the newly defined server (i.e. *wlp/usr/defaultserver/server.env*).  
+8. Start the new server, and open [http://localhost:serverPort/watson-movieapp-dialog/dist/index.html#/](http://localhost:serverPort/watson-movieapp-dialog/dist/index.html#/) in your favorite browser, where yourAppName is the specific name of your app.
+9. Chat with What's in Theaters!
 
 #### Deploying the app on the Websphere Liberty Profile in Bluemix
 Deploy the WAR file that you built in the previous section by using Cloud Foundry commands.
@@ -152,7 +154,7 @@ Deploy the WAR file that you built in the previous section by using Cloud Foundr
 where *yourUsername* is your Bluemix id, *yourOrg* is your organization name in Bluemix and *yourSpace* is your space name in Bluemix.
 5. Deploy the app to Bluemix by running the following command.
    ```
-   cf push <yourAppName> -p movieapp-dialog.war
+   cf push <yourAppName> -p watson-movieapp-dialog.war
    ```
 where, *yourAppName* is the name of your app.
 6. Navigate to [Bluemix](https://console.ng.bluemix.net/) to make sure the app is started. If not, click START.
