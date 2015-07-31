@@ -130,7 +130,7 @@ You can run the application on a local server or on Bluemix. Choose one of the f
 4. Configure the server with the default settings.  
 5. In the **Available** list in the **Add and Remove** dialog, select the *movieapp-dialog* project, and click **Add >**. The project is added to the runtime configuration for the server in the **Configured** list.
 6. Click **Finish**.
-7. Copy the *server.env* file which was edited previously from movieapp-dialog/src/it/resources/server.env to the root folder of the newly defined server (i.e. *wlp/usr/defaultserver/server.env*).  
+7. Copy the *server.env* file which was edited previously from *movieapp-dialog/src/it/resources/server.env* to the root folder of the newly defined server (i.e. *wlp/usr/defaultserver/server.env*).  
 8. Start the new server, and open [http://localhost:serverPort/watson-movieapp-dialog/dist/index.html#/](http://localhost:serverPort/watson-movieapp-dialog/dist/index.html#/) in your favorite browser, where yourAppName is the specific name of your app.
 9. Chat with What's in Theaters!
 
@@ -162,7 +162,7 @@ where, *yourAppName* is the name of your app.
 8. Chat with What's in Theaters!
 
 ## Automation
-Automation is designed both to run as a full suite of regression tests and to run a subset of regression tests for continuous integration process.  Updates to dialog will need reciprocating changes to the JSON files <see below>.
+Automation is designed both to run as a full suite of regression tests and to run a subset of regression tests for continuous integration process.  Updates to dialog will need reciprocating changes to the JSON files (see below).
 
 ### How to setup for full regression
 Use src/it/resources/testConfig.properties to control the server under test, browser type 
