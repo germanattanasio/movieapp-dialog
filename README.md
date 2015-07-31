@@ -42,14 +42,15 @@ In order to run the What's In Theaters app, you need to have a Dialog service in
 #### Creating an App
 1. [Log in to Bluemix](https://console.ng.bluemix.net/) and navigate to the *Dashboard* on the top panel.
 2. Create your app.
-       1. Click **CREATE AN APP**.
-       2. Select **WEB**.
+      1. Click **CREATE AN APP**.
+      2. Select **WEB**.
       3. Select the starter **Liberty for Java**, and click **CONTINUE**.
       4. Type a unique name for your app, such as `dialog-sample-app`, and click **Finish**.
       5. Select **CF Command Line Interface**. If you do not already have it, click **Download CF Command Line Interface**. This link opens a GitHub repository. Download and install it locally.
 
 #### Adding an instance of the Dialog service
 Complete one of the following sets of steps to add an instance of the Dialog service. Bluemix allows you to create a new service instance to bind to your app or to bind to an existing instance. Choose one of the following ways:  
+
 **Creating a new service instance to bind to your app**
   1. [Log in to Bluemix](https://console.ng.bluemix.net/) and navigate to the *Dashboard* on the top panel. Find the app that you created in the previous section, and click it.
   2. Click **ADD A SERVICE OR API**.
@@ -63,11 +64,18 @@ Complete one of the following sets of steps to add an instance of the Dialog ser
   1. [Log in to Bluemix](https://console.ng.bluemix.net/) and navigate to the *Dashboard* on the top panel. Locate and click on the app you created in the previous section.
   2. Click **BIND A SERVICE OR API**.
   3. Select the existing Dialog service that you want to bind to your app, and click **ADD**. The **Restage Application** window is displayed.
-  4. Click **RESTAGE** to restart your app.
+  4. Click **RESTAGE** to restart your app.  
+   
+#### Setup required environment variables
+  In order to run the What's in Theaters application on Bluemix two further environment variables are required:  
+  1. **DIALOG_ID**: This is the ID of the dialog instance you will create below in the section _**Upload a Dialog File**_. 
+  2. **TMDB_API_KEY**: An API key obtained from themoviedb.org.  
+
+Navigate to the application dashboard in Bluemix. Locate and click on the application you created previously. Navigate to the _**Environment Variables**_ section of the UI. Switch to the _**USER-DEFINED**_ tab within the UI. Add two new environment variables as specified above, **DIALOG_ID** as the key for one, with its value being the dialog ID returned when you upload the Dialog file. The other environment variable's key should be **TMDB_API_KEY** with its value being the API key obtained from themoviedb.org.  
 
 To view the home page of the app, open [https://yourAppName.mybluemix.net](https://yourAppName.mybluemix.net), where yourAppName is the name of your app.
 
-### Upload a Dialog File
+#### Upload a Dialog File
 Now that we have a WDS instance bound to the app, we can use the credentials we received in the previous step to author a dialog file which contains chat flows. The dialog file for this application is packaged with the project at */movieapp-dialog/src/main/resources/dialog_files/movieapp-dialog-file.xml*. Use the following command to upload this file to Bluemix:
 ```
 curl -X POST -F "file=@*dialogFile*" -F "name=*dialogName*" https://gateway.watsonplatform.net/dialog-experimental/api/v1/dialogs -u "*username*:*password*"
