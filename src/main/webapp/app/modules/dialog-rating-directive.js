@@ -25,7 +25,7 @@
      * Provides rating directive relating to the review of movies.
      * The directives are used within the preview panel.
      */
-    .directive('rating', function ($parse) {
+    .directive('rating', function () {
         /*
          * @name favorite
          *
@@ -39,7 +39,7 @@
         return {
             'restrict': 'E',
             'template': '<span></span><span class="movie-review">themoviedb.org</span><p class="star-rating"><span id="rating"></span></p><span class="review-value">{{Math.round((movie.popularity)*10)/10}}/10</span></span>',
-            'link': function (scope, element, attr) {
+            'link': function (scope, element) {
                 scope.$watch(function () {
                     return scope.dialogCtrl.selectedMovie;
                 }, function () {

@@ -34,22 +34,26 @@
             'intro': {
                 'key': 'intro',
                 'class': 'intro',
-                'placeholder': 'Loading. Please wait...'
+                'placeholder': 'Loading. Please wait...',
+                'introText': ''
             },
             'chatting': {
                 'key': 'chatting',
                 'class': 'chatting',
-                'placeholder': 'Start typing...'
+                'placeholder': 'Start typing...',
+                'introText': ''
             },
             'preview': {
                 'key': 'preview',
                 'class': 'preview',
-                'placeholder': 'Start typing...'
+                'placeholder': 'Start typing...',
+                'introText': ''
             },
             'favorites': {
                 'key': 'favorites',
                 'class': 'favorites',
-                'placeholder': 'Start typing...'
+                'placeholder': 'Start typing...',
+                'introText': ''
             }
         };
 
@@ -81,6 +85,7 @@
             var keys = null;
             var objKeys = null;
             var query = null;
+            var scrollable = null;
             if (movie) {
                 movieName = movie.movieName;
                 movieId = movie.movieId;
@@ -101,7 +106,10 @@
                 //We don't need to wait for a response here, we already have cached info.
                 //We are just notifying WDS of the selection.
                 dialogService.getMovieInfo(movieName, movieId, popularity);
-                $('#scrollable-div').animate({ 'scrollTop': $('#scrollable-div')[0].scrollHeight }, 1000);
+                scrollable = $('#scrollable-div');
+                if (scrollable[0]) {
+                    scrollable.animate({ 'scrollTop': scrollable[0].scrollHeight }, 1000);
+                }
                 //Reduce space between chat box and chat messages
                 if ( $('#scrollable-div').height() > $('#conversationParent').height() ) {
                     $('.dialog-center').css({ 'top': $('#scrollable-div').height() - $('#conversationParent').height() - 10 + 'px' });
@@ -116,7 +124,6 @@
                 query = dialogService.getMovieInfo(movieName, movieId, popularity);
                 query.then(function (segment) {
                     if (segment.error === true) {
-                        //todo log error
                         setState(states.chatting);
                     }
                     else {
@@ -148,7 +155,6 @@
          *
          */
         self.clearMovieSelection = function () {
-            //TODO tell dialog no movie selected?
             var objKeys = _.keys(self.selectedMovie);
             if (objKeys) {
                 objKeys.forEach(function (objKey) {
@@ -224,31 +230,11 @@
                 var init = dialogService.initChat();
                 return init.then(function (response) {
                     var placeholderText = response.welcomeMessage;
-                    states.intro.placeholder = placeholderText.replace(/\n\n/g, ' '); //for placeholder attr use spaces
-                    self.initialChat = response.welcomeMessage.replace(/\n\n/g, '<br/>'); //for chat segment use carriage returns
-                    self.initialChat = '<br/>' + self.initialChat;
-                    states.intro.originalPlaceHolder = states.intro.placeholder;
+                    states.intro.introText = placeholderText.replace(/\n\n/g, ' '); //for placeholder attr use spaces
+                    states.intro.placeholder = 'Start typing...';
                     $('#question').removeAttr('disabled');
-                    $('#question').focus();
-                    if ($(window).width() < 768) {
-                        //Smaller placeholder text for mobile view
-                        states.intro.placeholder = 'Start typing...';
-                    }
                     setState(states.intro);
-                    $( window ).resize(function () {
-                        if (self.state.key === 'intro') {
-                            $scope.$apply(function () {
-                                if ($(window).width() < 768) {
-                                    //Smaller placeholder text for mobile view
-                                    states.intro.placeholder = 'Start typing...';
-                                }
-                                else {
-                                    states.intro.placeholder = states.intro.originalPlaceHolder;
-                                }
-                                setState(states.intro);
-                            });
-                        }
-                    });
+                    $('#question').focus();
                 });
             }());
         }
@@ -267,13 +253,20 @@
             if (self.selectedMovie) {
                 self.selectedMovie.commentary = null;
             }
+            if (self.conversation && self.conversation.length > 0){
+                self.conversation[self.conversation.length - 1].options = null;
+            }
             $('#question').attr('disabled', '');
             timeout = $timeout(function () {
-                    $('#scrollable-div')[0].scrollTop = $('#scrollable-div')[0].scrollHeight;
+                    var scrollable = $('#scrollable-div');
+                    if (scrollable[0]) {
+                        scrollable[0].scrollTop = scrollable[0].scrollHeight;
+                    }
                 }, 500);
 
             dialogService.query(self.question, true).then(function (response) {
                 $('#question').removeAttr('disabled');
+                $('#question').val('');
                 if ($.isArray(response)) {
                     response = response[response.length - 1];
                     //If we are displaying movies on a mobile device (less than 750 tall) we do
@@ -293,8 +286,11 @@
                         $timeout.cancel(timeout);
                     }
                     timeout = $timeout(function () {
+                        var scrollableDiv = $('#scrollable-div');
                         child.style.display = 'none';
-                        $('#scrollable-div')[0].scrollTop = $('#scrollable-div')[0].scrollHeight;
+                        if (scrollableDiv[0]) {
+                            scrollableDiv[0].scrollTop = scrollableDiv[0].scrollHeight;
+                        }
                      }, 500);
                 }
                 else {
@@ -306,8 +302,11 @@
                         $timeout.cancel(timeout);
                     }
                     timeout = $timeout(function () {
+                        var scrollableDiv = $('#scrollable-div');
                         child.style.display = 'none';
-                        $('#scrollable-div')[0].scrollTop = $('#scrollable-div')[0].scrollHeight;
+                        if (scrollableDiv[0]) {
+                            scrollableDiv[0].scrollTop = scrollableDiv[0].scrollHeight;
+                        }
                     }, 500);
                 }
             });
@@ -331,17 +330,27 @@
             self.showFavorites = !self.showFavorites;
         };
 
+        self.submitLink = function (textToSubmit) {
+            $('#question').val(textToSubmit);
+            self.question = textToSubmit;
+            self.submit();
+        };
+
         //Watch the conversation array.. If a segment is added then update the state
         $scope.$watch(function () {
             return self.conversation;
         }, function () {
             // We have a new response, switch to 'answered' state
             if (!_.isEmpty(self.conversation)) {
-                if (self.conversation.length === 1) {
+                if (self.conversation.length === 1 && self.conversation[0].responses) {
+                   states.intro.introText = self.conversation[0].responses;
+                   setState(states.intro);
+               }
+                if (self.conversation.length === 2) {
                     $('body').addClass('dialog-body-running');
-                }
-                if (self.state.key !== states.preview.key) {
-                    setState(states.chatting);
+                    if (self.state.key !== states.preview.key) {
+                        setState(states.chatting);
+                    }
                 }
             }
         }, true);

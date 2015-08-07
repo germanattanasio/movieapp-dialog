@@ -1,7 +1,7 @@
 {
-		"genre":["action", "adventure", "animated", "comedy", "crime", "documentary", "drama", "family", "fantasy", "foreign", "historical", "horror", "musical", "mystery", "romance", "science fiction", 
+		"genre":["action", "adventure", "animated", "comedy", "crime", "documentary", "drama", "family", "fantasy", "foreign", "historical", "horror", "music", "mystery", "romance", "science fiction", 
 				 "TV movie", "thriller", "war movies", "western"],	
 		"time":["Current ", "upcoming"],
-		"rating":["G", "PG", "PG-13", "NR", "R", "NC-17"],
-		"expected": ["I'm afraid I found ", "Good choices! I found "]
+		"rating":["G", "PG", "PG-13", "NR", "R"],
+		"expected": ["I'm afraid I found ", "Good choices, ", "Good choice, ", "I found "]
 }

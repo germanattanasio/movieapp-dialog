@@ -9,9 +9,9 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/config"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/scripts"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/.apt_generated"/>
-        <property name="context-root" value="watson-movieapp-dialog"/>
         
         <property name="java-output-path" value="/movieapp-dialog/target/classes"/>
         <property name="component.exclusion.patterns" value="app/"/>
+        <property name="context-root" value="watson-movieapp-dialog"/>
     </wb-module>
 </project-modules>

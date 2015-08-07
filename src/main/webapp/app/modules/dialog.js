@@ -22,9 +22,11 @@
     'dialog.controller',
     'dialog.resize',
     'dialog.movie',
+    'dialog.mct',
     'dialog.favorite',
     'dialog.rating',
     'dialog.preview',
+    'dialog.parser',
     'ngAnimate'
   ]);
 }());

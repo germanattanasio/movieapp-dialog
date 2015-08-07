@@ -25,7 +25,7 @@
      * Implements the dialogService interface using the Watson Theaters App API to interface with the
      * Watson Dialog Service (WDS) and themoviedb.org's movie API.
      */
-    .service('dialogService', function (_, $http, $q) {
+    .service('dialogService', function (_, $http, $q, dialogParser) {
         var clientId;
         var conversationId;
         var welcomeMessage;
@@ -41,7 +41,6 @@
         var getConversation = function () {
             return conversation;
         };
-
         /**
          * A shorthand for retrieving the latest entry in the conversation.
          *
@@ -59,6 +58,7 @@
          * otherwise a new one retrieved from the API.
          */
         var initChat = function () {
+           var firstTimeUser = true;
             if (clientId) {
                 // Reuse existing clientId
                 return $q.when({
@@ -68,24 +68,39 @@
                 });
             }
             else {
-                return $http.get('../api/bluemix/initChat').then(function (response) {
-                    clientId = response.data.clientId;
-                    welcomeMessage = response.data.wdsResponse;
-                    conversationId = response.data.conversationId;
-                    return {
-                        'clientId': clientId,
-                        'welcomeMessage': welcomeMessage,
-                        'conversationId': conversationId
-                    };
-                }, function (errorResponse) {
-                    var data = errorResponse;
-                    if (errorResponse) {
-                        data = data.data;
-                        return {
-                            'clientId': null,
-                            'welcomeMessage': data.userErrorMessage,
-                            'conversationId': null
-                        };
+                 if (typeof (Storage) !== 'undefined') {
+                     // Store session
+                     if (localStorage.getItem('firstTimeUser')) {
+                         firstTimeUser = false;
+                     }
+                 }
+                 return $http.get('../api/bluemix/initChat', {
+                     'params': {
+                         'firstTimeUser': firstTimeUser
+                     }
+                 }).then(function (response) {
+                     if (typeof (Storage) !== 'undefined') {
+                         //User session has been initialized, nest time true we want to
+                         //notify the system that this is not the user's first session.
+                         localStorage.setItem('firstTimeUser', 'false');
+                     }
+                     clientId = response.data.clientId;
+                     welcomeMessage = response.data.wdsResponse;
+                     conversationId = response.data.conversationId;
+                     return {
+                         'clientId': clientId,
+                         'welcomeMessage': welcomeMessage,
+                         'conversationId': conversationId
+                     };
+                 }, function (errorResponse) {
+                     var data = errorResponse;
+                     if (errorResponse) {
+                         data = data.data;
+                         return {
+                             'clientId': null,
+                             'welcomeMessage': data.userErrorMessage,
+                             'conversationId': null
+                         };
                     }
                 });
             }
@@ -107,10 +122,13 @@
                 }
             }).then(function (response) {
                 var watsonResponse = response.data.wdsResponse;
-                var movies = null;
+                var movies = null, htmlLinks = null, transformedPayload = null;
                 var segment = null;
                 if (watsonResponse) {
-                    watsonResponse = watsonResponse.replace(/<br>/g, '');
+                    if (!dialogParser.isMctInPayload(watsonResponse)) {
+                        //For 'mct' tags we have to maintain the formatting.
+                        watsonResponse = watsonResponse.replace(/<br>/g, '');
+                    }
                     //yes, seems odd, but we are compensating for some
                     //inconsistencies in the API and how it handles new lines
                     watsonResponse = watsonResponse.replace(/\n+/g, '<br/>');
@@ -125,14 +143,21 @@
                         watsonResponse = 'Here is what I found';
                     }
                     else {
-                        watsonResponse = 'Sorry, I could not find any movies matching your criteria. Please retry with different parameters.';
+                        watsonResponse = 'Oops, this is embarrassing but my system seems to be having trouble at the moment, please try a bit later.';
                     }
                 }
+                if (dialogParser.isMctInPayload(watsonResponse)) {
+                    transformedPayload = dialogParser.parse(watsonResponse);
+                    htmlLinks = transformedPayload.htmlOptions;
+                    question = transformedPayload.question;
+                    watsonResponse = transformedPayload.watsonResponse;
+                }
                 segment = {
-                    'message': question,
-                    'responses': watsonResponse,
-                    'movies': movies
-                };
+                        'message': question,
+                        'responses': watsonResponse,
+                        'movies': movies,
+                        'options': htmlLinks
+                    };
                 return segment;
             }, function (error) {
                 //Error case!
@@ -178,6 +203,7 @@
                         if (segment.index === index - 1) {
                             segment.responses = lastRes.responses;
                             segment.movies = lastRes.movies;
+                            segment.options = lastRes.options;
                         }
                     });
                 }

@@ -1,0 +1,2104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dialog xsi:noNamespaceSchemaLocation="WatsonDialogDocument_1.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <flow>
+        <folder date="2015-07-30 10:57:25.814" gid="-1" label="Main">
+            <output isInsertDNRStatement="true"
+                comment="Hello, I'm Watson."
+                date="2015-07-10 17:09:15.358" gid="2414737">
+                <prompt selectionType="RANDOM">
+                    <item>GREETING - B1PP - IDENTIFICATION - B1PP</item>
+                </prompt>
+                <output isInsertDNRStatement="true"
+                    comment="How can I help you?&#xa;What can I do for you?"
+                    date="2015-07-10 17:09:15.562" gid="2458201">
+                    <prompt selectionType="RANDOM">
+                        <item>INITIAL OFFER-OF-SERVICE - B1PP</item>
+                    </prompt>
+                    <getUserInput date="2015-07-10 17:09:15.382" gid="2414745">
+                        <search date="2015-07-10 17:09:15.362"
+                            gid="2414738" ref="2414695"/>
+                        <search date="2015-07-10 17:09:15.366"
+                            gid="2414739" ref="2158864"/>
+                        <search date="2015-07-10 17:09:15.037"
+                            gid="2414740" ref="2414701"/>
+                        <default date="2015-07-10 17:09:15.374" gid="2414741">
+                            <output isInsertDNRStatement="true"
+                                comment="What do you mean?"
+                                date="2015-07-10 17:09:15.378" gid="2414742">
+                                <prompt selectionType="RANDOM">
+                                    <item>INITIAL ELABORATION REQUEST - IN1PP</item>
+                                </prompt>
+                                <getUserInput
+                                    date="2015-07-10 17:09:15.903" gid="2456868">
+                                    <action varName="Topic"
+                                    operator="SET_TO_BLANK" gid="217299"/>
+                                    <action varName="Request_Success"
+                                    operator="SET_TO_BLANK" gid="217301"/>
+                                    <action varName="Terminal_Exchange"
+                                    operator="SET_TO_NO" gid="217302"/>
+                                    <search
+                                    date="2015-07-10 17:09:15.907"
+                                    gid="2456869" ref="2414695"/>
+                                    <search
+                                    date="2015-07-10 17:09:15.911"
+                                    gid="2456870" ref="2158864"/>
+                                    <search
+                                    date="2015-07-10 17:09:15.915"
+                                    gid="2456871" ref="2414701"/>
+                                    <default
+                                    date="2015-07-10 17:09:15.919" gid="2456872">
+                                    <output
+                                    isInsertDNRStatement="true"
+                                    comment="I'm sorry, I still don't understand. Please try stating your request a different way."
+                                    date="2015-07-10 17:09:15.923" gid="2456873">
+                                    <prompt selectionType="RANDOM">
+                                    <item>SUBSEQUENT ELABORATION REQUEST - IN1PP
+</item>
+                                    </prompt>
+                                    <goto
+                                    date="2015-07-10 17:09:15.927"
+                                    gid="2456874" ref="2456868"/>
+                                    </output>
+                                    </default>
+                                </getUserInput>
+                            </output>
+                        </default>
+                    </getUserInput>
+                </output>
+            </output>
+            <output isInsertDNRStatement="true"
+                comment="Is there anything else I can do for you?"
+                date="2015-07-10 17:09:15.005" gid="2449884">
+                <prompt selectionType="RANDOM">
+                    <item>SUBSEQUENT OFFER-OF-SERVICE - B1PP</item>
+                </prompt>
+                <action varName="Request_Success"
+                    operator="SET_TO_BLANK" gid="217252"/>
+                <action varName="Terminal_Exchange"
+                    operator="SET_TO_BLANK" gid="217254"/>
+                <action varName="Topic" operator="SET_TO_BLANK" gid="217255"/>
+                <getUserInput date="2015-07-10 17:09:15.054" gid="2449885">
+                    <input isAutoLearnCandidate="true"
+                        isRelatedNodeCandidate="true"
+                        comment="Yes&#xa;$ yes"
+                        date="2015-07-10 17:09:15.058" gid="2449886">
+                        <grammar>
+                            <item>ACCEPTANCE - B2PP</item>
+                        </grammar>
+                        <action varName="Request_Success"
+                            operator="SET_TO_BLANK" gid="217496"/>
+                        <action varName="Terminal_Exchange"
+                            operator="SET_TO_BLANK" gid="217497"/>
+                        <action varName="Topic" operator="SET_TO_BLANK" gid="217498"/>
+                        <goto date="2015-07-10 17:09:15.062"
+                            gid="2449890" ref="2458201"/>
+                    </input>
+                    <input isAutoLearnCandidate="true"
+                        isRelatedNodeCandidate="true"
+                        comment="No&#xa;$ no"
+                        date="2015-07-10 17:09:15.066" gid="2449887">
+                        <grammar>
+                            <item>DECLINATION - B2PP</item>
+                        </grammar>
+                        <output isInsertDNRStatement="true"
+                            comment="Okay."
+                            date="2015-07-10 17:09:15.007" gid="2456472">
+                            <prompt selectionType="RANDOM">
+                                <item>RECEIPT - SC3</item>
+                            </prompt>
+                            <goto date="2015-07-10 17:09:15.074"
+                                gid="2449891" ref="2449658"/>
+                        </output>
+                    </input>
+                    <goto date="2015-07-10 17:09:15.078" gid="2449889" ref="2414738"/>
+                </getUserInput>
+            </output>
+        </folder>
+        <folder date="2015-07-30 10:57:25.814" gid="-2" label="Library">
+            <folder date="2015-07-10 17:09:15.326" gid="2414695" label="PRELIMINARY SEQUENCES">
+                <input isAutoLearnCandidate="true"
+                    isRelatedNodeCandidate="true"
+                    comment="Do you know about Almaden?&#xa;$ do you know * almaden&#xa;$ can you tell * almaden&#xa;$ have information * almaden"
+                    date="2015-07-10 17:09:15.334" gid="2414715">
+                    <grammar>
+                        <item>PRE-INQUIRY/REQUEST A - PR1PP</item>
+                        <item>$ do you know * IN-SCOPE ENTITY</item>
+                        <item>$ can you tell * IN-SCOPE ENTITY</item>
+                        <item>$ have information * IN-SCOPE ENTITY</item>
+                    </grammar>
+                    <output isInsertDNRStatement="true"
+                        comment="Do you mean the IBM Research Lab?"
+                        date="2015-07-10 17:09:15.338" gid="2414716">
+                        <prompt selectionType="RANDOM">
+                            <item>CONFIRMATION REQUEST - IN1PP</item>
+                        </prompt>
+                        <getUserInput date="2015-07-10 17:09:15.346" gid="2414720">
+                            <input isAutoLearnCandidate="true"
+                                isRelatedNodeCandidate="true"
+                                comment="yes&#xa;Topic: Set to: Almaden"
+                                date="2015-07-10 17:09:15.035" gid="2414723">
+                                <grammar>
+                                    <item>CONFIRMATION - IN2PP</item>
+                                    <item>yes</item>
+                                </grammar>
+                                <action varName="Topic"
+                                    operator="SET_TO" gid="234815">ENTITY 3</action>
+                                <output isInsertDNRStatement="true"
+                                    comment="What do you want to know about Almaden?"
+                                    date="2015-07-10 17:09:15.434" gid="2414850">
+                                    <prompt selectionType="RANDOM">
+                                    <item>TAILORED OFFER-OF-SERVICE - B1PP</item>
+                                    </prompt>
+                                    <goto date="2015-07-10 17:09:15.342"
+                                    gid="2414717" ref="2414745"/>
+                                </output>
+                            </input>
+                            <input isAutoLearnCandidate="true"
+                                isRelatedNodeCandidate="true"
+                                comment="no"
+                                date="2015-07-10 17:09:15.354" gid="2414724">
+                                <grammar>
+                                    <item>DISCONFIRMATION - IN2PP</item>
+                                    <item>no</item>
+                                </grammar>
+                                <goto date="2015-07-10 17:09:15.891"
+                                    gid="2458674" ref="2501620"/>
+                            </input>
+                        </getUserInput>
+                    </output>
+                </input>
+                <input isAutoLearnCandidate="true"
+                    isRelatedNodeCandidate="true"
+                    comment="Do you know about other?&#xa;$ do you know&#xa;$ can you tell&#xa;$ have information"
+                    date="2015-07-10 17:09:15.442" gid="2501611">
+                    <grammar>
+                        <item>PRE-INQUIRY/REQUEST B - PR1PP</item>
+                        <item>$ do you know</item>
+                        <item>$ can you tell</item>
+                        <item>$ have information</item>
+                    </grammar>
+                    <output isInsertDNRStatement="true"
+                        comment="No, I'm afraid I don't know about that."
+                        date="2015-07-10 17:09:15.446" gid="2501620">
+                        <prompt>
+                            <item>REJECTION - PR2PP</item>
+                        </prompt>
+                        <getUserInput date="2015-07-10 17:09:15.045" gid="2501621">
+                            <input isAutoLearnCandidate="true"
+                                isRelatedNodeCandidate="true"
+                                comment="Okay"
+                                date="2015-07-10 17:09:15.454" gid="2501622">
+                                <grammar>
+                                    <item>RECEIPT - SC3</item>
+                                </grammar>
+                                <goto date="2015-07-10 17:09:15.458"
+                                    gid="2501623" ref="2414745"/>
+                            </input>
+                            <goto date="2015-07-10 17:09:15.462"
+                                gid="2501624" ref="2414738"/>
+                        </getUserInput>
+                    </output>
+                </input>
+            </folder>
+            <folder date="2015-07-10 17:09:15.322" gid="2158864" label="ROUTING (INSERT) SEQUENCES">
+                <input isAutoLearnCandidate="true"
+                    isRelatedNodeCandidate="true"
+                    comment="What is the address for Almaden?&#xa;$ address * almaden&#xa;$ almaden * address&#xa;Entity_Preference:Set to: {Entity_Preference.value:main}"
+                    date="2015-07-10 17:09:15.514" gid="2458191">
+                    <grammar>
+                        <item>AMBIGUOUS INQUIRY/REQUEST - B1PP</item>
+                    </grammar>
+                    <action varName="Entity_Preference"
+                        operator="SET_TO" gid="223671">{Entity_Preference.value:main}</action>
+                    <if comment="Address_Preference: Equals: Street"
+                        date="2015-07-10 17:09:15.534" gid="2458350">
+                        <cond varName="Entity_Preference"
+                            operator="EQUALS" gid="223659">Entity 1</cond>
+                        <goto date="2015-07-10 17:09:15.047"
+                            gid="2501680" isOffline="true" ref="2414770"/>
+                        <goto date="2015-07-10 17:09:15.538"
+                            gid="2458351" ref="2414782"/>
+                    </if>
+                    <if comment="Address_Preference: Equals: Web"
+                        date="2015-07-10 17:09:15.542" gid="2458352">
+                        <cond varName="Entity_Preference"
+                            operator="EQUALS" gid="223660">Entity 2</cond>
+                        <goto date="2015-07-10 17:09:15.546"
+                            gid="2458353" ref="2459813"/>
+                    </if>
+                    <output isInsertDNRStatement="true"
+                        comment="Do you mean the street or web address?"
+                        date="2015-07-10 17:09:15.518" gid="2458193">
+                        <prompt selectionType="RANDOM">
+                            <item>ROUTING QUESTION - IN1PP</item>
+                        </prompt>
+                        <getUserInput date="2015-07-10 17:09:15.522" gid="2458195">
+                            <input isAutoLearnCandidate="true"
+                                isRelatedNodeCandidate="true"
+                                comment="Street address&#xa;$ street&#xa;$ physical&#xa;Address_Preference: Set to: Street"
+                                date="2015-07-10 17:09:15.526" gid="2458196">
+                                <grammar>
+                                    <item>ANSWER A - IN2PP</item>
+                                </grammar>
+                                <action varName="Entity_Preference"
+                                    operator="SET_TO" gid="223669">Entity 1</action>
+                                <goto date="2015-07-10 17:09:15.474"
+                                    gid="2501681" isOffline="true" ref="2414770"/>
+                                <goto date="2015-07-10 17:09:15.554"
+                                    gid="2458198" ref="2414782"/>
+                            </input>
+                            <input isAutoLearnCandidate="true"
+                                isRelatedNodeCandidate="true"
+                                comment="Web address&#xa;$ URL&#xa;Address_Preference:Set to: Web"
+                                date="2015-07-10 17:09:15.055" gid="2458197">
+                                <grammar>
+                                    <item>ANSWER B - IN2PP</item>
+                                </grammar>
+                                <action varName="Entity_Preference"
+                                    operator="SET_TO" gid="223670">Entity 2</action>
+                                <goto date="2015-07-10 17:09:15.558"
+                                    gid="2458199" ref="2459813"/>
+                            </input>
+                        </getUserInput>
+                    </output>
+                </input>
+                <input isAutoLearnCandidate="true"
+                    isRelatedNodeCandidate="true"
+                    comment="What city is it in?&#xa;$ what city&#xa;$ which city"
+                    date="2015-07-10 17:09:15.022" gid="2501688">
+                    <grammar>
+                        <item>INQUIRY/REQUEST W/ PRONOUN A - B1PP</item>
+                    </grammar>
+                    <if comment="Topic: Equals: Almaden"
+                        date="2015-07-10 17:09:15.026" gid="2501690">
+                        <cond varName="Topic" operator="EQUALS" gid="234759">ENTITY 3</cond>
+                        <goto date="2015-07-10 17:09:15.003"
+                            gid="2501691" ref="2459166"/>
+                    </if>
+                </input>
+                <input isAutoLearnCandidate="true"
+                    isRelatedNodeCandidate="true"
+                    comment="What is the URL for it?&#xa;$ what * URL&#xa;$ what's * URL"
+                    date="2015-07-10 17:09:15.034" gid="2501689">
+                    <grammar>
+                        <item>INQUIRY/REQUEST W/ PRONOUN B - B1PP</item>
+                    </grammar>
+                    <if comment="Topic: Equals: Almaden"
+                        date="2015-07-10 17:09:15.038" gid="2501692">
+                        <cond varName="Topic" operator="EQUALS" gid="234760">ENTITY 3</cond>
+                        <goto date="2015-07-10 17:09:15.042"
+                            gid="2501693" ref="2459804"/>
+                    </if>
+                </input>
+            </folder>
+            <folder date="2015-07-10 17:09:15.033" gid="2414701" label="BASE, INSERT &amp; POST SEQUENCES">
+                <input isAutoLearnCandidate="true"
+                    isRelatedNodeCandidate="true"
+                    comment="What city is Almaden in?&#xa;$ what city * almaden&#xa;$ which city * almaden&#xa;Topic: Set to: Almaden"
+                    date="2015-07-10 17:09:15.386" gid="2414767">
+                    <grammar>
+                        <item>INQUIRY/REQUEST A - B1PP</item>
+                    </grammar>
+                    <action varName="Topic" operator="SET_TO" gid="213314">Almaden</action>
+                    <if comment="Address_Preference: Equals: Street"
+                        date="2015-07-10 17:09:15.578" gid="2459166">
+                        <cond varName="Entity_Preference"
+                            operator="EQUALS" gid="223662">Entity 1</cond>
+                        <goto date="2015-07-10 17:09:15.582"
+                            gid="2459167" ref="2414782"/>
+                    </if>
+                    <output isInsertDNRStatement="true"
+                        comment="Do you want just the city or the full address?"
+                        date="2015-07-10 17:09:15.061" gid="2459769">
+                        <prompt selectionType="RANDOM">
+                            <item>CLARIFICATION/DEPENDENCY REQUEST - IN1PP-2PR</item>
+                        </prompt>
+                        <getUserInput date="2015-07-10 17:09:15.614" gid="2459770">
+                            <input isAutoLearnCandidate="true"
+                                isRelatedNodeCandidate="true"
+                                comment="Just city&#xa;$ city"
+                                date="2015-07-10 17:09:15.618" gid="2459771">
+                                <grammar>
+                                    <item>ANSWER A - IN2PP-2PR</item>
+                                    <item>yes</item>
+                                </grammar>
+                                <goto date="2015-07-10 17:09:15.622"
+                                    gid="2459772" ref="2414770"/>
+                            </input>
+                            <input isAutoLearnCandidate="true"
+                                isRelatedNodeCandidate="true"
+                                comment="full address&#xa;$ full&#xa;$ address"
+                                date="2015-07-10 17:09:15.626" gid="2459774">
+                                <grammar>
+                                    <item>ANSWER B - IN2PP-2PR</item>
+                                    <item>no</item>
+                                </grammar>
+                                <goto date="2015-07-10 17:09:15.063"
+                                    gid="2459775" ref="2414782"/>
+                            </input>
+                        </getUserInput>
+                    </output>
+                    <output isInsertDNRStatement="true"
+                        comment="IBM Almaden is in San Jose, California."
+                        date="2015-07-10 17:09:15.039" gid="2414770">
+                        <prompt selectionType="RANDOM">
+                            <item>ANSWER/GRANTING A - B2PP</item>
+                        </prompt>
+                        <getUserInput date="2015-07-10 17:09:15.394" gid="2414771">
+                            <input isAutoLearnCandidate="true"
+                                isRelatedNodeCandidate="true"
+                                comment="Okay"
+                                date="2015-07-10 17:09:15.398" gid="2414772">
+                                <grammar>
+                                    <item>RECEIPT - SC3</item>
+                                    <item>okay</item>
+                                </grammar>
+                                <output isInsertDNRStatement="true"
+                                    comment="Is there anything else I can help you with?"
+                                    date="2015-07-10 17:09:15.798" gid="2460257">
+                                    <prompt>
+                                    <item>SUBSEQUENT OFFER-OF-SERVICE - B1PP</item>
+                                    </prompt>
+                                    <action varName="Request_Success"
+                                    operator="SET_TO_BLANK" gid="218008"/>
+                                    <action varName="Terminal_Exchange"
+                                    operator="SET_TO_BLANK" gid="218009"/>
+                                    <action varName="Topic"
+                                    operator="SET_TO_BLANK" gid="218010"/>
+                                    <getUserInput
+                                    date="2015-07-10 17:09:15.802" gid="2460258">
+                                    <input
+                                    isAutoLearnCandidate="true"
+                                    isRelatedNodeCandidate="true"
+                                    comment="Go back&#xa;$ go back&#xa;$ wait&#xa;$ not finished&#xa;$ not done"
+                                    date="2015-07-10 17:09:15.083" gid="2460265">
+                                    <grammar>
+                                    <item>RESISTANCE - B1PP</item>
+                                    <item>$ go back</item>
+                                    <item>$ wait</item>
+                                    <item>$ not finished</item>
+                                    <item>$ not done</item>
+                                    </grammar>
+                                    <output
+                                    isInsertDNRStatement="true"
+                                    comment="Okay."
+                                    date="2015-07-10 17:09:15.834" gid="2460266">
+                                    <prompt selectionType="RANDOM">
+                                    <item>RECEIPT - B2PP</item>
+                                    </prompt>
+                                    <goto
+                                    date="2015-07-10 17:09:15.838"
+                                    gid="2460267" ref="2414771"/>
+                                    </output>
+                                    </input>
+                                    <input
+                                    isAutoLearnCandidate="true"
+                                    isRelatedNodeCandidate="true"
+                                    comment="Yes&#xa;$ yes"
+                                    date="2015-07-10 17:09:15.806" gid="2460259">
+                                    <grammar>
+                                    <item>ACCEPTANCE - B2PP</item>
+                                    </grammar>
+                                    <action
+                                    varName="Request_Success"
+                                    operator="SET_TO_BLANK" gid="218023"/>
+                                    <action
+                                    varName="Terminal_Exchange"
+                                    operator="SET_TO_BLANK" gid="218024"/>
+                                    <action varName="Topic"
+                                    operator="SET_TO_BLANK" gid="218025"/>
+                                    <goto
+                                    date="2015-07-10 17:09:15.081"
+                                    gid="2460260" ref="2458201"/>
+                                    </input>
+                                    <input
+                                    isAutoLearnCandidate="true"
+                                    isRelatedNodeCandidate="true"
+                                    comment="No&#xa;$ no"
+                                    date="2015-07-10 17:09:15.814" gid="2460261">
+                                    <grammar>
+                                    <item>DECLINATION - B2PP</item>
+                                    </grammar>
+                                    <output
+                                    isInsertDNRStatement="true"
+                                    comment="Okay."
+                                    date="2015-07-10 17:09:15.818" gid="2460262">
+                                    <prompt selectionType="RANDOM">
+                                    <item>RECEIPT  - SC3</item>
+                                    </prompt>
+                                    <goto
+                                    date="2015-07-10 17:09:15.822"
+                                    gid="2460263" ref="2449658"/>
+                                    </output>
+                                    </input>
+                                    <goto
+                                    date="2015-07-10 17:09:15.826"
+                                    gid="2460264" ref="2414772"/>
+                                    </getUserInput>
+                                </output>
+                            </input>
+                            <input isAutoLearnCandidate="true"
+                                isRelatedNodeCandidate="true"
+                                comment="in San Jose&#xa;$ in san jose&#xa;$ in the bay area"
+                                date="2015-07-10 17:09:15.402" gid="2414773">
+                                <grammar>
+                                    <item>UNDERSTANDING/HEARING CHECK - PO1PP-2PR</item>
+                                </grammar>
+                                <output isInsertDNRStatement="true"
+                                    comment="Yes, it is."
+                                    date="2015-07-10 17:09:15.414" gid="2414778">
+                                    <prompt selectionType="RANDOM">
+                                    <item>CONFIRMATION - PO2PP-2PR</item>
+                                    </prompt>
+                                    <goto date="2015-07-10 17:09:15.418"
+                                    gid="2414779" ref="2414771"/>
+                                </output>
+                            </input>
+                            <input isAutoLearnCandidate="true"
+                                isRelatedNodeCandidate="true"
+                                comment="What do you mean?&#xa;$ what do you mean&#xa;$ what does that mean&#xa;$ what's that mean&#xa;$ where is that"
+                                date="2015-07-10 17:09:15.406" gid="2414774">
+                                <grammar>
+                                    <item>ELABORATION REQUEST - PO1PP-2PR</item>
+                                    <item>$ what do you mean</item>
+                                    <item>$ what does that mean</item>
+                                    <item>$ what&amp;apos;s that mean</item>
+                                    <item>$ where is that</item>
+                                </grammar>
+                                <output isInsertDNRStatement="true"
+                                    comment="The address for IBM Almaden is 650 Harry Road, San Jose, California 95120."
+                                    date="2015-07-10 17:09:15.422" gid="2414782">
+                                    <prompt selectionType="RANDOM">
+                                    <item>ELABORATION - PO2PP-2PR</item>
+                                    </prompt>
+                                    <goto date="2015-07-10 17:09:15.426"
+                                    gid="2414783" ref="2414771"/>
+                                </output>
+                            </input>
+                            <input isAutoLearnCandidate="true"
+                                isRelatedNodeCandidate="true"
+                                comment="What does Almaden mean?&#xa;$ what does * mean&#xa;$ what is a *&#xa;$ what are *&#xa;$ do you mean by &#xa;$ what are examples of&#xa;$ what is an example of"
+                                date="2015-07-10 17:09:15.041" gid="2414775">
+                                <grammar>
+                                    <item>DEFINITION REQUEST - PO1PP-2PR</item>
+                                    <item>$ what does * mean</item>
+                                    <item>$ what is a *</item>
+                                    <item>$ what are *</item>
+                                    <item>$ do you mean by </item>
+                                    <item>$ what are examples of</item>
+                                    <item>$ what is an example of</item>
+                                </grammar>
+                                <input isAutoLearnCandidate="true"
+                                    isRelatedNodeCandidate="true"
+                                    comment="Almaden&#xa;$ Almaden"
+                                    date="2015-07-10 17:09:15.254" gid="2458926">
+                                    <grammar>
+                                    <item>KNOWN ENTITY</item>
+                                    <item>$ Almaden</item>
+                                    </grammar>
+                                    <output isInsertDNRStatement="true"
+                                    comment="Almaden is an area of south San Jose."
+                                    date="2015-07-10 17:09:15.258" gid="2458927">
+                                    <prompt selectionType="RANDOM">
+                                    <item>DEFINITION - PO2PP-2PR</item>
+                                    </prompt>
+                                    <goto
+                                    date="2015-07-10 17:09:15.043"
+                                    gid="2414787" ref="2414771"/>
+                                    </output>
+                                </input>
+                            </input>
+                            <input isAutoLearnCandidate="true"
+                                isRelatedNodeCandidate="true"
+                                comment="No, I mean&#xa;$ no&#xa;$ i mean&#xa;$ i meant&#xa;$ what about&#xa;$ how about"
+                                date="2015-07-10 17:09:15.049" gid="2442854">
+                                <grammar>
+                                    <item>REFORMULATED REQUEST - PO1PP-3PR</item>
+                                    <item>$ no</item>
+                                    <item>$ i mean</item>
+                                    <item>$ i meant</item>
+                                    <item>$ what about</item>
+                                    <item>$ how about</item>
+                                </grammar>
+                                <input isAutoLearnCandidate="true"
+                                    isRelatedNodeCandidate="true"
+                                    comment="Web&#xa;$ web"
+                                    date="2015-07-10 17:09:15.262" gid="2459107">
+                                    <grammar>
+                                    <item>ALTERNATIVE PHRASE</item>
+                                    </grammar>
+                                    <goto date="2015-07-10 17:09:15.266"
+                                    gid="2459108" ref="2459813"/>
+                                </input>
+                                <goto date="2015-07-10 17:09:15.494"
+                                    gid="2442856" ref="2414738"/>
+                            </input>
+                            <input isAutoLearnCandidate="true"
+                                isRelatedNodeCandidate="true"
+                                comment="Isn't that on Bailey Ave.?&#xa;$ bailey"
+                                date="2015-07-10 17:09:15.294" gid="2442965">
+                                <grammar>
+                                    <item>INCONGRUENT TURN - PO1PP</item>
+                                </grammar>
+                                <output isInsertDNRStatement="true"
+                                    comment="Oh, you mean the Silicon Valley Lab, not the Almaden Lab."
+                                    date="2015-07-10 17:09:15.298" gid="2442966">
+                                    <prompt selectionType="RANDOM">
+                                    <item>CORRECTION OF REQUEST - PO1PP-4PR</item>
+                                    </prompt>
+                                    <goto date="2015-07-10 17:09:15.302"
+                                    gid="2442967" ref="2414771"/>
+                                </output>
+                            </input>
+                            <goto date="2015-07-10 17:09:15.027"
+                                gid="2459138" ref="2414738">
+                                <action varName="Request_Success"
+                                    operator="SET_TO_BLANK" gid="217656"/>
+                                <action varName="Terminal_Exchange"
+                                    operator="SET_TO_BLANK" gid="217657"/>
+                                <action varName="Topic"
+                                    operator="SET_TO_BLANK" gid="217658"/>
+                            </goto>
+                        </getUserInput>
+                    </output>
+                </input>
+                <input isAutoLearnCandidate="true"
+                    isRelatedNodeCandidate="true"
+                    comment="What is the URL for Almaden?&#xa;$ url * almaden&#xa;$ almaden * url&#xa;$ web * almaden&#xa;$ almaden * web&#xa;Topic: Set to: Almaden"
+                    date="2015-07-10 17:09:15.634" gid="2459800">
+                    <grammar>
+                        <item>INQUIRY/REQUEST B - B1PP</item>
+                    </grammar>
+                    <action varName="Topic" operator="SET_TO" gid="217799">Almaden</action>
+                    <if comment="Address_Preference: Equals: Web"
+                        date="2015-07-10 17:09:15.642" gid="2459804">
+                        <cond varName="Entity_Preference"
+                            operator="EQUALS" gid="223664">Entity 2</cond>
+                        <goto date="2015-07-10 17:09:15.065"
+                            gid="2459805" ref="2459821"/>
+                    </if>
+                    <output date="2015-07-10 17:09:15.654" gid="2459806" isOffline="true">
+                        <prompt>
+                            <item>CLARIFICATION/DEPENDENCY REQUEST - IN1PP-2PR</item>
+                        </prompt>
+                        <getUserInput date="2015-07-10 17:09:15.658" gid="2459807">
+                            <input date="2015-07-10 17:09:15.662" gid="2459808">
+                                <grammar>
+                                    <item>ANSWER A - IN2PP-2PR</item>
+                                    <item>yes</item>
+                                </grammar>
+                                <goto date="2015-07-10 17:09:15.666"
+                                    gid="2459809" ref="2459813"/>
+                            </input>
+                            <input date="2015-07-10 17:09:15.067" gid="2459810">
+                                <grammar>
+                                    <item>ANSWER B - IN2PP-2PR</item>
+                                    <item>no</item>
+                                </grammar>
+                                <output date="2015-07-10 17:09:15.674" gid="2459811">
+                                    <prompt>
+                                    <item>REJECTION - B2PP</item>
+                                    </prompt>
+                                    <goto date="2015-07-10 17:09:15.678"
+                                    gid="2459812" ref="2449884"/>
+                                </output>
+                            </input>
+                        </getUserInput>
+                    </output>
+                    <output isInsertDNRStatement="true"
+                        comment="The web address for Almaden is www.research.ibm.com/labs/almaden/"
+                        date="2015-07-10 17:09:15.682" gid="2459813">
+                        <prompt selectionType="RANDOM">
+                            <item>ANSWER/GRANTING B - B2PP</item>
+                        </prompt>
+                        <getUserInput date="2015-07-10 17:09:15.686" gid="2459814">
+                            <input isAutoLearnCandidate="true"
+                                isRelatedNodeCandidate="true"
+                                comment="Okay"
+                                date="2015-07-10 17:09:15.069" gid="2459815">
+                                <grammar>
+                                    <item>RECEIPT - SC3</item>
+                                    <item>okay</item>
+                                </grammar>
+                                <output isInsertDNRStatement="true"
+                                    comment="Is there anything else I can help you with?"
+                                    date="2015-07-10 17:09:15.842" gid="2460268">
+                                    <prompt>
+                                    <item>SUBSEQUENT OFFER-OF-SERVICE - B1PP</item>
+                                    </prompt>
+                                    <action varName="Request_Success"
+                                    operator="SET_TO_BLANK" gid="218026"/>
+                                    <action varName="Terminal_Exchange"
+                                    operator="SET_TO_BLANK" gid="218027"/>
+                                    <action varName="Topic"
+                                    operator="SET_TO_BLANK" gid="218028"/>
+                                    <getUserInput
+                                    date="2015-07-10 17:09:15.847" gid="2460269">
+                                    <input
+                                    isAutoLearnCandidate="true"
+                                    isRelatedNodeCandidate="true"
+                                    comment="Go back&#xa;$ go back&#xa;$ wait&#xa;$ not finished&#xa;$ not done"
+                                    date="2015-07-10 17:09:15.851" gid="2460270">
+                                    <grammar>
+                                    <item>RESISTANCE - B1PP</item>
+                                    <item>$ go back</item>
+                                    <item>$ wait</item>
+                                    <item>$ not finished</item>
+                                    <item>$ not done</item>
+                                    </grammar>
+                                    <output
+                                    isInsertDNRStatement="true"
+                                    comment="Okay."
+                                    date="2015-07-10 17:09:15.855" gid="2460271">
+                                    <prompt>
+                                    <item>RECEIPT - B2PP</item>
+                                    </prompt>
+                                    <goto
+                                    date="2015-07-10 17:09:15.859"
+                                    gid="2460272" ref="2459814"/>
+                                    </output>
+                                    </input>
+                                    <input
+                                    isAutoLearnCandidate="true"
+                                    isRelatedNodeCandidate="true"
+                                    comment="Yes&#xa;$ yes"
+                                    date="2015-07-10 17:09:15.863" gid="2460273">
+                                    <grammar>
+                                    <item>ACCEPTANCE - B2PP</item>
+                                    </grammar>
+                                    <action
+                                    varName="Request_Success"
+                                    operator="SET_TO_BLANK" gid="218041"/>
+                                    <action
+                                    varName="Terminal_Exchange"
+                                    operator="SET_TO_BLANK" gid="218042"/>
+                                    <action varName="Topic"
+                                    operator="SET_TO_BLANK" gid="218043"/>
+                                    <goto
+                                    date="2015-07-10 17:09:15.866"
+                                    gid="2460274" ref="2458201"/>
+                                    </input>
+                                    <input
+                                    isAutoLearnCandidate="true"
+                                    isRelatedNodeCandidate="true"
+                                    comment="No&#xa;$ no"
+                                    date="2015-07-10 17:09:15.871" gid="2460275">
+                                    <grammar>
+                                    <item>DECLINATION - B2PP</item>
+                                    </grammar>
+                                    <output
+                                    isInsertDNRStatement="true"
+                                    comment="Okay."
+                                    date="2015-07-10 17:09:15.875" gid="2460276">
+                                    <prompt selectionType="RANDOM">
+                                    <item>RECEIPT - SC3</item>
+                                    </prompt>
+                                    <goto
+                                    date="2015-07-10 17:09:15.879"
+                                    gid="2460277" ref="2449658"/>
+                                    </output>
+                                    </input>
+                                    <goto
+                                    date="2015-07-10 17:09:15.883"
+                                    gid="2460278" ref="2459815"/>
+                                    </getUserInput>
+                                </output>
+                            </input>
+                            <input date="2015-07-10 17:09:15.694" gid="2459817">
+                                <grammar>
+                                    <item>UNDERSTANDING/HEARING CHECK - PO1PP-2PR</item>
+                                    <item>dot com</item>
+                                    <item>com</item>
+                                </grammar>
+                                <output isInsertDNRStatement="true"
+                                    comment="Yes, that's right."
+                                    date="2015-07-10 17:09:15.698" gid="2459818">
+                                    <prompt>
+                                    <item>CONFIRMATION - PO2PP-2PR</item>
+                                    </prompt>
+                                    <goto date="2015-07-10 17:09:15.702"
+                                    gid="2459819" ref="2459814"/>
+                                </output>
+                            </input>
+                            <input isAutoLearnCandidate="true"
+                                isRelatedNodeCandidate="true"
+                                comment="What do you mean?&#xa;$ what do you mean&#xa;$ what does that mean&#xa;$ what's that mean"
+                                date="2015-07-10 17:09:15.706" gid="2459820">
+                                <grammar>
+                                    <item>ELABORATION REQUEST - PO1PP-2PR</item>
+                                    <item>$ what do you mean</item>
+                                    <item>$ what does that mean</item>
+                                    <item>$ what&amp;apos;s that mean</item>
+                                </grammar>
+                                <output isInsertDNRStatement="true"
+                                    comment="That is the URL for IBM Almaden's homepage."
+                                    date="2015-07-10 17:09:15.071" gid="2459821">
+                                    <prompt selectionType="RANDOM">
+                                    <item>ELABORATION - PO2PP-2PR</item>
+                                    </prompt>
+                                    <goto date="2015-07-10 17:09:15.714"
+                                    gid="2459822" ref="2459814"/>
+                                </output>
+                            </input>
+                            <input isAutoLearnCandidate="true"
+                                isRelatedNodeCandidate="true"
+                                comment="What does URL mean?&#xa;$ what does * mean&#xa;$ what is a *&#xa;$ what are *&#xa;$ do you mean by &#xa;$ what are examples of&#xa;$ what is an example of"
+                                date="2015-07-10 17:09:15.718" gid="2459823">
+                                <grammar>
+                                    <item>DEFINITION REQUEST - PO1PP-2PR</item>
+                                    <item>$ what does * mean</item>
+                                    <item>$ what is a *</item>
+                                    <item>$ what are *</item>
+                                    <item>$ do you mean by </item>
+                                    <item>$ what are examples of</item>
+                                    <item>$ what is an example of</item>
+                                </grammar>
+                                <input isAutoLearnCandidate="true"
+                                    isRelatedNodeCandidate="true"
+                                    comment="URL&#xa;$ URL"
+                                    date="2015-07-10 17:09:15.722" gid="2459824">
+                                    <grammar>
+                                    <item>KNOWN ENTITY</item>
+                                    </grammar>
+                                    <output isInsertDNRStatement="true"
+                                    comment="A &quot;web address&quot; or &quot;URL,&quot; which stands for Universal Resource Locator, is the term for all types of names and addresses that refer to objects on the World Wide Web, which uses the HTTP / HTTPS protocol."
+                                    date="2015-07-10 17:09:15.726" gid="2459825">
+                                    <prompt selectionType="RANDOM">
+                                    <item>DEFINITION - PO2PP-2PR</item>
+                                    </prompt>
+                                    <goto
+                                    date="2015-07-10 17:09:15.073"
+                                    gid="2459826" ref="2459814"/>
+                                    </output>
+                                </input>
+                            </input>
+                            <input isAutoLearnCandidate="true"
+                                isRelatedNodeCandidate="true"
+                                comment="No, I mean...&#xa;$ no&#xa;$ i mean&#xa;$ i meant&#xa;$ what about&#xa;$ how about"
+                                date="2015-07-10 17:09:15.734" gid="2459827">
+                                <grammar>
+                                    <item>REFORMULATED REQUEST - PO1PP-3PR</item>
+                                    <item>$ no</item>
+                                    <item>$ i mean</item>
+                                    <item>$ i meant</item>
+                                    <item>$ what about</item>
+                                    <item>$ how about</item>
+                                </grammar>
+                                <input isAutoLearnCandidate="true"
+                                    isRelatedNodeCandidate="true"
+                                    comment="Stree address&#xa;$ street&#xa;$ physical"
+                                    date="2015-07-10 17:09:15.738" gid="2459828">
+                                    <grammar>
+                                    <item>ALTERNATIVE PHRASE</item>
+                                    </grammar>
+                                    <goto date="2015-07-10 17:09:15.742"
+                                    gid="2459829" ref="2414770"/>
+                                </input>
+                                <goto date="2015-07-10 17:09:15.746"
+                                    gid="2459830" ref="2414738"/>
+                            </input>
+                            <input isAutoLearnCandidate="true"
+                                isRelatedNodeCandidate="true"
+                                comment="Isn't that on Harry Road?&#xa;$ harry road&#xa;$ san jose"
+                                date="2015-07-10 17:09:15.751" gid="2459831">
+                                <grammar>
+                                    <item>INCONGRUENT TURN - PO1PP</item>
+                                </grammar>
+                                <output isInsertDNRStatement="true"
+                                    comment="Oh, you mean the STREET address, not the web address."
+                                    date="2015-07-10 17:09:15.767" gid="2459832">
+                                    <prompt>
+                                    <item>CORRECTION OF REQUEST - PO1PP-4PR</item>
+                                    </prompt>
+                                    <goto date="2015-07-10 17:09:15.786"
+                                    gid="2459833" ref="2414782"/>
+                                </output>
+                            </input>
+                            <goto date="2015-07-10 17:09:15.079"
+                                gid="2459834" ref="2414738">
+                                <action varName="Request_Success"
+                                    operator="SET_TO_BLANK" gid="217810"/>
+                                <action varName="Terminal_Exchange"
+                                    operator="SET_TO_BLANK" gid="217811"/>
+                                <action varName="Topic"
+                                    operator="SET_TO_BLANK" gid="217812"/>
+                            </goto>
+                        </getUserInput>
+                    </output>
+                </input>
+            </folder>
+            <folder date="2015-07-10 17:09:15.286" gid="2458328" label="GLOBAL SEQUENCES">
+                <folder date="2015-07-10 17:09:15.498" gid="2442951" label="OPENING SEQUENCES">
+                    <input isAutoLearnCandidate="true"
+                        isRelatedNodeCandidate="true" comment="Hello"
+                        date="2015-07-10 17:09:15.082" gid="2449627">
+                        <grammar>
+                            <item>GREETING - B2PP</item>
+                            <item>hello</item>
+                        </grammar>
+                        <if date="2015-07-10 17:09:15.086" gid="2458049">
+                            <cond varName="Terminal_Exchange"
+                                operator="EQUAL_TO_YES" gid="217364"/>
+                        </if>
+                        <output isInsertDNRStatement="true"
+                            comment="Hi, how are you today?"
+                            date="2015-07-10 17:09:15.009" gid="2449628">
+                            <prompt selectionType="RANDOM">
+                                <item>RETURN GREETING - B1PP - HOW ARE YOU - B1PP</item>
+                            </prompt>
+                            <getUserInput date="2015-07-10 17:09:15.094" gid="2449629">
+                                <input isAutoLearnCandidate="true"
+                                    isRelatedNodeCandidate="true"
+                                    comment="Fine&#xa;good&#xa;$ I'm good&#xa;$ I'm fine&#xa;well&#xa;$ I'm well&#xa;good thanks"
+                                    date="2015-07-10 17:09:15.098" gid="2449630">
+                                    <grammar>
+                                    <item>NEUTRAL REPORT - B2PP</item>
+                                    <item>good</item>
+                                    <item>$ I&amp;apos;m good</item>
+                                    <item>$ I&amp;apos;m fine</item>
+                                    <item>well</item>
+                                    <item>$ I&amp;apos;m well</item>
+                                    <item>good thanks</item>
+                                    </grammar>
+                                    <output isInsertDNRStatement="true"
+                                    comment="That's good."
+                                    date="2015-07-10 17:09:15.102" gid="2449631">
+                                    <prompt selectionType="RANDOM">
+                                    <item>NEUTRAL RECEIPT - SC3</item>
+                                    </prompt>
+                                    </output>
+                                </input>
+                                <input isAutoLearnCandidate="true"
+                                    isRelatedNodeCandidate="true"
+                                    comment="$ I'm great&#xa;excellent&#xa;$ I'm excellent&#xa;outstanding&#xa;$ I'm outstanding&#xa;fabulous&#xa;$ I'm fabulous&#xa;$ awesome&#xa;$ terrific"
+                                    date="2015-07-10 17:09:15.106" gid="2449633">
+                                    <grammar>
+                                    <item>POSITIVE REPORT - B2PP</item>
+                                    <item>$ I&amp;apos;m great</item>
+                                    <item>excellent</item>
+                                    <item>$ I&amp;apos;m excellent</item>
+                                    <item>outstanding</item>
+                                    <item>$ I&amp;apos;m outstanding</item>
+                                    <item>fabulous</item>
+                                    <item>$ I&amp;apos;m fabulous</item>
+                                    </grammar>
+                                    <output isInsertDNRStatement="true"
+                                    comment="Great to hear!"
+                                    date="2015-07-10 17:09:15.011" gid="2449634">
+                                    <prompt selectionType="RANDOM">
+                                    <item>POSITIVE RECEIPT - SC3</item>
+                                    </prompt>
+                                    </output>
+                                </input>
+                                <input isAutoLearnCandidate="true"
+                                    isRelatedNodeCandidate="true"
+                                    comment="$ not good&#xa;$ not so good&#xa;$ not well&#xa;$ not so well&#xa;$ terrible&#xa;$ awful&#xa;$ worst&#xa;$ bored&#xa;$ sad&#xa;$ tired&#xa;$ hungry&#xa;$ bored"
+                                    date="2015-07-10 17:09:15.114" gid="2449636">
+                                    <grammar>
+                                    <item>NEGATIVE REPORT - B2PP</item>
+                                    <item>$ not good</item>
+                                    <item>$ not so good</item>
+                                    <item>$ not well</item>
+                                    <item>$ not so well</item>
+                                    <item>$ terrible</item>
+                                    <item>$ awful</item>
+                                    <item>$ worst</item>
+                                    <item>$ bored</item>
+                                    <item>$ sad</item>
+                                    </grammar>
+                                    <output isInsertDNRStatement="true"
+                                    comment="I'm sorry to hear that."
+                                    date="2015-07-10 17:09:15.118" gid="2449637">
+                                    <prompt selectionType="RANDOM">
+                                    <item>NEGATIVE RECEIPT - SC3</item>
+                                    </prompt>
+                                    </output>
+                                </input>
+                                <goto date="2015-07-10 17:09:15.122"
+                                    gid="2458065" ref="2414738"/>
+                            </getUserInput>
+                        </output>
+                    </input>
+                    <input isAutoLearnCandidate="true"
+                        isRelatedNodeCandidate="true"
+                        comment="How are you?&#xa;$ how have you been doing&#xa;$ how is it going&#xa;$ how's it going&#xa;$ how are you&#xa;$ what's shaking&#xa;$ what's up"
+                        date="2015-07-10 17:09:15.126" gid="2456645">
+                        <grammar>
+                            <item>HOW ARE YOU - B1PP</item>
+                            <item>$ how have you been doing</item>
+                            <item>$ how is it going</item>
+                            <item>$ how are you</item>
+                            <item>$ what&amp;apos;s shaking</item>
+                            <item>$ what&amp;apos;s up</item>
+                        </grammar>
+                        <output isInsertDNRStatement="true"
+                            comment="Can't complain."
+                            date="2015-07-10 17:09:15.013" gid="2456646">
+                            <prompt selectionType="RANDOM">
+                                <item>NEUTRAL ANSWER - B2PP</item>
+                            </prompt>
+                            <goto date="2015-07-10 17:09:15.134"
+                                gid="2457786" ref="2449628"/>
+                        </output>
+                    </input>
+                </folder>
+                <folder date="2015-07-10 17:09:15.502" gid="2442952" label="CLOSING SEQUENCES">
+                    <input isAutoLearnCandidate="true"
+                        isRelatedNodeCandidate="true"
+                        comment="I need to go&#xa;$ should be going&#xa;$ should go&#xa;$ need to go&#xa;$ got to go&#xa;$ gotta run&#xa;$ gotta go&#xa;$ need to run&#xa;$ need to leave&#xa;$ have to leave&#xa;$ have to go&#xa;$ gtg"
+                        date="2015-07-10 17:09:15.138" gid="2449642">
+                        <grammar>
+                            <item>PRE-CLOSING - B1PP</item>
+                            <item>$ should be going</item>
+                            <item>$ should go</item>
+                            <item>$ need to go</item>
+                            <item>$ got to go</item>
+                            <item>$ gotta run</item>
+                            <item>$ gotta go</item>
+                            <item>$ need to run</item>
+                            <item>$ need to leave</item>
+                            <item>$ have to leave</item>
+                            <item>$ have to go</item>
+                            <item>$ gtg</item>
+                        </grammar>
+                        <output isInsertDNRStatement="true"
+                            comment="Okay."
+                            date="2015-07-10 17:09:15.142" gid="2449675">
+                            <prompt selectionType="RANDOM">
+                                <item>ACKNOWLEDGEMENT - B2PP</item>
+                            </prompt>
+                            <output isInsertDNRStatement="true"
+                                comment="Did you find what you were looking for?"
+                                date="2015-07-10 17:09:15.146" gid="2449658">
+                                <prompt selectionType="RANDOM">
+                                    <item>SUCCESS CHECK - B1PP</item>
+                                </prompt>
+                                <getUserInput
+                                    date="2015-07-10 17:09:15.015" gid="2449659">
+                                    <input isAutoLearnCandidate="true"
+                                    isRelatedNodeCandidate="true"
+                                    comment="Yes.&#xa;$ yes"
+                                    date="2015-07-10 17:09:15.154" gid="2449660">
+                                    <grammar>
+                                    <item>CONFIRMATION - B2PP</item>
+                                    <item>yes</item>
+                                    </grammar>
+                                    <action
+                                    varName="Request_Success"
+                                    operator="SET_TO_YES" gid="217207"/>
+                                    <output
+                                    isInsertDNRStatement="true"
+                                    comment="Excellent!"
+                                    date="2015-07-10 17:09:15.158" gid="2449661">
+                                    <prompt selectionType="RANDOM">
+                                    <item>APPRECIATION - SC3</item>
+                                    </prompt>
+                                    <output
+                                    isInsertDNRStatement="true"
+                                    comment="Goodbye."
+                                    date="2015-07-10 17:09:15.162" gid="2456466">
+                                    <prompt selectionType="RANDOM">
+                                    <item>CLOSING - B2PP</item>
+                                    </prompt>
+                                    <action
+                                    varName="Terminal_Exchange"
+                                    operator="SET_TO_YES" gid="217211"/>
+                                    <getUserInput
+                                    date="2015-07-10 17:09:15.166" gid="2456938">
+                                    <input
+                                    isAutoLearnCandidate="true"
+                                    isRelatedNodeCandidate="true"
+                                    comment="Goodbye&#xa;$ goodbye"
+                                    date="2015-07-10 17:09:15.895" gid="2458904">
+                                    <grammar>
+                                    <item>RETURN CLOSING - B2PP</item>
+                                    </grammar>
+                                    <getUserInput
+                                    date="2015-07-10 17:09:15.017" gid="2458046">
+                                    <output
+                                    isInsertDNRStatement="true"
+                                    comment="Welcome back!"
+                                    date="2015-07-10 17:09:15.174" gid="2458048">
+                                    <prompt selectionType="RANDOM">
+                                    <item>SUBSEQUENT GREETING - B1PP</item>
+                                    </prompt>
+                                    <goto
+                                    date="2015-07-10 17:09:15.178"
+                                    gid="2456939" ref="2458201"/>
+                                    </output>
+                                    </getUserInput>
+                                    </input>
+                                    <goto
+                                    date="2015-07-10 17:09:15.899"
+                                    gid="2458905" ref="2458201"/>
+                                    </getUserInput>
+                                    </output>
+                                    </output>
+                                    </input>
+                                    <input isAutoLearnCandidate="true"
+                                    isRelatedNodeCandidate="true"
+                                    comment="No&#xa;$ no"
+                                    date="2015-07-10 17:09:15.182" gid="2449663">
+                                    <grammar>
+                                    <item>DISCONFIRMATION - B2PP</item>
+                                    <item>no</item>
+                                    </grammar>
+                                    <action
+                                    varName="Request_Success"
+                                    operator="SET_TO_NO" gid="217208"/>
+                                    <output
+                                    isInsertDNRStatement="true"
+                                    comment="Would you like to try again?"
+                                    date="2015-07-10 17:09:15.186" gid="2449664">
+                                    <prompt selectionType="RANDOM">
+                                    <item>RETRY CHECK - IN1PP</item>
+                                    </prompt>
+                                    <getUserInput
+                                    date="2015-07-10 17:09:15.019" gid="2449665">
+                                    <input
+                                    isAutoLearnCandidate="true"
+                                    isRelatedNodeCandidate="true"
+                                    comment="No&#xa;$ no"
+                                    date="2015-07-10 17:09:15.194" gid="2449666">
+                                    <grammar>
+                                    <item>DISCONFIRMATION - IN2PP</item>
+                                    <item>no</item>
+                                    </grammar>
+                                    <action
+                                    varName="Terminal_Exchange"
+                                    operator="SET_TO_NO" gid="217256"/>
+                                    <output
+                                    isInsertDNRStatement="true"
+                                    comment="Okay."
+                                    date="2015-07-10 17:09:15.198" gid="2449667">
+                                    <prompt selectionType="RANDOM">
+                                    <item>RECEIPT - SC3</item>
+                                    </prompt>
+                                    <goto
+                                    date="2015-07-10 17:09:15.202"
+                                    gid="2449668" ref="2456466"/>
+                                    </output>
+                                    </input>
+                                    <input
+                                    isAutoLearnCandidate="true"
+                                    isRelatedNodeCandidate="true"
+                                    comment="Yes&#xa;$ yes"
+                                    date="2015-07-10 17:09:15.206" gid="2449669">
+                                    <grammar>
+                                    <item>CONFIRMATION - IN2PP</item>
+                                    <item>yes</item>
+                                    </grammar>
+                                    <output
+                                    isInsertDNRStatement="true"
+                                    comment="Okay. How can I help you?"
+                                    date="2015-07-10 17:09:15.021" gid="2449670">
+                                    <prompt selectionType="RANDOM">
+                                    <item>RECEIPT - SC3 - SUBSEQUENT OFFER-OF-SERVICE - B1PP</item>
+                                    </prompt>
+                                    <goto
+                                    date="2015-07-10 17:09:15.214"
+                                    gid="2456471" ref="2414745"/>
+                                    </output>
+                                    </input>
+                                    </getUserInput>
+                                    </output>
+                                    </input>
+                                </getUserInput>
+                            </output>
+                        </output>
+                    </input>
+                    <input isAutoLearnCandidate="true"
+                        isRelatedNodeCandidate="true"
+                        comment="Goodbye&#xa;$ goodbye"
+                        date="2015-07-10 17:09:15.218" gid="2456473">
+                        <grammar>
+                            <item>PRE-CLOSING/CLOSING - B1PP</item>
+                            <item>$ goodbye</item>
+                        </grammar>
+                        <if date="2015-07-10 17:09:15.222" gid="2456474">
+                            <cond varName="Terminal_Exchange"
+                                operator="EQUAL_TO_YES" gid="217209"/>
+                        </if>
+                        <if date="2015-07-10 17:09:15.226" gid="2456475">
+                            <cond varName="Terminal_Exchange"
+                                operator="EQUAL_TO_NO" gid="217210"/>
+                            <goto date="2015-07-10 17:09:15.023"
+                                gid="2456477" ref="2449675"/>
+                        </if>
+                    </input>
+                </folder>
+                <folder date="2015-07-10 17:09:15.506" gid="2442953" label="GLOBAL REPAIR SEQUENCES">
+                    <input isAutoLearnCandidate="true"
+                        isRelatedNodeCandidate="true"
+                        comment="What did you say?&#xa;$ say that again&#xa;$ say again&#xa;$ what did you say&#xa;$ come again&#xa;$ say what"
+                        date="2015-07-10 17:09:15.306" gid="2443022">
+                        <grammar>
+                            <item>FULL REPEAT REQUEST - IN1PP</item>
+                            <item>$ say that again</item>
+                            <item>$ say again</item>
+                            <item>$ what did you say</item>
+                            <item>$ come again</item>
+                            <item>$ say what</item>
+                        </grammar>
+                        <output isInsertDNRStatement="true"
+                            comment="I said..."
+                            date="2015-07-10 17:09:15.031" gid="2443023">
+                            <prompt selectionType="RANDOM">
+                                <item>REPEAT MARKER</item>
+                            </prompt>
+                        </output>
+                    </input>
+                    <input isAutoLearnCandidate="true"
+                        isRelatedNodeCandidate="true"
+                        comment="Never mind&#xa;$ never mind&#xa;$ nevermind&#xa;$ nvm&#xa;$ forget it"
+                        date="2015-07-10 17:09:15.566" gid="2458202">
+                        <grammar>
+                            <item>CANCELLATION REQUEST - B1PP</item>
+                            <item>$ never mind</item>
+                            <item>$ nevermind</item>
+                            <item>$ nvm</item>
+                            <item>$ forget it</item>
+                        </grammar>
+                        <output isInsertDNRStatement="true"
+                            comment="Okay."
+                            date="2015-07-10 17:09:15.574" gid="2458204">
+                            <prompt selectionType="RANDOM">
+                                <item>ACCEPTANCE - B2PP</item>
+                            </prompt>
+                            <goto date="2015-07-10 17:09:15.057"
+                                gid="2458203" ref="2458201"/>
+                        </output>
+                    </input>
+                    <input isAutoLearnCandidate="true"
+                        isRelatedNodeCandidate="true"
+                        comment="What does X stand for?&#xa;$ what does * mean&#xa;$ do you mean by &#xa;$ what are examples of&#xa;$ what is an example of"
+                        date="2015-07-10 17:09:15.586" gid="2456123">
+                        <grammar>
+                            <item>DEFINITION REQUEST- IN1PP</item>
+                            <item>$ what does * mean</item>
+                            <item>$ what is a *</item>
+                            <item>$ what are *</item>
+                            <item>$ do you mean by </item>
+                            <item>$ what are examples of</item>
+                            <item>$ what is an example of</item>
+                        </grammar>
+                        <input isAutoLearnCandidate="true"
+                            isRelatedNodeCandidate="true"
+                            comment="IBM&#xa;$ IBM"
+                            date="2015-07-10 17:09:15.059" gid="2456124">
+                            <grammar>
+                                <item>KNOWN ENTITY</item>
+                                <item>$ IN-SCOPE-ENTITY</item>
+                            </grammar>
+                            <output isInsertDNRStatement="true"
+                                comment="&lt;i>IBM&lt;/i> stands for International Business Machines."
+                                date="2015-07-10 17:09:15.594" gid="2456125">
+                                <prompt selectionType="RANDOM">
+                                    <item>DEFINITION - IN2PP</item>
+                                </prompt>
+                                <getUserInput
+                                    date="2015-07-10 17:09:15.598" gid="2456127">
+                                    <input isAutoLearnCandidate="true"
+                                    isRelatedNodeCandidate="true"
+                                    comment="Okay"
+                                    date="2015-07-10 17:09:15.602" gid="2456126">
+                                    <grammar>
+                                    <item>RECEIPT - SC3</item>
+                                    <item>okay</item>
+                                    </grammar>
+                                    </input>
+                                </getUserInput>
+                            </output>
+                        </input>
+                    </input>
+                </folder>
+                <folder date="2015-07-10 17:09:15.051" gid="2442954" label="SMALL TALK SEQUENCES">
+                    <input isAutoLearnCandidate="true"
+                        isRelatedNodeCandidate="true"
+                        comment="What is your favorite...&#xa;$ your favorite&#xa;$ you like&#xa;$ you prefer"
+                        date="2015-07-10 17:09:15.234" gid="2456340">
+                        <grammar>
+                            <item>OFF-TASK INQUIRY - B1PP</item>
+                        </grammar>
+                        <input isAutoLearnCandidate="true"
+                            isRelatedNodeCandidate="true"
+                            comment="Movie&#xa;$ movie"
+                            date="2015-07-10 17:09:15.238" gid="2456341">
+                            <grammar>
+                                <item>KNOWN ENTITY</item>
+                            </grammar>
+                            <action varName="Topic" operator="SET_TO" gid="217166">movie</action>
+                            <output isInsertDNRStatement="true"
+                                comment="2001: A Space Odyssey. I like movies with a strong AI lead."
+                                date="2015-07-10 17:09:15.242" gid="2456342">
+                                <prompt selectionType="RANDOM">
+                                    <item>ANSWER - B2PP</item>
+                                </prompt>
+                                <getUserInput
+                                    date="2015-07-10 17:09:15.246" gid="2456344">
+                                    <input isAutoLearnCandidate="true"
+                                    isRelatedNodeCandidate="true"
+                                    comment="okay&#xa;haha"
+                                    date="2015-07-10 17:09:15.025" gid="2456345">
+                                    <grammar>
+                                    <item>RECEIPT - SC3</item>
+                                    <item>$ haha</item>
+                                    <item>$ okay</item>
+                                    </grammar>
+                                    <goto
+                                    date="2015-07-10 17:09:15.274"
+                                    gid="2456632" ref="2414737"/>
+                                    </input>
+                                </getUserInput>
+                            </output>
+                        </input>
+                    </input>
+                </folder>
+            </folder>
+            <folder date="2015-07-10 17:09:15.046" gid="2458324" label="STORAGE"/>
+        </folder>
+        <folder date="2015-07-30 10:57:25.814" gid="-6" label="Global">
+            <search date="2015-07-10 17:09:15.029" gid="2458329" ref="2458328"/>
+        </folder>
+        <folder date="2015-07-30 10:57:25.814" gid="-19" label="Concepts">
+            <concept date="2015-07-10 17:09:15.478" gid="2414870">
+                <grammar>
+                    <item>okay</item>
+                    <item>ok</item>
+                    <item>thanks</item>
+                    <item>thank you</item>
+                    <item>all right</item>
+                    <item>alright</item>
+                    <item>great</item>
+                    <item>cool</item>
+                    <item>great</item>
+                    <item>darn</item>
+                    <item>cool</item>
+                    <item>aww</item>
+                    <item>awww</item>
+                    <item>oh</item>
+                    <item>oh okay</item>
+                    <item>oh ok</item>
+                    <item>ah okay</item>
+                    <item>ah ok</item>
+                </grammar>
+            </concept>
+            <concept date="2015-07-10 17:09:15.482" gid="2414929">
+                <grammar>
+                    <item>yes</item>
+                    <item>yep</item>
+                    <item>yup</item>
+                    <item>yeah</item>
+                    <item>yeh</item>
+                    <item>that&amp;apos;s right</item>
+                    <item>sure</item>
+                </grammar>
+            </concept>
+            <concept date="2015-07-10 17:09:15.486" gid="2414930">
+                <grammar>
+                    <item>no</item>
+                    <item>nope</item>
+                    <item>no way</item>
+                    <item>not really</item>
+                </grammar>
+            </concept>
+            <concept date="2015-07-10 18:43:53.346" gid="2501957">
+                <grammar>
+                    <item>haha</item>
+                    <item>hehe</item>
+                    <item>lol</item>
+                    <item>rofl</item>
+                    <item>lmao</item>
+                </grammar>
+            </concept>
+            <concept date="2015-07-10 17:09:15.887" gid="2468890">
+                <grammar>
+                    <item>what's</item>
+                    <item>what is</item>
+                </grammar>
+            </concept>
+            <concept date="2015-07-10 17:09:15.278" gid="2449625">
+                <grammar>
+                    <item>Hello</item>
+                    <item>Hi</item>
+                    <item>Hola</item>
+                    <item>Howdy</item>
+                    <item>Hiya</item>
+                    <item>Hey</item>
+                    <item>Heya</item>
+                    <item>yello</item>
+                    <item>aloha</item>
+                </grammar>
+            </concept>
+            <concept date="2015-07-10 17:09:15.282" gid="2449626">
+                <grammar>
+                    <item>Goodbye</item>
+                    <item>bye bye</item>
+                    <item>bye</item>
+                    <item>later</item>
+                    <item>laters</item>
+                    <item>see you later</item>
+                    <item>see you</item>
+                    <item>see ya later</item>
+                    <item>see ya</item>
+                    <item>cya</item>
+                    <item>au revoir</item>
+                </grammar>
+            </concept>
+            <concept
+                comment="Almaden&#xa;IBM Almaden&#xa;Almaden Research Center&#xa;ARC"
+                date="2015-07-10 17:09:15.438" gid="2501608">
+                <grammar>
+                    <item>IN-SCOPE ENTITY</item>
+                </grammar>
+            </concept>
+            <concept
+                comment="URL&#xa;link&#xa;web address&#xa;online address&#xa;Internet address"
+                date="2015-07-10 17:09:15.931" gid="2501883">
+                <grammar>
+                    <item>CONCEPT 01</item>
+                </grammar>
+            </concept>
+        </folder>
+    </flow>
+    <entities>
+        <entity gid="2458349" name="ENTITY" date="2015-07-10 17:09:15.053">
+            <value name="Entity 1" value="Entity 1"/>
+            <value name="Entity 2" value="Entity 2"/>
+        </entity>
+    </entities>
+    <constants>
+        <var_folder name="Home" gid="CONST">
+            <var_folder name="General" type="CONST" gid="5336">
+                <var name="UI_DETAILS" type="TAG"
+                    description="UI Details" gid="t13163">&amp;lt;Title&amp;gt;Cognea&amp;lt;/Title&amp;gt; 
+ &amp;lt;Head&amp;gt;&amp;lt;/Head&amp;gt; 
+ &amp;lt;Header&amp;gt;&amp;lt;img id=&amp;quot;headerlogo&amp;quot; src=&amp;quot;http://www-03.ibm.com/ibm/history/ibm100/images/icp/R259780Y30165R43/us__en_us__ibm100__watson__watson_logo__220x125.png&amp;quot; width=&amp;quot;250&amp;quot; /&amp;gt;&amp;lt;/Header&amp;gt; 
+ &amp;lt;Body&amp;gt;&amp;lt;/Body&amp;gt; 
+ &amp;lt;Footer&amp;gt;Powered by Watson&amp;lt;/Footer&amp;gt; 
+ &amp;lt;RelatedItemsLabel&amp;gt;Learn more about...&amp;lt;/RelatedItemsLabel&amp;gt; 
+ &amp;lt;InitInputBoxLabel&amp;gt;Type here...&amp;lt;/InitInputBoxLabel&amp;gt; 
+ &amp;lt;UserSayLabel&amp;gt;You:&amp;lt;/UserSayLabel&amp;gt; 
+ &amp;lt;SayButtonLabel&amp;gt;Say&amp;lt;/SayButtonLabel&amp;gt; 
+ &amp;lt;SayButtonImage&amp;gt;&amp;lt;/SayButtonImage&amp;gt; 
+ &amp;lt;PopupLoadMsg&amp;gt;&amp;lt;/PopupLoadMsg&amp;gt; 
+ &amp;lt;CloseWindowCode&amp;gt;&amp;lt;/CloseWindowCode&amp;gt; 
+ &amp;lt;DynamicMessaging&amp;gt;0&amp;lt;/DynamicMessaging&amp;gt; 
+ &amp;lt;Avatar&amp;gt;0&amp;lt;/Avatar&amp;gt; 
+ &amp;lt;AvatarSpeechEngineId&amp;gt;-1&amp;lt;/AvatarSpeechEngineId&amp;gt; 
+ &amp;lt;AvatarSpeechLanguageId&amp;gt;-1&amp;lt;/AvatarSpeechLanguageId&amp;gt; 
+ &amp;lt;AvatarSpeechVoiceId&amp;gt;-1&amp;lt;/AvatarSpeechVoiceId&amp;gt; 
+ &amp;lt;CSS_Body&amp;gt;background-color:#FFFFFF;
+&amp;lt;/CSS_Body&amp;gt; 
+ &amp;lt;CSS_ChatHistoryBox&amp;gt;background-color:#FFFFFF;
+text-align:left;
+height:5000px;
+width: 250px;
+overflow:auto;
+white-space: pre-wrap;
+white-space: -moz-pre-wrap !important;
+white-space: -pre-wrap;
+white-space: -o-pre-wrap;
+word-wrap: break-word;
+border-style:solid;
+border-width:1px;
+border-color:#000000;
+&amp;lt;/CSS_ChatHistoryBox&amp;gt; 
+ &amp;lt;CSS_CyberTwinText&amp;gt;font-family: verdana, arial, sans-serif;
+font-size: 11px;
+&amp;lt;/CSS_CyberTwinText&amp;gt; 
+ &amp;lt;CSS_CyberTwinTextLink&amp;gt;font-family: verdana, arial, sans-serif;
+font-size: 11px;
+&amp;lt;/CSS_CyberTwinTextLink&amp;gt; 
+ &amp;lt;CSS_UserText&amp;gt;font-family: verdana, arial, sans-serif;
+font-size: 11px;
+font-weight: normal;
+&amp;lt;/CSS_UserText&amp;gt; 
+ &amp;lt;CSS_InputBox&amp;gt;font-family: verdana, arial, sans-serif;
+font-size: 11px;
+background-color:#FFFFFF;
+width: 250px;
+height: 40px;
+border-width: 1px;
+border-style: solid;
+border-color: #000000;
+&amp;lt;/CSS_InputBox&amp;gt; 
+ &amp;lt;CSS_RelatedItemsBox&amp;gt;background-color:#D5D5D5;
+text-align:left;
+height:110px;
+width:250px;
+overflow:auto;
+white-space: pre-wrap;
+white-space: -moz-pre-wrap !important;
+white-space: -pre-wrap;
+white-space: -o-pre-wrap;
+word-wrap: break-word;
+border-style:solid;
+border-width:1px;
+border-color:#000000;
+&amp;lt;/CSS_RelatedItemsBox&amp;gt;</var>
+            </var_folder>
+        </var_folder>
+    </constants>
+    <variables>
+        <var_folder name="Home" gid="VAR">
+            <var name="Topic" type="TEXT" gid="17139"/>
+            <var name="Request_Success" type="YESNO"
+                description="Did the user find what s/he was looking for?" gid="17621"/>
+            <var name="Terminal_Exchange" type="YESNO" initValue="No"
+                description="Has the system already said goodbye?" gid="17622"/>
+            <var name="Entity_Preference" type="TEXT"
+                description="Entity indicated by user." gid="19552"/>
+        </var_folder>
+    </variables>
+    <settings>
+        <setting name="USERIDNUM" type="USER">375</setting>
+        <setting name="EMAIL" type="USER">rjmoore@us.ibm.com</setting>
+        <setting name="PASSWORD" type="USER">mct:32cb859c73e42c4a4cf65c707cce2f5e</setting>
+        <setting name="FIRSTNAME" type="USER">Robert</setting>
+        <setting name="LASTNAME" type="USER">Moore</setting>
+        <setting name="COUNTRY" type="USER">US</setting>
+        <setting name="STATE" type="USER"></setting>
+        <setting name="CITY" type="USER">New York</setting>
+        <setting name="BDAY" type="USER">1</setting>
+        <setting name="BMONTH" type="USER">1</setting>
+        <setting name="BYEAR" type="USER">2001</setting>
+        <setting name="SEX" type="USER">Male</setting>
+        <setting name="DISPLAYNAME" type="USER">Alma</setting>
+        <setting name="PROVIDESECURITYPASSWORD" type="USER">false</setting>
+        <setting name="SECURITYPASSWORD" type="USER"></setting>
+        <setting name="SHOWPERSPROFILE" type="USER">false</setting>
+        <setting name="USETYPE" type="USER">0</setting>
+        <setting name="DATEJOINED" type="USER">2015-06-03 10:57:42.663</setting>
+        <setting name="LASTLOGIN" type="USER">2015-07-10 17:24:50.869</setting>
+        <setting name="LOGINCOUNT" type="USER">22</setting>
+        <setting name="CREDIT" type="USER">-100</setting>
+        <setting name="CONVCOUNT" type="USER">0</setting>
+        <setting name="PERSONALITYTYPEID" type="USER">5</setting>
+        <setting name="SHOWSENDMESSAGE" type="USER">true</setting>
+        <setting name="ACTIVATED" type="USER">true</setting>
+        <setting name="MESSENGEREMAIL" type="USER"></setting>
+        <setting name="MESSENGERPASSWORD" type="USER"></setting>
+        <setting name="SENDCHATEMAIL" type="USER">false</setting>
+        <setting name="SENDFAVEMAIL" type="USER">true</setting>
+        <setting name="CACHE" type="USER">true</setting>
+        <setting name="CLASSTYPE" type="USER">3</setting>
+        <setting name="AUTOLEARN" type="USER">false</setting>
+        <setting name="LANGUAGE" type="USER">EN</setting>
+        <setting name="RESPONSETIME" type="USER">-2</setting>
+        <setting name="MAXAUTOLEARNITEMS" type="USER">2</setting>
+        <setting name="NUMAUTOSETRELATED" type="USER">0</setting>
+        <setting name="TIMEZONEID" type="USER">Australia/Sydney</setting>
+        <setting name="AUTOSETRELATEDNODEID" type="USER">2158864</setting>
+        <setting name="RETURNTOCHATNODEID" type="USER">-5</setting>
+        <setting name="INPUTMASKTYPE" type="USER">0</setting>
+        <setting name="NUMLOGINATTEMPTS" type="USER">0</setting>
+        <setting name="CONCEPTMATCHING" type="USER">1</setting>
+        <setting name="UI_COLOUR"></setting>
+        <setting name="DNR_NODE_ID">-15</setting>
+        <setting name="USE_CONCEPTS">1</setting>
+        <setting name="PARENT_ACCOUNT">parentconcepts</setting>
+        <setting name="AL_NONE_LABEL">No...</setting>
+        <setting name="ASR_RANDOM">true</setting>
+        <setting name="DYNAMIC_MESSAGING">false</setting>
+        <setting name="DOCBASE_NUM_RESULTS">0</setting>
+        <setting name="DOCBASE_DESC_LEN">250</setting>
+        <setting name="STATUS">0</setting>
+        <setting name="DEFAULT_DNR_RETURN_POINT_CANDIDATE">-1</setting>
+        <setting name="ENTITIES_SCOPE">2</setting>
+        <setting name="POSTNODEID"></setting>
+        <setting name="MULTISENT">0</setting>
+        <setting name="CLEARCACHE"></setting>
+    </settings>
+    <specialSettings>
+        <specialSetting date="2015-07-10 17:09:15.314" gid="1812889"
+            label="AutoLearn Statement" selectionType="SEQUENTIAL">
+            <variations/>
+        </specialSetting>
+        <specialSetting date="2015-07-10 17:09:15.318" gid="1805738"
+            label="DNR Join Statement" selectionType="RANDOM">
+            <variations/>
+        </specialSetting>
+    </specialSettings>
+    <reports>
+        <report date="2014-08-28 18:13:27.0" gid="883" name="Business - Main">
+            <script>&amp;lt;%
+var dateFrom = USERDEF:2010-07-01;
+var dateTo = USERDEF:2010-08-01;
+var totalWebsiteVisitors = USERDEF:32000;
+var numTopHits = USERDEF:10;
+var topHitsNodeIdScope = &amp;quot;1819033&amp;quot;;
+var costPerContactCentreContact = USERDEF:10;
+var globalFilterRules = &amp;quot;&amp;quot;;
+%&amp;gt;
+&amp;lt;html&amp;gt;
+&amp;lt;head&amp;gt;
+&amp;lt;title&amp;gt;MyCyberTwin Report&amp;lt;/title&amp;gt;
+
+&amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;
+body
+{
+	margin-left: 75px;
+}
+
+.title
+{
+	font-family: verdana, arial, sans-serif; 
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.subtitle
+{
+	font-family: verdana, arial, sans-serif; 
+	font-size: 13px;
+	font-weight: none;
+}
+
+.section
+{
+	margin-top: 60px;
+	width: 800px;
+}
+
+
+.sectionHeading
+{
+	font-family: verdana, arial, sans-serif; 
+	font-size: 12px;
+	font-weight: bold;
+	background-color: #eeeeee;
+	width: 100%;
+	padding: 10px 10px 10px 10px;
+}
+
+.subsection
+{
+	margin-top: 20px;
+}
+
+.subsectionHeading
+{
+	font-family: verdana, arial, sans-serif; 
+	font-size: 12px;
+	font-weight: bold;
+	background-color: #eeeeee;
+	padding: 3px 3px 3px 3px;
+}
+
+.label
+{
+	font-family: verdana, arial, sans-serif; 
+	font-size: 10px;
+	font-weight: none;
+	width: 300px;
+	background-color: #eeeeff;
+	padding: 3px 3px 3px 3px;
+	
+}
+
+.value
+{
+	font-family: verdana, arial, sans-serif; 
+	font-size: 10px;
+	font-weight: none;
+	width: 50px;
+	background-color: #eeeeff;
+	padding: 3px 3px 3px 3px;
+}
+
+.xaxislabel
+{
+	font-family: verdana, arial, sans-serif; 
+	font-size: 10px;
+	font-weight: bold;
+	background-color: #eeeeff;
+	padding: 3px 3px 3px 3px;
+}
+
+.yaxislabel
+{
+	font-family: verdana, arial, sans-serif; 
+	font-size: 10px;
+	font-weight: bold;
+	background-color: #eeeeff;
+	padding: 3px 3px 3px 3px;
+}
+
+&amp;lt;/style&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;%
+
+SET_REPORT_DETAILS(dateFrom, dateTo, globalFilterRules);
+
+var numChats = CHATSTATS_NUM_CHATS_TOTAL();
+var numEngagingChats = CHATSTATS_NUM_CHATS_ENGAGING();
+var numNonEngagingChats = CHATSTATS_NUM_CHATS_NONENGAGING();
+
+var tableSetTemplate1 = &amp;quot;&amp;lt;table class=subsection&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td colspan=2 class=subsectionHeading&amp;gt;[TITLE]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td class=xaxislabel&amp;gt;[XAXISLABEL]&amp;lt;/td&amp;gt;&amp;lt;td class=yaxislabel&amp;gt;[YAXISLABEL]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;ROWS{&amp;lt;tr&amp;gt;&amp;lt;td class=label&amp;gt;[LABEL]&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;[VALUE]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;}&amp;lt;/table&amp;gt;&amp;quot;;
+var tableSetGraphTemplate1 = &amp;quot;&amp;lt;table class=subsection&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td valign=top&amp;gt;&amp;lt;table&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td colspan=2 class=subsectionHeading&amp;gt;[TITLE]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td class=xaxislabel&amp;gt;[XAXISLABEL]&amp;lt;/td&amp;gt;&amp;lt;td class=yaxislabel&amp;gt;[YAXISLABEL]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;ROWS{&amp;lt;tr&amp;gt;&amp;lt;td class=label&amp;gt;[LABEL]&amp;lt;/td&amp;gt;&amp;lt;td class=value width=100&amp;gt;[VALUE]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;}&amp;lt;/table&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;td width=30&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;td valign=top&amp;gt;&amp;lt;img src=[GRAPH] &amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;/table&amp;gt;&amp;quot;;
+
+var tableSetTemplate2 = &amp;quot;&amp;lt;table class=subsection&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td colspan=2 class=subsectionHeading&amp;gt;[TITLE]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td class=yaxislabel&amp;gt;[YAXISLABEL]&amp;lt;/td&amp;gt;&amp;lt;td class=xaxislabel&amp;gt;[XAXISLABEL]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;ROWS{&amp;lt;tr&amp;gt;&amp;lt;td class=value&amp;gt;[VALUE]&amp;lt;/td&amp;gt;&amp;lt;td class=label&amp;gt;[LABEL]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;}&amp;lt;/table&amp;gt;&amp;quot;;
+var tableSetGraphTemplate2 = &amp;quot;&amp;lt;table class=subsection&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td valign=top&amp;gt;&amp;lt;table&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td colspan=2 class=subsectionHeading&amp;gt;[TITLE]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td class=yaxislabel&amp;gt;[YAXISLABEL]&amp;lt;/td&amp;gt;&amp;lt;td class=xaxislabel&amp;gt;[XAXISLABEL]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;ROWS{&amp;lt;tr&amp;gt;&amp;lt;td class=value&amp;gt;[VALUE]&amp;lt;/td&amp;gt;&amp;lt;td class=label&amp;gt;[LABEL]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;}&amp;lt;/table&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;td width=30&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;td valign=top&amp;gt;&amp;lt;img src=[GRAPH] &amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;/table&amp;gt;&amp;quot;;
+
+var tableSetTemplate3 = &amp;quot;&amp;lt;table class=subsection&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td colspan=2 class=subsectionHeading&amp;gt;[TITLE]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td class=xaxislabel&amp;gt;[XAXISLABEL]&amp;lt;/td&amp;gt;&amp;lt;td class=yaxislabel&amp;gt;[YAXISLABEL]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;ROWS{&amp;lt;tr&amp;gt;&amp;lt;td class=label&amp;gt;[LABEL]&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;[VALUE_PERC]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;}&amp;lt;/table&amp;gt;&amp;quot;;
+var tableSetGraphTemplate3 = &amp;quot;&amp;lt;table class=subsection&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td valign=top&amp;gt;&amp;lt;table&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td colspan=2 class=subsectionHeading&amp;gt;[TITLE]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td class=xaxislabel&amp;gt;[XAXISLABEL]&amp;lt;/td&amp;gt;&amp;lt;td class=yaxislabel&amp;gt;[YAXISLABEL]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;ROWS{&amp;lt;tr&amp;gt;&amp;lt;td class=label&amp;gt;[LABEL]&amp;lt;/td&amp;gt;&amp;lt;td class=value width=100&amp;gt;[VALUE_PERC]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;}&amp;lt;/table&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;td width=30&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;td valign=top&amp;gt;&amp;lt;img src=[GRAPH] &amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;/table&amp;gt;&amp;quot;;
+
+var tableSetTemplate4 = &amp;quot;&amp;lt;table class=subsection&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td colspan=2 class=subsectionHeading&amp;gt;[TITLE]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td class=yaxislabel&amp;gt;[YAXISLABEL]&amp;lt;/td&amp;gt;&amp;lt;td class=xaxislabel&amp;gt;[XAXISLABEL]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;ROWS{&amp;lt;tr&amp;gt;&amp;lt;td class=value&amp;gt;[VALUE_PERC]&amp;lt;/td&amp;gt;&amp;lt;td class=label&amp;gt;[LABEL]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;}&amp;lt;/table&amp;gt;&amp;quot;;
+var tableSetGraphTemplate4 = &amp;quot;&amp;lt;table class=subsection&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td valign=top&amp;gt;&amp;lt;table&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td colspan=2 class=subsectionHeading&amp;gt;[TITLE]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td class=yaxislabel&amp;gt;[YAXISLABEL]&amp;lt;/td&amp;gt;&amp;lt;td class=xaxislabel&amp;gt;[XAXISLABEL]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;ROWS{&amp;lt;tr&amp;gt;&amp;lt;td class=value&amp;gt;[VALUE_PERC]&amp;lt;/td&amp;gt;&amp;lt;td class=label&amp;gt;[LABEL]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;}&amp;lt;/table&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;td width=30&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;td valign=top&amp;gt;&amp;lt;img src=[GRAPH] &amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;/table&amp;gt;&amp;quot;;
+
+var tableSetTemplateOI= &amp;quot;&amp;lt;table class=subsection&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td colspan=2 class=subsectionHeading&amp;gt;[TITLE]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td class=yaxislabel&amp;gt;[YAXISLABEL]&amp;lt;/td&amp;gt;&amp;lt;td &amp;lt;table class=subsection&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td colspan=2&amp;lt;td class=yaxislabel&amp;gt;[YAXISLABEL2]&amp;lt;/td&amp;gt;&amp;lt;td class=xaxislabel&amp;gt;[XAXISLABEL2]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;ROWS{&amp;lt;tr&amp;gt;&amp;lt;td class=value&amp;gt;[VALUE]&amp;lt;/td&amp;gt;&amp;lt;td class=label&amp;gt;[LABEL]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;}&amp;lt;/table&amp;gt; class=xaxislabel&amp;gt;[XAXISLABEL]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;ROWS{&amp;lt;tr&amp;gt;&amp;lt;td class=value&amp;gt;[VALUE]&amp;lt;/td&amp;gt;&amp;lt;td class=label&amp;gt;[LABEL]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;}&amp;lt;/table&amp;gt;&amp;quot;;
+
+%&amp;gt;
+
+&amp;lt;body&amp;gt;
+&amp;lt;table width=500&amp;gt;
+&amp;lt;tr&amp;gt;&amp;lt;td&amp;gt;&amp;lt;img src=&amp;quot;https://mycybertwin.com/images/web-logo.png&amp;quot; width=204 &amp;gt;&amp;lt;/td&amp;gt;&amp;lt;td&amp;gt;&amp;lt;img src=&amp;quot;[ORG_LOGO]&amp;quot; &amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+&amp;lt;/table&amp;gt;
+&amp;lt;br&amp;gt;
+&amp;lt;div class=title&amp;gt;MyCyberTwin Report for [ORG_NAME]&amp;apos;s [CYBERTWIN_NAME]&amp;lt;/div&amp;gt;
+&amp;lt;div class=subtitle&amp;gt;&amp;lt;b&amp;gt;Period - From:&amp;lt;/b&amp;gt; &amp;lt;% PRINT(dateFrom); %&amp;gt; &amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp; &amp;lt;b&amp;gt;To:&amp;lt;/b&amp;gt; &amp;lt;% PRINT(dateTo); %&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;br&amp;gt;
+
+&amp;lt;table class=section&amp;gt;
+&amp;lt;tr&amp;gt;
+	&amp;lt;td class=sectionHeading&amp;gt;Chat Uptake&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;tr&amp;gt;
+	&amp;lt;td&amp;gt;
+&amp;lt;%
+	var conversionSet = VALUE_SET(	&amp;quot;Visitors and chats&amp;quot;, &amp;quot;#&amp;quot;, &amp;quot;Measurement&amp;quot;, 
+				totalWebsiteVisitors, &amp;quot;1&amp;quot;, &amp;quot;Website visitors&amp;quot;, 
+				numChats, &amp;quot;1&amp;quot;, &amp;quot;Website visitors who chatted to the CyberTwin&amp;quot;, 
+				FORMAT_NUMBER(MULTIPLY(DIVIDE(numChats, totalWebsiteVisitors), &amp;quot;100&amp;quot;), &amp;quot;##.##&amp;quot;), &amp;quot;0&amp;quot;, &amp;quot;Chat Uptake&amp;quot;);
+
+	PRINT_TEMPLATE(conversionSet, tableSetTemplate1);
+%&amp;gt;
+		
+	&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;/table&amp;gt;
+
+
+&amp;lt;table class=section&amp;gt;
+&amp;lt;tr&amp;gt;
+
+	&amp;lt;td class=sectionHeading&amp;gt;Engagement&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;tr&amp;gt;
+	&amp;lt;td&amp;gt;
+&amp;lt;%
+	var chatVolumeSet = VALUE_SET(&amp;quot;Chat Volume&amp;quot;, &amp;quot;#&amp;quot;, &amp;quot;Measurement&amp;quot;, 
+		numChats, &amp;quot;1&amp;quot;, &amp;quot;Total Chats&amp;quot;, 
+		numEngagingChats, &amp;quot;1&amp;quot;, &amp;quot;Engaging Chats&amp;quot;, 
+		numNonEngagingChats, &amp;quot;1&amp;quot;, &amp;quot;NonEngaging Chats&amp;quot;);
+
+	PRINT_TEMPLATE(chatVolumeSet, tableSetTemplate1);
+	
+
+
+	var timeChatsSet = VALUE_SET(	&amp;quot;Chat Time&amp;quot;, &amp;quot;#&amp;quot;, &amp;quot;Measurement&amp;quot;, 
+				CHATSTATS_TIME_AVG(), &amp;quot;1&amp;quot;, &amp;quot;Avg minutes&amp;quot;, 
+				CHATSTATS_TIME_MIN(), &amp;quot;1&amp;quot;, &amp;quot;Min minutes&amp;quot;, 
+				CHATSTATS_TIME_MAX(), &amp;quot;1&amp;quot;, &amp;quot;Max minutes&amp;quot;, 
+				CHATSTATS_TIME_TOTAL(), &amp;quot;1&amp;quot;, &amp;quot;Total minutes&amp;quot;);
+
+	PRINT_TEMPLATE(timeChatsSet, tableSetTemplate1);
+
+	PRINT_GRAPH_TEMPLATE(CHATSTATS_TIME_SPREAD(&amp;quot;&amp;quot;,&amp;quot;%&amp;quot;,&amp;quot;Measurement&amp;quot;), &amp;quot;BAR&amp;quot;, &amp;quot;300&amp;quot;, &amp;quot;300&amp;quot;, tableSetGraphTemplate3);	
+
+
+
+
+	var msgChatsSet = VALUE_SET(	&amp;quot;Chat Messages&amp;quot;, &amp;quot;#&amp;quot;, &amp;quot;Measurement&amp;quot;, 
+				CHATSTATS_MSG_AVG(), &amp;quot;1&amp;quot;, &amp;quot;Avg messages&amp;quot;, 
+				CHATSTATS_MSG_MIN(), &amp;quot;1&amp;quot;, &amp;quot;Min messages&amp;quot;, 
+				CHATSTATS_MSG_MAX(), &amp;quot;1&amp;quot;, &amp;quot;Max messages&amp;quot;, 
+				CHATSTATS_MSG_TOTAL(), &amp;quot;1&amp;quot;, &amp;quot;Total messages&amp;quot;);
+
+	PRINT_TEMPLATE(msgChatsSet, tableSetTemplate1);
+
+	PRINT_GRAPH_TEMPLATE(CHATSTATS_MSG_SPREAD(&amp;quot;&amp;quot;,&amp;quot;%&amp;quot;,&amp;quot;Measurement&amp;quot;), &amp;quot;BAR&amp;quot;, &amp;quot;300&amp;quot;, &amp;quot;300&amp;quot;, tableSetGraphTemplate3);	
+	%&amp;gt;
+
+
+	&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;/table&amp;gt;
+
+
+
+&amp;lt;table class=section&amp;gt;
+&amp;lt;tr&amp;gt;
+	&amp;lt;td class=sectionHeading&amp;gt;Feedback&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;tr&amp;gt;
+	&amp;lt;td&amp;gt;
+&amp;lt;%
+	var feedbackInfoSet = VALUE_SET(&amp;quot;Feedback Info&amp;quot;,&amp;quot;&amp;quot;,&amp;quot;&amp;quot;, FEEDBACK_NUM(),&amp;quot;1&amp;quot;,&amp;quot;Number of users who gave feedback&amp;quot;);
+	PRINT_TEMPLATE(feedbackInfoSet, tableSetTemplate1);
+
+	PRINT_GRAPH_TEMPLATE(FEEDBACK_SET(&amp;quot;1&amp;quot;), &amp;quot;BAR&amp;quot;, &amp;quot;300&amp;quot;, &amp;quot;300&amp;quot;, tableSetGraphTemplate3);
+%&amp;gt;
+	&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;/table&amp;gt;
+
+
+&amp;lt;table class=section&amp;gt;
+&amp;lt;tr&amp;gt;
+	&amp;lt;td class=sectionHeading&amp;gt;Deflection&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;tr&amp;gt;
+	&amp;lt;td&amp;gt;
+&amp;lt;%
+	var numFeedbackPhonedTheCallCentre = FEEDBACK_VALUE(&amp;quot;2&amp;quot;, &amp;quot;Phoned the call center&amp;quot;);
+	var numFeedbackSentAnEmail = FEEDBACK_VALUE(&amp;quot;2&amp;quot;, &amp;quot;Send an email&amp;quot;);
+
+	var sumFeedback = SUM(numFeedbackPhonedTheCallCentre, numFeedbackSentAnEmail);
+	var normFeedback = DIVIDE(sumFeedback, FEEDBACK_NUM());
+	var percFeedback = MULTIPLY(normFeedback, &amp;quot;100&amp;quot;);
+
+	var chatsDeflected = MULTIPLY(numChats, normFeedback);
+	var savings = MULTIPLY(chatsDeflected, costPerContactCentreContact);
+
+	var contactCentreSavingsSet = VALUE_SET(	&amp;quot;Contact center savings with CyberTwin&amp;quot;,&amp;quot;&amp;quot;,&amp;quot;&amp;quot;, 
+					numChats, &amp;quot;1&amp;quot;, &amp;quot;Number of chats&amp;quot;, 
+					percFeedback, &amp;quot;0&amp;quot;, &amp;quot;% would have contacted the contact center&amp;quot;, 
+					chatsDeflected, &amp;quot;1&amp;quot;, &amp;quot;Chats deflected&amp;quot;, 
+					costPerContactCentreContact, &amp;quot;5&amp;quot;, &amp;quot;Cost per contact center contact&amp;quot;, 
+					savings, &amp;quot;5&amp;quot;, &amp;quot;&amp;lt;b&amp;gt;Total Cost Deflected by CyberTwin&amp;lt;/b&amp;gt;&amp;quot;);
+
+	PRINT_TEMPLATE(contactCentreSavingsSet, tableSetTemplate2);
+%&amp;gt;
+
+
+	&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;/table&amp;gt;
+
+
+
+&amp;lt;table class=section&amp;gt;
+&amp;lt;tr&amp;gt;
+	&amp;lt;td class=sectionHeading&amp;gt;Performance&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;tr&amp;gt;
+	&amp;lt;td&amp;gt;
+		&amp;lt;table&amp;gt;
+		&amp;lt;tr&amp;gt;&amp;lt;td class=xaxislabel&amp;gt;Performance Indicator&amp;lt;/td&amp;gt;&amp;lt;td class=yaxislabel&amp;gt;CyberTwin&amp;lt;/td&amp;gt;&amp;lt;td class=yaxislabel&amp;gt;Live Human Chat&amp;lt;/td&amp;gt;&amp;lt;td class=yaxislabel&amp;gt;Live Human Phone&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+		&amp;lt;tr&amp;gt;&amp;lt;td class=label&amp;gt;Accuracy - detecting questions&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;&amp;lt;%PRINT_NUMBER(ACCURACY_RATE(),&amp;quot;##.#%&amp;quot;);%&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;-&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;68% customer satisfaction&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+		&amp;lt;tr&amp;gt;&amp;lt;td class=label&amp;gt;Accuracy - giving correct answers&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;100%&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;60-75%&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;81% first contact reolution rate&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+		&amp;lt;tr&amp;gt;&amp;lt;td class=label&amp;gt;Quality answers - good substantive answers that represent the brand well and reduce calls to contact centre&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;100%&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;-&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;-&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+		&amp;lt;tr&amp;gt;&amp;lt;td class=label&amp;gt;Consistent answers&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;100%&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;60%&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;81% first contact reolution rate&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+		&amp;lt;tr&amp;gt;&amp;lt;td class=label&amp;gt;Response time - per answer&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;&amp;lt; 1 sec&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;1-3 minutes&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;62% in less than 10 sec&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+		&amp;lt;tr&amp;gt;&amp;lt;td class=label&amp;gt;Length of chats - avg. time&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;&amp;lt;%PRINT_NUMBER(CHATSTATS_TIME_AVG(),&amp;quot;##.#&amp;quot;);%&amp;gt;mins&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;-&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;-&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+		&amp;lt;tr&amp;gt;&amp;lt;td class=label&amp;gt;Length of chats - avg. messages&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;&amp;lt;%PRINT_NUMBER(CHATSTATS_MSG_AVG(),&amp;quot;##.#&amp;quot;);%&amp;gt;msgs&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;-&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;-&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+		&amp;lt;tr&amp;gt;&amp;lt;td class=label&amp;gt;Chats cut short&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;0%&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;15%&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;14% abandoned, 19% unresolved on first call&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+		&amp;lt;tr&amp;gt;&amp;lt;td class=label&amp;gt;Abandoned calls&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;0%&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;14%&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+		&amp;lt;tr&amp;gt;&amp;lt;td class=label&amp;gt;Agent utilisation&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;100%, 24 hrs a day&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;-&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;59%&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;	
+		&amp;lt;tr&amp;gt;&amp;lt;td class=label&amp;gt;# Concurrent sessions&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;thousands per server&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;1&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;	
+		&amp;lt;tr&amp;gt;&amp;lt;td class=label&amp;gt;Staff attrition&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;0%&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;-&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;24%&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+		&amp;lt;/table&amp;gt;
+
+/*
+		&amp;lt;br&amp;gt;&amp;lt;br&amp;gt;
+		
+		&amp;lt;table&amp;gt;
+		&amp;lt;tr&amp;gt;&amp;lt;td class=label&amp;gt;Overall Accuracy&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;&amp;lt;%PRINT_NUMBER(ACCURACY_RATE(),&amp;quot;##.#%&amp;quot;);%&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+		&amp;lt;tr&amp;gt;&amp;lt;td class=label&amp;gt;Direct Match Rate&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;&amp;lt;%PRINT_NUMBER(DIRECT_MATCH_RATE(),&amp;quot;##.#%&amp;quot;);%&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+		&amp;lt;tr&amp;gt;&amp;lt;td class=label&amp;gt;Direct Default Rate&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;&amp;lt;%PRINT_NUMBER(DIRECT_DEFAULT_RATE(),&amp;quot;##.#%&amp;quot;);%&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+		&amp;lt;tr&amp;gt;&amp;lt;td class=label&amp;gt;AutoLearn Rate&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;&amp;lt;%PRINT_NUMBER(AUTOLEARN_RATE(),&amp;quot;##.#%&amp;quot;);%&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+		&amp;lt;tr&amp;gt;&amp;lt;td class=label&amp;gt;AutoLearn Match Rate&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;&amp;lt;%PRINT_NUMBER(AUTOLEARN_MATCH_RATE(),&amp;quot;##.#%&amp;quot;);%&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+		&amp;lt;tr&amp;gt;&amp;lt;td class=label&amp;gt;AutoLearn Default Rate&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;&amp;lt;%PRINT_NUMBER(AUTOLEARN_DEFAULT_RATE(),&amp;quot;##.#%&amp;quot;);%&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+		&amp;lt;/table&amp;gt;
+*/
+	&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;/table&amp;gt;
+
+&amp;lt;table class=section&amp;gt;
+&amp;lt;tr&amp;gt;
+	&amp;lt;td class=sectionHeading&amp;gt;Learning About Users&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;tr&amp;gt;
+	&amp;lt;td&amp;gt;
+	
+&amp;lt;%
+	var foldersSet = HIT_COUNT_TOP(&amp;quot;FOLDER&amp;quot;, topHitsNodeIdScope, numTopHits, &amp;quot;Most Popular Topics of Interest&amp;quot;, &amp;quot;#&amp;quot;, &amp;quot;Topic&amp;quot;);
+	PRINT_GRAPH_TEMPLATE(foldersSet, &amp;quot;PIE&amp;quot;, &amp;quot;300&amp;quot;, &amp;quot;300&amp;quot;, tableSetTemplate2);
+	
+	var questionSet = HIT_COUNT_TOP(&amp;quot;INPUT&amp;quot;, topHitsNodeIdScope, numTopHits, &amp;quot;Most Frequently Asked Questions&amp;quot;, &amp;quot;#&amp;quot;, &amp;quot;Question&amp;quot;);
+PRINT_TEMPLATE(questionSet, tableSetTemplate3);
+
+
+	var newSet = foldersSet(questionSet);
+	PRINT_TEMPLATE(newSet, tableSetTemplate2);
+
+	var 1 = HIT_COUNT_TOP(&amp;quot;FOLDER&amp;quot;, topHitsNodeIdScope, numTopHits, &amp;quot;Most Popular Topics of Interest&amp;quot;, &amp;quot;#&amp;quot;, &amp;quot;Topic&amp;quot;);
+	var 2 = HIT_COUNT_TOP(&amp;quot;INPUT&amp;quot;, topHitsNodeIdScope, numTopHits, &amp;quot;Most Frequently Asked Questions&amp;quot;, &amp;quot;#&amp;quot;, &amp;quot;Question&amp;quot;);
+
+
+	PRINT_TEMPLATE(SOURCE_CLICKS_TOP(numTopHits, &amp;quot;Pages From Which CyberTwin Was Opened&amp;quot;, &amp;quot;%&amp;quot;, &amp;quot;URL&amp;quot;),  tableSetTemplate3);
+
+	PRINT_TEMPLATE(PAGE_LOADS_TOP(numTopHits, &amp;quot;Pages Loaded By CyberTwin During Chat&amp;quot;, &amp;quot;%&amp;quot;, &amp;quot;URL&amp;quot;), tableSetTemplate3);
+
+
+%&amp;gt;
+
+&amp;lt;%
+	PRINT_GRAPH_TEMPLATE(HITNODE_RULE_SETS(), &amp;quot;BAR&amp;quot;, &amp;quot;300&amp;quot;, &amp;quot;300&amp;quot;, tableSetGraphTemplate3);
+
+	PRINT_GRAPH_TEMPLATE(PROFILEVALUE_RULE_SETS(), &amp;quot;BAR&amp;quot;, &amp;quot;300&amp;quot;, &amp;quot;300&amp;quot;, tableSetGraphTemplate3);
+
+/*
+	PRINT_GRAPH_TEMPLATE(HITNODE_RULE_FOLDER_SET(&amp;quot;4984&amp;quot;, &amp;quot;%&amp;quot;, &amp;quot;Label&amp;quot;, &amp;quot;0&amp;quot;), &amp;quot;BAR&amp;quot;, &amp;quot;300&amp;quot;, &amp;quot;300&amp;quot;, tableSetGraphTemplate1);
+
+	PRINT_GRAPH_TEMPLATE(HITNODE_RULE_VALUESET(&amp;quot;34 35 36 37 38&amp;quot;, &amp;quot;Topics of Interest&amp;quot;, &amp;quot;%&amp;quot;, &amp;quot;Label&amp;quot;), &amp;quot;BAR&amp;quot;, &amp;quot;300&amp;quot;, &amp;quot;300&amp;quot;, tableSetGraphTemplate1);
+*/
+%&amp;gt;
+	&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;/table&amp;gt;
+
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;</script>
+        </report>
+        <report date="2014-08-28 18:13:27.0" gid="1932" name="Technical">
+            <script>&amp;lt;%
+var dateFrom = USERDEF:2011-01-01;
+var dateTo = USERDEF:2011-02-01;
+var numTopHits = &amp;quot;1000000&amp;quot;;
+var topHitsNodeIdScope = &amp;quot;-2&amp;quot;;
+var globalFilterRules = &amp;quot;&amp;quot;;
+
+%&amp;gt;
+&amp;lt;html&amp;gt;
+&amp;lt;head&amp;gt;
+&amp;lt;title&amp;gt;MyCyberTwin Report&amp;lt;/title&amp;gt;
+
+&amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;
+body
+{
+	margin-left: 75px;
+}
+
+.title
+{
+	font-family: verdana, arial, sans-serif; 
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.subtitle
+{
+	font-family: verdana, arial, sans-serif; 
+	font-size: 13px;
+	font-weight: none;
+}
+
+.section
+{
+	margin-top: 60px;
+	width: 800px;
+}
+
+
+.sectionHeading
+{
+	font-family: verdana, arial, sans-serif; 
+	font-size: 12px;
+	font-weight: bold;
+	background-color: #eeeeee;
+	width: 100%;
+	padding: 10px 10px 10px 10px;
+}
+
+.subsection
+{
+	margin-top: 20px;
+}
+
+.subsectionHeading
+{
+	font-family: verdana, arial, sans-serif; 
+	font-size: 12px;
+	font-weight: bold;
+	background-color: #eeeeee;
+	padding: 3px 3px 3px 3px;
+}
+
+.label
+{
+	font-family: verdana, arial, sans-serif; 
+	font-size: 10px;
+	font-weight: none;
+	width: 300px;
+	background-color: #eeeeff;
+	padding: 3px 3px 3px 3px;
+	
+}
+
+
+.simplelabel
+{
+	font-family: verdana, arial, sans-serif; 
+	font-size: 10px;
+	font-weight: none;
+	background-color: #eeeeff;
+	padding: 3px 3px 3px 3px;
+	
+}
+
+.value
+{
+	font-family: verdana, arial, sans-serif; 
+	font-size: 10px;
+	font-weight: none;
+	width: 50px;
+	background-color: #eeeeff;
+	padding: 3px 3px 3px 3px;
+}
+
+.simplevalue
+{
+	font-family: verdana, arial, sans-serif; 
+	font-size: 10px;
+	font-weight: none;
+	background-color: #eeeeff;
+	padding: 3px 3px 3px 3px;
+}
+
+.xaxislabel
+{
+	font-family: verdana, arial, sans-serif; 
+	font-size: 10px;
+	font-weight: bold;
+	background-color: #eeeeff;
+	padding: 3px 3px 3px 3px;
+}
+
+.yaxislabel
+{
+	font-family: verdana, arial, sans-serif; 
+	font-size: 10px;
+	font-weight: bold;
+	background-color: #eeeeff;
+	padding: 3px 3px 3px 3px;
+}
+
+&amp;lt;/style&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;%
+
+SET_REPORT_DETAILS(dateFrom, dateTo, globalFilterRules);
+
+var numChats = CHATSTATS_NUM_CHATS_TOTAL();
+var numEngagingChats = CHATSTATS_NUM_CHATS_ENGAGING();
+var numNonEngagingChats = CHATSTATS_NUM_CHATS_NONENGAGING();
+
+var tableSetTemplate1 = &amp;quot;&amp;lt;table class=subsection&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td colspan=2 class=subsectionHeading&amp;gt;[TITLE]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td class=xaxislabel&amp;gt;[XAXISLABEL]&amp;lt;/td&amp;gt;&amp;lt;td class=yaxislabel&amp;gt;[YAXISLABEL]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;ROWS{&amp;lt;tr&amp;gt;&amp;lt;td class=label&amp;gt;[LABEL]&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;[VALUE]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;}&amp;lt;/table&amp;gt;&amp;quot;;
+var tableSetGraphTemplate1 = &amp;quot;&amp;lt;table class=subsection&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td valign=top&amp;gt;&amp;lt;table&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td colspan=2 class=subsectionHeading&amp;gt;[TITLE]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td class=xaxislabel&amp;gt;[XAXISLABEL]&amp;lt;/td&amp;gt;&amp;lt;td class=yaxislabel&amp;gt;[YAXISLABEL]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;ROWS{&amp;lt;tr&amp;gt;&amp;lt;td class=label&amp;gt;[LABEL]&amp;lt;/td&amp;gt;&amp;lt;td class=value width=100&amp;gt;[VALUE]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;}&amp;lt;/table&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;td width=30&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;td valign=top&amp;gt;&amp;lt;img src=[GRAPH] &amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;/table&amp;gt;&amp;quot;;
+
+var tableSetTemplate2 = &amp;quot;&amp;lt;table class=subsection&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td colspan=2 class=subsectionHeading&amp;gt;[TITLE]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td class=yaxislabel&amp;gt;[YAXISLABEL]&amp;lt;/td&amp;gt;&amp;lt;td class=xaxislabel&amp;gt;[XAXISLABEL]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;ROWS{&amp;lt;tr&amp;gt;&amp;lt;td class=value&amp;gt;[VALUE]&amp;lt;/td&amp;gt;&amp;lt;td class=label&amp;gt;[LABEL]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;}&amp;lt;/table&amp;gt;&amp;quot;;
+var tableSetGraphTemplate2 = &amp;quot;&amp;lt;table class=subsection&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td valign=top&amp;gt;&amp;lt;table&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td colspan=2 class=subsectionHeading&amp;gt;[TITLE]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td class=yaxislabel&amp;gt;[YAXISLABEL]&amp;lt;/td&amp;gt;&amp;lt;td class=xaxislabel&amp;gt;[XAXISLABEL]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;ROWS{&amp;lt;tr&amp;gt;&amp;lt;td class=value&amp;gt;[VALUE]&amp;lt;/td&amp;gt;&amp;lt;td class=label&amp;gt;[LABEL]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;}&amp;lt;/table&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;td width=30&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;td valign=top&amp;gt;&amp;lt;img src=[GRAPH] &amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;/table&amp;gt;&amp;quot;;
+
+var tableSetTemplate3 = &amp;quot;&amp;lt;table class=subsection&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td colspan=2 class=subsectionHeading&amp;gt;[TITLE]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td class=xaxislabel&amp;gt;[XAXISLABEL]&amp;lt;/td&amp;gt;&amp;lt;td class=yaxislabel&amp;gt;[YAXISLABEL]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;ROWS{&amp;lt;tr&amp;gt;&amp;lt;td class=label&amp;gt;[LABEL]&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;[VALUE_PERC]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;}&amp;lt;/table&amp;gt;&amp;quot;;
+var tableSetGraphTemplate3 = &amp;quot;&amp;lt;table class=subsection&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td valign=top&amp;gt;&amp;lt;table&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td colspan=2 class=subsectionHeading&amp;gt;[TITLE]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td class=xaxislabel&amp;gt;[XAXISLABEL]&amp;lt;/td&amp;gt;&amp;lt;td class=yaxislabel&amp;gt;[YAXISLABEL]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;ROWS{&amp;lt;tr&amp;gt;&amp;lt;td class=label&amp;gt;[LABEL]&amp;lt;/td&amp;gt;&amp;lt;td class=value width=100&amp;gt;[VALUE_PERC]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;}&amp;lt;/table&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;td width=30&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;td valign=top&amp;gt;&amp;lt;img src=[GRAPH] &amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;/table&amp;gt;&amp;quot;;
+
+var tableSetTemplate4 = &amp;quot;&amp;lt;table class=subsection&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td colspan=2 class=subsectionHeading&amp;gt;[TITLE]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td class=yaxislabel&amp;gt;[YAXISLABEL]&amp;lt;/td&amp;gt;&amp;lt;td class=xaxislabel&amp;gt;[XAXISLABEL]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;ROWS{&amp;lt;tr&amp;gt;&amp;lt;td class=value&amp;gt;[VALUE_PERC]&amp;lt;/td&amp;gt;&amp;lt;td class=label&amp;gt;[LABEL]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;}&amp;lt;/table&amp;gt;&amp;quot;;
+var tableSetGraphTemplate4 = &amp;quot;&amp;lt;table class=subsection&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td valign=top&amp;gt;&amp;lt;table&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td colspan=2 class=subsectionHeading&amp;gt;[TITLE]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td class=yaxislabel&amp;gt;[YAXISLABEL]&amp;lt;/td&amp;gt;&amp;lt;td class=xaxislabel&amp;gt;[XAXISLABEL]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;ROWS{&amp;lt;tr&amp;gt;&amp;lt;td class=value&amp;gt;[VALUE_PERC]&amp;lt;/td&amp;gt;&amp;lt;td class=label&amp;gt;[LABEL]&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;}&amp;lt;/table&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;td width=30&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;td valign=top&amp;gt;&amp;lt;img src=[GRAPH] &amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;/table&amp;gt;&amp;quot;;
+%&amp;gt;
+
+&amp;lt;body&amp;gt;
+&amp;lt;table width=500&amp;gt;
+&amp;lt;tr&amp;gt;&amp;lt;td&amp;gt;&amp;lt;img src=&amp;quot;https://mycybertwin.com/images/web-logo.png&amp;quot; width=204 &amp;gt;&amp;lt;/td&amp;gt;&amp;lt;td&amp;gt;&amp;lt;img src=&amp;quot;[ORG_LOGO]&amp;quot; &amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+&amp;lt;/table&amp;gt;
+&amp;lt;br&amp;gt;
+&amp;lt;div class=title&amp;gt;MyCyberTwin Report for [ORG_NAME]&amp;apos;s [CYBERTWIN_NAME]&amp;lt;/div&amp;gt;
+&amp;lt;div class=subtitle&amp;gt;&amp;lt;b&amp;gt;Period - From:&amp;lt;/b&amp;gt; &amp;lt;% PRINT(dateFrom); %&amp;gt; &amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp; &amp;lt;b&amp;gt;To:&amp;lt;/b&amp;gt; &amp;lt;% PRINT(dateTo); %&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;br&amp;gt;
+
+
+
+&amp;lt;table class=section&amp;gt;
+&amp;lt;tr&amp;gt;
+
+	&amp;lt;td class=sectionHeading&amp;gt;Engagement&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;tr&amp;gt;
+	&amp;lt;td&amp;gt;
+&amp;lt;%
+	var chatVolumeSet = VALUE_SET(&amp;quot;Chat Volume&amp;quot;, &amp;quot;#&amp;quot;, &amp;quot;Measurement&amp;quot;, 
+		numChats, &amp;quot;1&amp;quot;, &amp;quot;Total Chats&amp;quot;, 
+		numEngagingChats, &amp;quot;1&amp;quot;, &amp;quot;Engaging Chats&amp;quot;, 
+		numNonEngagingChats, &amp;quot;1&amp;quot;, &amp;quot;NonEngaging Chats&amp;quot;);
+
+	PRINT_TEMPLATE(chatVolumeSet, tableSetTemplate1);
+	
+
+
+	var timeChatsSet = VALUE_SET(	&amp;quot;Chat Time&amp;quot;, &amp;quot;#&amp;quot;, &amp;quot;Measurement&amp;quot;, 
+				CHATSTATS_TIME_AVG(), &amp;quot;1&amp;quot;, &amp;quot;Avg minutes&amp;quot;, 
+				CHATSTATS_TIME_MIN(), &amp;quot;1&amp;quot;, &amp;quot;Min minutes&amp;quot;, 
+				CHATSTATS_TIME_MAX(), &amp;quot;1&amp;quot;, &amp;quot;Max minutes&amp;quot;, 
+				CHATSTATS_TIME_MEDIAN(), &amp;quot;1&amp;quot;, &amp;quot;Median minutes&amp;quot;,
+				CHATSTATS_TIME_TOTAL(), &amp;quot;1&amp;quot;, &amp;quot;Total minutes&amp;quot;);
+
+	PRINT_TEMPLATE(timeChatsSet, tableSetTemplate1);
+
+	PRINT_GRAPH_TEMPLATE(CHATSTATS_TIME_SPREAD(&amp;quot;&amp;quot;,&amp;quot;%&amp;quot;,&amp;quot;Measurement&amp;quot;), &amp;quot;BAR&amp;quot;, &amp;quot;300&amp;quot;, &amp;quot;300&amp;quot;, tableSetGraphTemplate3);	
+
+
+
+
+	var msgChatsSet = VALUE_SET(	&amp;quot;Chat Messages&amp;quot;, &amp;quot;#&amp;quot;, &amp;quot;Measurement&amp;quot;, 
+				CHATSTATS_MSG_AVG(), &amp;quot;1&amp;quot;, &amp;quot;Avg messages&amp;quot;, 
+				CHATSTATS_MSG_MIN(), &amp;quot;1&amp;quot;, &amp;quot;Min messages&amp;quot;, 
+				CHATSTATS_MSG_MAX(), &amp;quot;1&amp;quot;, &amp;quot;Max messages&amp;quot;, 
+				CHATSTATS_MSG_MEDIAN(), &amp;quot;1&amp;quot;, &amp;quot;Median messages&amp;quot;, 
+				CHATSTATS_MSG_TOTAL(), &amp;quot;1&amp;quot;, &amp;quot;Total messages&amp;quot;);
+
+	PRINT_TEMPLATE(msgChatsSet, tableSetTemplate1);
+
+	PRINT_GRAPH_TEMPLATE(CHATSTATS_MSG_SPREAD(&amp;quot;&amp;quot;,&amp;quot;%&amp;quot;,&amp;quot;Measurement&amp;quot;), &amp;quot;BAR&amp;quot;, &amp;quot;300&amp;quot;, &amp;quot;300&amp;quot;, tableSetGraphTemplate3);	
+	%&amp;gt;
+
+
+	&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;/table&amp;gt;
+
+
+&amp;lt;table class=section&amp;gt;
+&amp;lt;tr&amp;gt;
+	&amp;lt;td class=sectionHeading&amp;gt;KPIs&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;tr&amp;gt;
+	&amp;lt;td&amp;gt;
+		&amp;lt;table&amp;gt;
+			&amp;lt;tr&amp;gt;&amp;lt;td class=label&amp;gt;Overall Accuracy&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;&amp;lt;%PRINT_NUMBER(ACCURACY_RATE(),&amp;quot;##.#%&amp;quot;);%&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+			&amp;lt;tr&amp;gt;&amp;lt;td class=label&amp;gt;Direct Match Rate&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;&amp;lt;%PRINT_NUMBER(DIRECT_MATCH_RATE(),&amp;quot;##.#%&amp;quot;);%&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+			&amp;lt;tr&amp;gt;&amp;lt;td class=label&amp;gt;Direct Default Rate&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;&amp;lt;%PRINT_NUMBER(DIRECT_DEFAULT_RATE(),&amp;quot;##.#%&amp;quot;);%&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+			&amp;lt;tr&amp;gt;&amp;lt;td class=label&amp;gt;AutoLearn Rate&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;&amp;lt;%PRINT_NUMBER(AUTOLEARN_RATE(),&amp;quot;##.#%&amp;quot;);%&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+			&amp;lt;tr&amp;gt;&amp;lt;td class=label&amp;gt;AutoLearn Match Rate&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;&amp;lt;%PRINT_NUMBER(AUTOLEARN_MATCH_RATE(),&amp;quot;##.#%&amp;quot;);%&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+			&amp;lt;tr&amp;gt;&amp;lt;td class=label&amp;gt;AutoLearn Default Rate&amp;lt;/td&amp;gt;&amp;lt;td class=value&amp;gt;&amp;lt;%PRINT_NUMBER(AUTOLEARN_DEFAULT_RATE(),&amp;quot;##.#%&amp;quot;);%&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
+		&amp;lt;/table&amp;gt;
+	&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;/table&amp;gt;
+	
+&amp;lt;table class=section&amp;gt;
+&amp;lt;tr&amp;gt;
+	&amp;lt;td class=sectionHeading&amp;gt;Input Node Stats&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;tr&amp;gt;
+	&amp;lt;td&amp;gt;
+		&amp;lt;% PRINT(INPUT_NODE_STATS(topHitsNodeIdScope, numTopHits)); %&amp;gt;
+	&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;/table&amp;gt;
+		
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;</script>
+        </report>
+    </reports>
+</dialog>

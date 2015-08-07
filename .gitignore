@@ -1,0 +1,8 @@
+.jazzignore
+src/main/webapp/.jazzignore
+src/main/webapp/app/.jazzignore
+.tmp/
+node/
+node_modules/
+target/
+src/main/webapp/dist/

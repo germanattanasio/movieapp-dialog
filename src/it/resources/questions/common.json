@@ -1,5 +1,5 @@
 {
-"GMessage": "Would you like to see a movie tonight or at another time?",
+"GMessage": "What can I call you?",
 "questions": [
 	{
 		"sequence": "get all movies",

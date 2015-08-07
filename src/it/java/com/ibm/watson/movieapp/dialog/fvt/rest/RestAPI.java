@@ -41,10 +41,10 @@ import com.jayway.restassured.response.Response;
 public class RestAPI {
 
 	protected static Logger logger = LogManager.getLogger("watson.theaters.logger");
-	public static String initchat = "/initChat";
+	public static String initchat = "/initChat?firstTime=yes";
 	public static String getResponse = "/postConversation";
 	public static String getSelectedMovieDetails = "/getSelectedMovieDetails";
-	public static String restURL = "/watson-movieapp-dialog/api/bluemix";	
+	public static String restURL = "/watson-movieapp-dialog/api/bluemix";
 	public static String resourceDir = "/src/it/resources/questions/";
 
 	public RestAPI() {
@@ -197,6 +197,8 @@ public class RestAPI {
 	    	question.setConversationId(initChat.get(SetupMethod.CONVERSATIONID).toString());
 	    }
 		
+	    
+	    
 
 	    Response respQuest = 
 	    		RestAssured.given()
@@ -204,6 +206,7 @@ public class RestAPI {
 	    					.param(SetupMethod.CLIENTID , question.getClientId())
 	    					.param(SetupMethod.CONVERSATIONID, question.getConversationId() )
 	    					.param("input", question.getText())
+	    					.param("firstTime", "no")
 	    					.get(getResponse)						   
 	    					.then()
 							.statusCode(200)

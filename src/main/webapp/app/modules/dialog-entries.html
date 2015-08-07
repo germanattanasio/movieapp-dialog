@@ -31,9 +31,10 @@
                 <!--Display user entered text -->
                 <div ng-if="entry.message" class="dialog-user-row">
                     <div class="dialog-segment-bkg">
-                        <span class="dialog-row-text">{{entry.message}}</span>
+                        <span class="dialog-row-text">{{entry.message}}</span> 
                     </div>
                 </div>
+                  
                 <!-- 
                 Display watson response using directive. The directive takes care of adding
                 animation while the server is responding, and removing animation once response
@@ -42,8 +43,14 @@
                 <div ng-class="!entry.responses ? 'watson-thinking' : 'no-class'">
                     <div class="dialog-watson-row" ng-if="entry != null && entry.responses != null">
                         <div class="dialog-segment-bkg">
-                            <span class="dialog-row-text" ng-bind-html="entry.responses"></span>
+                            <span class="dialog-row-text" ng-bind-html="entry.responses "></span>
                         </div>
+                    </div>
+                </div>
+                
+                <div ng-if="entry.options" class="dialog-user-row dialog-white-bg">
+                    <div class="dialog-segment-bkg dialog-white-bg">
+                        <span class="dialog-row-text" mct="entry.options"></span>
                     </div>
                 </div>
                 <!-- if movies are returned, display them after the Watson response -->

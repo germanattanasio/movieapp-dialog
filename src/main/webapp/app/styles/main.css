@@ -90,20 +90,23 @@ html, body {
 .dialog-header-intro {
     display: none;
 }
+
 .dialog-header-chatting, .dialog-header-preview {
     padding-right: 0px;
     padding-left: 0px;
     background-color: #323232;
     color: #ECECEC;
 }
-.movie-review{
-     color: #48BFB6;
+
+.movie-review {
+    color: #48BFB6;
 }
 
-.star{
-	vertical-align:initial;
-	height:12px;
+.star {
+    vertical-align: initial;
+    height: 12px;
 }
+
 .dialog-navbar-img {
     background-image: url('../images/header_logo_reel.svg');
     background-repeat: no-repeat;
@@ -133,11 +136,13 @@ html, body {
 .dialog-links-parent {
     display: none;
 }
-.dialog-release-label{
-	margin-top:0px;
-	font-size:11px;
-	margin-bottom:25px;
+
+.dialog-release-label {
+    margin-top: 0px;
+    font-size: 11px;
+    margin-bottom: 25px;
 }
+
 .dialog-links-parent.dialog-links-parent-intro {
     position: fixed;
     color: #FFFFFF;
@@ -149,8 +154,39 @@ html, body {
     display: block;
 }
 
+.dialog-entry .dialog-white-bg {
+    background-color: #FFFFFF;
+}
+
+.dialog-mct-option {
+    margin-top: 10px;
+    margin-left: 5px;
+    padding: 15px;
+    border-radius: 25px;
+    font-weight: lighter;
+    vertical-align: middle;
+    border-style: solid;
+    border-width: 1px;
+    cursor: default;
+    color: #454545;
+    line-height: 20px;
+    display: inline-block;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.dialog-mct-option:hover {
+    border-color: #454545;
+}
+
+.outer-div {
+    right: 2px;
+}
 /*FAVORITES*/
-.dialog-no-favorite, .dialog-favorite, .dialog-no-favorite-left, .dialog-favorite-left {
+.dialog-no-favorite, .dialog-favorite, .dialog-no-favorite-left,
+    .dialog-favorite-left {
     margin-top: 20px;
     margin-bottom: 20px;
     width: 26px;
@@ -190,8 +226,9 @@ html, body {
     color: white;
 }
 
-.dialog-favorite-lg .dialog-no-favorite, .dialog-favorite-lg .dialog-favorite, .dialog-favorite-lg .dialog-no-favorite-left,
-    .dialog-favorite-lg .dialog-favorite-left {
+.dialog-favorite-lg .dialog-no-favorite, .dialog-favorite-lg .dialog-favorite,
+    .dialog-favorite-lg .dialog-no-favorite-left, .dialog-favorite-lg .dialog-favorite-left
+    {
     margin-top: 2px;
 }
 
@@ -257,7 +294,8 @@ html, body {
     height: 100%;
 }
 
-.dialog-full-screen-favorites, .dialog-full-screen-favorites.ng-enter-active, .dialog-full-screen-favorites.ng-leave {
+.dialog-full-screen-favorites, .dialog-full-screen-favorites.ng-enter-active,
+    .dialog-full-screen-favorites.ng-leave {
     position: fixed;
     top: 0px;
     left: 0px;
@@ -269,7 +307,8 @@ html, body {
     opacity: 1;
 }
 
-.dialog-full-screen-favorites.ng-enter, .dialog-full-screen-favorites.ng-leave-active {
+.dialog-full-screen-favorites.ng-enter, .dialog-full-screen-favorites.ng-leave-active
+    {
     visibility: hidden;
     opacity: 0;
     width: 0px;
@@ -328,7 +367,8 @@ html, body {
     transition: 0.3s cubic-bezier(0.7, 0, 0.5, 1.34);
 }
 
-.dialog-no-favorites.ng-enter, .dialog-favorite-image.ng-enter, .dialog-favorite-image.ng-leave-active {
+.dialog-no-favorites.ng-enter, .dialog-favorite-image.ng-enter,
+    .dialog-favorite-image.ng-leave-active {
     transform: scale(0);
     visibility: hidden;
 }
@@ -347,7 +387,8 @@ html, body {
     vertical-align: middle;
 }
 
-.dialog-favorite-full-screen-image, .dialog-favorite-full-screen-image.ng-leave {
+.dialog-favorite-full-screen-image, .dialog-favorite-full-screen-image.ng-leave
+    {
     height: 150px;
     width: 125px;
     margin: 20px;
@@ -364,7 +405,7 @@ html, body {
     transition: 0.3s cubic-bezier(0.7, 0, 0.5, 1.34);
 }
 
-.dialog-favorite-full-screen-image.ng-leave-active{
+.dialog-favorite-full-screen-image.ng-leave-active {
     visibility: hidden;
     opacity: 0;
     transform: scale(0);
@@ -399,7 +440,8 @@ html, body {
     height: 100%;
 }
 
-.dialog-fav-link, .dialog-fav-link:hover, .dialog-fav-link:active, .dialog-fav-link:visited {
+.dialog-fav-link, .dialog-fav-link:hover, .dialog-fav-link:active,
+    .dialog-fav-link:visited {
     display: inline-block;
     margin-bottom: 7px;
     opacity: 1;
@@ -434,6 +476,10 @@ html, body {
 
 .footer-intro .form-group .dialog-form-input {
     border-color: #FFFFFF;
+    border-top: 0px;
+    border-right: 0px;
+    border-left: 0px;
+    border-bottom: 1px solid;
 }
 
 .dialog-resize-col {
@@ -460,7 +506,8 @@ html, body {
     color: white;
 }
 
-.dialog-small-screen-placeholder-chatting, .dialog-small-screen-placeholder-preview {
+.dialog-small-screen-placeholder-chatting,
+    .dialog-small-screen-placeholder-preview {
     display: none;
 }
 
@@ -493,13 +540,14 @@ html, body {
     padding-top: 25px;
 }
 
-.dialog-happy-text-chatting, .dialog-happy-text-preview, .dialog-placeholder-chatting, .dialog-placeholder-preview {
+.dialog-happy-text-chatting, .dialog-happy-text-preview,
+    .dialog-placeholder-chatting, .dialog-placeholder-preview {
     display: none;
 }
 
 .dialog-placeholder-intro, .dialog-happy-text-intro {
     color: #FFFFFF;
-    font-size: 12pt;
+    font-size: 16pt;
     margin-top: 35px;
     margin-bottom: 35px;
     text-align: center;
@@ -614,7 +662,8 @@ html, body {
     width: 100%;
 }
 
-.dialog-watson-row, .dialog-user-row, .dialog-watson-row.ng-enter.ng-enter-active, .dialog-user-row.ng-enter.ng-enter-active {
+.dialog-watson-row, .dialog-user-row, .dialog-watson-row.ng-enter.ng-enter-active,
+    .dialog-user-row.ng-enter.ng-enter-active {
     border: 0px solid #FFFFFF;
     margin-bottom: 10px;
     transition: bottom .35s;
@@ -635,6 +684,10 @@ html, body {
     padding-right: 10px;
     padding-left: 10px;
     vertical-align: middle;
+}
+
+.dialog-user-row .dialog-white-bg .dialog-row-text{
+    padding-right: 0px;
 }
 
 .dialog-watson-row, .dialog-watson-row.ng-enter.ng-enter-active {
@@ -698,7 +751,8 @@ html, body {
     border-right-width: 0px;
 }
 
-.dialog-movie-links-parent, .dialog-movie-links-parent.ng-enter.ng-enter-active {
+.dialog-movie-links-parent, .dialog-movie-links-parent.ng-enter.ng-enter-active
+    {
     margin-left: auto;
     margin-right: auto;
     padding-left: 55px;
@@ -710,8 +764,8 @@ html, body {
     display: block;
 }
 
-.dialog-movie-links-parent .dialog-movie:focus{
-	outline: none;
+.dialog-movie-links-parent .dialog-movie:focus {
+    outline: none;
 }
 
 .dialog-movie, .dialog-movie.ng-enter.ng-enter-active {
@@ -725,7 +779,8 @@ html, body {
     opacity: 0;
 }
 
-.dialog-movie.ng-enter-stagger, .dialog-movie.ng-leave-stagger, .dialog-movie.ng-move-stagger {
+.dialog-movie.ng-enter-stagger, .dialog-movie.ng-leave-stagger,
+    .dialog-movie.ng-move-stagger {
     /* 200ms will be applied between each sucessive enter operation */
     /* this will have a 100ms delay between each successive leave animation */
     -webkit-transition-delay: 0.2s;
@@ -736,7 +791,8 @@ html, body {
     transition-duration: 0s;
 }
 
-.dialog-movie.ng-leave, .dialog-movie.ng-move.ng-move-active, .dialog-movie.ng-enter.ng-enter-active {
+.dialog-movie.ng-leave, .dialog-movie.ng-move.ng-move-active,
+    .dialog-movie.ng-enter.ng-enter-active {
     opacity: 1;
     visibility: visible;
 }
@@ -788,7 +844,8 @@ html, body {
     visibility: visible;
 }
 
-.dialog-preview-parent.ng-enter, .dialog-preview-parent.ng-leave-active {
+.dialog-preview-parent.ng-enter, .dialog-preview-parent.ng-leave-active
+    {
     width: 0px;
     opacity: 0;
     visibility: hidden;
@@ -854,6 +911,7 @@ html, body {
     padding-top: 10px;
     font-size: 9pt;
 }
+
 .dialog-body-intro .container {
     width: 310px;
     margin-left: auto;
@@ -861,40 +919,44 @@ html, body {
 }
 
 @media ( min-width : 300px) {
-	.star-rating{
-	    padding-left: 8px;
-	    display:inline-block;
+    .star-rating {
+        padding-left: 8px;
+        display: inline-block;
     }
-    .review-value{
-	    padding-left: 0px;
+    .review-value {
+        padding-left: 0px;
     }
-   .dialog-movie-name {
-    display: inline;
-    margin-right: 10px;
-}
-   .dialog-rating-label {
-    margin-bottom: 10px;
-    padding-left: 15px;
-    padding-right: 15px;
-    font-weight: lighter;
-    vertical-align: middle;
-    border-style: solid;
-    border-width: 1px;
-    display: inline-block;
-}
-    
-    h3{
-    font-size:20px;
+    .dialog-movie-name {
+        display: inline;
+        margin-right: 10px;
+    }
+    .dialog-rating-label {
+        margin-bottom: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+        font-weight: lighter;
+        vertical-align: middle;
+        border-style: solid;
+        border-width: 1px;
+        display: inline-block;
+    }
+    h3 {
+        font-size: 20px;
+    }
+    .container .dialog-user-row:after {
+        height: 55px;
     }
 }
+
 @media ( min-width : 374px) {
-    .review-value{
-	    padding-left: 10px;
+    .review-value {
+        padding-left: 10px;
     }
-    h3{
-    font-size:24px;
+    h3 {
+        font-size: 24px;
     }
 }
+
 @media ( min-width : 425px) {
     .dialog-body-intro .container {
         width: 400px;
@@ -908,29 +970,27 @@ html, body {
     .dialog-no-favorite-left, .dialog-favorite-left {
         margin-left: 8%;
     }
-    .star-rating{
-	    padding-left: 35px;
-	    display:inline-block;
+    .star-rating {
+        padding-left: 35px;
+        display: inline-block;
     }
-    .review-value{
-	   padding-left: 17px;
+    .review-value {
+        padding-left: 17px;
     }
     .dialog-rating-label {
-    margin-left: 20px;
-    margin-bottom: 10px;
-    padding-left: 15px;
-    padding-right: 15px;
-    font-weight: lighter;
-    vertical-align: middle;
-    border-style: solid;
-    border-width: 1px;
-    display: inline-block;
-}
-
-.dialog-movie-name {
-    display: inline-block;
-}
-    
+        margin-left: 20px;
+        margin-bottom: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+        font-weight: lighter;
+        vertical-align: middle;
+        border-style: solid;
+        border-width: 1px;
+        display: inline-block;
+    }
+    .dialog-movie-name {
+        display: inline-block;
+    }
 }
 
 @media ( min-width : 600px) {
@@ -980,6 +1040,10 @@ html, body {
     }
     .form-group .dialog-form-input {
         height: 55px;
+        border-top: 0px;
+        border-right: 0px;
+        border-left: 0px;
+        border-bottom: 1px solid;
     }
     .dialog-button {
         height: 55px;
@@ -1020,12 +1084,12 @@ html, body {
     .dialog-movie-link {
         width: inherit;
     }
-    .star-rating{
-	    padding-left: 10px;
-	    display:inline-block;
+    .star-rating {
+        padding-left: 10px;
+        display: inline-block;
     }
-    .review-value{
-	    padding-left: 10px;
+    .review-value {
+        padding-left: 10px;
     }
     .dialog-placeholder-intro {
         display: none;
@@ -1036,12 +1100,12 @@ html, body {
     .dialog-preview-parent {
         width: 450px;
     }
-    .star-rating{
-	    padding-left: 35px;
-	    display:inline-block;
+    .star-rating {
+        padding-left: 35px;
+        display: inline-block;
     }
-    .review-value{
-	   padding-left: 17px;
+    .review-value {
+        padding-left: 17px;
     }
 }
 /*
@@ -1083,7 +1147,8 @@ html, body {
     .dialog-toggle-favorites-view {
         display: none;
     }
-    .footer-chatting .dialog-input-table, .footer-preview .dialog-input-table {
+    .footer-chatting .dialog-input-table, .footer-preview .dialog-input-table
+        {
         margin-left: 10px;
         border-right: solid #FFFFFF 20px;
     }
@@ -1127,12 +1192,12 @@ html, body {
     .dialog-no-favorite-left, .dialog-favorite-left {
         margin-left: 80px;
     }
-    .star-rating{
-	    padding-left: 10px;
-	    display:inline-block;
+    .star-rating {
+        padding-left: 10px;
+        display: inline-block;
     }
-    .review-value{
-	    padding-left: 10px;
+    .review-value {
+        padding-left: 10px;
     }
 }
 
@@ -1140,12 +1205,12 @@ html, body {
     .dialog-preview-parent {
         width: 450px;
     }
-    .star-rating{
-	    padding-left: 35px;
-	    display:inline-block;
+    .star-rating {
+        padding-left: 35px;
+        display: inline-block;
     }
-    .review-value{
-	   padding-left: 17px;
+    .review-value {
+        padding-left: 17px;
     }
 }
 

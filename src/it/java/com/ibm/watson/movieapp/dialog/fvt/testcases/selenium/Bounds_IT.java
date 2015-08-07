@@ -92,7 +92,7 @@ public class Bounds_IT extends SetupMethod{
         BaseQuestion question = null;        
 		MovieUI ui = test.getGui(driver);
 
-		List<BaseQuestion> questions = Utils.getRandomSample(3, OUT_SCOPE_QUESTION, true);
+		List<BaseQuestion> questions = Utils.getRandomSample(4, OUT_SCOPE_QUESTION, true);
 		Iterator<BaseQuestion> questionIterator = questions.iterator();
 		while (questionIterator.hasNext()) {
 			question = questionIterator.next();

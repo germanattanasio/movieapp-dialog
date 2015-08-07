@@ -67,8 +67,8 @@
                     <!--At low resolutions we want to show the placeholder text in a label field as the input
                         control is too narrow to display the full message -->
                     <div class="dialog-happy-text-{{dialogCtrl.state.class}}">
-                    Chat with Watson to discover new and upcoming movies by genre or rating.
-                    <span class="dialog-placeholder-{{dialogCtrl.state.class}}" ng-bind-html="dialogCtrl.initialChat"></span>
+                                        {{dialogCtrl.state.introText}}
+                   
                     </div>
                     <table class="dialog-input-table">
                         <tr>

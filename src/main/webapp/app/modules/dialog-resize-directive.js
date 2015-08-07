@@ -34,7 +34,6 @@
                 var docHeight = null;
                 var headerHeight = null;
                 var footerHeight = null;
-                var footerElement = null;
                 var proposedHeight = 0;
                 delayTimeout = $timeout(function () {
                     docHeight = $(window).height();

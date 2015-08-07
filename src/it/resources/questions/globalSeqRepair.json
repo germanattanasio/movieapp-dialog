@@ -3,7 +3,7 @@
 	{
 		"sequence": "Help",
 		"question": ["help", "how does this work", "what do I do"],		
-		"expected": ["Try saying things like..."]
+		"expected": ["Say <i>Never mind</i> or <i>nvm</i> to start over.\nSay <i>okay</i> or <i>thanks</i> if my response is acceptable.\nSay <i>What does X mean?</i> for a definition of X.\nSay <i>got to go</i> or <i>bye</i> when you're finished."]
 	},
 	{
 		"sequence": "Tips",
@@ -18,7 +18,7 @@
 	{
 		"sequence": "Never mind",
 		"question": ["Nevermind", "Never mind", "nvm", "start over"],
-		"expected": ["Okay. Whatever you say, boss!"]
+		"expected": ["Okay. Whatever you say, friend! Is there anything else I can help you with?"]
 	},
 	{
 		"sequence": "what does * mean --> trailer",
