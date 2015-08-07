@@ -50,7 +50,8 @@
                 
                 <div ng-if="entry.options" class="dialog-user-row dialog-white-bg">
                     <div class="dialog-segment-bkg dialog-white-bg">
-                        <span class="dialog-row-text" mct="entry.options"></span>
+                        <!-- use the compile directive to convert text to HTML, add as child of current element -->
+                        <span class="dialog-row-text" compile="entry.options"></span>
                     </div>
                 </div>
                 <!-- if movies are returned, display them after the Watson response -->

@@ -36,7 +36,7 @@
                         '<favorite class="dialog-favorite-sm" content="{{movie}}"></favorite>' +
                         '<div class="dialog-preview-scroll">' +
                         '<iframe id="trailerIFrame" class="dialog-trailer" src="{{trustedUrl}}" allowfullscreen frameborder="0"></iframe>' +
-                        '<h3 id="noTrailerText" class="dialog-trailer-missing dialog-trailer-hidden">A trailer is not available for </h3>' +
+                        '<h3 id="noTrailerText" class="dialog-trailer-missing dialog-trailer-hidden">No Preview Available</h3>' +
                         '<br><h3 class="dialog-movie-name">{{movie.movieName}}</h3>' +
                         '<span class="dialog-rating-label">{{movie.certification}}</span>' +
                         '<favorite class="dialog-favorite-lg" content="{{movie}}"></favorite>' +

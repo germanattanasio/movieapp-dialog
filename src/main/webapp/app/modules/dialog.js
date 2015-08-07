@@ -22,7 +22,7 @@
     'dialog.controller',
     'dialog.resize',
     'dialog.movie',
-    'dialog.mct',
+    'dialog.compile',
     'dialog.favorite',
     'dialog.rating',
     'dialog.preview',

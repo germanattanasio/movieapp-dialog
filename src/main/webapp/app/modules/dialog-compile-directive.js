@@ -32,7 +32,7 @@
         return {
             'restrict': 'A',
             'link': function (scope, element, attr) {
-                var html = $parse(attr.mct)(scope); //Get the html content
+                var html = $parse(attr.compile)(scope); //Get the html content
                 var newElement = $compile(html)(scope); //create DOM Element
                 element.append(newElement); //append to DOM
             }

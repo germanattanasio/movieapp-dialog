@@ -407,7 +407,7 @@ public class WDSBlueMixProxyResource {
         conversationPayload.setClientId(Integer.toString(conversation.getClientId())); //$NON-NLS-1$
         conversationPayload.setConversationId(Integer.toString(conversation.getId())); //$NON-NLS-1$
         conversationPayload.setInput(conversation.getInput()); //$NON-NLS-1$
-        conversationPayload.setWdsResponse(StringUtils.join(conversation.getResponse(), " "));  // TODO change the separator if required.
+        conversationPayload.setWdsResponse(StringUtils.join(conversation.getResponse(), " "));
         return Response.ok(conversationPayload, MediaType.APPLICATION_JSON_TYPE).build();
     }
 }

@@ -78,9 +78,9 @@ To view the home page of the app, open [https://yourAppName.mybluemix.net](https
 #### Upload a Dialog File
 Now that we have a WDS instance bound to the app, we can use the credentials we received in the previous step to author a dialog file which contains chat flows. The dialog file for this application is packaged with the project at */movieapp-dialog/src/main/resources/dialog_files/movieapp-dialog-file.xml*. Use the following command to upload this file to Bluemix:
 ```
-curl -X POST -F "file=@*dialogFile*" -F "name=*dialogName*" https://gateway.watsonplatform.net/dialog-experimental/api/v1/dialogs -u "*username*:*password*"
+curl -X POST -F "file=@*dialogFile*" -F "name=*dialogName*" https://gateway.watsonplatform.net/*dialogServiceType*/api/v1/dialogs -u "*username*:*password*"
 ```
-where, *dialogFile* is the name of the dialog file you are uploading, *dialogName* is a unique name you give to the dialog you are uploading and, the *username* and *password* are the credentials you obtained in the previous step. 
+where, *dialogFile* is the name of the dialog file you are uploading, *dialogName* is a unique name you give to the dialog you are uploading, *dialogServiceType* is the type of service-"dialog-experimental" or "dialog-beta" and, the *username* and *password* are the credentials you obtained in the previous step. 
 
 
 ### Build the app
