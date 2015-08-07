@@ -1,5 +1,5 @@
 # What's In Theaters Application Overview
-The What's in Theaters application showcases the best practices in building a Watson conversational solution by using the Watson Dialog service. The application allows users to converse with Watson to search for current or upcoming movies by using [themoviedb.org](https://www.themoviedb.org/) database. Here's a [quick demo](http://watson-movieapp-dialog.mybluemix.net/watson-movieapp-dialog/dist/index.html#/).
+The What's in Theaters application showcases the best practices for building a Watson conversational solution by using the Watson Dialog service. The application allows users to converse with Watson to search for current or upcoming movies by using [themoviedb.org](https://www.themoviedb.org/) database. Here's a [quick demo](http://watson-movieapp-dialog.mybluemix.net/watson-movieapp-dialog/dist/index.html#/).
 
 The application uses a conversational template that you can customize to suit your own application. This domain-independent template will help you to structure your dialogs according to how people naturally converse, thus helping you to bootstrap your future dialogs.
 
@@ -60,7 +60,7 @@ Complete one of the following sets of steps to add an instance of the Dialog ser
   6. Click **CREATE**. The **Restage Application** window is displayed.
   7. Click **RESTAGE** to restart your app. If the app is not started, click **START**.
 
-**Binding to an existing service instance**
+**Binding your app to an existing service instance**
   1. [Log in to Bluemix](https://console.ng.bluemix.net/) and navigate to the *Dashboard* on the top panel. Locate and click on the app you created in the previous section.
   2. Click **BIND A SERVICE OR API**.
   3. Select the existing Dialog service that you want to bind to your app, and click **ADD**. The **Restage Application** window is displayed.
@@ -68,19 +68,25 @@ Complete one of the following sets of steps to add an instance of the Dialog ser
    
 #### Setup required environment variables
   In order to run the What's in Theaters application on Bluemix two further environment variables are required:  
-  1. **DIALOG_ID**: This is the ID of the dialog instance you will create below in the section _**Upload a Dialog File**_. 
-  2. **TMDB_API_KEY**: An API key obtained from themoviedb.org.  
+  * **DIALOG_ID**: The ID of the dialog instance you will create below in the **Upload a Dialog File** section. 
+  * **TMDB_API_KEY**: An API key obtained from themoviedb.org.  
 
-Navigate to the application dashboard in Bluemix. Locate and click on the application you created previously. Navigate to the _**Environment Variables**_ section of the UI. Switch to the _**USER-DEFINED**_ tab within the UI. Add two new environment variables as specified above, **DIALOG_ID** as the key for one, with its value being the dialog ID returned when you upload the Dialog file. The other environment variable's key should be **TMDB_API_KEY** with its value being the API key obtained from themoviedb.org.  
+  1. Navigate to the application dashboard in Bluemix.
+  2. Locate and click on the application you created previously. 
+  3. Navigate to the _**Environment Variables**_ section of the UI. 
+  4. Switch to the **USER-DEFINED** tab within the UI.
+  5. Add these new environment variables:
+    * **DIALOG_ID**: The value is the dialog ID returned when you upload the dialog file.
+    * **TMDB_API_KEY**: The value is the API key obtained from themoviedb.org.  
 
 To view the home page of the app, open [https://yourAppName.mybluemix.net](https://yourAppName.mybluemix.net), where yourAppName is the name of your app.
 
-#### Upload a Dialog File
-Now that we have a WDS instance bound to the app, we can use the credentials we received in the previous step to author a dialog file which contains chat flows. The dialog file for this application is packaged with the project at */movieapp-dialog/src/main/resources/dialog_files/movieapp-dialog-file.xml*. Use the following command to upload this file to Bluemix:
+#### Upload a dialog file
+After the service instance is bound to the app, use the credentials that you received in the previous step to author a dialog. The dialog file for this application is packaged with the project at `/movieapp-dialog/src/main/resources/dialog_files/movieapp-dialog-file.xml`. Use the following cURL command to upload this file to Bluemix:
 ```
 curl -X POST -F "file=@*dialogFile*" -F "name=*dialogName*" https://gateway.watsonplatform.net/*dialogServiceType*/api/v1/dialogs -u "*username*:*password*"
 ```
-where, *dialogFile* is the name of the dialog file you are uploading, *dialogName* is a unique name you give to the dialog you are uploading, *dialogServiceType* is the type of service-"dialog-experimental" or "dialog-beta" and, the *username* and *password* are the credentials you obtained in the previous step. 
+where, dialogFile is the name of the dialog file you are uploading, dialogName is a unique name you give to the dialog you are uploading, dialogServiceType is the type of service ("dialog-experimental" or "dialog-beta") and, the username and password are the credentials you obtained in the previous step. 
 
 
 ### Build the app
@@ -91,8 +97,8 @@ This project is configured to be built with Maven. To deploy the app, complete t
   4. Navigate to the `movieapp-dialog/src/it/resources/` directory.
   5. Open the `server.env` file, and update the following entries:
     * **DIALOG_ID**. Specify the ID value that corresponds to your Dialog service account on Bluemix(the dialog id is a long alpha-numeric string).
-    * **TMDB_API_KEY**. Specify the API key you received after you registered for API access on themoviedb.org.
-    * **VCAP_SERVICES**. This entry should contain a JSON object obtained from the *Environment Variables* section of your application on Bluemix. The following shows an example of what the contents will look like:  
+    * **TMDB_API_KEY**: Specify the API key you received after you registered for API access on themoviedb.org.
+    * **VCAP_SERVICES**: Specify the JSON object obtained from the *Environment Variables* section of your application on Bluemix. The following JSON object is an example:  
     ```json
     {
         "dialog": [
@@ -109,7 +115,7 @@ This project is configured to be built with Maven. To deploy the app, complete t
        ]
     }
     ```
-    When entering the JSON in the server.env file the JSON should be formatted to be on one line:
+    Specify the JSON object in the `server.env` file on one line, as shown in the following example:
   ```
   VCAP_SERVICES= {"watson_dialog_service": [{"name": "dialog-service","label": "dialog-sample-service",....}]}
   ```
@@ -130,7 +136,7 @@ You can run the application on a local server or on Bluemix. Choose one of the f
 4. Configure the server with the default settings.  
 5. In the **Available** list in the **Add and Remove** dialog, select the *movieapp-dialog* project, and click **Add >**. The project is added to the runtime configuration for the server in the **Configured** list.
 6. Click **Finish**.
-7. Copy the *server.env* file which was edited previously from *movieapp-dialog/src/it/resources/server.env* to the root folder of the newly defined server (i.e. *wlp/usr/defaultserver/server.env*).  
+7. Copy the `server.env` file which was edited previously from `movieapp-dialog/src/it/resources/server.env` to the root folder of the newly defined server, `wlp/usr/defaultserver/server.env`.  
 8. Start the new server, and open [http://localhost:serverPort/watson-movieapp-dialog/dist/index.html#/](http://localhost:serverPort/watson-movieapp-dialog/dist/index.html#/) in your favorite browser, where yourAppName is the specific name of your app.
 9. Chat with What's in Theaters!
 
@@ -151,30 +157,31 @@ Deploy the WAR file that you built in the previous section by using Cloud Foundr
    ```
    cf login -u <yourUsername> -o <yourOrg> -s <yourSpace>
    ```
-where *yourUsername* is your Bluemix id, *yourOrg* is your organization name in Bluemix and *yourSpace* is your space name in Bluemix.
+where yourUsername is your Bluemix id, yourOrg is your organization name in Bluemix, and yourSpace is your space name in Bluemix.
 5. Deploy the app to Bluemix by running the following command.
    ```
    cf push <yourAppName> -p watson-movieapp-dialog.war
    ```
-where, *yourAppName* is the name of your app.
+where, yourAppName is the name of your app.
 6. Navigate to [Bluemix](https://console.ng.bluemix.net/) to make sure the app is started. If not, click START.
 7. To view the home page of the app, open [https://yourAppName.mybluemix.net/watson-movieapp-dialog/dist/index.html#/](https://yourAppName.mybluemix.net/watson-movieapp-dialog/dist/index.html#/), where yourAppName is the specific name of your app.
 8. Chat with What's in Theaters!
 
 ## Automation
-Automation is designed both to run as a full suite of regression tests and to run a subset of regression tests for continuous integration process.  Updates to dialog will need reciprocating changes to the JSON files (see below).
+Automation is designed both to run as a full suite of regression tests and to run a subset of regression tests for continuous integration process. Updates to dialogs require reciprocating changes to the JSON files, as described in the following sections.
 
-### How to setup for full regression
-Use src/it/resources/testConfig.properties to control the server under test, browser type 
-(firefox chrome are supported), selenium grid server to include if you have one in your environment.
+### Setting up for full regression
+Use `src/it/resources/testConfig.properties` to control the server under test, the browser type 
+(Firefox and Chrome are supported), and the Selenium-Grid server to include, if you have one in your environment.
 
-### How to execute the full regression suite
-To execute the full regression suite you can execute GUI_TestSuite and Rest_TestSuite Junit Test suites directly in your eclipse environment. 
+### Running the full regression suite
+To run the full regression suite, you can run the GUI_TestSuite and Rest_TestSuite Junit Test suites directly in your Eclipse environment. 
 
-### How to accommodate changes to the dialog
-The dialog questions and answers from the xml file (see **Upload Dialog File** above) map directly to question answer arrays in JSON files which are used by the automation. These files are located src/it/resources/questions directory.  When you change dialog you will need to do reciprocating changes to the JSON config files to allow the regression test suite to pass.
+### Accommodating changes to the dialog
+The dialog questions and answers from the XML file, as described in [Upload Dialog File](#upload-a-dialog-file) map directly to question answer arrays in JSON files that are used by the automation. These files are located in the `src/it/resources/questions` directory. When you change dialogs, you must do reciprocating changes to the JSON config files to allow the regression test suite to pass.
 
 ## Reference information
-* [Dialog service documentation](https://dialog-doc-la.mybluemix.net/doc/dialog/index.html): Get an in-depth knowledge of the Dialog service
-* [Dialog service API documentation](https://dialog-doc-la.mybluemix.net/apis/): Understand API usage
-* [Dialog service tutorial](https://dialog-doc-la.mybluemix.net/doc/dialog/index.html#tutorial_intro): Design your own dialog by using a tutorial, which includes a generic template that you can modify for your own use. The Conversation Analysis Template comes bundled with this project and can be found at */movieapp-dialog/src/main/resources/dialog_files/CA_Trans_Template.xml*.
+* [Dialog service documentation](https://dialog-doc-la.mybluemix.net/doc/dialog/index.html): Get an in-depth knowledge of the Dialog service.
+* [Dialog service API documentation](https://dialog-doc-la.mybluemix.net/apis/): Understand API usage.
+* [Dialog service tutorial](https://dialog-doc-la.mybluemix.net/doc/dialog/index.html#tutorial_intro): This basic tutorial shows you a step-by-step process for designing a dialog for a specific scenario. 
+* [Natural conversation tutorial](https://watson.mybluemix.net/doc/ega_docs/dialog_ega.shtml#naturalconvo_design): The What's In Theaters app uses a natural conversation template as the basis for the dialog. To design your own dialog in natural conversation, complete this tutorial. See the template here: `/movieapp-dialog/src/main/resources/dialog_files/CA_Trans_Template.xml`.
