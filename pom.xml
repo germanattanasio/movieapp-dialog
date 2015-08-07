@@ -133,7 +133,8 @@
                         <phase>generate-resources</phase>
                         <configuration>
                             <!-- optional: if not specified, it will run gulp's default task (and you can remove this whole <configuration> section.) -->
-                            <arguments>--target development</arguments>
+                            <!-- The 'production' target causes the JS code to be uglified and minified -->
+                            <arguments>--target production</arguments>
                         </configuration>
                         <!-- configuration omitted, use gulp default -->
                     </execution>

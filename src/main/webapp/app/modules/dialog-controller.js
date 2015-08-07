@@ -250,11 +250,11 @@
                 $('#question').focus();
                 return;
             }
+            if (self.conversation.length > 1 && self.conversation[self.conversation.length - 1].options) {
+                self.conversation[self.conversation.length - 1].options = null;
+            }
             if (self.selectedMovie) {
                 self.selectedMovie.commentary = null;
-            }
-            if (self.conversation && self.conversation.length > 0){
-                self.conversation[self.conversation.length - 1].options = null;
             }
             $('#question').attr('disabled', '');
             timeout = $timeout(function () {
@@ -344,9 +344,6 @@
             if (!_.isEmpty(self.conversation)) {
                 if (self.conversation.length === 1 && self.conversation[0].responses) {
                    states.intro.introText = self.conversation[0].responses;
-                   setState(states.intro);
-               }
-                if (self.conversation.length === 2) {
                     $('body').addClass('dialog-body-running');
                     if (self.state.key !== states.preview.key) {
                         setState(states.chatting);

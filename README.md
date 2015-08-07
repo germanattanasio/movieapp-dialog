@@ -95,7 +95,7 @@ This project is configured to be built with Maven. To deploy the app, complete t
     * **VCAP_SERVICES**. This entry should contain a JSON object obtained from the *Environment Variables* section of your application on Bluemix. The following shows an example of what the contents will look like:  
     ```json
     {
-        "watson_dialog_service": [
+        "dialog": [
             {
                "name": "dialog-service",
                "label": "dialog-sample-service",
@@ -113,7 +113,7 @@ This project is configured to be built with Maven. To deploy the app, complete t
   ```
   VCAP_SERVICES= {"watson_dialog_service": [{"name": "dialog-service","label": "dialog-sample-service",....}]}
   ```
-  6. Switch to the navigator view in Eclipse, right-click the `pom.xml`, and select `Run As -> Maven Install`. Installation of Maven begins. During the installation, the following tasks are done:
+  6. Switch to the navigator view in Eclipse, right-click the `pom.xml`, and select `Run As -> Maven Install`. The Maven install invokes the build process. During the 'install', the following tasks are performed:
     * The JS code is compiled. That is, the various Angular JS files are aggregated, uglified, and compressed. Various other pre-processing is performed on the web code, and the output is copied to the `movieapp-dialog/src/main/webapp/dist` folder in the project.
     * The Java code is compiled, and JUnit tests are executed against the Java code. The compiled Java and JavaScript code and various other artifacts that are required by the web project are copied to a temporary location, and a `.war` file is created.
     * The Maven install instantiates a new Websphere Liberty Profile server, deploys the `.war` file to the server, starts the server, and runs a battery of integration tests against the deployed web application.
@@ -177,4 +177,4 @@ The dialog questions and answers from the xml file (see **Upload Dialog File** a
 ## Reference information
 * [Dialog service documentation](https://dialog-doc-la.mybluemix.net/doc/dialog/index.html): Get an in-depth knowledge of the Dialog service
 * [Dialog service API documentation](https://dialog-doc-la.mybluemix.net/apis/): Understand API usage
-* [Dialog service tutorial](https://dialog-doc-la.mybluemix.net/doc/dialog/index.html#tutorial_intro): Design your own dialog by using a tutorial, which includes a generic template that you can modify for your own use. The Conversation Analysis Template comes bundled with this project and can be found at */movieapp-dialog/src/main/resources/dialog_files/CA_template.xml*.
+* [Dialog service tutorial](https://dialog-doc-la.mybluemix.net/doc/dialog/index.html#tutorial_intro): Design your own dialog by using a tutorial, which includes a generic template that you can modify for your own use. The Conversation Analysis Template comes bundled with this project and can be found at */movieapp-dialog/src/main/resources/dialog_files/CA_Trans_Template.xml*.
