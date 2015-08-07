@@ -8,7 +8,7 @@
 	{
 		"sequence": "Tips",
 		"question": ["tips", "do you have any tips"],		
-		"expected": ["Here's a list of tips in case you get stuck:"]
+		"expected": ["Would you like to find a movie that's now playing or coming soon?"]
 	},
 	{
 		"sequence": "Say that again",

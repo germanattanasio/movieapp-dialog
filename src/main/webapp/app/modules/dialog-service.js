@@ -71,7 +71,7 @@
                  if (typeof (Storage) !== 'undefined') {
                      // Store session
                      if (localStorage.getItem('firstTimeUser')) {
-                         firstTimeUser = true;
+                         firstTimeUser = false;
                      }
                  }
                  return $http.get('../api/bluemix/initChat', {

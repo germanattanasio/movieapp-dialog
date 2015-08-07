@@ -125,7 +125,7 @@ public class BaseGUI_IT extends SetupMethod{
 	public void chatBoxGreeting() {
 
 		RestAPI api = RestAPI.getAPI();	
-		String greeting = api.getJSONElem(COMMON, "GMessage");
+		String greeting = api.getJSONElem(COMMON, "chatboxText");
 		String chatBoxText = "";
 		
 		Driver test = new Driver();

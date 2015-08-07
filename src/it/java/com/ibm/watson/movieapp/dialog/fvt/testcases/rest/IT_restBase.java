@@ -67,7 +67,7 @@ public class IT_restBase extends SetupMethod {
 		Response response = 
 				RestAssured.given()
 						   .contentType(ContentType.JSON)
-						   .param("firstTime", "yes")
+						   .param("firstTime", "true")
 						   .get(RestAPI.initchat)
 						   .then()
 						   .statusCode(200)
@@ -95,7 +95,7 @@ public class IT_restBase extends SetupMethod {
 		Response response = 
 				RestAssured.given()
 						   .contentType(ContentType.JSON)
-						   .param("firstTime", "yes")
+						   .param("firstTime", "true")
 						   .get(RestAPI.initchat)
 						   .then()
 						   .statusCode(200)
@@ -126,7 +126,7 @@ public class IT_restBase extends SetupMethod {
 		Response response = 
 				RestAssured.given()
 						   .contentType(ContentType.JSON)
-						   .param("firstTime", "yes")
+						   .param("firstTime", "true")
 						   .get(RestAPI.initchat)
 						   .then()
 						   .statusCode(200)
