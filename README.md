@@ -84,7 +84,7 @@ To view the home page of the app, open [https://yourAppName.mybluemix.net](https
 #### Upload a dialog file
 After the service instance is bound to the app, use the credentials that you received in the previous step to author a dialog. The dialog file for this application is packaged with the project at `/movieapp-dialog/src/main/resources/dialog_files/movieapp-dialog-file.xml`. Use the following cURL command to upload this file to Bluemix:
 ```
-curl -X POST -F "file=@*dialogFile*" -F "name=*dialogName*" https://gateway.watsonplatform.net/*dialogServiceType*/api/v1/dialogs -u "*username*:*password*"
+curl -X POST -F "file=@*dialogFile*" -F "name=*dialogName*" https://gateway.watsonplatform.net/dialog-beta/api/v1/dialogs -u "*username*:*password*"
 ```
 where, dialogFile is the name of the dialog file you are uploading, dialogName is a unique name you give to the dialog you are uploading, dialogServiceType is the type of service ("dialog-experimental" or "dialog-beta") and, the username and password are the credentials you obtained in the previous step. 
 
@@ -117,7 +117,7 @@ This project is configured to be built with Maven. To deploy the app, complete t
     ```
     Specify the JSON object in the `server.env` file on one line, as shown in the following example:
   ```
-  VCAP_SERVICES= {"watson_dialog_service": [{"name": "dialog-service","label": "dialog-sample-service",....}]}
+  VCAP_SERVICES= {"dialog": [{"name": "dialog-service","label": "dialog-sample-service",....}]}
   ```
   6. Switch to the navigator view in Eclipse, right-click the `pom.xml`, and select `Run As -> Maven Install`. The Maven install invokes the build process. During the 'install', the following tasks are performed:
     * The JS code is compiled. That is, the various Angular JS files are aggregated, uglified, and compressed. Various other pre-processing is performed on the web code, and the output is copied to the `movieapp-dialog/src/main/webapp/dist` folder in the project.
@@ -181,7 +181,7 @@ To run the full regression suite, you can run the GUI_TestSuite and Rest_TestSui
 The dialog questions and answers from the XML file, as described in [Upload Dialog File](#upload-a-dialog-file) map directly to question answer arrays in JSON files that are used by the automation. These files are located in the `src/it/resources/questions` directory. When you change dialogs, you must do reciprocating changes to the JSON config files to allow the regression test suite to pass.
 
 ## Reference information
-* [Dialog service documentation](https://dialog-doc-la.mybluemix.net/doc/dialog/index.html): Get an in-depth knowledge of the Dialog service.
-* [Dialog service API documentation](https://dialog-doc-la.mybluemix.net/apis/): Understand API usage.
-* [Dialog service tutorial](https://dialog-doc-la.mybluemix.net/doc/dialog/index.html#tutorial_intro): This basic tutorial shows you a step-by-step process for designing a dialog for a specific scenario. 
-* [Natural conversation tutorial](https://watson.mybluemix.net/doc/ega_docs/dialog_ega.shtml#naturalconvo_design): The What's In Theaters app uses a natural conversation template as the basis for the dialog. To design your own dialog in natural conversation, complete this tutorial. See the template here: `/movieapp-dialog/src/main/resources/dialog_files/CA_Trans_Template.xml`.
+* [Dialog service documentation](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/dialog.html): Get an in-depth knowledge of the Dialog service.
+* [Dialog service API documentation](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/apis/dialog-apis.html): Understand API usage.
+* [Dialog service tutorial](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/dialog/#tutorial_basic): This basic tutorial shows you a step-by-step process for designing a dialog for a specific scenario. 
+* [Natural conversation tutorial](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/dialog/#tutorial_advanced): The What's In Theaters app uses a natural conversation template as the basis for the dialog. To design your own dialog in natural conversation, complete this tutorial. See the template here: `/movieapp-dialog/src/main/resources/dialog_files/CA_Trans_Template.xml`.
