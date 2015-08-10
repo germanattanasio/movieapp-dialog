@@ -1,5 +1,5 @@
-# What's In Theaters Application Overview
-The What's in Theaters application showcases the best practices for building a Watson conversational solution by using the Watson Dialog service. The application allows users to converse with Watson to search for current or upcoming movies by using [themoviedb.org](https://www.themoviedb.org/) database. Here's a [quick demo](http://watson-movieapp-dialog.mybluemix.net/watson-movieapp-dialog/dist/index.html#/).
+# What's In Theaters application overview
+The What's In Theaters application showcases the best practices for building a Watson conversational solution by using the Watson Dialog service. The application allows users to converse with Watson to search for current or upcoming movies by using [themoviedb.org](https://www.themoviedb.org/) database. Here's a [quick demo](http://watson-movieapp-dialog.mybluemix.net/watson-movieapp-dialog/dist/index.html#/).
 
 The application uses a conversational template that you can customize to suit your own application. This domain-independent template will help you to structure your dialogs according to how people naturally converse, thus helping you to bootstrap your future dialogs.
 
@@ -12,7 +12,7 @@ The system is designed to obtain the following types of information about movies
   * **Genre**. The system understands movie genres, such as action, comedy, and horror.
   * **Rating**. The system understands movie rating, such as G, PG-13, and R.
 
-Users can search across all genres and ratings simply by answering "no" to the corresponding questions. Before the system searches the movie repository, it needs to know whether a user prefer current movies or upcoming movies. The system understands variations of text, so users can rephrase their responses, and the system will still process it. For example, the system might ask, "Do you want to watch an upcoming movie or one that's playing tonight?" Users can say "tonight" or "Show me movies playing currently," and the system understands that both answers mean that users want to know about current movies.
+Users can search across all genres and ratings simply by answering "no" to the corresponding questions. Before the system searches the movie repository, it needs to know whether a user prefers current movies or upcoming movies. The system understands variations of text, so users can rephrase their responses and the system will still process them. For example, the system might ask, "Do you want to watch an upcoming movie or one that's playing tonight?" Users can say "tonight" or "Show me movies playing currently," and the system understands that both answers mean that users want to know about current movies.
 
 ## Before you begin
 Ensure that you have the following prerequisites before you start:
@@ -67,7 +67,7 @@ Complete one of the following sets of steps to add an instance of the Dialog ser
   4. Click **RESTAGE** to restart your app.  
    
 #### Setup required environment variables
-  In order to run the What's in Theaters application on Bluemix two further environment variables are required:  
+  In order to run the What's In Theaters application on Bluemix two further environment variables are required:  
   * **DIALOG_ID**: The ID of the dialog instance you will create below in the **Upload a Dialog File** section. 
   * **TMDB_API_KEY**: An API key obtained from themoviedb.org.  
 
@@ -93,7 +93,7 @@ where, dialogFile is the name of the dialog file you are uploading, dialogName i
 This project is configured to be built with Maven. To deploy the app, complete the following steps in order:
   1. In your Eclipse window, expand the *movieapp-dialog* project that you cloned from GitHub.
   2. Right-click the project and select `Maven -> Update Project` from the context menu to update Maven dependencies.
-  3. Keep the default options, and click **OK**.
+  3. Keep the default options and click **OK**.
   4. Navigate to the `movieapp-dialog/src/it/resources/` directory.
   5. Open the `server.env` file, and update the following entries:
     * **DIALOG_ID**. Specify the ID value that corresponds to your Dialog service account on Bluemix(the dialog id is a long alpha-numeric string).
@@ -134,11 +134,12 @@ You can run the application on a local server or on Bluemix. Choose one of the f
 2. In the **Servers** view, right-click and select `New -> Server`. The *Define a New Server* window is displayed.
 3. Select the **WebSphere Application Server Liberty Profile**, and click **Next**.  
 4. Configure the server with the default settings.  
-5. In the **Available** list in the **Add and Remove** dialog, select the *movieapp-dialog* project, and click **Add >**. The project is added to the runtime configuration for the server in the **Configured** list.
+5. In the **Available** list in the **Add and Remove** dialog, select the *movieapp-dialog* project and click **Add >**. The project is added to the runtime configuration for the server in the **Configured** list.
 6. Click **Finish**.
 7. Copy the `server.env` file which was edited previously from `movieapp-dialog/src/it/resources/server.env` to the root folder of the newly defined server, `wlp/usr/defaultserver/server.env`.  
-8. Start the new server, and open [http://localhost:serverPort/watson-movieapp-dialog/dist/index.html#/](http://localhost:serverPort/watson-movieapp-dialog/dist/index.html#/) in your favorite browser, where yourAppName is the specific name of your app.
-9. Chat with What's in Theaters!
+8. Start the new server.
+9. Open [http://localhost:serverPort/watson-movieapp-dialog/dist/index.html#/](http://localhost:serverPort/watson-movieapp-dialog/dist/index.html#/) in your favorite browser, where yourAppName is the specific name of your app.
+10. Chat with What's In Theaters!
 
 #### Deploying the app on the Websphere Liberty Profile in Bluemix
 Deploy the WAR file that you built in the previous section by using Cloud Foundry commands.
@@ -157,15 +158,15 @@ Deploy the WAR file that you built in the previous section by using Cloud Foundr
    ```
    cf login -u <yourUsername> -o <yourOrg> -s <yourSpace>
    ```
-where yourUsername is your Bluemix id, yourOrg is your organization name in Bluemix, and yourSpace is your space name in Bluemix.
+where yourUsername is your Bluemix ID, yourOrg is your organization name in Bluemix, and yourSpace is your space name in Bluemix.
 5. Deploy the app to Bluemix by running the following command.
    ```
    cf push <yourAppName> -p watson-movieapp-dialog.war
    ```
-where, yourAppName is the name of your app.
-6. Navigate to [Bluemix](https://console.ng.bluemix.net/) to make sure the app is started. If not, click START.
+where yourAppName is the name of your app.
+6. Navigate to [Bluemix](https://console.ng.bluemix.net/) to make sure the app is started. If not, click **START**.
 7. To view the home page of the app, open [https://yourAppName.mybluemix.net/watson-movieapp-dialog/dist/index.html#/](https://yourAppName.mybluemix.net/watson-movieapp-dialog/dist/index.html#/), where yourAppName is the specific name of your app.
-8. Chat with What's in Theaters!
+8. Chat with What's In Theaters!
 
 ## Automation
 Automation is designed both to run as a full suite of regression tests and to run a subset of regression tests for continuous integration process. Updates to dialogs require reciprocating changes to the JSON files, as described in the following sections.
