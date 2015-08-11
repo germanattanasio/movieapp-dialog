@@ -17,6 +17,7 @@ package com.ibm.watson.movieapp.dialog.rest;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.net.URLEncoder;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -352,7 +353,7 @@ public class WDSBlueMixProxyResource {
 
             // Set the profile variable for WDS.
             List<NameValue> nameValues = new ArrayList<NameValue>();
-            nameValues.add(new NameValue("Selected_Movie", movieName)); //$NON-NLS-1$
+            nameValues.add(new NameValue("Selected_Movie", URLEncoder.encode(movieName, "UTF-8"))); //$NON-NLS-1$ //$NON-NLS-2$
             nameValues.add(new NameValue("Popularity_Score", movie.getPopularity().toString())); //$NON-NLS-1$
             dialogService.updateProfile(dialog_id, Integer.parseInt(clientId), nameValues);
 
