@@ -23,16 +23,17 @@ public class BaseConversation implements BaseObject{
 	private List<BaseQuestion> questions;
 	private String clientId;
 	private String conversationId;
+	private String userName;
 	
 	public static class Builder {
 
 		private List<BaseQuestion> questions;
 		private String clientId;
 		private String conversationId;
-
+		private String userName;
 		
-		public Builder (){
-
+		public Builder (String userName){
+			this.userName = userName;
 		}
 
 		public Builder questions(List<BaseQuestion> questions){
@@ -65,8 +66,17 @@ public class BaseConversation implements BaseObject{
 			this.setQuestions(b.questions);
 			this.setClientId(b.clientId);
 			this.setConverationId(b.conversationId);
+			this.setUserName(b.userName);
 
 	 }
+	
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 	
 	public List<BaseQuestion> getQuestions() {
 		return questions;

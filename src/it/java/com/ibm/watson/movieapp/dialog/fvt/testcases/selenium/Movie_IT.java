@@ -57,6 +57,10 @@ public class Movie_IT extends SetupMethod{
 		      
 		MovieUI ui = test.getGui(driver);
 
+		//select Next action
+		logger.info("INFO: Select next button");
+		ui.selectNextButton();
+		
 		//get a random movie question
 		BaseQuestion question = Utils.getRandomSample(1,MOVIE_JSON_FILE, false).get(0);
 		BaseConversation conversation = new BaseConversation();

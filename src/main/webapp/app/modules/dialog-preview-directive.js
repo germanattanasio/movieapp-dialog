@@ -37,11 +37,11 @@
                         '<div class="dialog-preview-scroll">' +
                         '<iframe id="trailerIFrame" class="dialog-trailer" src="{{trustedUrl}}" allowfullscreen frameborder="0"></iframe>' +
                         '<h3 id="noTrailerText" class="dialog-trailer-missing dialog-trailer-hidden">No Preview Available</h3>' +
-                        '<br><h3 class="dialog-movie-name">{{movie.movieName}}</h3>' +
-                        '<span class="dialog-rating-label">{{movie.certification}}</span>' +
+                        '<div class="dialog-movie-info-spacing"><div class="dialog-movie-name-rating-spacing"></div><span class="dialog-movie-name-rating"><h3 class="dialog-movie-name">{{movie.movieName}}</h3>' +
+                        '<span class="dialog-rating-label"><img src="{{certification}}"></span></span>' +
                         '<favorite class="dialog-favorite-lg" content="{{movie}}"></favorite>' +
-                        '<h5 class="dialog-release-label" ng-hide="hideReleaseDate">Release date: {{movie.localizedDate}}</h5>' +
-                        '<article>{{movie.overview}}</article><br><br><rating></rating></div>',
+                        '<h5 class="dialog-release-label" ng-hide="hideReleaseDate">Release date:<span class="dialog-release-date"> {{movie.localizedDate}}</span></h5>' +
+                        '<showtoggle></showtoggle><div class="dialog-rating-spacing"></div><rating></rating></div></div>',
             'restrict': 'E',
             'link': function (scope, element, attr) {
                 var closeButton = null;
@@ -113,6 +113,21 @@
                     }
                     if (!movie.certification || movie.certification.length === 0) {
                         movie.certification = 'NR';
+                        scope.certification = 'images/NR.svg';
+                    }
+                    else {
+                        if (movie.certification === 'R') {
+                            scope.certification = 'images/R.svg';
+                        }
+                        else if (movie.certification === 'G') {
+                            scope.certification = 'images/G.svg';
+                        }
+                        else if (movie.certification === 'PG') {
+                            scope.certification = 'images/PG.svg';
+                        }
+                        else if (movie.certification === 'PG-13') {
+                            scope.certification = 'images/PG-13.svg';
+                        }
                     }
                     resizeContents();
                 }, true);

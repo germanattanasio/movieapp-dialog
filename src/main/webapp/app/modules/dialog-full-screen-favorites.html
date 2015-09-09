@@ -30,12 +30,13 @@
             ng-repeat="favorite in dialogCtrl.getFavorites()"
             ng-click="showPreview(favorite)"
             favorite-options>
+            <!-- Add a button to unfavorite the movie-->
+            <span class="dialog-full-screen-overlay">
+               <img class="dialog-fav-del" ng-click="dialogCtrl.toggleFavorite(favorite)" src="./images/Unfavorite.svg">
+            </span>
             <div style="position:absolute;" ng-if="!(favorite.posterPath.search('jpg'))">
                 <p class="dialog-favorite-left-movie-poster" >{{favorite.movieName}} </p>
             </div>
-        
-            <!-- Add a button to unfavorite the movie-->
-            <span class="dialog-fullscreen-favorite-delete" ng-click="dialogCtrl.toggleFavorite(favorite)"></span>
       </div>
     </div>
 </div>

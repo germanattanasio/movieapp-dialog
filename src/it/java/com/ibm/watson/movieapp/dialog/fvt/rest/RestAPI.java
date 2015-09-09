@@ -17,8 +17,8 @@ package com.ibm.watson.movieapp.dialog.fvt.rest;
 
 import static com.jayway.restassured.RestAssured.get;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.File;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -59,10 +59,13 @@ public class RestAPI {
 	
 		String fileContents = "";
 		try {
-			JsonElement jelmnt = new JsonParser().parse(new FileReader(SetupMethod.jsonPath() + resourceDir + jsonFile));
+		    if(!jsonFile.startsWith(File.separator)){
+                jsonFile = File.separator + jsonFile;
+            }
+            JsonElement jelmnt = new JsonParser().parse(new InputStreamReader(this.getClass().getResourceAsStream(jsonFile)));
 			
 			fileContents = jelmnt.toString();
-		} catch (JsonIOException | JsonSyntaxException | FileNotFoundException e) {
+		} catch (JsonIOException | JsonSyntaxException e) {
 			e.printStackTrace();
 		}
 		
@@ -123,7 +126,12 @@ public class RestAPI {
 
 		try {
 			//parse the question json file
-			JsonElement jelmnt = new JsonParser().parse(new FileReader(SetupMethod.jsonPath() + resourceDir + jsonFile));
+		    if(!jsonFile.startsWith(File.separator)){
+		        jsonFile = File.separator + jsonFile;
+		    }
+		    jsonFile = "/questions" + jsonFile;
+		        
+			JsonElement jelmnt = new JsonParser().parse(new InputStreamReader(this.getClass().getResourceAsStream(jsonFile)));
 			JsonArray jarray = jelmnt.getAsJsonObject().getAsJsonArray("questions");	
 			
 		    //iterate through the list of questions
@@ -148,8 +156,7 @@ public class RestAPI {
 
 			}
 			
-		} catch (JsonIOException | JsonSyntaxException | FileNotFoundException e) {
-
+		} catch (JsonIOException | JsonSyntaxException e) {
 			e.printStackTrace();
 		}
 
@@ -167,7 +174,11 @@ public class RestAPI {
 		ArrayList<String> values = new ArrayList<String>();
 		
 		try {
-			JsonElement jelmnt = new JsonParser().parse(new FileReader(SetupMethod.jsonPath() + RestAPI.resourceDir + jsonFile));
+		    if(!jsonFile.startsWith(File.separator)){
+                jsonFile = File.separator + jsonFile;
+            }
+            jsonFile = "/questions" + jsonFile;
+            JsonElement jelmnt = new JsonParser().parse(new InputStreamReader(this.getClass().getResourceAsStream(jsonFile)));
 			JsonArray jarray = jelmnt.getAsJsonObject().getAsJsonArray(type);
 			
 			Iterator<JsonElement> questOpt = jarray.iterator();
@@ -176,7 +187,7 @@ public class RestAPI {
 			}
 			
 			
-		} catch (JsonIOException | JsonSyntaxException | FileNotFoundException e) {
+		} catch (JsonIOException | JsonSyntaxException e) {
 			e.printStackTrace();
 		}
 		
@@ -197,12 +208,10 @@ public class RestAPI {
 	    	question.setConversationId(initChat.get(SetupMethod.CONVERSATIONID).toString());
 	    }
 		
-	    
-	    
 
 	    Response respQuest = 
 	    		RestAssured.given()
-	    					.header("X-SyncTimeout", "600")
+	    					.header("X-SyncTimeout", "2000")
 	    					.param(SetupMethod.CLIENTID , question.getClientId())
 	    					.param(SetupMethod.CONVERSATIONID, question.getConversationId() )
 	    					.param("input", question.getText())

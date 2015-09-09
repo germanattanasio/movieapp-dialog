@@ -59,6 +59,10 @@ public class MovieRepair_IT extends SetupMethod{
 	    //pick random question
 		BaseQuestion question = Utils.getRandomSample(1, GENRE_QUESTION, true).get(0);
 
+		//select Next action
+		logger.info("INFO: Select next button");
+		ui.selectNextButton();
+		
 		logger.info("INFO: Question - " + question.getText());
 		question.ask(ui);
 
@@ -89,6 +93,10 @@ public class MovieRepair_IT extends SetupMethod{
 	    //pick random question
 		BaseQuestion question = Utils.getRandomSample(1, CURNT_FUT_QUESTION, true).get(0);
 
+		//select Next action
+		logger.info("INFO: Select next button");
+		ui.selectNextButton();
+		
 		logger.info("INFO: Question - " + question.getText());
 		question.ask(ui);
 		
@@ -119,6 +127,10 @@ public class MovieRepair_IT extends SetupMethod{
 	    //pick random question
 		BaseQuestion question = Utils.getRandomSample(1, RATING_QUESTION, true).get(0);
 
+		//select Next action
+		logger.info("INFO: Select next button");
+		ui.selectNextButton();
+		
 		logger.info("INFO: Question - " + question.getText());
 		question.ask(ui);
 		

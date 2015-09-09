@@ -62,6 +62,10 @@ public class PreExpan_IT extends SetupMethod{
 		
 		MovieUI ui = test.getGui(driver);
 
+		//select Next action
+		logger.info("INFO: Select next button");
+		ui.selectNextButton();
+		
 		logger.info("INFO: Question - " + chatQuestion.getText());
 		chatQuestion.ask(ui);
 

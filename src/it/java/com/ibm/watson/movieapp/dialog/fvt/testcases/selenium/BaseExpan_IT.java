@@ -57,6 +57,9 @@ public class BaseExpan_IT extends SetupMethod{
 	    //pick random question
 		BaseQuestion question = Utils.getRandomSample(1, SMALL_TALK_QUESTION, true).get(0);
 
+		logger.info("INFO: Select next button");
+		ui.selectNextButton();
+		
 		logger.info("INFO: Question - " + question.getText());
 		question.ask(ui);
 		

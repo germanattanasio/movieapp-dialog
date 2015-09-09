@@ -52,6 +52,7 @@
                     }
                 };
                 element.append(htmlContent);
+                $('.watson-thinking').last().find('.dialog-line-separator').css('display', 'none');
                 element.bind('touchstart', function (e) {
                     var touchobj = null;
                     if (e && e.originalEvent) {

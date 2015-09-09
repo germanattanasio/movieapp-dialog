@@ -404,7 +404,7 @@ public class SearchTheMovieDbProxyResource {
             if (Integer.parseInt(UtilityFunctions.getPropValue(tmdbResponse, "vote_count")) >= 10) {
                 moviePayload.setPopularity(Double.parseDouble(UtilityFunctions.getPropValue(tmdbResponse, "vote_average"))); //$NON-NLS-1$
             } else {
-                moviePayload.setPopularity(0.0); //$NON-NLS-1$
+                moviePayload.setPopularity(-1.0); //$NON-NLS-1$
             }
             moviePayload.setReleaseDateStr(UtilityFunctions.getPropValue(tmdbResponse, "release_date")); //$NON-NLS-1$
             Date rDate = movieDateFormatter.parse(moviePayload.getReleaseDateStr());

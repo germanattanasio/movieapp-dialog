@@ -60,6 +60,10 @@ public class Favorite_IT extends SetupMethod{
 		      
 		MovieUI ui = test.getGui(driver);
 
+		//select Next action
+		logger.info("INFO: Select next button");
+		ui.selectNextButton();
+		
 		//ask a question that will return a response with movie data
 		BaseConversation conversation = ui.askMovieQuest(Recency.random());
 		
@@ -105,6 +109,10 @@ public class Favorite_IT extends SetupMethod{
 		      
 		MovieUI ui = test.getGui(driver);
 
+		//select Next action
+		logger.info("INFO: Select next button");
+		ui.selectNextButton();
+		
 		//ask a question that will return a response with movie data
 		BaseConversation conversation = ui.askMovieQuest(Recency.random());
 		
@@ -154,6 +162,10 @@ public class Favorite_IT extends SetupMethod{
 		      
 		MovieUI ui = test.getGui(driver);
 
+		//select Next action
+		logger.info("INFO: Select next button");
+		ui.selectNextButton();
+		
 		//ask a question that will return a response with movie data
 		BaseConversation conversation = ui.askMovieQuest(Recency.random());
 		
@@ -199,6 +211,10 @@ public class Favorite_IT extends SetupMethod{
 		      
 		MovieUI ui = test.getGui(driver);
 
+		//select Next action
+		logger.info("INFO: Select next button");
+		ui.selectNextButton();
+		
 		//ask a question that will return a response with movie data
 		BaseConversation conversation = ui.askMovieQuest(Recency.random());
 		
@@ -246,6 +262,10 @@ public class Favorite_IT extends SetupMethod{
 		      
 		MovieUI ui = test.getGui(driver);
 
+		//select Next action
+		logger.info("INFO: Select next button");
+		ui.selectNextButton();
+		
 		//ask a question that will return a response with movie data
 		BaseConversation conversation = ui.askMovieQuest(Recency.random());
 		

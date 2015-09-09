@@ -33,7 +33,7 @@
                     <div class="dialog-segment-bkg">
                         <span class="dialog-row-text">{{entry.message}}</span> 
                     </div>
-                </div>
+                </div><hr class="dialog-line-separator">
                   
                 <!-- 
                 Display watson response using directive. The directive takes care of adding
@@ -45,13 +45,13 @@
                         <div class="dialog-segment-bkg">
                             <span class="dialog-row-text" ng-bind-html="entry.responses "></span>
                         </div>
-                    </div>
+                    </div><hr class="dialog-line-separator">
                 </div>
                 
-                <div ng-if="entry.options" class="dialog-user-row dialog-white-bg">
+                <div ng-if="entry.options" style="padding-right: 0px;padding-top: 40px;" class="dialog-user-row dialog-white-bg">
                     <div class="dialog-segment-bkg dialog-white-bg">
                         <!-- use the compile directive to convert text to HTML, add as child of current element -->
-                        <span class="dialog-row-text" compile="entry.options"></span>
+                        <span style="padding-right: 0px;" class="dialog-row-text" compile="entry.options"></span>
                     </div>
                 </div>
                 <!-- if movies are returned, display them after the Watson response -->

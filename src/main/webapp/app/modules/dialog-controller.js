@@ -30,6 +30,7 @@
      */
     var DialogController = function (_, $rootScope, $scope, $location, $anchorScroll, $timeout, gettextCatalog, dialogService) {
         var self = this;
+        var placeholderText = null;
         var states = {
             'intro': {
                 'key': 'intro',
@@ -229,7 +230,7 @@
             self.placeHolder = (function () {
                 var init = dialogService.initChat();
                 return init.then(function (response) {
-                    var placeholderText = response.welcomeMessage;
+                    placeholderText = response.welcomeMessage;
                     states.intro.introText = placeholderText.replace(/\n\n/g, ' '); //for placeholder attr use spaces
                     states.intro.placeholder = 'Start typing...';
                     $('#question').removeAttr('disabled');
@@ -336,13 +337,24 @@
             self.submit();
         };
 
+        self.switchToChatting = function () {
+            $location.path('chatting');
+        };
+
+        $scope.$on('$viewContentLoaded', function (next, current) {
+            if (placeholderText) {
+                $('#question').removeAttr('disabled');
+                $('#question').focus();
+            }
+        });
+
         //Watch the conversation array.. If a segment is added then update the state
         $scope.$watch(function () {
             return self.conversation;
         }, function () {
             // We have a new response, switch to 'answered' state
             if (!_.isEmpty(self.conversation)) {
-                if (self.conversation.length === 1 && self.conversation[0].responses) {
+                if (self.conversation.length === 1) {
                    states.intro.introText = self.conversation[0].responses;
                     $('body').addClass('dialog-body-running');
                     if (self.state.key !== states.preview.key) {
@@ -356,9 +368,10 @@
     angular.module('dialog.controller', [ 'gettext', 'lodash', 'ngRoute', 'ngSanitize', 'ngAnimate', 'dialog.service' ]).config(
             function ($routeProvider) {
                 $routeProvider.when('/', {
+                    'templateUrl': 'modules/home.html',
+                    'reloadOnSearch': false
+                }).when('/chatting', {
                     'templateUrl': 'modules/dialog.html',
-                    'controller': 'DialogController',
-                    'controllerAs': 'dialogCtrl',
                     'reloadOnSearch': false
                 });
             }).controller('DialogController', DialogController);

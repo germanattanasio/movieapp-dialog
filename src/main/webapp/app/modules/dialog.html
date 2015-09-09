@@ -59,11 +59,6 @@
         <div class="container">
             <form class="form" role="form" ng-submit="dialogCtrl.submit()">
                 <div class="form-group has-controls dialog-form-group-{{dialogCtrl.state.class}}">
-                    <!-- Display images on intro page -->
-                    <div class="dialog-intro-text-{{dialogCtrl.state.class}}">
-                        <img src="images/landing_page_text.png" class="dialog-intro-text-image"></img> 
-                        <img src="images/landing_page_movie_reel.svg" class="dialog-intro-image"></img>
-                    </div>
                     <!--At low resolutions we want to show the placeholder text in a label field as the input
                         control is too narrow to display the full message -->
                     <div class="dialog-happy-text-{{dialogCtrl.state.class}}">
@@ -79,10 +74,6 @@
                                         ng-model="dialogCtrl.question" autocorrect="off"
                                         autocomplete="off" 
                                         disabled/> 
-                            </td>
-                            <td class="dialog-button-col">
-                                <!--Only shown at low resolutions-->
-                                <button class="dialog-button" type="submit">Chat</button>  
                             </td>
                             <td class="dialog-resize-col" id="resize-footer-col">
                                   <!--test-->

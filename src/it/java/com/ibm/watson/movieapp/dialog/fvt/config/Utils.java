@@ -15,7 +15,6 @@
 
 package com.ibm.watson.movieapp.dialog.fvt.config;
 
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -23,7 +22,6 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Random;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -214,25 +212,19 @@ public class Utils {
 		
 		Properties prop = new Properties();
 		InputStream input = null;
-        String userDirectory = FileUtils.getUserDirectoryPath();
 		String propertyVal = "";
 		
 		try {
-
-			input = new FileInputStream(userDirectory + "/watsonBluemix/watson-movieapp-dialog/src/it/resources/" + "testConfig.properties");
-	 
+		    input = Utils.class.getResourceAsStream("/testConfig.properties");
 			// load a properties file
 			prop.load(input);
 	 
 			propertyVal = prop.getProperty(property);
 	 
 		} catch (Exception ex) {
-			logger.error("ERROR: Unable to read property");
-			ex.printStackTrace();
+			logger.error("ERROR: Unable to read property", ex);
 		} 
-		
 		return propertyVal;
-	 
 	  }
 	
 }

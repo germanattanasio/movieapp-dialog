@@ -57,6 +57,10 @@ public class Bounds_IT extends SetupMethod{
         BaseQuestion question = null;      
 		MovieUI ui = test.getGui(driver);
 
+		//select Next action
+		logger.info("INFO: Select next button");
+		ui.selectNextButton();
+		
 		List<BaseQuestion> questions = Utils.getRandomSample(3, SMALL_TALK_QUESTION, true);
 		Iterator<BaseQuestion> questionIterator = questions.iterator();
 		while (questionIterator.hasNext()) {
@@ -92,6 +96,10 @@ public class Bounds_IT extends SetupMethod{
         BaseQuestion question = null;        
 		MovieUI ui = test.getGui(driver);
 
+		//select Next action
+		logger.info("INFO: Select next button");
+		ui.selectNextButton();
+		
 		List<BaseQuestion> questions = Utils.getRandomSample(4, OUT_SCOPE_QUESTION, true);
 		Iterator<BaseQuestion> questionIterator = questions.iterator();
 		while (questionIterator.hasNext()) {

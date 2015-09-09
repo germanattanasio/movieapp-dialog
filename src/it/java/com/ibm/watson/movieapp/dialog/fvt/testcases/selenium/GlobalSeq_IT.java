@@ -56,6 +56,10 @@ public class GlobalSeq_IT extends SetupMethod{
 	    //pick random question
 		BaseQuestion question = Utils.getRandomSample(1, REP_SEQ_QUESTION, true).get(0);
 
+		//select Next action
+		logger.info("INFO: Select next button");
+		ui.selectNextButton();
+		
 		logger.info("INFO: Question - " + question.getText());
 		question.ask(ui);
 		
@@ -86,6 +90,10 @@ public class GlobalSeq_IT extends SetupMethod{
 	    //pick random question
 		BaseQuestion question = Utils.getRandomSample(1, OUT_SCOPE_QUESTION, true).get(0);
 
+		//select Next action
+		logger.info("INFO: Select next button");
+		ui.selectNextButton();
+		
 		logger.info("INFO: Question - " + question.getText());
 		question.ask(ui);
 		
@@ -116,6 +124,10 @@ public class GlobalSeq_IT extends SetupMethod{
 	    //pick random question
 		BaseQuestion question = Utils.getRandomSample(1, OPENING_QUESTION, true).get(0);
 
+		//select Next action
+		logger.info("INFO: Select next button");
+		ui.selectNextButton();
+		
 		logger.info("INFO: Question - " + question.getText());
 		question.ask(ui);
 		
@@ -146,6 +158,10 @@ public class GlobalSeq_IT extends SetupMethod{
 	    //pick random question
 		BaseQuestion question = Utils.getRandomSample(1, CLOSING_QUESTION, true).get(0);
 
+		//select Next action
+		logger.info("INFO: Select next button");
+		ui.selectNextButton();
+		
 		logger.info("INFO: Question - " + question.getText());
 		question.ask(ui);
 		
@@ -176,6 +192,10 @@ public class GlobalSeq_IT extends SetupMethod{
 	    //pick random question
 		BaseQuestion question = Utils.getRandomSample(1, SMALL_TALK_QUESTION, true).get(0);
 
+		//select Next action
+		logger.info("INFO: Select next button");
+		ui.selectNextButton();
+		
 		logger.info("INFO: Question - " + question.getText());
 		question.ask(ui);
 		

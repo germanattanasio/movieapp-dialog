@@ -27,6 +27,7 @@
     'dialog.rating',
     'dialog.preview',
     'dialog.parser',
+    'dialog.showtoggle',
     'ngAnimate'
   ]);
 }());

@@ -2,7 +2,7 @@
 "questions": [
 	{
 		"question":["movies", "Show me movies", "I want to see movies", "Look up movies"],
-		"expected":["Current movies or upcoming movies?"]
+		"expected":["Current movies or upcoming movies?", "Would you like to find a movie that's now playing or coming soon?"]
 	}
 	],
 	

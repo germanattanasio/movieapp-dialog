@@ -223,8 +223,7 @@
                     'clientId': res.clientId,
                     'conversationId': res.conversationId,
                     'movieName': movieName,
-                    'movieId': id,
-                    'popularity': popularity
+                    'movieId': id
                 }
             }, function (errorResponse) {
                 var data = errorResponse;

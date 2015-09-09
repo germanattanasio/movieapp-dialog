@@ -14,7 +14,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 ------------------------------------------------------------------------------>
-<html id="ng-app" ng-app="app">
+<html id="ng-app" ng-app="app" ng-controller="DialogController as dialogCtrl">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,7 +38,7 @@
 
 </head>
 <body id="app-body" class="dialog-body">
-    <div style="height: 100%; width: 100%" ng-view></div>
+    <div style="height: 100%; width: 100%; overflow-y:auto;" ng-view></div>
 
     <!-- build:js vendor.min.js -->
     <script src="bower_components/lodash/dist/lodash.compat.js"></script>
@@ -64,6 +64,7 @@
     <script src="modules/dialog-compile-directive.js"></script>
     <script src="modules/dialog-movie-directive.js"></script>
     <script src="modules/dialog-rating-directive.js"></script>
+    <script src="modules/dialog-showtoggle-directive.js"></script>
     <script src="modules/dialog-favorite-directive.js"></script>
     <script src="modules/dialog-controller.js"></script>
     <!-- endbuild -->

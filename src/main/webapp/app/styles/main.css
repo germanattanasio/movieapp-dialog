@@ -12,31 +12,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/*
 @font-face {
-    font-family: "IBMModSans";
-    src: url("../fonts/IBMModSans-Regular.otf");
+    font-family: "MyriadPro-Bold";
+    src: url("../fonts/MyriadPro-Bold.otf");
 }
 
 @font-face {
-    font-family: "IBMModSans-Black";
-    src: url("../fonts/IBMModSans-Black.otf");
+    font-family: "MyriadPro-Regular";
+    src: url("../fonts/MyriadPro-Regular.otf");
 }
 
 @font-face {
-    font-family: "IBMModSans-Bold";
-    src: url("../fonts/IBMModSans-Bold.otf");
-}
-
-@font-face {
-    font-family: "IBMModSans-Light";
-    src: url("../fonts/IBMModSans-Light.otf");
-}
-*/
-
-/*BODY*/
-body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "MyriadPro-Semibold";
+    src: url("../fonts/MyriadPro-Semibold.otf");
 }
 
 .dialog-body {
@@ -66,55 +54,77 @@ html, body {
 .container {
     margin-left: 15px;
     margin-right: 15px;
+    margin-bottom: 35px;
 }
 
 /*HEADER*/
-.dialog-navbar-txt-img {
-    background-image: url("../images/landing_page_text.png");
-    height: 50px;
-    width: 210px;
-    background-size: auto 20px;
-    background-position: left center;
-    background-repeat: no-repeat;
+.dialog-header-intro .dialog-navbar-txt-img {
+    background-image: url("../images/Header_web_home.svg");
+    width: 424px;
+    height: 100px;
     margin-left: auto;
     margin-right: auto;
-    display: block;
+    margin-top: 35px;
     cursor: pointer;
-    position: relative;
+}
+
+.dialog-header-chatting .dialog-header-inner, .dialog-header-preview .dialog-header-inner {
+    background-color: #252525;
+    height: 60px;
+}
+
+.dialog-header-chatting .dialog-navbar-txt-img, .dialog-header-preview .dialog-navbar-txt-img {
+    background-image: url("../images/Header_web_chat.svg");
+    width: 234px;
+    height: 55px;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
 }
 
 .dialog-header-inner {
     min-height: 35px;
 }
 
-.dialog-header-intro {
+.dialog-header-intro .dialog-no-favorite-left {
     display: none;
 }
 
-.dialog-header-chatting, .dialog-header-preview {
+.dialog-header-intro, .dialog-header-chatting, .dialog-header-preview {
     padding-right: 0px;
     padding-left: 0px;
-    background-color: #323232;
     color: #ECECEC;
 }
 
-.movie-review {
-    color: #48BFB6;
+.dialog-movie-review {
+    color: #FFFFFF;
+    font-family: "MyriadPro-Regular";
+    font-size: 14px;
 }
 
-.star {
+.dialog-review-value {
+    padding-left: 0px;
+    font-family: "MyriadPro-Semibold";
+    font-size: 14px;
+}
+
+.dialog-movie-name-rating {
+    display: block;
+    position: relative;
+}
+.dialog-movie-info-spacing {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.dialog-movie-name-rating-spacing {
+    margin-bottom:15px;
+}
+.dialog-rating-spacing {
+    margin-bottom:35px;
+}
+.dialog-review-star {
     vertical-align: initial;
     height: 12px;
-}
-
-.dialog-navbar-img {
-    background-image: url('../images/header_logo_reel.svg');
-    background-repeat: no-repeat;
-    background-size: auto 17px;
-    width: 100%;
-    background-position: right center;
-    height: 50px;
-    right: 0px;
 }
 
 .dialog-header-text {
@@ -128,19 +138,36 @@ html, body {
 
 /*Links on home page*/
 .dialog-link {
+    font-family: "MyriadPro-Regular";
     color: #ECECEC;
-    padding: 10px;
-    font-size: 10pt;
+    padding: 6px;
+    font-size: 11px;
 }
 
 .dialog-links-parent {
     display: none;
 }
 
+.dialog-collapse-text-toggle {
+    font-family: "MyriadPro-Semibold";
+    font-size: 16px;
+}
+
+.dialog-movie-overview {
+    font-family: "MyriadPro-Regular";
+    font-size: 16px;
+}
+
+.dialog-release-date {
+    font-family: "MyriadPro-Semibold";
+    font-size: 14px;
+}
+
 .dialog-release-label {
-    margin-top: 0px;
-    font-size: 11px;
-    margin-bottom: 25px;
+    margin-top: 10px;
+    font-size: 14px;
+    margin-bottom: 35px;
+    font-family: "MyriadPro-Regular";
 }
 
 .dialog-links-parent.dialog-links-parent-intro {
@@ -149,7 +176,7 @@ html, body {
     bottom: 0px;
     right: 0px;
     left: 0px;
-    height: 40px;
+    margin-bottom: 20px;
     text-align: center;
     display: block;
 }
@@ -160,33 +187,59 @@ html, body {
 
 .dialog-mct-option {
     margin-top: 10px;
-    margin-left: 5px;
-    padding: 15px;
+    margin-left: 6px;
+    padding-top: 11px;
+    padding-bottom: 8px;
+    padding-left: 15px;
+    padding-right: 15px;
     border-radius: 25px;
-    font-weight: lighter;
+    font-size: 14px;
+    font-family: "MyriadPro-Regular";
     vertical-align: middle;
+    text-align: center;
+    min-width: 75px;
     border-style: solid;
     border-width: 1px;
-    cursor: default;
-    color: #454545;
+    cursor: pointer;
+    color: #252525;
     line-height: 20px;
     display: inline-block;
 }
 
-.clearfix {
-    clear: both;
-}
-
 .dialog-mct-option:hover {
-    border-color: #454545;
+    border-color: #00abfc;
+    color: #00abfc;
 }
 
-.outer-div {
-    right: 2px;
-}
 /*FAVORITES*/
-.dialog-no-favorite, .dialog-favorite, .dialog-no-favorite-left,
-    .dialog-favorite-left {
+
+.dialog-unfavorite-overlay {
+    text-align:top;
+    opacity:0;
+    float:right;
+    -webkit-transition: opacity .25s ease;
+    -moz-transition: opacity .25s ease;
+}
+
+.dialog-fav-del {
+    cursor: pointer;
+}
+
+.dialog-favorite-image:hover .dialog-unfavorite-overlay {
+    opacity:1;
+}
+
+.dialog-full-screen-overlay {
+    text-align:top;
+    opacity:1;
+    float:right;
+    margin-top: -15px;
+    margin-right: -15px;
+    -webkit-transition: opacity .25s ease;
+    -moz-transition: opacity .25s ease;
+}
+
+.dialog-no-favorite, .dialog-favorite, .dialog-no-favorite-left,.dialog-favorite-left {
     margin-top: 20px;
     margin-bottom: 20px;
     width: 26px;
@@ -203,7 +256,6 @@ html, body {
     margin-left: 5%;
     cursor: default;
     width: 22px;
-    height: 18px;
     margin-top: 0px;
     margin-bottom: 0px;
     height: 50px;
@@ -220,15 +272,14 @@ html, body {
     text-align: left;
     padding-left: 10px;
     height: 150px;
-    font-size: 13pt;
+    font-family: "MyriadPro-Regular";
+    font-size: 16px;
     font-weight: 900;
     vertical-align: middle;
     color: white;
 }
 
-.dialog-favorite-lg .dialog-no-favorite, .dialog-favorite-lg .dialog-favorite,
-    .dialog-favorite-lg .dialog-no-favorite-left, .dialog-favorite-lg .dialog-favorite-left
-    {
+.dialog-favorite-lg .dialog-no-favorite, .dialog-favorite-lg .dialog-favorite,.dialog-favorite-lg .dialog-no-favorite-left, .dialog-favorite-lg .dialog-favorite-left {
     margin-top: 2px;
 }
 
@@ -261,7 +312,7 @@ html, body {
 .dialog-favorites-sidebar {
     position: fixed;
     width: 180px;
-    background-color: #EAEAEA;
+    background-color: #F7F7F7;
     display: none;
     z-index: 3;
     padding-bottom: 50px;
@@ -294,8 +345,7 @@ html, body {
     height: 100%;
 }
 
-.dialog-full-screen-favorites, .dialog-full-screen-favorites.ng-enter-active,
-    .dialog-full-screen-favorites.ng-leave {
+.dialog-full-screen-favorites, .dialog-full-screen-favorites.ng-enter-active, .dialog-full-screen-favorites.ng-leave {
     position: fixed;
     top: 0px;
     left: 0px;
@@ -307,8 +357,7 @@ html, body {
     opacity: 1;
 }
 
-.dialog-full-screen-favorites.ng-enter, .dialog-full-screen-favorites.ng-leave-active
-    {
+.dialog-full-screen-favorites.ng-enter, .dialog-full-screen-favorites.ng-leave-active {
     visibility: hidden;
     opacity: 0;
     width: 0px;
@@ -316,28 +365,28 @@ html, body {
 
 .dialog-fullscreen-header {
     width: 100%;
-    background-color: #323232;
+    background-color: rgba(48, 48, 48, 0.97);
 }
 
 .dialog-fullscreen-favorite-scroll {
-    background-color: rgba(68, 68, 68, 0.97);
+    background-color: rgba(48, 48, 48, 0.97);
     height: 100%;
     overflow-y: auto;
     padding-bottom: 70px;
+    padding-top: 16px;
 }
 
 .dialog-favorite-close {
-    position: fixed;
-    left: 0px;
-    margin: 15px;
-    margin-left: 25px;
     height: 30px;
     width: 30px;
-    cursor: pointer;
-    color: #FFFFFF;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 30px;
+    display: inline-block;
     background-size: 100% 100%;
-    background-image: url("../images/watson_close_details_sm.svg");
-    height: 30px;
+    background-repeat: no-repeat;
+    background-image: url("../images/X.svg");
+    cursor: pointer;
 }
 
 .dialog-favorite-links-parent {
@@ -355,10 +404,11 @@ html, body {
     vertical-align: middle;
 }
 
-.dialog-favorite-image, .dialog-no-favorites {
+.dialog-favorite-image {
     height: 150px;
     width: 130px;
     margin: 25px;
+    cursor: pointer;
     background-size: 100% 100%;
     background-repeat: no-repeat;
     padding-bottom: 15px;
@@ -367,42 +417,51 @@ html, body {
     transition: 0.3s cubic-bezier(0.7, 0, 0.5, 1.34);
 }
 
-.dialog-no-favorites.ng-enter, .dialog-favorite-image.ng-enter,
-    .dialog-favorite-image.ng-leave-active {
+.dialog-no-favorites.ng-enter, .dialog-favorite-image.ng-enter, .dialog-favorite-image.ng-leave-active {
     transform: scale(0);
     visibility: hidden;
 }
 
 .dialog-no-favorites {
     display: table;
-    padding-bottom: 15px;
-    border: dashed 2px #ABABAB;
-    background-color: #F3F3F3;
-    color: #B6B6B6;
+    height: 122px;
+    width: 122px;
+    background-color: #ECECEC;
+    margin: 25px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    visibility: visible;
+    transform: scale(1);
+    transition: 0.3s cubic-bezier(0.7, 0, 0.5, 1.34);
 }
 
 .dialog-no-favorites-text {
     display: table-cell;
+    font-family: "MyriadPro-Regular";
+    font-size: 16px;
+    color: #252525;
     text-align: center;
     vertical-align: middle;
 }
 
-.dialog-favorite-full-screen-image, .dialog-favorite-full-screen-image.ng-leave
-    {
+.dialog-favorite-full-screen-image, .dialog-favorite-full-screen-image.ng-leave {
     height: 150px;
     width: 125px;
     margin: 20px;
-    margin-left: auto;
     margin-right: auto;
+    display: inline-block;
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    padding-bottom: 15px;
+    padding: 15px;
     position: relative;
     cursor: pointer;
     visibility: visible;
     opacity: 1;
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
     transform: scale(1);
     transition: 0.3s cubic-bezier(0.7, 0, 0.5, 1.34);
+    overflow:hidden;
 }
 
 .dialog-favorite-full-screen-image.ng-leave-active {
@@ -426,7 +485,7 @@ html, body {
 
 .dialog-fullscreen-favorite-delete {
     position: absolute;
-    left: -75px;
+    left: 50px;
     top: 50%;
     height: 35px;
     width: 35px;
@@ -436,16 +495,15 @@ html, body {
 }
 
 .dialog-fullscreen-favorites-list {
-    text-align: center;
     height: 100%;
 }
 
-.dialog-fav-link, .dialog-fav-link:hover, .dialog-fav-link:active,
-    .dialog-fav-link:visited {
+.dialog-fav-link, .dialog-fav-link:hover, .dialog-fav-link:active, .dialog-fav-link:visited {
     display: inline-block;
     margin-bottom: 7px;
     opacity: 1;
     color: white;
+    font-family: "MyriadPro-Regular";
 }
 
 /*
@@ -457,21 +515,30 @@ html, body {
 }
 
 .footer-intro {
-    display: table-cell;
+    display: block;
     vertical-align: middle;
+    background-color: #252525;
+    padding-bottom: 75px;
 }
 
 .form-group .dialog-form-input {
-    padding-left: 15px;
+    padding-left: 5px;
     box-shadow: none;
     box-sizing: border-box;
-    height: 35px;
+    height: 45px;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
     border-radius: 0px;
     border-color: #ABABAB;
     position: relative;
+    font-family: "MyriadPro-Regular";
+    font-size: 24px;
+    color: #252525;
+    border-top: 0px;
+    border-right: 0px;
+    border-left: 0px;
+    border-bottom: 1px solid;
 }
 
 .footer-intro .form-group .dialog-form-input {
@@ -480,6 +547,8 @@ html, body {
     border-right: 0px;
     border-left: 0px;
     border-bottom: 1px solid;
+    font-size: 24px;
+    font-family: "MyriadPro-Regular";
 }
 
 .dialog-resize-col {
@@ -506,8 +575,7 @@ html, body {
     color: white;
 }
 
-.dialog-small-screen-placeholder-chatting,
-    .dialog-small-screen-placeholder-preview {
+.dialog-small-screen-placeholder-chatting, .dialog-small-screen-placeholder-preview {
     display: none;
 }
 
@@ -540,17 +608,16 @@ html, body {
     padding-top: 25px;
 }
 
-.dialog-happy-text-chatting, .dialog-happy-text-preview,
-    .dialog-placeholder-chatting, .dialog-placeholder-preview {
+.dialog-happy-text-chatting, .dialog-happy-text-preview, .dialog-placeholder-chatting, .dialog-placeholder-preview {
     display: none;
 }
 
 .dialog-placeholder-intro, .dialog-happy-text-intro {
     color: #FFFFFF;
-    font-size: 16pt;
     margin-top: 35px;
     margin-bottom: 35px;
-    text-align: center;
+    font-family: "MyriadPro-Semibold";
+    font-size: 28px;
 }
 
 .dialog-placeholder-intro {
@@ -587,41 +654,68 @@ html, body {
 }
 
 /*PLACEHOLDER Color change*/
+.dialog-body-chatting ::-webkit-input-placeholder { /* WebKit browsers */
+    color: #C7C7C7;
+}
+
+.dialog-body-chatting :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #C7C7C7;
+}
+
+.dialog-body-chatting ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #C7C7C7;
+}
+
+.dialog-body-chatting :-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #C7C7C7;
+}
+
+.dialog-body-preview ::-webkit-input-placeholder { /* WebKit browsers */
+    color: #C7C7C7;
+}
+
+.dialog-body-preview :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #C7C7C7;
+}
+
+.dialog-body-preview ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #C7C7C7;
+}
+
+.dialog-body-preview :-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #C7C7C7;
+}
+
 .dialog-body-intro ::-webkit-input-placeholder { /* WebKit browsers */
-    color: #858482;
-    opacity: .85;
+    color: #6E6E6E;
 }
 
 .dialog-body-intro :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color: #858482;
-    opacity: .85;
+    color: #6E6E6E;
 }
 
 .dialog-body-intro ::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color: #858482;
-    opacity: .85;
+    color: #6E6E6E;
 }
 
 .dialog-body-intro :-ms-input-placeholder { /* Internet Explorer 10+ */
-    color: #858482;
+    color: #6E6E6E;
 }
 
 ::-webkit-input-placeholder { /* WebKit browsers */
-    color: #858482;
+    color: #6E6E6E;
 }
 
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color: #858482;
-    opacity: .85;
+    color: #6E6E6E;
 }
 
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color: #858482;
-    opacity: .85;
+    color: #6E6E6E;
 }
 
 :-ms-input-placeholder { /* Internet Explorer 10+ */
-    color: #858482;
+    color: #6E6E6E;
 }
 
 /*
@@ -655,23 +749,18 @@ html, body {
 }
 
 .dialog-segment-bkg, .ng-enter .dialog-segment-bkg {
-    background-color: #EAEAEA;
-    padding: 0px;
     height: 55px;
     display: table;
     width: 100%;
 }
 
-.dialog-watson-row, .dialog-user-row, .dialog-watson-row.ng-enter.ng-enter-active,
-    .dialog-user-row.ng-enter.ng-enter-active {
+.dialog-watson-row, .dialog-user-row, .dialog-watson-row.ng-enter.ng-enter-active, .dialog-user-row.ng-enter.ng-enter-active {
     border: 0px solid #FFFFFF;
-    margin-bottom: 10px;
     transition: bottom .35s;
     bottom: 0;
     opacity: 1;
     visibility: visible;
     position: relative;
-    background-color: #EAEAEA;
 }
 
 .dialog-user-row, .dialog-user-row.ng-enter.ng-enter-active {
@@ -686,7 +775,7 @@ html, body {
     vertical-align: middle;
 }
 
-.dialog-user-row .dialog-white-bg .dialog-row-text{
+.dialog-user-row .dialog-white-bg .dialog-row-text {
     padding-right: 5px;
     padding-left: 0px;
 }
@@ -694,6 +783,9 @@ html, body {
 .dialog-watson-row, .dialog-watson-row.ng-enter.ng-enter-active {
     text-align: left;
     padding-left: 55px;
+    font-size: 16px;
+    font-family: "MyriadPro-SemiBold";
+    color: #252525;
 }
 
 .dialog-user-row.ng-enter, .dialog-watson-row.ng-enter {
@@ -714,7 +806,7 @@ html, body {
     height: 100%;
     width: 55px;
     display: inline-block;
-    background-color: #FF5050;
+    background-color: #00abfc;
     background-image: url("../images/human_avatar.svg");
     background-repeat: no-repeat;
     background-size: 50% 50%;
@@ -737,7 +829,7 @@ html, body {
     background-repeat: no-repeat;
     background-size: 50% auto;
     background-position: center center;
-    background-color: #00ABFC;
+    background-color: #41d6c3;
 }
 
 .watson-thinking {
@@ -752,13 +844,12 @@ html, body {
     border-right-width: 0px;
 }
 
-.dialog-movie-links-parent, .dialog-movie-links-parent.ng-enter.ng-enter-active
-    {
+.dialog-movie-links-parent, .dialog-movie-links-parent.ng-enter.ng-enter-active {
     margin-left: auto;
     margin-right: auto;
     padding-left: 55px;
     padding-right: 55px;
-    padding-bottom: 5px;
+    padding-bottom: 25px;
 }
 
 .dialog-movie {
@@ -780,8 +871,7 @@ html, body {
     opacity: 0;
 }
 
-.dialog-movie.ng-enter-stagger, .dialog-movie.ng-leave-stagger,
-    .dialog-movie.ng-move-stagger {
+.dialog-movie.ng-enter-stagger, .dialog-movie.ng-leave-stagger, .dialog-movie.ng-move-stagger {
     /* 200ms will be applied between each sucessive enter operation */
     /* this will have a 100ms delay between each successive leave animation */
     -webkit-transition-delay: 0.2s;
@@ -792,29 +882,32 @@ html, body {
     transition-duration: 0s;
 }
 
-.dialog-movie.ng-leave, .dialog-movie.ng-move.ng-move-active,
-    .dialog-movie.ng-enter.ng-enter-active {
+.dialog-movie.ng-leave, .dialog-movie.ng-move.ng-move-active, .dialog-movie.ng-enter.ng-enter-active {
     opacity: 1;
     visibility: visible;
 }
 
 .dialog-movie-link {
     margin: 5px;
-    padding: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-top: 11px;
+    padding-bottom: 8px;
+    padding-left: 15px;
+    padding-right: 15px;
     width: 100%;
+    border-radius: 25px;
     border-style: solid;
     border-width: 1px;
     display: inline-block;
     cursor: pointer;
-    color: #FFFFFF;
-    background-color: #454545;
+    color: #252525;
+    background-color: #FFFFFF;
+    font-family: "MyriadPro-Regular";
+    font-size: 14px;
 }
 
 .dialog-movie-link:hover {
-    background-color: #323232;
-    color: #ECECEC;
+    border-color: #00abfc;
+    color: #00abfc;
 }
 
 .dialog-entries {
@@ -837,33 +930,31 @@ html, body {
     bottom: 0px;
     right: 0px;
     width: 100%;
-    padding-left: 35px;
-    background: rgba(68, 68, 68, 0.97);
+    background: rgba(48, 48, 48, 0.97);
     color: #ECECEC;
     z-index: 3000; /*has to be a huge number to overlay header*/
     transition: all .5s ease-in-out;
     visibility: visible;
 }
 
-.dialog-preview-parent.ng-enter, .dialog-preview-parent.ng-leave-active
-    {
+.dialog-preview-parent.ng-enter, .dialog-preview-parent.ng-leave-active {
     width: 0px;
     opacity: 0;
     visibility: hidden;
 }
 
 .dialog-preview-scroll {
-    padding-right: 35px;
     overflow-y: auto;
 }
 
 .dialog-trailer-missing {
     margin: 0px;
-    height: 100px;
-    line-height: 100px;
+    height: 175px;
+    line-height: 175px;
     background-color: rgba(50, 50, 50, 1);
     text-align: center;
     font-size: 16px;
+    font-family: "MyriadPro-Regular";
 }
 
 .dialog-drawer-toggle {
@@ -871,10 +962,11 @@ html, body {
     width: 30px;
     margin-top: 20px;
     margin-bottom: 20px;
+    margin-left: 30px;
     display: inline-block;
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    background-image: url("../images/watson_close_details_sm.svg");
+    background-image: url("../images/X.svg");
     cursor: pointer;
 }
 
@@ -911,11 +1003,14 @@ html, body {
     min-height: 100%;
 }
 
+.dialog-body-intro {
+    background-color: #252525;
+}
+
 .dialog-body-chatting, .dialog-body-preview {
     margin-top: 35px;
     margin-bottom: 60px;
     padding-top: 10px;
-    font-size: 9pt;
 }
 
 .dialog-body-intro .container {
@@ -924,46 +1019,216 @@ html, body {
     margin-right: auto;
 }
 
+.dialog-iheader {
+    margin-top: 35px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.dialog-ifooter {
+    margin-bottom: 20px;
+    text-align: center;
+    padding-bottom: 75px;
+}
+
+.dialog-nextbtn {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    cursor: pointer;
+}
+
+.dialog-welcome {
+    margin-top: 100px;
+    margin-bottom: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 28px;
+    font-family: "MyriadPro-Semibold";
+}
+@media ( min-height : 280px) {
+	.footer-intro {
+	    padding-top: 75px;
+	}
+}
+@media ( min-height : 350px) {
+	.footer-intro {
+	    padding-top: 175px;
+	}
+}
+@media ( min-height : 650px) {
+	.footer-intro {
+	    padding-top: 250px;
+	}
+}
+@media ( min-height : 768px) {
+	.footer-intro {
+	    padding-top: 275px;
+	}
+}
+@media ( min-height : 850px) {
+	.footer-intro {
+	    padding-top: 325px;
+	}
+}
 @media ( min-width : 300px) {
-    .star-rating {
-        padding-left: 8px;
-        display: inline-block;
+    .dialog-header-chatting .dialog-header-inner, .dialog-header-preview .dialog-header-inner {
+        height: 50px;
     }
-    .review-value {
+    .dialog-welcome {
+        width: 250px;
+        margin-top: 50px;
+        margin-bottom: 40px;
+    }
+    .dialog-iheader {
+        background-image: url("../images/Header_mobile_home.svg");
+        background-size: 310px;
+        background-repeat: no-repeat;
+        width: 310px;
+        height: 81px;
+    }
+    .dialog-nextbtn {
+        background-image: url("../images/Next_mobile.svg");
+        width: 100px;
+        height: 64px;
+    }
+    .dialog-header-intro .dialog-navbar-txt-img {
+        background-image: url("../images/Header_mobile_home.svg");
+        background-size: 310px;
+        background-repeat: no-repeat;
+        width: 310px;
+        height: 81px;
+        margin-top: 20px;
+    }
+    .dialog-header-preview .dialog-navbar-txt-img, .dialog-header-chatting .dialog-navbar-txt-img {
+        background-image: url("../images/Header_mobile_chat.svg");
+        width: 216px;
+        height: 46px;
+        background-position-y: 3px;
+    }
+    .row {
+        margin-right: -30px;
+        margin-left: -30px;
+    }
+    .dialog-line-separator {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        margin-left: 15px;
+        margin-right: 20px;
+        border-color: #d1d4d6;
+    }
+    .dialog-review-star-rating {
         padding-left: 0px;
+        display: inline-block;
     }
     .dialog-movie-name {
-        display: inline;
-        margin-right: 10px;
+        display: inline-block;
+        font-family: MyriadPro-Semibold;
+        font-size: 28px;
+        padding-right: 40px;
+        width: 100%;
     }
     .dialog-rating-label {
-        margin-bottom: 10px;
-        padding-left: 15px;
-        padding-right: 15px;
-        font-weight: lighter;
-        vertical-align: middle;
-        border-style: solid;
-        border-width: 1px;
-        display: inline-block;
+        position: absolute;
+        right: -8px;
+        top: 19px;
     }
     h3 {
         font-size: 20px;
     }
+    .dialog-watson-row, .dialog-watson-row.ng-enter.ng-enter-active {
+        background-color: transparent;
+        padding-left: 25px;
+    }
+    .dialog-user-row, .dialog-user-row.ng-enter.ng-enter-active {
+        background-color: transparent;
+        padding-right: 25px;
+    }
+    .dialog-user-row .dialog-white-bg .dialog-row-text, .dialog-user-row .dialog-row-text {
+        padding-right: 20px;
+        padding-left: 0px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        color: #252525;
+        font-size: 16px;
+        font-family: "MyriadPro-Regular";
+    }
+    .dialog-watson-row .dialog-row-text {
+        padding-right: 0px;
+        padding-left: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .container .dialog-watson-row:before {
+        left: 0px;
+        height: 35px;
+        width: 35px;
+        top: 10px;
+        border-radius: 50%;
+    }
     .container .dialog-user-row:after {
-        height: 55px;
+        right: 0px;
+        height: 35px;
+        width: 35px;
+        top: 10px;
+        border-radius: 50%;
+    }
+    .dialog-movie {
+        display: inline-block;
+        padding-left: 5px;
+    }
+    .dialog-movie-links-parent {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .dialog-mct-option {
+        min-width: 70px;
+    }
+    .dialog-favorite-full-screen-image, .dialog-favorite-full-screen-image.ng-leave {
+        height: 162px;
+        width: 137px;
+        margin-left: 15px;
+        margin-top: -10px;
+    }
+    .dialog-fullscreen-favorite-delete{
+        left: 50px;
+    }
+    .dialog-fullscreen-header{
+        height: 70px;
+    }
+    .dialog-fullscreen-header .dialog-favorite-indicator{
+        display: none;
     }
 }
 
 @media ( min-width : 374px) {
-    .review-value {
+    .dialog-review-star-rating {
         padding-left: 10px;
+        display: inline-block;
     }
     h3 {
         font-size: 24px;
     }
+    .dialog-welcome {
+        width: 350px;
+        margin-top: 100px;
+        margin-bottom: 80px;
+    }
+    .dialog-favorite-full-screen-image, .dialog-favorite-full-screen-image.ng-leave {
+        height: 190px;
+        width: 164px;
+    }
+    .dialog-fullscreen-favorite-delete{
+        left: 65px;
+    }
 }
 
 @media ( min-width : 425px) {
+    .dialog-mct-option {
+        min-width: 75px;
+    }
     .dialog-body-intro .container {
         width: 400px;
     }
@@ -976,30 +1241,59 @@ html, body {
     .dialog-no-favorite-left, .dialog-favorite-left {
         margin-left: 8%;
     }
-    .star-rating {
-        padding-left: 35px;
-        display: inline-block;
-    }
-    .review-value {
-        padding-left: 17px;
-    }
-    .dialog-rating-label {
-        margin-left: 20px;
-        margin-bottom: 10px;
-        padding-left: 15px;
-        padding-right: 15px;
-        font-weight: lighter;
-        vertical-align: middle;
-        border-style: solid;
-        border-width: 1px;
-        display: inline-block;
-    }
-    .dialog-movie-name {
-        display: inline-block;
-    }
 }
 
+@media ( min-width : 470px) {
+    .dialog-welcome {
+        width: 470px;
+     }
+}
 @media ( min-width : 600px) {
+	.row {
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+    .dialog-header-chatting .dialog-header-inner, .dialog-header-preview .dialog-header-inner {
+        height: 60px;
+    }
+    .dialog-iheader {
+        background-image: url("../images/Header_web_home.svg");
+        background-size: 459px;
+        background-repeat: no-repeat;
+        width: 447px;
+        height: 100px;
+    }
+    .dialog-nextbtn {
+        background-image: url("../images/Next_web.svg");
+        width: 109px;
+        height: 55px;
+    }
+    .dialog-header-intro .dialog-navbar-txt-img {
+        background-image: url("../images/Header_web_home.svg");
+        background-size: 459px;
+        background-repeat: no-repeat;
+        width: 447px;
+        height: 100px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 35px;
+        cursor: pointer;
+    }
+    .dialog-header-preview .dialog-navbar-txt-img, .dialog-header-chatting .dialog-navbar-txt-img {
+        background-image: url("../images/Header_web_chat.svg");
+        width: 243px;
+        height: 55px;
+        margin-left: auto;
+        margin-right: auto;
+        cursor: pointer;
+    }
+    .dialog-line-separator {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        margin-left: 75px;
+        margin-right: 75px;
+        border-color: #d1d4d6;
+    }
     .dialog-body-intro .container {
         width: 75%;
     }
@@ -1014,11 +1308,44 @@ html, body {
         margin-left: auto;
         width: 550px;
     }
+    .container .dialog-user-row:after {
+        height: 55px;
+        width: 55px;
+        top: 0px;
+    }
+     .container .dialog-watson-row:before {
+        height: 55px;
+        width: 55px;
+        top: 0px;
+    }
+    .dialog-user-row .dialog-white-bg .dialog-row-text, .dialog-user-row .dialog-row-text {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .dialog-watson-row .dialog-row-text {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .dialog-watson-row, .dialog-watson-row.ng-enter.ng-enter-active {
+        padding-left: 55px;
+    }
+    .dialog-user-row, .dialog-user-row.ng-enter.ng-enter-active {
+        padding-right: 55px;
+    }
+    .dialog-no-favorite-left, .dialog-favorite-left {
+        height: 60px;
+    }
 }
 
 @media ( min-width : 768px) {
-    .dialog-body {
-        background-image: url("../images/theater_curtains_background.svg");
+    .dialog-movie-links-parent {
+        padding-left: 55px;
+        padding-right: 55px;
+    }
+    .dialog-form-group-intro {
+        width: 532px;
+        margin-left: auto;
+        margin-right: auto;
     }
     .dialog-body-running {
         background: none;
@@ -1061,24 +1388,17 @@ html, body {
         margin-bottom: 40px;
     }
     .dialog-favorite-sm {
-        display: none;
-    }
-    .dialog-favorite-lg {
-        display: inline-block;
+        display: inline-block;;
     }
     .dialog-body-intro .container {
         width: 75%;
     }
     .dialog-preview-parent {
         width: 350px;
-        top: 50px;
+        top: 60px;
     }
     .dialog-intro-image {
         padding-right: 0px;
-    }
-    .dialog-navbar-txt-img {
-        width: 230px;
-        background-size: auto 22px;
     }
     .dialog-navbar-img {
         background-size: auto 18px;
@@ -1090,12 +1410,9 @@ html, body {
     .dialog-movie-link {
         width: inherit;
     }
-    .star-rating {
-        padding-left: 10px;
+    .dialog-review-star-rating {
+        padding-left: 15px;
         display: inline-block;
-    }
-    .review-value {
-        padding-left: 10px;
     }
     .dialog-placeholder-intro {
         display: none;
@@ -1105,13 +1422,6 @@ html, body {
 @media ( min-width : 880px) {
     .dialog-preview-parent {
         width: 450px;
-    }
-    .star-rating {
-        padding-left: 35px;
-        display: inline-block;
-    }
-    .review-value {
-        padding-left: 17px;
     }
 }
 /*
@@ -1135,31 +1445,12 @@ html, body {
         display: none;
     }
     .dialog-watson-row, .dialog-watson-row.ng-enter.ng-enter-active {
-        padding-left: 65px;
-        border-right-width: 65px;
+        border-right-width: 75px;
         background-color: transparent;
     }
     .dialog-user-row, .dialog-user-row.ng-enter.ng-enter-active {
-        padding-right: 65px;
-        border-left-width: 65px;
+        border-left-width: 75px;
         background-color: transparent;
-    }
-    .dialog-user-row .dialog-row-text {
-        padding-right: 30px;
-    }
-    .dialog-watson-row .dialog-row-text {
-        padding-left: 30px;
-    }
-    .dialog-toggle-favorites-view {
-        display: none;
-    }
-    .footer-chatting .dialog-input-table, .footer-preview .dialog-input-table
-        {
-        margin-left: 10px;
-        border-right: solid #FFFFFF 20px;
-    }
-    .dialog-body-intro .container {
-        width: 835px;
     }
     .container .dialog-watson-row:before {
         left: 0px;
@@ -1171,8 +1462,18 @@ html, body {
         height: 55px;
         border-radius: 50%;
     }
+    .dialog-toggle-favorites-view {
+        display: none;
+    }
+    .footer-chatting .dialog-input-table, .footer-preview .dialog-input-table {
+        margin-left: 20px;
+        border-right: solid #FFFFFF 40px;
+    }
+    .dialog-body-intro .container {
+        width: 835px;
+    }
     .dialog-preview-parent {
-        top: 50px;
+        top: 60px;
         width: 350px;
     }
     .container .form-group {
@@ -1188,24 +1489,13 @@ html, body {
         padding-right: 0px;
     }
     .dialog-movie-link {
-        color: #000000;
+        color: #252525;
         background-color: #FFFFFF;
-    }
-    .dialog-movie-links-parent {
-        padding-left: 60px;
-        padding-right: 60px;
     }
     .dialog-no-favorite-left, .dialog-favorite-left {
         margin-left: 80px;
     }
-    .star-rating {
-        padding-left: 10px;
-        display: inline-block;
-    }
-    .review-value {
-        padding-left: 10px;
-    }
-    .dialog-user-row .dialog-white-bg .dialog-row-text{
+    .dialog-user-row .dialog-white-bg .dialog-row-text {
         padding-right: 0px;
     }
 }
@@ -1213,13 +1503,6 @@ html, body {
 @media ( min-width : 1100px) {
     .dialog-preview-parent {
         width: 450px;
-    }
-    .star-rating {
-        padding-left: 35px;
-        display: inline-block;
-    }
-    .review-value {
-        padding-left: 17px;
     }
 }
 

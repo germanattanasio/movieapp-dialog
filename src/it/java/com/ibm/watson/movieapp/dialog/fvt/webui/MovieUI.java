@@ -40,9 +40,9 @@ public class MovieUI extends BaseUI{
 	public static String questionParts = ".dialog-segment-bkg";
 	public static String animationActive = "css=.ng-enter-active";
 	public static String watsonThinkAnimation = "css=div[class='watson-thinking']";
-	
-	public static String trailerHeartSelected = "css=favorite[class='dialog-favorite-lg'] >span[class='dialog-favorite']";
-	public static String trailerHeartNotSelected = "css=favorite[class='dialog-favorite-lg'] > span[class='dialog-no-favorite']";
+
+	public static String trailerHeartSelected = "css=favorite[class='dialog-favorite-sm'] > span[class='dialog-favorite']";
+	public static String trailerHeartNotSelected = "css=favorite[class='dialog-favorite-sm'] > span[class='dialog-no-favorite']";
 	public static String trailerClose = "css=preview[class='dialog-preview']>div>span[class='dialog-drawer-toggle']";
 	
 	public static String favListHeartFavorites = "css=favorite-indicator[class='dialog-favorite-left']";
@@ -56,8 +56,9 @@ public class MovieUI extends BaseUI{
 	
 	public static String termsServiceLink = "css=a[class='dialog-link'][href='./legal/WhatsInTheaters_TermsOfUse.html']";
 	public static String privacyLink = "css=a[class='dialog-link'][href='http://www.ibm.com/privacy/us/en/']";
-	public static String dialogIntro = "css=div[class='dialog-happy-text-intro']";
-	
+	public static String dialogIntro = "css=div[class='dialog-welcome']";
+
+	public static String nextButtonLoc = "css=form[class='wform ng-pristine ng-valid'] div[class='dialog-nextbtn']";
 	
 	/**
 	 * askQuestion
@@ -135,6 +136,17 @@ public class MovieUI extends BaseUI{
 		conversation.setQuestions(question.deconQuest(this));
 		
 		return conversation;
+	}
+	
+	/**
+	 * selectNextButton - 
+	 */
+	public void selectNextButton(){
+		
+		fluentWaitVisible(nextButtonLoc);
+		WebElement nextButton = findElement(nextButtonLoc);
+
+		nextButton.submit();
 	}
 	
 	

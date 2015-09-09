@@ -62,6 +62,9 @@ public class PostExpan_IT extends SetupMethod{
 		
 		MovieUI ui = test.getGui(driver);
 
+		logger.info("INFO: Select next button");
+		ui.selectNextButton();
+		
 		logger.info("INFO: Question - " + chatQuestion.getText());
 		chatQuestion.ask(ui);
 		

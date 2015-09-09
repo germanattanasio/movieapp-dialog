@@ -61,6 +61,10 @@ public class InsertExpan_IT extends SetupMethod{
 		
 		MovieUI ui = test.getGui(driver);
 	
+		//select Next action
+		logger.info("INFO: Select next button");
+		ui.selectNextButton();
+		
 		Iterator<BaseQuestion> questionIterator = movieQuestions.iterator();
 		while (questionIterator.hasNext()) {
 			BaseQuestion question = questionIterator.next();

@@ -38,33 +38,36 @@
          */
         return {
             'restrict': 'E',
-            'template': '<span></span><span class="movie-review">themoviedb.org</span><p class="star-rating"><span id="rating"></span></p><span class="review-value">{{Math.round((movie.popularity)*10)/10}}/10</span></span>',
+            'template': '<span class="mreview"><span class="dialog-movie-review">themoviedb.org: </span><span class="dialog-review-value">{{Math.round((movie.popularity)*10)/10}}/10</span><p class="dialog-review-star-rating"><span id="rating"></span></p></span></span>',
             'link': function (scope, element) {
                 scope.$watch(function () {
                     return scope.dialogCtrl.selectedMovie;
                 }, function () {
-                    //var num = parseFloat(scope.$parent.dialogCtrl.selectedMovie.popularity) / 2;
-                    var num = parseFloat(scope.dialogCtrl.selectedMovie.popularity);
-                    var rval = Math.round(num * 2) / 2;
-                    var fullstar = parseInt(rval.toString().split('.')[0]);
-                    var halfstar = (rval.toString().split('.')[1] === undefined) ? 0 : 1;
-                    var count = 10;
-                    var emptystar = count - (fullstar + halfstar);
-                    var i = 0, stars = '';
-                    var fs = '<img class="star" src=images/Full_star.svg>';
-                    var es = '<img class="star" src=images/Empty_star.svg>';
-                    var hs = '<img class="star" src=images/Half_star.svg>';
-                    scope.Math = Math;
-                    for (i = 0;i < fullstar;i++) {
-                        stars += fs + ' ';
+                    var num = 0, rval = 0, fullstar = 0, halfstar = 0, emptystar = 0, count = 10, i = 0, stars = '';
+                    var fs = '<img class="dialog-review-star" src=images/Full_star.svg>';
+                    var es = '<img class="dialog-review-star" src=images/Empty_star.svg>';
+                    var hs = '<img class="dialog-review-star" src=images/Half_star.svg>';
+                    if (scope.dialogCtrl.selectedMovie.popularity > 0) {
+                        num = parseFloat(scope.dialogCtrl.selectedMovie.popularity);
+                        rval = Math.round(num * 2) / 2;
+                        fullstar = parseInt(rval.toString().split('.')[0]);
+                        halfstar = (rval.toString().split('.')[1] === undefined) ? 0 : 1;
+                        emptystar = count - (fullstar + halfstar);
+                        scope.Math = Math;
+                        for (i = 0;i < fullstar;i++) {
+                            stars += fs + ' ';
+                        }
+                        for (i = 0;i < halfstar;i++) {
+                            stars += hs + ' ';
+                        }
+                        for (i = 0;i < emptystar;i++) {
+                            stars += es + ' ';
+                        }
+                        $('#rating').html(stars);
+                   }
+                    else {
+                        $('.mreview').css('display', 'none');
                     }
-                    for (i = 0;i < halfstar;i++) {
-                        stars += hs + ' ';
-                    }
-                    for (i = 0;i < emptystar;i++) {
-                        stars += es + ' ';
-                    }
-                    $('#rating').html(stars);
                 }, true);
             }
         };

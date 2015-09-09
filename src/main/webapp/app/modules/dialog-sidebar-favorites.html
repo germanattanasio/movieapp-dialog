@@ -15,20 +15,18 @@
 ------------------------------------------------------------------------------>
 <div class="dialog-favorites-sidebar">
     <div ng-show="dialogCtrl.getFavorites().length == 0" class="dialog-no-favorites">
-        <span class="dialog-no-favorites-text">0<br/>Favorites</span>
+        <span class="dialog-no-favorites-text">0 Favorites</span>
     </div>
     <div style="background-image: url('{{favorite.posterPath}}');{{favorite.posterPath.search('html')?'':'background:#323232'}}" 
           class="dialog-favorite-image" 
           ng-if="dialogCtrl.getFavorites().length > 0"
+          ng-click="dialogCtrl.selectMovie(favorite)"
           ng-repeat="favorite in dialogCtrl.getFavorites()" >
+           <span class="dialog-unfavorite-overlay">
+              <img class="dialog-fav-del" ng-click="dialogCtrl.toggleFavorite(favorite)" src="./images/Unfavorite.svg">
+           </span>
           <div style="position:absolute;" ng-if="!(favorite.posterPath.search('html'))">
-    <p class="dialog-favorite-left-movie-poster" >{{favorite.movieName}} </p>
-  </div>
-        <div class="dialog-favorite-inner-parent">
-            <div class="dialog-favorite-links-parent">
-                <div class="dialog-unfavorite-botton" ng-click="dialogCtrl.toggleFavorite(favorite)"></div>
-                <a class="dialog-fav-link" href="" ng-click="dialogCtrl.selectMovie(favorite)">Movie Details</a>
-            </div>
-        </div>
+              <p class="dialog-favorite-left-movie-poster" >{{favorite.movieName}} </p>
+         </div>
     </div>
 </div>

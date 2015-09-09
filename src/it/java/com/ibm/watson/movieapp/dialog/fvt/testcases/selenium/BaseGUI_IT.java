@@ -134,8 +134,12 @@ public class BaseGUI_IT extends SetupMethod{
 
         
 		MovieUI ui = test.getGui(driver);
+		
+		logger.info("INFO: Select next button");
+		ui.selectNextButton();
+		
 		//wait for loading to complete
-		ui.fluentWaitNotPresent(MovieUI.chatBoxDisabled );
+		ui.fluentWaitAttrChange(MovieUI.chatBox, "placeholder", greeting);
 		
 		chatBoxText = ui.findElement(MovieUI.chatBox).getAttribute("placeholder");
 		logger.info("INFO: Chatbox text " + chatBoxText);
@@ -144,6 +148,38 @@ public class BaseGUI_IT extends SetupMethod{
 		Assert.assertTrue("ERROR: Chatbox greeting " + chatBoxText + " does not match expected greeting " + greeting,
 							chatBoxText.contains(greeting));
 	}
+	
+	/**
+	 *<ul>
+	 *<li><B>Info: </B></li>
+	 *<li><B>Step: </B></li>
+	 *<li><B>Verify: </B></li>
+	 *</ul>
+	 */
+	//@Test
+	public void nextButton() {
+
+		RestAPI api = RestAPI.getAPI();	
+		String intro = api.getJSONElem(COMMON, "dialogIntro");
+		String introText = "";
+		
+		Driver test = new Driver();
+		WebDriver driver = test.getInstance();
+        rule.setDriver(driver);
+
+        
+		MovieUI ui = test.getGui(driver);
+		//wait for loading to complete
+		ui.fluentWaitNotPresent(MovieUI.chatBoxDisabled );
+		
+		introText = ui.findElement(MovieUI.dialogIntro).getText();
+		logger.info("INFO: Dialog intro text " + introText);
+		
+		//Validate that the client id is not empty
+		Assert.assertTrue("ERROR: Dialog Intro " + introText + " does not match expected dialog intro " + intro,
+							introText.contains(intro));
+	}
+	
 	
 	/**
 	 *<ul>
