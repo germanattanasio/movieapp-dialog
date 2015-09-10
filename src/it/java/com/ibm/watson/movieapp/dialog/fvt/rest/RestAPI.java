@@ -45,7 +45,6 @@ public class RestAPI {
 	public static String getResponse = "/postConversation";
 	public static String getSelectedMovieDetails = "/getSelectedMovieDetails";
 	public static String restURL = "/watson-movieapp-dialog/api/bluemix";
-	public static String resourceDir = "/src/it/resources/questions/";
 
 	public RestAPI() {
 	}
@@ -129,7 +128,6 @@ public class RestAPI {
 		    if(!jsonFile.startsWith(File.separator)){
 		        jsonFile = File.separator + jsonFile;
 		    }
-		    jsonFile = "/questions" + jsonFile;
 		        
 			JsonElement jelmnt = new JsonParser().parse(new InputStreamReader(this.getClass().getResourceAsStream(jsonFile)));
 			JsonArray jarray = jelmnt.getAsJsonObject().getAsJsonArray("questions");	
@@ -177,7 +175,6 @@ public class RestAPI {
 		    if(!jsonFile.startsWith(File.separator)){
                 jsonFile = File.separator + jsonFile;
             }
-            jsonFile = "/questions" + jsonFile;
             JsonElement jelmnt = new JsonParser().parse(new InputStreamReader(this.getClass().getResourceAsStream(jsonFile)));
 			JsonArray jarray = jelmnt.getAsJsonObject().getAsJsonArray(type);
 			

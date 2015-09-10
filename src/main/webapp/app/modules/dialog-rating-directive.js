@@ -44,9 +44,9 @@
                     return scope.dialogCtrl.selectedMovie;
                 }, function () {
                     var num = 0, rval = 0, fullstar = 0, halfstar = 0, emptystar = 0, count = 10, i = 0, stars = '';
-                    var fs = '<img class="dialog-review-star" src=images/Full_star.svg>';
-                    var es = '<img class="dialog-review-star" src=images/Empty_star.svg>';
-                    var hs = '<img class="dialog-review-star" src=images/Half_star.svg>';
+                    var fs = '<img class="dialog-review-star" src="images/Full_star.svg">';
+                    var es = '<img class="dialog-review-star" src="images/Empty_star.svg">';
+                    var hs = '<img class="dialog-review-star" src="images/Half_star.svg">';
                     if (scope.dialogCtrl.selectedMovie.popularity > 0) {
                         num = parseFloat(scope.dialogCtrl.selectedMovie.popularity);
                         rval = Math.round(num * 2) / 2;
@@ -64,6 +64,7 @@
                             stars += es + ' ';
                         }
                         $('#rating').html(stars);
+                        $('.mreview').css('display', 'block');
                    }
                     else {
                         $('.mreview').css('display', 'none');
