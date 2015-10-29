@@ -23,6 +23,8 @@ import com.ibm.watson.movieapp.dialog.fvt.testcases.rest.IT_restCloseSeq;
 import com.ibm.watson.movieapp.dialog.fvt.testcases.rest.IT_restCurrentFuture;
 import com.ibm.watson.movieapp.dialog.fvt.testcases.rest.IT_restGenre;
 import com.ibm.watson.movieapp.dialog.fvt.testcases.rest.IT_restMovie;
+import com.ibm.watson.movieapp.dialog.fvt.testcases.rest.IT_restNlcConfirmSeq;
+import com.ibm.watson.movieapp.dialog.fvt.testcases.rest.IT_restNlcDisambiguationSeq;
 import com.ibm.watson.movieapp.dialog.fvt.testcases.rest.IT_restOpenSeq;
 import com.ibm.watson.movieapp.dialog.fvt.testcases.rest.IT_restRating;
 import com.ibm.watson.movieapp.dialog.fvt.testcases.rest.IT_restRepairSeq;
@@ -41,7 +43,9 @@ import com.ibm.watson.movieapp.dialog.fvt.testcases.rest.IT_restZipcode;
 	IT_restRating.class,
 	IT_restRepairSeq.class,
 	IT_restSmallTalkSeq.class,
-	IT_restZipcode.class
+	IT_restZipcode.class,
+	IT_restNlcConfirmSeq.class,
+	IT_restNlcDisambiguationSeq.class
 })
 
 public class Rest_TestSuite {

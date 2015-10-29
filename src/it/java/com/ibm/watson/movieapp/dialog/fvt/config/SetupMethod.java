@@ -36,20 +36,23 @@ public class SetupMethod {
 	public static final String BOUNDS = "bounds";
 
 	//JSON FILES
-	public static final String CURNT_FUT_QUESTION = "/questions/currentFuture.json";
-	public static final String EXT_LINK = "/questions/externalLink.json";
-	public static final String GENRE_QUESTION = "/questions/genre.json";
-	public static final String MOVIE_JSON_FILE = "/questions/movie.json";
-	public static final String RATING_QUESTION = "/questions/rating.json";
-	public static final String ZIP_JSON_FILE = "/questions/zipcode.json";
-	public static final String COMMON = "/questions/common.json";
+	public static final String CURNT_FUT_QUESTION = "currentFuture.json";
+	public static final String EXT_LINK = "externalLink.json";
+	public static final String GENRE_QUESTION = "genre.json";
+	public static final String MOVIE_JSON_FILE = "movie.json";
+	public static final String RATING_QUESTION = "rating.json";
+	public static final String ZIP_JSON_FILE = "zipcode.json";
+	public static final String COMMON = "common.json";
 
-	public static final String REP_SEQ_QUESTION = "/questions/globalSeqRepair.json";
-	public static final String SMALL_TALK_QUESTION = "/questions/globalSeqSmallTalk.json";
-	public static final String CLOSING_QUESTION = "/questions/globalSeqClose.json";
-	public static final String OPENING_QUESTION = "/questions/globalSeqOpen.json";
-	public static final String OUT_SCOPE_QUESTION = "/questions/globalOutScope.json";
+	public static final String REP_SEQ_QUESTION = "globalSeqRepair.json";
+	public static final String SMALL_TALK_QUESTION = "globalSeqSmallTalk.json";
+	public static final String CLOSING_QUESTION = "globalSeqClose.json";
+	public static final String OPENING_QUESTION = "globalSeqOpen.json";
+	public static final String OUT_SCOPE_QUESTION = "globalOutScope.json";
 
+	public static final String NLC_CONFIRM_QUESTION = "nlcConfirmSeq.json";
+	public static final String NLC_DISAMBIGUATE_QUESTION = "nlcDisambiguationSeq.json";
+	
 	public static final String CONTEXT_ROOT = "/watson-movieapp-dialog/dist/index.html#/";
 	
 	

@@ -42,6 +42,9 @@ import com.google.gson.JsonParser;
 import com.ibm.watson.developer_cloud.dialog.v1.DialogService;
 import com.ibm.watson.developer_cloud.dialog.v1.model.Conversation;
 import com.ibm.watson.developer_cloud.dialog.v1.model.NameValue;
+import com.ibm.watson.developer_cloud.natural_language_classifier.v1.NaturalLanguageClassifier;
+import com.ibm.watson.developer_cloud.natural_language_classifier.v1.model.Classification;
+import com.ibm.watson.developer_cloud.natural_language_classifier.v1.model.ClassifiedClass;
 import com.ibm.watson.movieapp.dialog.exception.WatsonTheatersException;
 import com.ibm.watson.movieapp.dialog.payload.MoviePayload;
 import com.ibm.watson.movieapp.dialog.payload.ServerErrorPayload;
@@ -49,7 +52,7 @@ import com.ibm.watson.movieapp.dialog.payload.WDSConversationPayload;
 
 /**
  * <p>
- * Proxy class to communicate with Watson Dialog Service This class acts as a proxy on the server-side to communicate with the Watson Dialog Service
+ * Proxy class to communicate with Watson Dialog Service
  * (WDS) to generate chat responses to the user input.
  * </p>
  * <p>
@@ -59,28 +62,32 @@ import com.ibm.watson.movieapp.dialog.payload.WDSConversationPayload;
  * <p>
  * In addition, there are various helper methods to parse response text, etc.
  * </p>
- * 
- * @author Ashima Arora
  */
 
 @Path("/bluemix")
 public class WDSBlueMixProxyResource {
     private static String wds_base_url;
-    private static DialogService dialogService = new DialogService();
+    private static String nlc_base_url;
+    private static DialogService dialogService = null;
+    private static NaturalLanguageClassifier nlcService = null;
     private static String dialog_id;
-    private static String username = null;
-    private static String password = null;
+    private static String classifier_id;
+    private static String username_dialog = null;
+    private static String password_dialog = null;
+    private static String username_nlc = null;
+    private static String password_nlc = null;
     private static String personalized_prompt_movie_selected = "USER CLICKS BOX"; //$NON-NLS-1$
     private static String personalized_prompt_movies_returned = "UPDATE NUM_MOVIES"; //$NON-NLS-1$
     private static String personalized_prompt_current_index = "UPDATE CURRENT_INDEX"; //$NON-NLS-1$
 
     static {
         loadStaticBluemixProperties();
-        createDialogServiceInstance();
+        useDialogServiceInstance();
+        useClassifierServiceInstance();
     }
 
     /**
-     * 
+     * Loads VCAP_SERVICES environment variables required to make calls to Dialog and Classifier services.
      */
     private static void loadStaticBluemixProperties() {
         String envServices = System.getenv("VCAP_SERVICES"); //$NON-NLS-1$
@@ -88,24 +95,44 @@ public class WDSBlueMixProxyResource {
             UtilityFunctions.logger.info(Messages.getString("WDSBlueMixProxyResource.VCAP_SERVICES_ENV_VAR_FOUND")); //$NON-NLS-1$
             JsonObject services = new JsonParser().parse(envServices).getAsJsonObject();
             UtilityFunctions.logger.info(Messages.getString("WDSBlueMixProxyResource.VCAP_SERVICES_JSONOBJECT_SUCCESS")); //$NON-NLS-1$
+
+            // Get credentials for Dialog Service
             JsonArray arr = (JsonArray) services.get("dialog"); //$NON-NLS-1$
-            if (arr.size() > 0) {
+            if (arr != null && arr.size() > 0) {
                 services = arr.get(0).getAsJsonObject();
                 JsonObject credentials = services.get("credentials").getAsJsonObject(); //$NON-NLS-1$
                 wds_base_url = credentials.get("url").getAsString(); //$NON-NLS-1$
                 if (credentials.get("username") != null && !credentials.get("username").isJsonNull()) { //$NON-NLS-1$ //$NON-NLS-2$
-                    username = credentials.get("username").getAsString(); //$NON-NLS-1$
-                    UtilityFunctions.logger.info(Messages.getString("WDSBlueMixProxyResource.FOUND_USERNAME")); //$NON-NLS-1$
+                    username_dialog = credentials.get("username").getAsString(); //$NON-NLS-1$
+                    UtilityFunctions.logger.info(Messages.getString("WDSBlueMixProxyResource.FOUND_WDS_USERNAME")); //$NON-NLS-1$
                 }
                 if (credentials.get("password") != null && !credentials.get("password").isJsonNull()) { //$NON-NLS-1$ //$NON-NLS-2$
-                    password = credentials.get("password").getAsString(); //$NON-NLS-1$
-                    UtilityFunctions.logger.info(Messages.getString("WDSBlueMixProxyResource.FOUND_PASSWORD")); //$NON-NLS-1$
+                    password_dialog = credentials.get("password").getAsString(); //$NON-NLS-1$
+                    UtilityFunctions.logger.info(Messages.getString("WDSBlueMixProxyResource.FOUND_WDS_PASSWORD")); //$NON-NLS-1$
+                }
+            }
+
+            // Get credentials for Natural Language Classifier Service
+            services = new JsonParser().parse(envServices).getAsJsonObject();
+            arr = (JsonArray) services.get("natural_language_classifier"); //$NON-NLS-1$
+            if (arr != null && arr.size() > 0) {
+                services = arr.get(0).getAsJsonObject();
+                JsonObject credentials = services.get("credentials").getAsJsonObject(); //$NON-NLS-1$
+                nlc_base_url = credentials.get("url").getAsString(); //$NON-NLS-1$
+                if (credentials.get("username") != null && !credentials.get("username").isJsonNull()) { //$NON-NLS-1$ //$NON-NLS-2$
+                    username_nlc = credentials.get("username").getAsString(); //$NON-NLS-1$
+                    UtilityFunctions.logger.info(Messages.getString("WDSBlueMixProxyResource.FOUND_NLC_USERNAME")); //$NON-NLS-1$
+                }
+                if (credentials.get("password") != null && !credentials.get("password").isJsonNull()) { //$NON-NLS-1$ //$NON-NLS-2$
+                    password_nlc = credentials.get("password").getAsString(); //$NON-NLS-1$
+                    UtilityFunctions.logger.info(Messages.getString("WDSBlueMixProxyResource.FOUND_NLC_PASSWORD")); //$NON-NLS-1$
                 }
             }
         } else {
             UtilityFunctions.logger.error(Messages.getString("WDSBlueMixProxyResource.VCAP_SERVICES_CANNOT_LOAD")); //$NON-NLS-1$
         }
 
+        // Get the dialog_id
         envServices = System.getenv("DIALOG_ID"); //$NON-NLS-1$
         if (envServices != null) {
             dialog_id = envServices;
@@ -113,14 +140,41 @@ public class WDSBlueMixProxyResource {
         } else {
             UtilityFunctions.logger.error(Messages.getString("WDSBlueMixProxyResource.DIALOG_ACCOUNT_ID_FAIL")); //$NON-NLS-1$
         }
+
+        // Get the classifier_id
+        envServices = System.getenv("CLASSIFIER_ID"); //$NON-NLS-1$
+        if (envServices != null) {
+            classifier_id = envServices;
+            UtilityFunctions.logger.info(Messages.getString("WDSBlueMixProxyResource.CLASSIFIER_ID_SUCCESS")); //$NON-NLS-1$
+        } else {
+            UtilityFunctions.logger.error(Messages.getString("WDSBlueMixProxyResource.CLASSIFIER_ID_FAIL")); //$NON-NLS-1$
+        }
     }
 
-    public static void createDialogServiceInstance() {
-        if (username == null || password == null) {
-            UtilityFunctions.logger.error(Messages.getString("WDSBlueMixProxyResource.CREATE_CONVERSATION_FAIL"));
+    /**
+     * Sets the values of the dialog-specific variables
+     */
+    private static void useDialogServiceInstance() {
+        if (username_dialog != null && password_dialog != null) {
+            dialogService = new DialogService();
+            dialogService.setUsernameAndPassword(username_dialog, password_dialog);
+            dialogService.setEndPoint(wds_base_url);
+        }else{
+            UtilityFunctions.logger.error(Messages.getString("WDSBlueMixProxyResource.DIALOG_CREDENTIALS_EMPTY"));
         }
-        dialogService.setUsernameAndPassword(username, password);
-        dialogService.setEndPoint(wds_base_url);
+    }
+
+    /**
+     * Sets the values of the classifier-specific variables if specified
+     */
+    private static void useClassifierServiceInstance(){
+        if (username_nlc != null && password_nlc != null) {
+            nlcService = new NaturalLanguageClassifier();
+            nlcService.setUsernameAndPassword(username_nlc, password_nlc);
+            nlcService.setEndPoint(nlc_base_url);
+        }else{
+            UtilityFunctions.logger.error(Messages.getString("WDSBlueMixProxyResource.NLC_CREDENTIALS_EMPTY"));
+        }
     }
 
     /**
@@ -181,8 +235,11 @@ public class WDSBlueMixProxyResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response postConversation(@QueryParam("conversationId") String conversationId, @QueryParam("clientId") String clientId,
             @QueryParam("input") String input) {
+        long lStartTime = System.nanoTime();
+        long lEndTime, difference;
         String errorMessage = null, issue = null;
         String wdsMessage = null;
+        JsonObject processedText = null;
         if (input == null || input.trim().isEmpty()) {
             errorMessage = Messages.getString("WDSBlueMixProxyResource.SPECIFY_INPUT"); //$NON-NLS-1$
             issue = Messages.getString("WDSBlueMixProxyResource.EMPTY_QUESTION"); //$NON-NLS-1$
@@ -190,6 +247,26 @@ public class WDSBlueMixProxyResource {
             return Response.serverError().entity(new ServerErrorPayload(errorMessage, issue)).build();
         }
         try {
+
+            // 1.Get all the class info from NLC and set appropriate profile variables.
+            List<ClassifiedClass> classInfo = null;
+            if(nlcService != null){
+                if (UtilityFunctions.logger.isTraceEnabled()) {
+                    UtilityFunctions.logger.trace(Messages.getString("WDSBlueMixProxyResource.NLC_SERVICE")); //$NON-NLS-1$
+                }
+                // Send utterance to NLC to get user intent
+                Classification classification = nlcService.classify(classifier_id, input);
+                classInfo = classification.getClasses();
+                // Set classification profile variables for WDS.
+                List<NameValue> nameValues = new ArrayList<NameValue>();
+                nameValues.add(new NameValue("Class1", classInfo.get(0).getName()));
+                nameValues.add(new NameValue("Class1_Confidence", Double.toString(classInfo.get(0).getConfidence())));
+                nameValues.add(new NameValue("Class2", classInfo.get(1).getName()));
+                nameValues.add(new NameValue("Class2_Confidence", Double.toString(classInfo.get(1).getConfidence())));
+                dialogService.updateProfile(dialog_id, Integer.parseInt(clientId), nameValues);
+            }
+
+            // 2. Send original utterance to WDS
             Map<String, Object> converseParams = new HashMap<String, Object>();
             converseParams.put("dialog_id", dialog_id);
             converseParams.put("client_id", Integer.parseInt(clientId));
@@ -197,7 +274,7 @@ public class WDSBlueMixProxyResource {
             converseParams.put("input", input);
             Conversation conversation = dialogService.converse(converseParams);
             wdsMessage = StringUtils.join(conversation.getResponse(), " ");
-            JsonObject processedText = matchSearchNowPattern(wdsMessage);
+            processedText = matchSearchNowPattern(wdsMessage);
             WDSConversationPayload conversationPayload = new WDSConversationPayload();
             if (!processedText.has("Params")) { //$NON-NLS-1$
                 // We do not have enough info to search the movie db, go back to the user for more info.
@@ -205,6 +282,12 @@ public class WDSBlueMixProxyResource {
                 conversationPayload.setConversationId(clientId); //$NON-NLS-1$
                 conversationPayload.setInput(input); //$NON-NLS-1$
                 conversationPayload.setWdsResponse(processedText.get("WDSMessage").getAsString()); //$NON-NLS-1$
+                if (UtilityFunctions.logger.isTraceEnabled()) {
+                    // Log the execution time.
+                    lEndTime = System.nanoTime();
+                    difference = lEndTime - lStartTime;
+                    UtilityFunctions.logger.trace("Throughput: " + difference/1000000 + "ms.");
+                }
                 return Response.ok(conversationPayload, MediaType.APPLICATION_JSON_TYPE).build();
             } else {
                 // Dialog says we have enough info to proceed with a search of themoviedb..
@@ -230,56 +313,76 @@ public class WDSBlueMixProxyResource {
                 if (UtilityFunctions.logger.isTraceEnabled()) {
                     UtilityFunctions.logger.trace(Messages.getString("WDSBlueMixProxyResource.WDS_RESPONSE") + paramsObj); //$NON-NLS-1$
                 }
-
+                String prompt;
                 Integer currentIndex = Integer.parseInt(paramsObj.get("Index").getAsString()); //$NON-NLS-1$
-                int pageNum = (int) Math.ceil((float) currentIndex / 20);// round up.. 10/20 = .5 == page# 1
-                if ((nextSearch || newSearch) && (currentIndex % 20) == 0) {
-                    pageNum++;
+                Integer numMovies = 0;
+                Integer totalPages = 0;
+                boolean tmdbCallNeeded = true;
+                List<NameValue> nameValues;
+                if(paramsObj.has("Total_Movies")){
+                    numMovies = Integer.parseInt(paramsObj.get("Total_Movies").getAsString());
+                    totalPages = Integer.parseInt(paramsObj.get("Total_Pages").getAsString());
+                    // If the user wishes to "go back" when the first set of results is displayed or
+                    // "show more" results when all results have been displayed already---> do not need to make a call to themoviedb.org
+                    tmdbCallNeeded = !((currentIndex <= 10 && prevSearch) || (currentIndex == numMovies && nextSearch));
                 }
+                if(tmdbCallNeeded){
+                    // Need to make a call to TMDB.
+                    int pageNum = (int) Math.ceil((float) currentIndex / 20);// round up.. 10/20 = .5 == page# 1
+                    if ((nextSearch || newSearch) && (currentIndex % 20) == 0) {
+                        pageNum++;
+                    }
 
-                // Decrement page num. eg.: currentIndex = 30, 23, etc. Do not decrement page num for currentIndex = 20, 36, etc.
-                if (prevSearch && (currentIndex % 20 <= 10 && (currentIndex % 20 != 0))) {
-                    pageNum--;
+                    // Decrement page num. eg.: currentIndex = 30, 23, etc. Do not decrement page num for currentIndex = 20, 36, etc.
+                    if (prevSearch && (currentIndex % 20 <= 10 && (currentIndex % 20 != 0))) {
+                        pageNum--;
+                    }
+
+                    int currentDisplayCount = (currentIndex % 10 == 0) ? 10 : currentIndex % 10;   
+                    SearchTheMovieDbProxyResource tmdb = new SearchTheMovieDbProxyResource();
+                    conversationPayload = tmdb.discoverMovies(UtilityFunctions.getPropValue(paramsObj, "Genre"),  //$NON-NLS-1$
+                            UtilityFunctions.getPropValue(paramsObj, "Rating"),  //$NON-NLS-1$
+                            UtilityFunctions.getPropValue(paramsObj, "Recency"),  //$NON-NLS-1$
+                            currentIndex, pageNum, nextSearch || newSearch);
+                    int size = conversationPayload.getMovies().size();
+                    if (prevSearch) {
+                        currentIndex -= currentDisplayCount;
+                    } else if (nextSearch || newSearch) {
+                        currentIndex += size;
+                    }
+
+                    nameValues = new ArrayList<NameValue>();
+                    // Save the number of movies displayed till now.
+                    nameValues.add(new NameValue("Current_Index", currentIndex.toString())); //$NON-NLS-1$
+                    // Save the total number of pages in a profile variable.
+                    nameValues.add(new NameValue("Total_Pages", conversationPayload.getTotalPages().toString())); //$NON-NLS-1$
+                    // Save the total number of movies in Num_Movies.
+                    nameValues.add(new NameValue("Num_Movies", conversationPayload.getNumMovies().toString())); //$NON-NLS-1$
+                    // Set the profile variables.
+                    dialogService.updateProfile(dialog_id, Integer.parseInt(clientId), nameValues);
                 }
-
-                int currentDisplayCount = (currentIndex % 10 == 0) ? 10 : currentIndex % 10;
-
-                SearchTheMovieDbProxyResource tmdb = new SearchTheMovieDbProxyResource();
-                conversationPayload = tmdb.discoverMovies(UtilityFunctions.getPropValue(paramsObj, "Genre"),  //$NON-NLS-1$
-                        UtilityFunctions.getPropValue(paramsObj, "Rating"),  //$NON-NLS-1$
-                        UtilityFunctions.getPropValue(paramsObj, "Recency"),  //$NON-NLS-1$
-                        currentIndex, pageNum, nextSearch || newSearch);
-                int size = 0;
-                if (conversationPayload.getMovies() != null) {
-                    size = conversationPayload.getMovies().size();
+                if(!tmdbCallNeeded){
+                    // Set the value of the Index_Updated profile variable to No so that WDS knows that no indices were updated.
+                    nameValues = new ArrayList<NameValue>();
+                    nameValues.add(new NameValue("Index_Updated", "No"));
+                    dialogService.updateProfile(dialog_id, Integer.parseInt(clientId), nameValues);
+                    // Set some values in the ConversationPayload which are needed by the UI.
+                    List <MoviePayload> movies = new ArrayList<MoviePayload>();
+                    conversationPayload.setMovies(movies);
+                    conversationPayload.setNumMovies(numMovies);
+                    conversationPayload.setTotalPages(totalPages);
                 }
-                if (prevSearch) {
-                    currentIndex -= currentDisplayCount;
-                } else if (nextSearch || newSearch) {
-                    currentIndex += size;
-                }
-
-                List<NameValue> nameValues = new ArrayList<NameValue>();
-                // Save the number of movies displayed till now.
-                nameValues.add(new NameValue("Current_Index", currentIndex.toString())); //$NON-NLS-1$
-                // Save the total number of pages in a profile variable.
-                nameValues.add(new NameValue("Total_Pages", conversationPayload.getTotalPages().toString())); //$NON-NLS-1$
-                // Save the total number of movies in Num_Movies.
-                nameValues.add(new NameValue("Num_Movies", conversationPayload.getNumMovies().toString())); //$NON-NLS-1$
                 // If first time, get personalized prompt based on Num_Movies
-                String prompt = personalized_prompt_current_index;
+                prompt = personalized_prompt_current_index;
                 if (newSearch || repeatSearch) {
                     prompt = personalized_prompt_movies_returned;
                 }
-                // Set the profile variables.
-                dialogService.updateProfile(dialog_id, Integer.parseInt(clientId), nameValues);
-
                 // Get the personalized prompt.
                 converseParams = new HashMap<String, Object>();
                 converseParams.put("dialog_id", dialog_id);
                 converseParams.put("client_id", Integer.parseInt(clientId));
                 converseParams.put("conversation_id", Integer.parseInt(conversationId));
-                converseParams.put("input", prompt);
+                converseParams.put("input", prompt);                
                 conversation = dialogService.converse(converseParams);
                 wdsMessage = StringUtils.join(conversation.getResponse(), " ");
 
@@ -289,6 +392,12 @@ public class WDSBlueMixProxyResource {
                 conversationPayload.setConversationId(clientId); //$NON-NLS-1$
                 conversationPayload.setInput(input); //$NON-NLS-1$
 
+                if (UtilityFunctions.logger.isTraceEnabled()) {
+                    // Log the execution time.
+                    lEndTime = System.nanoTime();
+                    difference = lEndTime - lStartTime;
+                    UtilityFunctions.logger.trace("Throughput: " + difference/1000000 + "ms.");
+                }
                 // Return to UI.
                 return Response.ok(conversationPayload, MediaType.APPLICATION_JSON_TYPE).build();
             }

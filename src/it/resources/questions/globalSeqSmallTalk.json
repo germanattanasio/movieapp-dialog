@@ -3,7 +3,7 @@
 	{
 		"sequence": "Siri",
 		"question": ["Siri is smarter than you", "Siri is better than you"],
-		"expected": ["Now you're hurting my feelings."]
+		"expected": ["I'm sorry. I still have a lot to learn.", "Now you're hurting my feelings."]
 	},
 	{
 		"sequence": "Do you speak English",

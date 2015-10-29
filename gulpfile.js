@@ -59,9 +59,7 @@
   });
 
   gulp.task('fonts', ['bower'], function () {
-    return gulp.src([ srcFolder+ '/fonts/**/*', '.tmp/bower_components/bootstrap-sass/assets/fonts/**/*' ])
-//    return gulp.src([ '.tmp/bower_components/bootstrap-sass/assets/fonts/**/*' ])
-      .pipe(gulp.dest('.tmp/fonts'))
+    return gulp.src(srcFolder+ '/fonts/**/*')
       .pipe(gulp.dest(distFolder + '/fonts'))
       .pipe(reload({ 'stream': true, 'once': true }))
       .pipe($.size({ 'title': 'fonts' }));

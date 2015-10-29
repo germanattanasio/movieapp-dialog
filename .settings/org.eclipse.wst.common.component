@@ -12,6 +12,6 @@
         
         <property name="java-output-path" value="/movieapp-dialog/target/classes"/>
         <property name="component.exclusion.patterns" value="app/"/>
-        <property name="context-root" value="watson-movieapp-dialog"/>
+        <property name="context-root" value="movieapp-dialog"/>
     </wb-module>
 </project-modules>

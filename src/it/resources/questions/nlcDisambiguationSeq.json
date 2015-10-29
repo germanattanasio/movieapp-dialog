@@ -1,0 +1,36 @@
+{
+"questions": [
+	{
+		"sequence": "SearchMovies+CheckShowtimes",
+		"question": ["Show me movies around me", "Movie showtimings zip"],		
+		"expected": ["Do you mean look up movies or find showtimes on Fandango?", "Do you mean find showtimes on Fandango or look up movies?"]
+	},
+	{
+		"sequence": "SearchMovies+LookupActors",
+		"question": ["Will Smith movies.."],		
+		"expected": ["Do you mean look up movies or look up actors?"]
+	},
+	{
+		"sequence": "SearchMovies+LookupDirectors",
+		"question": ["I wanna watch film by Affleck."],		
+		"expected": ["Do you mean look up directors or look up movies?"]
+	},
+	{
+		"sequence": "CheckShowtimes+LookupActors",
+		"question": ["movies with Will Smith."],		
+		"expected": ["Do you mean look up actors or find showtimes on Fandango?"]
+	},
+		{
+		"sequence": "CheckShowtimes+LookupDirectors",
+		"question": ["movies by Allen near me"],		
+		"expected": ["Do you mean find showtimes on Fandango or look up directors?"]
+	},
+	{
+		"sequence": "LookupActors+LookupDirectors",
+		"question": ["Clint Eastwood films"],		
+		"expected": ["Do you mean look up directors or look up actors?"]
+	}
+	],
+	
+"bounds": ""	
+}

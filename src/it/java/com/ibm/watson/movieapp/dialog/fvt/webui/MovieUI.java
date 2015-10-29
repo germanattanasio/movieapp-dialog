@@ -58,7 +58,7 @@ public class MovieUI extends BaseUI{
 	public static String privacyLink = "css=a[class='dialog-link'][href='http://www.ibm.com/privacy/us/en/']";
 	public static String dialogIntro = "css=div[class='dialog-welcome']";
 
-	public static String nextButtonLoc = "css=form[class='wform ng-pristine ng-valid'] div[class='dialog-nextbtn']";
+	public static String nextButtonLoc = "css=a[class='dialog-nextbtn']";
 	
 	/**
 	 * askQuestion

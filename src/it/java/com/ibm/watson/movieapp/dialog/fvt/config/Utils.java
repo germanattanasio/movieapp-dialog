@@ -124,7 +124,6 @@ public class Utils {
 	
 		RestAPI api = RestAPI.getAPI();	
 		ArrayList<BaseQuestion> questions = new ArrayList<BaseQuestion>();
-		
 		if(isIntegrationTest()){
 			//Run all of the restTests
 			if(chat){
@@ -134,6 +133,7 @@ public class Utils {
 			}
 		}else{
 			//Run subset of the restTests
+			logger.info("-------------RUNNING SUBSET OF TESTS-------------");
 			questions = Utils.getRandomSample(5, jsonFile, chat);
 		}
 		

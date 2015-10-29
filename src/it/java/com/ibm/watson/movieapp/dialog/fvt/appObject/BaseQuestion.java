@@ -284,7 +284,7 @@ public class BaseQuestion implements BaseObject{
 		 *
 		 */				
 		public void seperateConver(){			
-			Response init = get(RestAPI.initchat);		
+			Response init = get(RestAPI.initchat);
 			JsonPath jp = new JsonPath(init.asString());
 			this.setClientId(jp.get(SetupMethod.CLIENTID).toString());
 			this.setConversationId(jp.get(SetupMethod.CONVERSATIONID).toString());			

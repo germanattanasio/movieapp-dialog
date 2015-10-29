@@ -76,10 +76,20 @@ public class IT_restSmallTalkSeq extends SetupMethod{
 		//Ask questions in separate Conversation thread
 		question.seperateConver();
 
-        //ask question
+        //Give name->needed because name elicitation sequence does not support small talk.
+		String originalQues = question.getText();
+		question.setText("John Doe");
+		logger.info("Supplying dummy name for the name elicitation sequence.");
 		logger.info("INFO: Question - " + question.getText());
         question.ask(api);
 
+        // Ask the small talk question.
+        question.setText(originalQues);
+        question.setPartOfConversation(true);
+        logger.info("Asking the small talk question.");
+        logger.info("INFO: Question - " + question.getText());
+        question.ask(api);
+        
     	//Validation
     	//Check response vs expected
 		logger.info("INFO: Response - " + question.getResponse().getResponseText());

@@ -73,9 +73,6 @@ public class IT_restRepairSeq extends SetupMethod{
 
 		RestAPI api = RestAPI.getAPI();
 		
-		//Ask questions in separate Conversation thread
-		question.seperateConver();
-		
         //ask question
 		logger.info("INFO: Question - " + question.getText());
         question.ask(api);

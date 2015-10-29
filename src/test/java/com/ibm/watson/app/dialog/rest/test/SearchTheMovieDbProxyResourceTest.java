@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.TimeZone;
 
 import javax.persistence.EntityManager;
 import javax.ws.rs.core.Response;
@@ -119,6 +120,7 @@ public class SearchTheMovieDbProxyResourceTest {
         uriParamsHash = movieDbProxy.addDateFilters("upcoming", uriParamsHash);
         assertNotNull(uriParamsHash);
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
         Date date = new Date();
         assertEquals(dateFormat.format(date), uriParamsHash.get("primary_release_date.gte"));
         uriParamsHash = movieDbProxy.addDateFilters("current", uriParamsHash);

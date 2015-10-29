@@ -1,0 +1,61 @@
+{
+"questions": [
+	{
+		"sequence": "SearchMovies",
+		"question": ["films this year"],		
+		"expected": ["Do you mean look up movies?"]
+	},
+	{
+		"sequence": "CheckShowtimes",
+		"question": ["see show times"],		
+		"expected": ["Do you mean find showtimes on Fandango?"]
+	},
+	{
+		"sequence": "LookupActors",
+		"question": ["movies with Ryan Reynolds"],		
+		"expected": ["Do you mean look up actors?"]
+	},
+	{
+		"sequence": "LookupDirectors",
+		"question": ["tell me who has made this motion picture", "who directed Star Wars?"],		
+		"expected": ["Do you mean look up directors?"]
+	},
+	{
+		"sequence": "ClosingTalk",
+		"question": ["ok then bye"],		
+		"expected": ["Do you mean to say goodbye?"]
+	},
+	{
+		"sequence": "GiveName",
+		"question": ["Stephan"],		
+		"expected": ["Do you mean that's your name?"]
+	},
+	{
+		"sequence": "OpeningTalk",
+		"question": ["morning"],		
+		"expected": ["Do you mean to greet me?"]
+	},
+	{
+		"sequence": "PreSequence",
+		"question": ["What have you!"],		
+		"expected": ["Do you mean to check on something?"]
+	},
+	{
+		"sequence": "RepairTalk",
+		"question": ["sorry not that"],		
+		"expected": ["Do you mean you don't understand?"]
+	},
+	{
+		"sequence": "SmallTalk",
+		"question": ["Watson are you a girl?"],		
+		"expected": ["Do you mean you just want to chit chat?"]
+	},
+	{
+		"sequence": "OtherClass",
+		"question": ["IBM Bluemix"],		
+		"expected": ["Do you mean do something else?"]
+	}	
+	],
+	
+"bounds": "I'm not sure what you mean. Try <i>What's in theaters?</i>"	
+}

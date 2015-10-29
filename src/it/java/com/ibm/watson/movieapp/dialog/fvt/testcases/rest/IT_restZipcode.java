@@ -72,9 +72,6 @@ public class IT_restZipcode extends SetupMethod{
 	public void zipcodeQuestion() {
 
 		RestAPI api = RestAPI.getAPI();
-		
-		//Ask questions in separate Conversation thread
-		question.seperateConver();
 
         //ask question
 		logger.info("INFO: Question - " + question.getText());

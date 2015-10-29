@@ -3,12 +3,12 @@
 	{
 		"sequence": "Help",
 		"question": ["help", "how does this work", "what do I do"],		
-		"expected": ["Say <i>Never mind</i> or <i>nvm</i> to start over.\nSay <i>okay</i> or <i>thanks</i> if my response is acceptable.\nSay <i>What does X mean?</i> for a definition of X.\nSay <i>got to go</i> or <i>bye</i> when you're finished."]
+		"expected": ["Try saying <i>What's in theaters?</i> or <i>I want to see a comedy</i>."]
 	},
 	{
 		"sequence": "Tips",
 		"question": ["tips", "do you have any tips"],		
-		"expected": ["Would you like to find a movie that's now playing or coming soon?"]
+		"expected": ["Would you like to find a movie that's now playing or coming soon?", "Say <i>Never mind</i> or & <i>nvm</i> to start over.\nSay <i>okay</i> or & <i>thanks</i> if my response is acceptable.\nSay <i>What does X mean?</i> for a definition of X.\nSay <i>got to go</i> or <i>bye</i> when you're finished."]
 	},
 	{
 		"sequence": "Say that again",

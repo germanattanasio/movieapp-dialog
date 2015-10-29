@@ -36,7 +36,7 @@
                 <version>2.3</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
-                    <warName>watson-movieapp-dialog</warName>
+                    <warName>movieapp-dialog</warName>
                     <packagingExcludes>app/</packagingExcludes>
                 </configuration>
             </plugin>
@@ -92,7 +92,7 @@
                         <phase>generate-resources</phase>
 
                         <configuration>
-                            <nodeVersion>v0.12.2</nodeVersion>
+                            <nodeVersion>v0.12.7</nodeVersion>
                             <npmVersion>2.7.6</npmVersion>
                         </configuration>
                     </execution>
@@ -223,7 +223,7 @@
                                 <licenseCode>L-MCAO-9SYMVC</licenseCode>
                                 <version>8.5.5_05</version>
                             </install>
-                            <appArchive>${project.build.directory}/watson-movieapp-dialog.war</appArchive>
+                            <appArchive>${project.build.directory}/movieapp-dialog.war</appArchive>
                             <configFile>${basedir}/src/it/resources/server.xml</configFile>
                             <serverEnv>${basedir}/src/it/resources/server.env</serverEnv>
                             <skip>${skipITs}</skip>
@@ -504,7 +504,7 @@
         <dependency>
         	<groupId>com.ibm.watson.developer_cloud</groupId>
         	<artifactId>java-wrapper</artifactId>
-        	<version>1.0.1</version>
+        	<version>1.1.1</version>
         </dependency>
          <dependency>
 			<groupId>org.mockito</groupId>

@@ -51,7 +51,7 @@ public class IT_restBase extends SetupMethod {
 	public void setUpTest(){
 		RestAPI api = RestAPI.getAPI();		
 		//get questions from JSON file
-		questions = api.getChatQuestions(SMALL_TALK_QUESTION);
+		questions = api.getChatQuestions(CLOSING_QUESTION);
 	}	
 
 	/**
@@ -121,7 +121,7 @@ public class IT_restBase extends SetupMethod {
 	public void initChatGreeting() {
 	
 		RestAPI api = RestAPI.getAPI();	
-		String greeting = api.getJSONElem(COMMON, "GMessage");
+		String greeting = api.getJSONElem("/questions/" + COMMON, "GMessage");
 		
 		Response response = 
 				RestAssured.given()

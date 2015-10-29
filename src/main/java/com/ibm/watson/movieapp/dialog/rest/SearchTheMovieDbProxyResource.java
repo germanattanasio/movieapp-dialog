@@ -28,6 +28,7 @@ import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Set;
+import java.util.TimeZone;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
@@ -91,6 +92,8 @@ public class SearchTheMovieDbProxyResource {
         } else {
             UtilityFunctions.logger.error(Messages.getString("SearchTheMovieDbProxyResource.TMDB_API_KEY_LOAD_FAIL")); //$NON-NLS-1$
         }
+        // Set the time zone for the movie formatter to UTC.
+        movieDateFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
     }
 
     /**

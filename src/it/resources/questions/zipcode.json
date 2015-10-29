@@ -2,7 +2,7 @@
 "questions": [
 	{
 		"question":["I want to find showtimes near me", "showtimes", "look up showtimes", "I want to see showtime", "What movies are playing near me", "What G-rated family movies are playing near me"],
-		"expected":["What's your ZIP code?"]
+		"expected":["What's your ZIP code?", "showtimes on Fandango"]
 	}
 	],
 	
