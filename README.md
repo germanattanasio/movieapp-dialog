@@ -91,7 +91,7 @@ After you bind an instance of the Dialog service to the app, you can use the cre
 
 Use the following command to upload this file to Bluemix:
 ```
-curl -X POST -F "file=@*dialogFile*" -F "name=*dialogName*" https://gateway.watsonplatform.net/dialog-beta/api/v1/dialogs -u "*username*:*password*"
+curl -X POST -F "file=@*dialogFile*" -F "name=*dialogName*" https://gateway.watsonplatform.net/dialog/api/v1/dialogs -u "*username*:*password*"
 ```
 where, *dialogFile* is the file name of the XML dialog file to upload, *dialogName* is a unique name you give to the dialog to upload, and the *username** and **password* are the credentials you obtained in the previous step. 
 
