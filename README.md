@@ -198,9 +198,9 @@ To run the full regression suite you can execute GUI_TestSuite and Rest_TestSuit
 The dialog questions and answers from the .xml file (see **Uploading a dialog file** above) map directly to question answer arrays in JSON files that are used by the automation. These files are located in the `src/it/resources/questions` directory. When you change dialog, you will need to do reciprocating changes to the JSON configuration files to allow the regression test suite to pass.
 
 ## Reference information
-* [Dialog service documentation](https://dialog-doc-la.mybluemix.net/doc/dialog/index.html): Get an in-depth knowledge of the Dialog service
-* [Dialog service API documentation](https://dialog-doc-la.mybluemix.net/apis/): Understand API usage
+* [Dialog service documentation](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/dialog/): Get an in-depth knowledge of the Dialog service
+* [Dialog service API documentation](https://watson-api-explorer.mybluemix.net/swagger.html?url=/listings/dialog-v1.json&cm_mc_uid=32675392371714128784599&cm_mc_sid_50200000=1449067977): Understand API usage
 * [Natural Language Classifier](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/nl-classifier/)
 * [Natural Language Classifier API documentation](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/natural-language-classifier/api/v1/)
-* [Dialog service tutorial](https://dialog-doc-la.mybluemix.net/doc/dialog/index.html#tutorial_intro): Design your own dialog by using a tutorial, which includes a generic template that you can modify for your own use. The Conversation Analysis Template comes bundled with this project and can be found at */movieapp-dialog/src/main/resources/dialog_files/CA_Trans_Template.xml*.
-* [Natural conversation tutorial](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/dialog/#tutorial_advanced): The What's In Theaters app uses a natural conversation template as the basis for the dialog. To design your own dialog in natural conversation, complete this tutorial. See the template here: `/movieapp-dialog/src/main/resources/dialog_files/CA_Trans_Template.xml`.
+* [Dialog service tutorial](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/dialog/tutorial_advanced.shtml): Design your own dialog by using a tutorial.
+* [Natural conversation tutorial](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/ega_docs/dialog_ega.shtml#naturalconvo_design): The What's In Theaters app uses a natural conversation template as the basis for the dialog. To design your own dialog in natural conversation, complete this tutorial. See the template here: `/movieapp-dialog/src/main/resources/dialog_files/CA_Trans_Template.xml`.
