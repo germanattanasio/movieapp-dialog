@@ -216,12 +216,12 @@
                         <groupId>net.wasdev.wlp.maven.plugins</groupId>
                         <artifactId>liberty-maven-plugin</artifactId>
                         <!-- Only the new SNAPSHOT releases support installing Liberty from the public repository -->
-                        <version>1.1-SNAPSHOT</version>
+                        <version>1.2-SNAPSHOT</version>
                         <configuration>
                             <install>
                                 <!-- Find the text after D/N on this page: http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/8.5.5.5/lafiles/runtime/en.html -->
                                 <licenseCode>L-MCAO-9SYMVC</licenseCode>
-                                <version>8.5.5_05</version>
+                                <version>8.5.5_08</version>
                             </install>
                             <appArchive>${project.build.directory}/movieapp-dialog.war</appArchive>
                             <configFile>${basedir}/src/it/resources/server.xml</configFile>
