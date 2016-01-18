@@ -204,3 +204,5 @@ The dialog questions and answers from the .xml file (see **Uploading a dialog fi
 * [Natural Language Classifier API documentation](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/natural-language-classifier/api/v1/)
 * [Dialog service tutorial](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/dialog/tutorial_advanced.shtml): Design your own dialog by using a tutorial.
 * [Natural conversation tutorial](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/ega_docs/dialog_ega.shtml#naturalconvo_design): The What's In Theaters app uses a natural conversation template as the basis for the dialog. To design your own dialog in natural conversation, complete this tutorial. See the template here: `/movieapp-dialog/src/main/resources/dialog_files/CA_Trans_Template.xml`.
+
+ * Understanding how Dialog uses the output from the Natural Language Classier: http://heidloff.net/article/cognitive-question-answer-systems-bluemix-watson
