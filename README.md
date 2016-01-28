@@ -102,13 +102,13 @@ After the file is uploaded, a message similar to the following message is displa
 **Important**: Include the @ symbol before the *dialogFile* variable.
 
 #### Training a classifier
-After you bind an instance of the Classifier service to the app, you must train a classifier by using this service. You can use the sample training set packaged with the project at `/movieapp-dialog/src/main/resources/classifier_files`. You can upload the `train.csv` file by using the curl command that is specified in the [Classifier service documentation](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/apis/#!/natural-language-classifier/) and the Classifier service credentials you obtained in the previous step. The classifier is immediately in Training status. After the status changes to Available, the classifier is ready for use.
+After you bind an instance of the Classifier service to the app, you must train a classifier by using this service. You can use the sample training set packaged with the project at `/movieapp-dialog/src/main/resources/classifier_files`. You can upload the `train.csv` file by using the curl command that is specified in the [Classifier service documentation](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/natural-language-classifier/api/v1/?curl#create_classifier) and the Classifier service credentials you obtained in the previous step. The classifier is immediately in Training status. After the status changes to Available, the classifier is ready for use.
 
 #### Setting up environment variables in Bluemix
 To run the What's in Theaters application on Bluemix, more environment variables are required:  
   1. **DIALOG_ID**: The dialog ID you obtained when you uploaded your dialog file on Bluemix in the previous section **Uploading a dialog file**. 
   2. **TMDB_API_KEY**: The API key obtained from themoviedb.org.
-  3. **CLASSIFIER_ID**: The classifier ID you obtained when you uploaded the training data on Bluemix in the previous section **Training a lassifier**.
+  3. **CLASSIFIER_ID**: The classifier ID you obtained when you uploaded the training data on Bluemix in the previous section **Training a classifier**.
 
 Navigate to the application dashboard in Bluemix. Locate and click your app. Navigate to the **Environment Variables** section. Switch to the **USER-DEFINED** tab. Add the new environment variables as specified above.
 
@@ -200,8 +200,8 @@ The dialog questions and answers from the .xml file (see **Uploading a dialog fi
 ## Reference information
 * [Dialog service documentation](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/dialog/): Get an in-depth knowledge of the Dialog service
 * [Dialog service API documentation](https://watson-api-explorer.mybluemix.net/swagger.html?url=/listings/dialog-v1.json&cm_mc_uid=32675392371714128784599&cm_mc_sid_50200000=1449067977): Understand API usage
-* [Natural Language Classifier](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/nl-classifier/)
-* [Natural Language Classifier API documentation](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/natural-language-classifier/api/v1/)
+* [Natural Language Classifier documentation](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/nl-classifier/)
+* [Natural Language Classifier API reference](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/natural-language-classifier/api/v1/)
 * [Dialog service tutorial](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/dialog/tutorial_advanced.shtml): Design your own dialog by using a tutorial.
 * [Natural conversation tutorial](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/ega_docs/dialog_ega.shtml#naturalconvo_design): The What's In Theaters app uses a natural conversation template as the basis for the dialog. To design your own dialog in natural conversation, complete this tutorial. See the template here: `/movieapp-dialog/src/main/resources/dialog_files/CA_Trans_Template.xml`.
 * Understanding how Dialog uses the output from the Natural Language Classier: http://heidloff.net/article/cognitive-question-answer-systems-bluemix-watson
