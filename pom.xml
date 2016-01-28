@@ -501,16 +501,16 @@
             <artifactId>guava</artifactId>
             <version>18.0</version>
         </dependency>
-        <dependency>
-        	<groupId>com.ibm.watson.developer_cloud</groupId>
-        	<artifactId>java-wrapper</artifactId>
-        	<version>1.1.1</version>
-        </dependency>
          <dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-all</artifactId>
 			<version>1.10.19</version>
 			<scope>test</scope>
 		</dependency>
+         <dependency>
+         	<groupId>com.ibm.watson.developer_cloud</groupId>
+         	<artifactId>java-sdk</artifactId>
+         	<version>2.7.0</version>
+         </dependency>
     </dependencies>
 </project>
