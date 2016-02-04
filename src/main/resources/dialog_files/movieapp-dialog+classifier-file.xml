@@ -4919,7 +4919,7 @@ border-color:#000000;
         <setting name="UI_COLOUR"></setting>
         <setting name="DNR_NODE_ID">-16</setting>
         <setting name="USE_CONCEPTS">1</setting>
-        <setting name="PARENT_ACCOUNT">pconcepts</setting>
+        <setting name="PARENT_ACCOUNT">en-us-legacy</setting>
         <setting name="AL_NONE_LABEL">None of the above</setting>
         <setting name="ASR_RANDOM">true</setting>
         <setting name="DYNAMIC_MESSAGING">false</setting>
