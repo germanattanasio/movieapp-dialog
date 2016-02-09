@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dialog xsi:noNamespaceSchemaLocation="WatsonDialogDocument_1.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<dialog xsi:noNamespaceSchemaLocation="WatsonDialogDocument_1.1.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <flow>
         <folder label="Main">
             <output id="output_2508575">
@@ -179,7 +179,6 @@ Line={Class1_Confidence}+{Class2_Confidence};</script>
                                 <cond varName="Class1" operator="EQUALS">RepairTalk</cond>
                                 <cond varName="Class1" operator="EQUALS">GiveName</cond>
                                 <cond varName="Class1" operator="EQUALS">SmallTalk</cond>
-                                <cond varName="Class1" operator="EQUALS">OtherClass</cond>
                                 <output>
                                     <prompt/>
                                     <action varName="Class1_Text" operator="SET_TO">{Array_Lookup.{Class1}}</action>
@@ -4229,7 +4228,7 @@ Say &lt;i&gt;got to go&lt;/i&gt; or &lt;i&gt;bye&lt;/i&gt; when you're finished.
         </folder>
     </flow>
     <entities>
-        <entity name="CERTIFICATION">
+        <entity name="CERTIFICATION" entityType="GENERIC">
             <value name="G" value="G">
                 <grammar>
                     <item>G Rated</item>
@@ -4281,8 +4280,9 @@ Say &lt;i&gt;got to go&lt;/i&gt; or &lt;i&gt;bye&lt;/i&gt; when you're finished.
                     <item>Not-rated</item>
                 </grammar>
             </value>
+            <entityRules></entityRules>
         </entity>
-        <entity name="GENRE">
+        <entity name="GENRE" entityType="GENERIC">
             <value name="Action" value="Action">
                 <grammar>
                     <item>Action</item>
@@ -4448,8 +4448,9 @@ Say &lt;i&gt;got to go&lt;/i&gt; or &lt;i&gt;bye&lt;/i&gt; when you're finished.
                     <item>cowboys and indians</item>
                 </grammar>
             </value>
+            <entityRules></entityRules>
         </entity>
-        <entity name="DINING">
+        <entity name="DINING" entityType="GENERIC">
             <value name="restaurants" value="restaurants">
                 <concept ref="concept_2456113"/>
                 <grammar>
@@ -4457,18 +4458,21 @@ Say &lt;i&gt;got to go&lt;/i&gt; or &lt;i&gt;bye&lt;/i&gt; when you're finished.
                 </grammar>
             </value>
             <value name="bars" value="bars"/>
+            <entityRules></entityRules>
         </entity>
-        <entity name="WEATHER">
+        <entity name="WEATHER" entityType="GENERIC">
             <value name="weather" value="weather">
                 <concept ref="concept_2456117"/>
             </value>
+            <entityRules></entityRules>
         </entity>
-        <entity name="TRAFFIC">
+        <entity name="TRAFFIC" entityType="GENERIC">
             <value name="traffic" value="traffic">
                 <concept ref="concept_2456118"/>
             </value>
+            <entityRules></entityRules>
         </entity>
-        <entity name="RECENCY">
+        <entity name="RECENCY" entityType="GENERIC">
             <value name="Upcoming" value="Upcoming">
                 <grammar>
                     <item>coming soon</item>
@@ -4509,14 +4513,17 @@ Say &lt;i&gt;got to go&lt;/i&gt; or &lt;i&gt;bye&lt;/i&gt; when you're finished.
                     <item>whatever is on</item>
                 </grammar>
             </value>
+            <entityRules></entityRules>
         </entity>
-        <entity name="ZIPCODE">
+        <entity name="ZIPCODE" entityType="GENERIC">
             <value name="10024" value="10024"/>
             <value name="07928" value="07928"/>
             <value name="95118" value="95118"/>
             <value name="95120" value="95120"/>
+            <value name="uszipcode" value="!^[0-9]{5}$"/>
+            <entityRules></entityRules>
         </entity>
-        <entity name="VIRTUAL_AGENTS">
+        <entity name="VIRTUAL_AGENTS" entityType="GENERIC">
             <value name="Watson" value="Watson"/>
             <value name="Siri" value="Siri"/>
             <value name="Cortana" value="Cortana"/>
@@ -4525,8 +4532,9 @@ Say &lt;i&gt;got to go&lt;/i&gt; or &lt;i&gt;bye&lt;/i&gt; when you're finished.
             <value name="Glados" value="Glados"/>
             <value name="Skynet" value="Skynet"/>
             <value name="Agent Smith" value="Agent Smith"/>
+            <entityRules></entityRules>
         </entity>
-        <entity name="BY_OTHER_MOVIE">
+        <entity name="BY_OTHER_MOVIE" entityType="GENERIC">
             <value name="by Theater" value="by Theater">
                 <grammar>
                     <item>by theaters</item>
@@ -4550,8 +4558,9 @@ Say &lt;i&gt;got to go&lt;/i&gt; or &lt;i&gt;bye&lt;/i&gt; when you're finished.
                     <item>that movie called</item>
                 </grammar>
             </value>
+            <entityRules></entityRules>
         </entity>
-        <entity name="UNSUPPORTED_GENRES">
+        <entity name="UNSUPPORTED_GENRES" entityType="GENERIC">
             <value name="Musical" value="Musical">
                 <grammar>
                     <item>musicals</item>
@@ -4605,15 +4614,17 @@ Say &lt;i&gt;got to go&lt;/i&gt; or &lt;i&gt;bye&lt;/i&gt; when you're finished.
                 </grammar>
             </value>
             <value name="Bollywood" value="Bollywood"/>
+            <entityRules></entityRules>
         </entity>
-        <entity name="DYNAMIC_DATA">
+        <entity name="DYNAMIC_DATA" entityType="GENERIC">
             <value name="DataCapture" value="DataCapture">
                 <grammar>
                     <item>*</item>
                 </grammar>
             </value>
+            <entityRules></entityRules>
         </entity>
-        <entity name="CLASSES">
+        <entity name="CLASSES" entityType="GENERIC">
             <value name="look up movies" value="SearchMovies">
                 <grammar>
                     <item>movies</item>
@@ -4623,7 +4634,6 @@ Say &lt;i&gt;got to go&lt;/i&gt; or &lt;i&gt;bye&lt;/i&gt; when you're finished.
                 <grammar>
                     <item>showtimes</item>
                     <item>fandango</item>
-                    <item>theaters</item>
                 </grammar>
             </value>
             <value name="look up actors" value="LookupActors">
@@ -4650,8 +4660,9 @@ Say &lt;i&gt;got to go&lt;/i&gt; or &lt;i&gt;bye&lt;/i&gt; when you're finished.
             <value name="to say yes" value="YesClass"/>
             <value name="to say no" value="NoClass"/>
             <value name="just acknowledging me" value="3rdTurnReceipts"/>
+            <entityRules></entityRules>
         </entity>
-        <entity name="UNSUPPORTED_CLASSES">
+        <entity name="UNSUPPORTED_CLASSES" entityType="GENERIC">
             <value name="cast" value="cast">
                 <grammar>
                     <item>cast</item>
@@ -4674,8 +4685,9 @@ Say &lt;i&gt;got to go&lt;/i&gt; or &lt;i&gt;bye&lt;/i&gt; when you're finished.
                     <item>producers</item>
                 </grammar>
             </value>
+            <entityRules></entityRules>
         </entity>
-        <entity name="UNSUPPORTED_ACTIONS">
+        <entity name="UNSUPPORTED_ACTIONS" entityType="GENERIC">
             <value name="look up movies by title" value="title">
                 <grammar>
                     <item>titles</item>
@@ -4724,8 +4736,9 @@ Say &lt;i&gt;got to go&lt;/i&gt; or &lt;i&gt;bye&lt;/i&gt; when you're finished.
                     <item>classics</item>
                 </grammar>
             </value>
+            <entityRules></entityRules>
         </entity>
-        <entity name="SUPPORTED_ACTIONS">
+        <entity name="SUPPORTED_ACTIONS" entityType="GENERIC">
             <value name="look up movies by genre and MPAA rating" value="movies">
                 <grammar>
                     <item>movie</item>
@@ -4767,6 +4780,7 @@ Say &lt;i&gt;got to go&lt;/i&gt; or &lt;i&gt;bye&lt;/i&gt; when you're finished.
                     <item>movie type</item>
                 </grammar>
             </value>
+            <entityRules></entityRules>
         </entity>
     </entities>
     <constants>
@@ -4903,12 +4917,8 @@ border-color:#000000;
         </var_folder>
     </variables>
     <settings>
-        <setting name="EMAIL" type="USER"></setting>
-        <setting name="DISPLAYNAME" type="USER">Watson</setting>
-        <setting name="SENDCHATEMAIL" type="USER">false</setting>
-        <setting name="CACHE" type="USER">true</setting>
         <setting name="AUTOLEARN" type="USER">false</setting>
-        <setting name="LANGUAGE" type="USER">EN</setting>
+        <setting name="LANGUAGE" type="USER">en-US</setting>
         <setting name="RESPONSETIME" type="USER">-2</setting>
         <setting name="MAXAUTOLEARNITEMS" type="USER">2</setting>
         <setting name="NUMAUTOSETRELATED" type="USER">0</setting>
@@ -4919,19 +4929,16 @@ border-color:#000000;
         <setting name="UI_COLOUR"></setting>
         <setting name="DNR_NODE_ID">-16</setting>
         <setting name="USE_CONCEPTS">1</setting>
-        <setting name="PARENT_ACCOUNT">en-us-legacy</setting>
+        <setting name="PARENT_ACCOUNT">pconcepts</setting>
         <setting name="AL_NONE_LABEL">None of the above</setting>
-        <setting name="ASR_RANDOM">true</setting>
-        <setting name="DYNAMIC_MESSAGING">false</setting>
-        <setting name="DOCBASE_NUM_RESULTS">0</setting>
-        <setting name="DOCBASE_DESC_LEN">250</setting>
-        <setting name="STATUS">0</setting>
         <setting name="DEFAULT_DNR_RETURN_POINT_CANDIDATE">-1</setting>
         <setting name="ENTITIES_SCOPE">3</setting>
-        <setting name="POSTNODEID"></setting>
         <setting name="MULTISENT">0</setting>
-        <setting name="CLEARCACHE">sd6pprd-efcf sd6pprd-783f sd6pprd-27a3 sd6pprd-ae7b sd6pprd-511b sd6pprd-9add sd6pprd-80dd sd6pprd-4b02 sd6pprd-5a65 sd6pprd-9a1f</setting>
         <setting name="DEFAULT_POINT_NODE_ID">2531765</setting>
+        <setting name="PLATFORM_VERSION">10.1</setting>
+        <setting name="USE_TRANSLATIONS">2</setting>
+        <setting name="USE_SPELLING_CORRECTIONS">2</setting>
+        <setting name="USE_STOP_WORDS">2</setting>
     </settings>
     <specialSettings>
         <specialSetting label="Offline Output">
@@ -4957,7 +4964,7 @@ var globalFilterRules = &amp;quot;&amp;quot;;
 %&amp;gt;
 &amp;lt;html&amp;gt;
 &amp;lt;head&amp;gt;
-&amp;lt;title&amp;gt;MyCyberTwin Report&amp;lt;/title&amp;gt;
+&amp;lt;title&amp;gt;Dialog Report&amp;lt;/title&amp;gt;
 
 &amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;
 body
@@ -5076,11 +5083,9 @@ var tableSetTemplateOI= &amp;quot;&amp;lt;table class=subsection&amp;gt;&amp;lt;
 %&amp;gt;
 
 &amp;lt;body&amp;gt;
-&amp;lt;table width=500&amp;gt;
-&amp;lt;tr&amp;gt;&amp;lt;td&amp;gt;&amp;lt;img src=&amp;quot;https://mycybertwin.com/images/web-logo.png&amp;quot; width=204 &amp;gt;&amp;lt;/td&amp;gt;&amp;lt;td&amp;gt;&amp;lt;img src=&amp;quot;[ORG_LOGO]&amp;quot; &amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;
-&amp;lt;/table&amp;gt;
+
 &amp;lt;br&amp;gt;
-&amp;lt;div class=title&amp;gt;MyCyberTwin Report for [ORG_NAME]&amp;apos;s [CYBERTWIN_NAME]&amp;lt;/div&amp;gt;
+&amp;lt;div class=title&amp;gt;Dialog Report for [ORG_NAME]&amp;apos;s [CYBERTWIN_NAME]&amp;lt;/div&amp;gt;
 &amp;lt;div class=subtitle&amp;gt;&amp;lt;b&amp;gt;Period - From:&amp;lt;/b&amp;gt; &amp;lt;% PRINT(dateFrom); %&amp;gt; &amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp; &amp;lt;b&amp;gt;To:&amp;lt;/b&amp;gt; &amp;lt;% PRINT(dateTo); %&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;br&amp;gt;
 
 &amp;lt;table class=section&amp;gt;
@@ -5128,7 +5133,7 @@ var tableSetTemplateOI= &amp;quot;&amp;lt;table class=subsection&amp;gt;&amp;lt;
 
 	PRINT_TEMPLATE(timeChatsSet, tableSetTemplate1);
 
-	PRINT_GRAPH_TEMPLATE(CHATSTATS_TIME_SPREAD(&amp;quot;&amp;quot;,&amp;quot;%&amp;quot;,&amp;quot;Measurement&amp;quot;), &amp;quot;BAR&amp;quot;, &amp;quot;300&amp;quot;, &amp;quot;300&amp;quot;, tableSetGraphTemplate3);	
+	PRINT_TEMPLATE(CHATSTATS_TIME_SPREAD(&amp;quot;&amp;quot;,&amp;quot;%&amp;quot;,&amp;quot;Measurement&amp;quot;), &amp;quot;BAR&amp;quot;, &amp;quot;300&amp;quot;, &amp;quot;300&amp;quot;, tableSetGraphTemplate3);	
 
 
 
@@ -5141,7 +5146,7 @@ var tableSetTemplateOI= &amp;quot;&amp;lt;table class=subsection&amp;gt;&amp;lt;
 
 	PRINT_TEMPLATE(msgChatsSet, tableSetTemplate1);
 
-	PRINT_GRAPH_TEMPLATE(CHATSTATS_MSG_SPREAD(&amp;quot;&amp;quot;,&amp;quot;%&amp;quot;,&amp;quot;Measurement&amp;quot;), &amp;quot;BAR&amp;quot;, &amp;quot;300&amp;quot;, &amp;quot;300&amp;quot;, tableSetGraphTemplate3);	
+	PRINT_TEMPLATE(CHATSTATS_MSG_SPREAD(&amp;quot;&amp;quot;,&amp;quot;%&amp;quot;,&amp;quot;Measurement&amp;quot;), &amp;quot;BAR&amp;quot;, &amp;quot;300&amp;quot;, &amp;quot;300&amp;quot;, tableSetGraphTemplate3);	
 	%&amp;gt;
 
 
@@ -5161,7 +5166,7 @@ var tableSetTemplateOI= &amp;quot;&amp;lt;table class=subsection&amp;gt;&amp;lt;
 	var feedbackInfoSet = VALUE_SET(&amp;quot;Feedback Info&amp;quot;,&amp;quot;&amp;quot;,&amp;quot;&amp;quot;, FEEDBACK_NUM(),&amp;quot;1&amp;quot;,&amp;quot;Number of users who gave feedback&amp;quot;);
 	PRINT_TEMPLATE(feedbackInfoSet, tableSetTemplate1);
 
-	PRINT_GRAPH_TEMPLATE(FEEDBACK_SET(&amp;quot;1&amp;quot;), &amp;quot;BAR&amp;quot;, &amp;quot;300&amp;quot;, &amp;quot;300&amp;quot;, tableSetGraphTemplate3);
+	PRINT_TEMPLATE(FEEDBACK_SET(&amp;quot;1&amp;quot;), &amp;quot;BAR&amp;quot;, &amp;quot;300&amp;quot;, &amp;quot;300&amp;quot;, tableSetGraphTemplate3);
 %&amp;gt;
 	&amp;lt;/td&amp;gt;
 &amp;lt;/tr&amp;gt;
@@ -5270,14 +5275,14 @@ PRINT_TEMPLATE(questionSet, tableSetTemplate3);
 %&amp;gt;
 
 &amp;lt;%
-	PRINT_GRAPH_TEMPLATE(HITNODE_RULE_SETS(), &amp;quot;BAR&amp;quot;, &amp;quot;300&amp;quot;, &amp;quot;300&amp;quot;, tableSetGraphTemplate3);
+	PRINT_TEMPLATE(HITNODE_RULE_SETS(), &amp;quot;BAR&amp;quot;, &amp;quot;300&amp;quot;, &amp;quot;300&amp;quot;, tableSetGraphTemplate3);
 
-	PRINT_GRAPH_TEMPLATE(PROFILEVALUE_RULE_SETS(), &amp;quot;BAR&amp;quot;, &amp;quot;300&amp;quot;, &amp;quot;300&amp;quot;, tableSetGraphTemplate3);
+	PRINT_TEMPLATE(PROFILEVALUE_RULE_SETS(), &amp;quot;BAR&amp;quot;, &amp;quot;300&amp;quot;, &amp;quot;300&amp;quot;, tableSetGraphTemplate3);
 
 /*
-	PRINT_GRAPH_TEMPLATE(HITNODE_RULE_FOLDER_SET(&amp;quot;4984&amp;quot;, &amp;quot;%&amp;quot;, &amp;quot;Label&amp;quot;, &amp;quot;0&amp;quot;), &amp;quot;BAR&amp;quot;, &amp;quot;300&amp;quot;, &amp;quot;300&amp;quot;, tableSetGraphTemplate1);
+	PRINT_TEMPLATE(HITNODE_RULE_FOLDER_SET(&amp;quot;4984&amp;quot;, &amp;quot;%&amp;quot;, &amp;quot;Label&amp;quot;, &amp;quot;0&amp;quot;), &amp;quot;BAR&amp;quot;, &amp;quot;300&amp;quot;, &amp;quot;300&amp;quot;, tableSetGraphTemplate1);
 
-	PRINT_GRAPH_TEMPLATE(HITNODE_RULE_VALUESET(&amp;quot;34 35 36 37 38&amp;quot;, &amp;quot;Topics of Interest&amp;quot;, &amp;quot;%&amp;quot;, &amp;quot;Label&amp;quot;), &amp;quot;BAR&amp;quot;, &amp;quot;300&amp;quot;, &amp;quot;300&amp;quot;, tableSetGraphTemplate1);
+	PRINT_TEMPLATE(HITNODE_RULE_VALUESET(&amp;quot;34 35 36 37 38&amp;quot;, &amp;quot;Topics of Interest&amp;quot;, &amp;quot;%&amp;quot;, &amp;quot;Label&amp;quot;), &amp;quot;BAR&amp;quot;, &amp;quot;300&amp;quot;, &amp;quot;300&amp;quot;, tableSetGraphTemplate1);
 */
 %&amp;gt;
 	&amp;lt;/td&amp;gt;
@@ -5523,6 +5528,360 @@ var tableSetGraphTemplate4 = &amp;quot;&amp;lt;table class=subsection&amp;gt;&am
 		
 &amp;lt;/body&amp;gt;
 &amp;lt;/html&amp;gt;</script>
+        </report>
+        <report name="Business2">
+            <script>&lt;%
+var dateFrom = USERDEF:2011-08-01;
+var dateTo = USERDEF:2011-10-01;
+var totalWebsiteVisitors = USERDEF:32000;
+var numTopHits = USERDEF:10;
+var topHitsNodeIdScope = "-2";
+var costPerContactCentreContact = USERDEF:10;
+var globalFilterRules = "";
+%&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;MyCyberTwin Report&lt;/title&gt;
+
+&lt;style type="text/css"&gt;
+body
+{
+	margin-left: 75px;
+}
+
+.title
+{
+	font-family: verdana, arial, sans-serif; 
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.subtitle
+{
+	font-family: verdana, arial, sans-serif; 
+	font-size: 13px;
+	font-weight: none;
+}
+
+.section
+{
+	margin-top: 60px;
+	width: 800px;
+}
+
+
+.sectionHeading
+{
+	font-family: verdana, arial, sans-serif; 
+	font-size: 12px;
+	font-weight: bold;
+	background-color: #eeeeee;
+	width: 100%;
+	padding: 10px 10px 10px 10px;
+}
+
+.subsection
+{
+	margin-top: 20px;
+}
+
+.subsectionHeading
+{
+	font-family: verdana, arial, sans-serif; 
+	font-size: 12px;
+	font-weight: bold;
+	background-color: #eeeeee;
+	padding: 3px 3px 3px 3px;
+}
+
+.label
+{
+	font-family: verdana, arial, sans-serif; 
+	font-size: 10px;
+	font-weight: none;
+	width: 300px;
+	background-color: #eeeeff;
+	padding: 3px 3px 3px 3px;
+	
+}
+
+.value
+{
+	font-family: verdana, arial, sans-serif; 
+	font-size: 10px;
+	font-weight: none;
+	width: 50px;
+	background-color: #eeeeff;
+	padding: 3px 3px 3px 3px;
+}
+
+.xaxislabel
+{
+	font-family: verdana, arial, sans-serif; 
+	font-size: 10px;
+	font-weight: bold;
+	background-color: #eeeeff;
+	padding: 3px 3px 3px 3px;
+}
+
+.yaxislabel
+{
+	font-family: verdana, arial, sans-serif; 
+	font-size: 10px;
+	font-weight: bold;
+	background-color: #eeeeff;
+	padding: 3px 3px 3px 3px;
+}
+
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;%
+
+SET_REPORT_DETAILS(dateFrom, dateTo, globalFilterRules);
+
+var numChats = CHATSTATS_NUM_CHATS_TOTAL();
+var numEngagingChats = CHATSTATS_NUM_CHATS_ENGAGING();
+var numNonEngagingChats = CHATSTATS_NUM_CHATS_NONENGAGING();
+
+var tableSetTemplate1 = "&lt;table class=subsection&gt;&lt;tr&gt;&lt;td colspan=2 class=subsectionHeading&gt;[TITLE]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class=xaxislabel&gt;[XAXISLABEL]&lt;/td&gt;&lt;td class=yaxislabel&gt;[YAXISLABEL]&lt;/td&gt;&lt;/tr&gt;ROWS{&lt;tr&gt;&lt;td class=label&gt;[LABEL]&lt;/td&gt;&lt;td class=value&gt;[VALUE]&lt;/td&gt;&lt;/tr&gt;}&lt;/table&gt;";
+var tableSetGraphTemplate1 = "&lt;table class=subsection&gt;&lt;tr&gt;&lt;td valign=top&gt;&lt;table&gt;&lt;tr&gt;&lt;td colspan=2 class=subsectionHeading&gt;[TITLE]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class=xaxislabel&gt;[XAXISLABEL]&lt;/td&gt;&lt;td class=yaxislabel&gt;[YAXISLABEL]&lt;/td&gt;&lt;/tr&gt;ROWS{&lt;tr&gt;&lt;td class=label&gt;[LABEL]&lt;/td&gt;&lt;td class=value width=100&gt;[VALUE]&lt;/td&gt;&lt;/tr&gt;}&lt;/table&gt;&lt;/td&gt;&lt;td width=30&gt;&lt;/td&gt;&lt;td valign=top&gt;&lt;img src=[GRAPH] &gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;";
+
+var tableSetTemplate2 = "&lt;table class=subsection&gt;&lt;tr&gt;&lt;td colspan=2 class=subsectionHeading&gt;[TITLE]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class=yaxislabel&gt;[YAXISLABEL]&lt;/td&gt;&lt;td class=xaxislabel&gt;[XAXISLABEL]&lt;/td&gt;&lt;/tr&gt;ROWS{&lt;tr&gt;&lt;td class=value&gt;[VALUE]&lt;/td&gt;&lt;td class=label&gt;[LABEL]&lt;/td&gt;&lt;/tr&gt;}&lt;/table&gt;";
+var tableSetGraphTemplate2 = "&lt;table class=subsection&gt;&lt;tr&gt;&lt;td valign=top&gt;&lt;table&gt;&lt;tr&gt;&lt;td colspan=2 class=subsectionHeading&gt;[TITLE]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class=yaxislabel&gt;[YAXISLABEL]&lt;/td&gt;&lt;td class=xaxislabel&gt;[XAXISLABEL]&lt;/td&gt;&lt;/tr&gt;ROWS{&lt;tr&gt;&lt;td class=value&gt;[VALUE]&lt;/td&gt;&lt;td class=label&gt;[LABEL]&lt;/td&gt;&lt;/tr&gt;}&lt;/table&gt;&lt;/td&gt;&lt;td width=30&gt;&lt;/td&gt;&lt;td valign=top&gt;&lt;img src=[GRAPH] &gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;";
+
+var tableSetTemplate3 = "&lt;table class=subsection&gt;&lt;tr&gt;&lt;td colspan=2 class=subsectionHeading&gt;[TITLE]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class=xaxislabel&gt;[XAXISLABEL]&lt;/td&gt;&lt;td class=yaxislabel&gt;[YAXISLABEL]&lt;/td&gt;&lt;/tr&gt;ROWS{&lt;tr&gt;&lt;td class=label&gt;[LABEL]&lt;/td&gt;&lt;td class=value&gt;[VALUE_PERC]&lt;/td&gt;&lt;/tr&gt;}&lt;/table&gt;";
+var tableSetGraphTemplate3 = "&lt;table class=subsection&gt;&lt;tr&gt;&lt;td valign=top&gt;&lt;table&gt;&lt;tr&gt;&lt;td colspan=2 class=subsectionHeading&gt;[TITLE]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class=xaxislabel&gt;[XAXISLABEL]&lt;/td&gt;&lt;td class=yaxislabel&gt;[YAXISLABEL]&lt;/td&gt;&lt;/tr&gt;ROWS{&lt;tr&gt;&lt;td class=label&gt;[LABEL]&lt;/td&gt;&lt;td class=value width=100&gt;[VALUE_PERC]&lt;/td&gt;&lt;/tr&gt;}&lt;/table&gt;&lt;/td&gt;&lt;td width=30&gt;&lt;/td&gt;&lt;td valign=top&gt;&lt;img src=[GRAPH] &gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;";
+
+var tableSetTemplate4 = "&lt;table class=subsection&gt;&lt;tr&gt;&lt;td colspan=2 class=subsectionHeading&gt;[TITLE]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class=yaxislabel&gt;[YAXISLABEL]&lt;/td&gt;&lt;td class=xaxislabel&gt;[XAXISLABEL]&lt;/td&gt;&lt;/tr&gt;ROWS{&lt;tr&gt;&lt;td class=value&gt;[VALUE_PERC]&lt;/td&gt;&lt;td class=label&gt;[LABEL]&lt;/td&gt;&lt;/tr&gt;}&lt;/table&gt;";
+var tableSetGraphTemplate4 = "&lt;table class=subsection&gt;&lt;tr&gt;&lt;td valign=top&gt;&lt;table&gt;&lt;tr&gt;&lt;td colspan=2 class=subsectionHeading&gt;[TITLE]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class=yaxislabel&gt;[YAXISLABEL]&lt;/td&gt;&lt;td class=xaxislabel&gt;[XAXISLABEL]&lt;/td&gt;&lt;/tr&gt;ROWS{&lt;tr&gt;&lt;td class=value&gt;[VALUE_PERC]&lt;/td&gt;&lt;td class=label&gt;[LABEL]&lt;/td&gt;&lt;/tr&gt;}&lt;/table&gt;&lt;/td&gt;&lt;td width=30&gt;&lt;/td&gt;&lt;td valign=top&gt;&lt;img src=[GRAPH] &gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;";
+
+var table3ColTemplate1 = "&lt;table class=subsection&gt;&lt;tr&gt;&lt;td colspan=3 class=subsectionHeading&gt;[TITLE]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class=xaxislabel&gt;&lt;/td&gt;&lt;td class=yaxislabel&gt;#&lt;/td&gt;&lt;td class=yaxislabel&gt;%&lt;/td&gt;&lt;/tr&gt;ROWS{&lt;tr&gt;&lt;td class=label&gt;[LABEL]&lt;/td&gt;&lt;td class=value&gt;[VALUE]&lt;/td&gt;&lt;td class=value&gt;[VALUE_PERC]&lt;/td&gt;&lt;/tr&gt;}&lt;/table&gt;";
+var table3ColTemplateGraph1 = "&lt;table class=subsection&gt;&lt;tr&gt;&lt;td valign=top&gt;&lt;table&gt;&lt;tr&gt;&lt;td colspan=3 class=subsectionHeading&gt;[TITLE]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class=xaxislabel&gt;&lt;/td&gt;&lt;td class=yaxislabel&gt;#&lt;/td&gt;&lt;td class=yaxislabel&gt;%&lt;/td&gt;&lt;/tr&gt;ROWS{&lt;tr&gt;&lt;td class=label&gt;[LABEL]&lt;/td&gt;&lt;td class=value&gt;[VALUE]&lt;/td&gt;&lt;td class=value&gt;[VALUE_PERC]&lt;/td&gt;&lt;/tr&gt;}&lt;/table&gt;&lt;/td&gt;&lt;td width=10&gt;&lt;/td&gt;&lt;td valign=top&gt;&lt;img src=[GRAPH] &gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;";
+
+
+var table3ColTemplate2 = "&lt;table class=subsection&gt;&lt;tr&gt;&lt;td colspan=3 class=subsectionHeading&gt;[TITLE]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class=yaxislabel&gt;#&lt;/td&gt;&lt;td class=yaxislabel&gt;%&lt;/td&gt;&lt;td class=xaxislabel&gt;&lt;/td&gt;&lt;/tr&gt;ROWS{&lt;tr&gt;&lt;td class=value&gt;[VALUE]&lt;/td&gt;&lt;td class=value&gt;[VALUE_PERC]&lt;/td&gt;&lt;td class=label&gt;[LABEL]&lt;/td&gt;&lt;/tr&gt;}&lt;/table&gt;";
+var table3ColTemplateGraph2 = "&lt;table class=subsection&gt;&lt;tr&gt;&lt;td valign=top&gt;&lt;table&gt;&lt;tr&gt;&lt;td colspan=3 class=subsectionHeading&gt;[TITLE]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class=yaxislabel&gt;#&lt;/td&gt;&lt;td class=yaxislabel&gt;%&lt;/td&gt;&lt;td class=xaxislabel&gt;&lt;/td&gt;&lt;/tr&gt;ROWS{&lt;tr&gt;&lt;td class=value&gt;[VALUE]&lt;/td&gt;&lt;td class=value&gt;[VALUE_PERC]&lt;/td&gt;&lt;td class=label&gt;[LABEL]&lt;/td&gt;&lt;/tr&gt;}&lt;/table&gt;&lt;/td&gt;&lt;td width=10&gt;&lt;/td&gt;&lt;td valign=top&gt;&lt;img src=[GRAPH] &gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;";
+%&gt;
+
+&lt;body&gt;
+&lt;table width=500&gt;
+&lt;tr&gt;&lt;td&gt;&lt;img src="https://mycybertwin.com/images/web-logo.png" width=204 &gt;&lt;/td&gt;&lt;td&gt;&lt;img src="[ORG_LOGO]" &gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+&lt;br&gt;
+&lt;div class=title&gt;MyCyberTwin Report for [ORG_NAME]'s [CYBERTWIN_NAME]&lt;/div&gt;
+&lt;div class=subtitle&gt;&lt;b&gt;Period - From:&lt;/b&gt; &lt;% PRINT(dateFrom); %&gt; &amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;b&gt;To:&lt;/b&gt; &lt;% PRINT(dateTo); %&gt;&lt;/div&gt;&lt;br&gt;
+
+&lt;table class=section&gt;
+&lt;tr&gt;
+	&lt;td class=sectionHeading&gt;Chat Uptake&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td&gt;
+&lt;%
+	var conversionSet = VALUE_SET(	"Visitors and chats", "#", "Measurement", 
+				totalWebsiteVisitors, "1", "Website visitors", 
+				numChats, "1", "Website visitors who chatted to the CyberTwin", 
+				FORMAT_NUMBER(MULTIPLY(DIVIDE(numChats, totalWebsiteVisitors), "100"), "##.##"), "0", "Chat Uptake");
+
+	PRINT_TEMPLATE(conversionSet, tableSetTemplate1);
+%&gt;
+		
+	&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+
+
+&lt;table class=section&gt;
+&lt;tr&gt;
+
+	&lt;td class=sectionHeading&gt;Engagement&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td&gt;
+&lt;%
+	var chatVolumeSet = VALUE_SET("Chat Volume", "#", "Measurement", 
+		numChats, "1", "Total Chats", 
+		numEngagingChats, "1", "Engaging Chats", 
+		FORMAT_NUMBER(MULTIPLY(DIVIDE(numEngagingChats, numChats),"100"),"##.##"), "0", "% Engaging Chats");
+
+	PRINT_TEMPLATE(chatVolumeSet, tableSetTemplate1);
+	
+
+
+	var timeChatsSet = VALUE_SET(	"Chat Time", "#", "Measurement", 
+				CHATSTATS_TIME_AVG(), "1", "Avg minutes", 
+				CHATSTATS_TIME_MIN(), "1", "Min minutes", 
+				CHATSTATS_TIME_MAX(), "1", "Max minutes", 
+				CHATSTATS_TIME_MEDIAN(), "1", "Median minutes",
+				CHATSTATS_TIME_TOTAL(), "1", "Total minutes");
+
+	PRINT_TEMPLATE(timeChatsSet, tableSetTemplate1);
+
+	PRINT_TEMPLATE(CHATSTATS_TIME_SPREAD("","%","Measurement"), "BAR", "300", "300", tableSetGraphTemplate3);	
+
+
+
+
+	var msgChatsSet = VALUE_SET(	"Chat Messages", "#", "Measurement", 
+				CHATSTATS_MSG_AVG(), "1", "Avg messages", 
+				CHATSTATS_MSG_MIN(), "1", "Min messages", 
+				CHATSTATS_MSG_MAX(), "1", "Max messages", 
+				CHATSTATS_MSG_MEDIAN(), "1", "Median messages", 
+				CHATSTATS_MSG_TOTAL(), "1", "Total messages");
+
+	PRINT_TEMPLATE(msgChatsSet, tableSetTemplate1);
+
+	PRINT_TEMPLATE(CHATSTATS_MSG_SPREAD("","%","Measurement"), "BAR", "300", "300", tableSetGraphTemplate3);	
+	
+	
+	
+	/*
+	var chatDUSet = VALUE_SET(	"Dinstinct Users", "#", "Measurement", 
+				CHATSTATS_DISTINCTUSER_NUM(), "1", "Num of distinct users", 
+				CHATSTATS_DISTINCTUSER_AVG(), "1", "Avg chats", 
+				CHATSTATS_DISTINCTUSER_MIN(), "1", "Min chats", 
+				CHATSTATS_DISTINCTUSER_MAX(), "1", "Max chats", 
+				CHATSTATS_DISTINCTUSER_MEDIAN(), "1", "Median chats", 
+				CHATSTATS_DISTINCTUSER_TOTAL(), "1", "Total chats");
+
+	PRINT_TEMPLATE(chatDUSet, tableSetTemplate1);
+
+	PRINT_GRAPH_TEMPLATE(CHATSTATS_DISTINCTUSER_SPREAD("","%","Measurement"), "BAR", "300", "300", tableSetGraphTemplate3);
+	*/
+	
+	
+	
+	PRINT_TEMPLATE(CHATSTATS_LOCATION_SPREAD("Location","%","Measurement"), "BAR", "300", "300", tableSetGraphTemplate3);
+	
+	%&gt;
+
+
+	&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+
+
+
+&lt;table class=section&gt;
+&lt;tr&gt;
+	&lt;td class=sectionHeading&gt;Feedback&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td&gt;
+&lt;%
+	var feedbackInfoSet = VALUE_SET("Feedback Info","","", FEEDBACK_NUM(),"1","Number of users who gave feedback");
+	PRINT_TEMPLATE(feedbackInfoSet, tableSetTemplate1);
+
+	PRINT_TEMPLATE(FEEDBACK_SET("1"), "BAR", "300", "300", tableSetGraphTemplate3);
+%&gt;
+	&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+
+
+&lt;table class=section&gt;
+&lt;tr&gt;
+	&lt;td class=sectionHeading&gt;Deflection&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td&gt;
+&lt;%
+	var numFeedbackPhonedTheCallCentre = FEEDBACK_VALUE("2", "Phoned the call center");
+	var numFeedbackSentAnEmail = FEEDBACK_VALUE("2", "Send an email");
+
+	var sumFeedback = SUM(numFeedbackPhonedTheCallCentre, numFeedbackSentAnEmail);
+	var normFeedback = DIVIDE(sumFeedback, FEEDBACK_NUM());
+	var percFeedback = MULTIPLY(normFeedback, "100");
+
+	var chatsDeflected = MULTIPLY(numChats, normFeedback);
+	var savings = MULTIPLY(chatsDeflected, costPerContactCentreContact);
+
+	var contactCentreSavingsSet = VALUE_SET(	"Contact center savings with CyberTwin","","", 
+					numChats, "1", "Number of chats", 
+					percFeedback, "0", "% would have contacted the contact center", 
+					chatsDeflected, "1", "Chats deflected", 
+					costPerContactCentreContact, "5", "Cost per contact center contact", 
+					savings, "5", "&lt;b&gt;Total Cost Deflected by CyberTwin&lt;/b&gt;");
+
+	PRINT_TEMPLATE(contactCentreSavingsSet, tableSetTemplate2);
+%&gt;
+
+
+	&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+
+
+
+&lt;table class=section&gt;
+&lt;tr&gt;
+	&lt;td class=sectionHeading&gt;Performance&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td&gt;
+		&lt;table&gt;
+		&lt;tr&gt;&lt;td class=xaxislabel&gt;Performance Indicator&lt;/td&gt;&lt;td class=yaxislabel&gt;CyberTwin&lt;/td&gt;&lt;td class=yaxislabel&gt;Live Human Chat&lt;/td&gt;&lt;td class=yaxislabel&gt;Live Human Phone&lt;/td&gt;&lt;/tr&gt;
+		&lt;tr&gt;&lt;td class=label&gt;Accuracy - detecting questions&lt;/td&gt;&lt;td class=value&gt;&lt;%PRINT_NUMBER(ACCURACY_RATE(),"##.#%");%&gt;&lt;/td&gt;&lt;td class=value&gt;-&lt;/td&gt;&lt;td class=value&gt;68% customer satisfaction&lt;/td&gt;&lt;/tr&gt;
+		&lt;tr&gt;&lt;td class=label&gt;Accuracy - giving correct answers&lt;/td&gt;&lt;td class=value&gt;100%&lt;/td&gt;&lt;td class=value&gt;60-75%&lt;/td&gt;&lt;td class=value&gt;81% first contact reolution rate&lt;/td&gt;&lt;/tr&gt;
+		&lt;tr&gt;&lt;td class=label&gt;Quality answers - good substantive answers that represent the brand well and reduce calls to contact centre&lt;/td&gt;&lt;td class=value&gt;100%&lt;/td&gt;&lt;td class=value&gt;-&lt;/td&gt;&lt;td class=value&gt;-&lt;/td&gt;&lt;/tr&gt;
+		&lt;tr&gt;&lt;td class=label&gt;Consistent answers&lt;/td&gt;&lt;td class=value&gt;100%&lt;/td&gt;&lt;td class=value&gt;60%&lt;/td&gt;&lt;td class=value&gt;81% first contact reolution rate&lt;/td&gt;&lt;/tr&gt;
+		&lt;tr&gt;&lt;td class=label&gt;Response time - per answer&lt;/td&gt;&lt;td class=value&gt;&lt; 1 sec&lt;/td&gt;&lt;td class=value&gt;1-3 minutes&lt;/td&gt;&lt;td class=value&gt;62% in less than 10 sec&lt;/td&gt;&lt;/tr&gt;
+		&lt;tr&gt;&lt;td class=label&gt;Length of chats - avg. time&lt;/td&gt;&lt;td class=value&gt;&lt;%PRINT_NUMBER(CHATSTATS_TIME_AVG(),"##.#");%&gt;mins&lt;/td&gt;&lt;td class=value&gt;-&lt;/td&gt;&lt;td class=value&gt;-&lt;/td&gt;&lt;/tr&gt;
+		&lt;tr&gt;&lt;td class=label&gt;Length of chats - avg. messages&lt;/td&gt;&lt;td class=value&gt;&lt;%PRINT_NUMBER(CHATSTATS_MSG_AVG(),"##.#");%&gt;msgs&lt;/td&gt;&lt;td class=value&gt;-&lt;/td&gt;&lt;td class=value&gt;-&lt;/td&gt;&lt;/tr&gt;
+		&lt;tr&gt;&lt;td class=label&gt;Chats cut short&lt;/td&gt;&lt;td class=value&gt;0%&lt;/td&gt;&lt;td class=value&gt;15%&lt;/td&gt;&lt;td class=value&gt;14% abandoned, 19% unresolved on first call&lt;/td&gt;&lt;/tr&gt;
+		&lt;tr&gt;&lt;td class=label&gt;Abandoned calls&lt;/td&gt;&lt;td class=value&gt;0%&lt;/td&gt;&lt;td class=value&gt;&lt;/td&gt;&lt;td class=value&gt;14%&lt;/td&gt;&lt;/tr&gt;
+		&lt;tr&gt;&lt;td class=label&gt;Agent utilisation&lt;/td&gt;&lt;td class=value&gt;100%, 24 hrs a day&lt;/td&gt;&lt;td class=value&gt;-&lt;/td&gt;&lt;td class=value&gt;59%&lt;/td&gt;&lt;/tr&gt;	
+		&lt;tr&gt;&lt;td class=label&gt;# Concurrent sessions&lt;/td&gt;&lt;td class=value&gt;thousands per server&lt;/td&gt;&lt;td class=value&gt;&lt;/td&gt;&lt;td class=value&gt;1&lt;/td&gt;&lt;/tr&gt;	
+		&lt;tr&gt;&lt;td class=label&gt;Staff attrition&lt;/td&gt;&lt;td class=value&gt;0%&lt;/td&gt;&lt;td class=value&gt;-&lt;/td&gt;&lt;td class=value&gt;24%&lt;/td&gt;&lt;/tr&gt;
+		&lt;/table&gt;
+
+
+		&lt;br&gt;&lt;br&gt;
+		
+		&lt;table&gt;
+		&lt;tr&gt;&lt;td class=label&gt;Overall Accuracy&lt;/td&gt;&lt;td class=value&gt;&lt;%PRINT_NUMBER(ACCURACY_RATE(),"##.#%");%&gt;&lt;/td&gt;&lt;/tr&gt;
+		&lt;tr&gt;&lt;td class=label&gt;Direct Match Rate&lt;/td&gt;&lt;td class=value&gt;&lt;%PRINT_NUMBER(DIRECT_MATCH_RATE(),"##.#%");%&gt;&lt;/td&gt;&lt;/tr&gt;
+		&lt;tr&gt;&lt;td class=label&gt;Direct Default Rate&lt;/td&gt;&lt;td class=value&gt;&lt;%PRINT_NUMBER(DIRECT_DEFAULT_RATE(),"##.#%");%&gt;&lt;/td&gt;&lt;/tr&gt;
+		&lt;tr&gt;&lt;td class=label&gt;AutoLearn Rate&lt;/td&gt;&lt;td class=value&gt;&lt;%PRINT_NUMBER(AUTOLEARN_RATE(),"##.#%");%&gt;&lt;/td&gt;&lt;/tr&gt;
+		&lt;tr&gt;&lt;td class=label&gt;AutoLearn Match Rate&lt;/td&gt;&lt;td class=value&gt;&lt;%PRINT_NUMBER(AUTOLEARN_MATCH_RATE(),"##.#%");%&gt;&lt;/td&gt;&lt;/tr&gt;
+		&lt;tr&gt;&lt;td class=label&gt;AutoLearn Default Rate&lt;/td&gt;&lt;td class=value&gt;&lt;%PRINT_NUMBER(AUTOLEARN_DEFAULT_RATE(),"##.#%");%&gt;&lt;/td&gt;&lt;/tr&gt;
+		&lt;/table&gt;
+
+	&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;table class=section&gt;
+&lt;tr&gt;
+	&lt;td class=sectionHeading&gt;Learning About Users&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+	&lt;td&gt;
+	
+&lt;%
+	var foldersSet = HIT_COUNT_TOP("FOLDER", topHitsNodeIdScope, numTopHits, "Most Popular Topics of Interest", "#", "Topic");
+	PRINT_TEMPLATE(foldersSet, "PIE", "300", "300", tableSetGraphTemplate2);
+	
+	var questionSet = HIT_COUNT_TOP("INPUT", topHitsNodeIdScope, numTopHits, "Most Frequently Asked Questions", "#", "Question");
+	PRINT_TEMPLATE(questionSet, tableSetTemplate2);
+
+	PRINT_TEMPLATE(SOURCE_CLICKS_TOP(numTopHits, "Pages From Which CyberTwin Was Opened", "%", "URL"),  tableSetTemplate3);
+
+	PRINT_TEMPLATE(PAGE_LOADS_TOP(numTopHits, "Pages Loaded By CyberTwin During Chat", "%", "URL"), tableSetTemplate3);
+%&gt;
+
+&lt;%
+	PRINT_TEMPLATE(HITNODE_RULE_SETS(), "BAR", "300", "300", table3ColTemplateGraph1);
+
+	PRINT_TEMPLATE(PROFILEVALUE_RULE_SETS(), "BAR", "300", "300", table3ColTemplateGraph1);
+
+%&gt;
+	&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</script>
         </report>
     </reports>
 </dialog>
