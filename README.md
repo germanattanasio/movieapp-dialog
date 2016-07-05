@@ -1,3 +1,5 @@
+# DEPRECATED PLEASE USE: https://github.com/watson-developer-cloud/conversational-agent
+
 # What's In Theaters Application Overview
 The What's in Theaters application showcases the best practices to follow to build a Watson conversational solution by using the Watson Dialog service. The application allows users to converse with Watson to search for current or upcoming movies by using [themoviedb.org](https://www.themoviedb.org/) database.
 
